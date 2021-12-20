@@ -5,9 +5,11 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
-    - text: "Homeworks"
-      href: Homeworks.html
+    - text: "Pages"
+      menu:
+      - text: "About"
+        href: about.html
+      - text: "Homeworks"
+        href: Homeworks.html
       
       
