@@ -1,0 +1,7 @@
+"0","```r
+
+#Mean World 1952
+gapminder %>%
+  filter(year == min(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+```"

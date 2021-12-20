@@ -1,0 +1,10 @@
+"0","```r
+gapminder %>%
+  group_by(year) %>%
+  filter(continent == \"Europe\") %>%
+  mutate(sum=sum(pop)) %>%
+  select(sum)
+
+```"
+"1","Adding missing grouping variables: `year`
+"

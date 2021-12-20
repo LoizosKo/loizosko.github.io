@@ -1,0 +1,11 @@
+"0","```r
+
+#For Denmark (World) GDP per Capita
+zscoreWorldAvGDPpCap<-gapminder%>% 
+  group_by(year) %>%
+  mutate(avggdpPercap=mean(gdpPercap), sdgdpPercap=sd(gdpPercap))%>% 
+  filter (country == \"Denmark\") %>%
+  mutate(zscore=(gdpPercap-avggdpPercap)/sdgdpPercap) %>%
+  filter(year==min(year))
+zscoreWorldAvGDPpCap
+```"

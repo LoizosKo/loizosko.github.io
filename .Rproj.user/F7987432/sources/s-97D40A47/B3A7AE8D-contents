@@ -1,0 +1,271 @@
+---
+title: "Homework 2"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+install.packages("gapminder")
+```
+
+```{r}
+library("gapminder")
+```
+
+```{r}
+gapminder <- gapminder
+```
+
+1.  Examine the organization of the data set. Using the code discussed in class, randomly sample one country. Show the code used to sample. Set seed so that I could reproduce your code.
+
+```{r}
+library(dplyr)
+set.seed(5098765)
+randomcountry <- sample_n(gapminder, 1)
+randomcountry
+```
+filter(year==2007)
+
+2.  For the country that was sampled, describe the dynamics of its population, life expectancy, and GDP per capita from the earliest to the latest year available.
+
+-   Life expectancy, GDP per capita, and the population of Denmark gradually increased through the years.
+
+```{r}
+Denmark <- gapminder %>%
+filter(country == "Denmark")
+ Denmark %>%  ggplot(aes(x = year, y = pop)) + geom_line()
+ Denmark %>%  ggplot(aes(x=year, y=lifeExp)) + geom_line()
+ Denmark %>%  ggplot(aes(x=year, y=gdpPercap)) + geom_line()
+```
+
+3.  How does the population, life expectancy, and GDP per capita compare with the averages for the continent and for the world as a whole in the earliest year of observation and the latest year of observation. (You will need to calculate corresponding means for this)
+
+```{r}
+
+#Mean Europe 1952
+gapminder %>%   
+  filter(continent=="Europe", year == min(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+
+#Mean World 1952
+gapminder %>%
+  filter(year == min(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+
+#Mean Europe 2007
+gapminder %>%
+  filter(continent=="Europe", year == max(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+
+#Mean World 2007
+gapminder %>%
+  filter(year == max(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+
+
+#For purposes of answering question 9:
+#Mean Denmark 1952
+gapminder %>%
+  filter(country=="Denmark", year == min(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+
+#Mean Denmark 2007
+gapminder %>%
+  filter(country=="Denmark", year == max(year)) %>%
+  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
+```
+
+4.  Calculate the standard deviation for the continent and for the world for each indicator for the first and last year of observations. How many standard deviations away from the mean was your country in the first year of observation? In the last year of observation? What does it say about the development of your country?
+
+```{r}
+#For Denmark (World) population
+zscoreWorld<-gapminder%>% 
+  group_by(year) %>%
+  mutate(avgpop=mean(pop), sdpop=sd(pop))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(pop-avgpop)/sdpop) %>%
+  filter(year==min(year))
+zscoreWorld 
+
+#For Denmark (Continent) population
+zscoreContinent<-gapminder%>% 
+  group_by(year) %>%
+  filter (continent == "Europe") %>%
+  mutate(avgpop=mean(pop),sdpop=sd(pop))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(pop-avgpop)/sdpop) %>%
+  filter(year==min(year))
+zscoreContinent
+
+#For Denmark (World) Life Expectancy (Is it correct, like the previous ones??)
+zscoreWorldLifeExp<-gapminder%>% 
+  group_by(year) %>%
+  mutate(avglifeExp=mean(lifeExp), sdlifeExp=sd(lifeExp))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(lifeExp-avglifeExp)/sdlifeExp) %>%
+  filter(year==min(year))
+zscoreWorldLifeExp
+
+#For Denmark (Continent) Life Expectancy
+zscoreContinentLifeExp<-gapminder%>% 
+  group_by(year) %>%
+  filter (continent == "Europe") %>%
+  mutate(avglifeExp=mean(lifeExp),sdlifeExp=sd(lifeExp))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(lifeExp-avglifeExp)/sdlifeExp) %>%
+  filter(year==min(year))
+zscoreContinentLifeExp
+
+#For Denmark (World) GDP per Capita
+zscoreWorldAvGDPpCap<-gapminder%>% 
+  group_by(year) %>%
+  mutate(avggdpPercap=mean(gdpPercap), sdgdpPercap=sd(gdpPercap))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(gdpPercap-avggdpPercap)/sdgdpPercap) %>%
+  filter(year==min(year))
+zscoreWorldAvGDPpCap
+
+#For Denmark (Continent) GDP per Capita
+zscoreContinentAvGDPpCap<-gapminder%>% 
+  group_by(year) %>%
+  filter (continent == "Europe") %>%
+  mutate(avggdpPercap=mean(gdpPercap),sdgdpPercap=sd(gdpPercap))%>% 
+  filter (country == "Denmark") %>%
+  mutate(zscore=(gdpPercap-avggdpPercap)/sdgdpPercap) %>%
+  filter(year==min(year))
+zscoreContinentAvGDPpCap
+
+
+```
+
+5.  In the last year of observations, how many countries outperformed your country in terms of each indicator? What was the best and the worst-performing country in the world and in the continent of your country?
+
+```{r}
+#21 countries outperform Denmark life expectancy
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(lifeExp)) %>%
+  filter(lifeExp>79)
+
+#99 countries outperform Denmark population
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(pop)) %>%
+  filter(pop>5468121)
+
+#11 countries outperform Denmark GDP Per Capita
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(gdpPercap)) %>%
+  filter(gdpPercap>35279)
+
+#Best-performing country in the world in GDP per Capita is Norway, worst is DR Congo
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(gdpPercap))
+
+#Best-performing country in the world in Life Exp is Japan, worst is Swaziland
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(lifeExp))
+
+#Best-performing country in the world in Population is China, worst is Sao Tome and Principe
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(pop))
+```
+
+6.  In how many countries was the improvement over time better than in your country in the world? In your continent?
+
+Countries that outperform Denmark in life expectancy   
+
+```{r}
+life_exp1 <- gapminder%>%
+  filter(year=="1952")
+  
+life_exp2 <- gapminder%>%
+  filter(year=="2007")
+
+life_exp1 %>%
+  mutate(difference = life_exp2$lifeExp-lifeExp) %>%
+  arrange(desc(lifeExp)) %>%
+  filter(difference > 7.61) %>%
+  #Countries outperformed Denmark in Europe in life expectancy
+  filter(continent== "Europe")
+```
+Countries that outperformed Denmark in GDP per capita
+
+```{r}
+gdpPercap1 <- gapminder%>%
+  filter(year=="1952")
+  
+gdpPercap2 <- gapminder%>%
+  filter(year=="2007")
+
+gdpPercap1 %>%
+  mutate(difference = gdpPercap2$gdpPercap-gdpPercap) %>%
+  arrange(desc(gdpPercap)) %>%
+  filter(difference>25587) %>%
+  #Countries that outperformed Denmark in Europe:
+  filter(continent=="Europe")
+```
+Countries that outperformed Denmark in population
+
+```{r}
+pop1 <- gapminder%>%
+  filter(year=="1952")
+  
+pop2 <- gapminder%>%
+  filter(year=="2007")
+
+pop1 %>%
+  mutate(difference = pop2$pop-pop) %>%
+  arrange(desc(pop)) %>%
+  filter(difference>1134120) %>%
+  #Countries that outperformed Denmark in Europe:
+  filter(continent=="Europe")
+```
+
+
+7.  What was the total population of the continent each year? What was the total population of the world?
+
+```{r}
+gapminder %>%
+  group_by(year) %>%
+  filter(continent == "Europe") %>%
+  mutate(sum=sum(pop)) %>%
+  select(sum)
+```
+
+8.  What was the total GDP (not per capita) of the world in each year according to the data?
+gdpPerCapita*pop
+
+```{r}
+gapminder %>%
+  group_by(year) %>%
+  mutate(gdp=sum(pop*gdpPercap)) %>%
+  select(gdp)
+```
+```{r}
+gapminder%>% pivot_wider(id_cols = country, names_from = year, values_from = c(pop, lifeExp, gdpPercap))
+```
+
+
+9.  Write a short paragraph describing your country's development in history compared to other countries in its continent and the world as a whole. Make sure to write it in a way so that someone who doesn't know statistics could understand it.
+
+In terms of average life expectancy, Denmark has a relatively high number. To put that into perspective, in 1952, the average life expectancy in Europe was 64 years of age. The equivalent rate in Denmark was 71. Denmark was doing much better than the world as well as the average life expectancy rate was just 49 years old. In 2007 though, while European and the World average of life expectancy increased, in Denmark stayed the same. Specifically, Europe’s average life expectancy increased to 78 while the World’s corresponding one increased to 67. If we take a closer look at European countries we will observe that they all had greater increase in live expectancy from 1952 to 2007 while Denmark’s one was only greater of Norway.
+
+Denmark is doing really well in terms of GDP per capita. Since 1952 it grew almost 400%  (from 9692 to 35278). It is worth to mention that only eleven countries in the world had bigger grow in this sector; Norway, Netherlands, Iceland, Finland, Austria, USA, Hong Kong, Singapore, Japan, Taiwan, and Ireland.
+
+Finally, Danish population noted an increase of around 1.1 million people. Only 18 countries in the world had less increase than that. The rest 123 countries had higher population increase than Denmark. This is possible because of the huge increase of life expectancy in the other countries compared to Denmark.
+
+10. Save and submit the homework as an Rmd file.

@@ -1,0 +1,5 @@
+"0","```r
+Denmark <- gapminder %>%
+filter(country == \"Denmark\")
+ Denmark %>%  ggplot(aes(x = year, y = pop)) + geom_line()
+```"

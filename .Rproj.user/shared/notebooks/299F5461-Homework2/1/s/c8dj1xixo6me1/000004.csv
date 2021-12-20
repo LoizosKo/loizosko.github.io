@@ -1,0 +1,11 @@
+"0","```r
+
+#For Denmark (World) Life Expectancy (Is it correct, like the previous ones??)
+zscoreWorldLifeExp<-gapminder%>% 
+  group_by(year) %>%
+  mutate(avglifeExp=mean(lifeExp), sdlifeExp=sd(lifeExp))%>% 
+  filter (country == \"Denmark\") %>%
+  mutate(zscore=(lifeExp-avglifeExp)/sdlifeExp) %>%
+  filter(year==min(year))
+zscoreWorldLifeExp
+```"

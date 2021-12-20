@@ -1,0 +1,14 @@
+"0","```r
+life_exp1 <- gapminder%>%
+  filter(year==\"1952\")
+  
+life_exp2 <- gapminder%>%
+  filter(year==\"2007\")
+
+life_exp1 %>%
+  mutate(difference = life_exp2$lifeExp-lifeExp) %>%
+  arrange(desc(lifeExp)) %>%
+  filter(difference > 7.61) %>%
+  #Countries outperformed Denmark in Europe in life expectancy
+  filter(continent== \"Europe\")
+```"

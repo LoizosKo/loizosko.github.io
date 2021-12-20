@@ -1,0 +1,9 @@
+"0","```r
+gapminder %>%
+  group_by(year) %>%
+  mutate(gdp=sum(pop*gdpPercap)) %>%
+  select(gdp)
+
+```"
+"1","Adding missing grouping variables: `year`
+"

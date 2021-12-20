@@ -3,7 +3,7 @@
     "path": "~/Desktop/github/LoizosKo/_site.yml",
     "project_path": "_site.yml",
     "type": "yaml",
-    "hash": "2948745710",
+    "hash": "803588380",
     "contents": "",
     "dirty": false,
     "created": 1640028949649.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "12,6",
+        "cursorPosition": "10,21",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1640029338,
+    "lastKnownWriteTime": 1640030128,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1640029338738,
+    "last_content_update": 1640030128556,
     "read_only": false,
     "read_only_alternatives": []
 }

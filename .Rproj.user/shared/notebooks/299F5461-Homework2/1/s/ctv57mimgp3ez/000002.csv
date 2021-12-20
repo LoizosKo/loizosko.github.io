@@ -1,0 +1,6 @@
+"0","```r
+library(dplyr)
+set.seed(5098765)
+randomcountry <- sample_n(gapminder, 1)
+randomcountry
+```"

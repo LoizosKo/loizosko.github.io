@@ -1,0 +1,34 @@
+"0","```r
+#21 countries outperform Denmark life expectancy
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(lifeExp)) %>%
+  filter(lifeExp>79)
+
+#99 countries outperform Denmark population
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(pop)) %>%
+  filter(pop>5468121)
+
+#11 countries outperform Denmark GDP Per Capita
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(gdpPercap)) %>%
+  filter(gdpPercap>35279)
+
+#Best-performing country in the world in GDP per Capita is Norway, worst is DR Congo
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(gdpPercap))
+
+#Best-performing country in the world in Life Exp is Japan, worst is Swaziland
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(lifeExp))
+
+#Best-performing country in the world in Population is China, worst is Sao Tome and Principe
+gapminder %>%
+  filter(year==max(year)) %>%
+  arrange(desc(pop))
+```"
