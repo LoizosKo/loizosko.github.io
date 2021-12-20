@@ -1,0 +1,11 @@
+name: "LoizosKo"
+output_dir: "."
+navbar:
+  title: "Loizos' Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - href: "Homeworks"
+      text: homeworks.html
