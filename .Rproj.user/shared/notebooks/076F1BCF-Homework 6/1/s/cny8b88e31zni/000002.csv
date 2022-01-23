@@ -1,0 +1,37 @@
+"0","```r
+datacool1 <- datacool %>% mutate(Gendering = case_when(Gender == \"Male\" ~ \"1\",
+                                        Gender== \"Female\" ~ \"0\"))
+
+dataex1 %>% summary(lm(score ~ factor(Gendering), data = datacool1))
+```"
+"1","    Gender              score       
+ Length:133         Min.   : 0.000  
+ Class :character   1st Qu.: 3.000  
+ Mode  :character   Median : 4.000  
+                    Mean   : 4.398  
+                    3rd Qu.: 5.000  
+                    Max.   :20.000  
+"
+"0","```r
+model<- lm(formula= score~Gendering, data= datacool1)
+(summary(model))
+```"
+"1","
+Call:
+lm(formula = score ~ Gendering, data = datacool1)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7528 -1.6818 -0.7528  0.3182 16.3182 
+
+Coefficients:
+            Estimate Std. Error t value            Pr(>|t|)    
+(Intercept)   4.7528     0.3088  15.389 <0.0000000000000002 ***
+Gendering1   -1.0710     0.5370  -1.995              0.0482 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 2.914 on 131 degrees of freedom
+Multiple R-squared:  0.02947,	Adjusted R-squared:  0.02206 
+F-statistic: 3.978 on 1 and 131 DF,  p-value: 0.04817
+"

@@ -1,0 +1,20 @@
+"0","1+1
+"
+"1","[1]"
+"1"," 2"
+"1","
+"
+"2","Warning messages:
+"
+"2","1: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on '/Users/loizoskon/Desktop/github/LoizosKo/index.Rmd'
+"
+"2","2: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on '/Users/loizoskon/Desktop/github/LoizosKo/index.Rmd'
+"

@@ -15,7 +15,7 @@ library(tidyverse)
 gapminder <- gapminder
 ```
 
-1.  Examine the organization of the data set. Using the code discussed in class, randomly sample one country. Show the code used to sample. Set seed so that I could reproduce your code.
+1.  I hereby examine the organization of the data set and randomly sample one country.
 
 ```{r}
 library(dplyr)
@@ -25,7 +25,7 @@ randomcountry
 ```
 filter(year==2007)
 
-2.  For the country that was sampled, describe the dynamics of its population, life expectancy, and GDP per capita from the earliest to the latest year available.
+2.  For the country that was sampled (Denmark), I demonstrate the dynamics of its population, life expectancy, and GDP per capita from the earliest to the latest year available.
 
 -   Life expectancy, GDP per capita, and the population of Denmark gradually increased through the years.
 
@@ -37,7 +37,7 @@ filter(country == "Denmark")
  Denmark %>%  ggplot(aes(x=year, y=gdpPercap)) + geom_line()
 ```
 
-3.  How does the population, life expectancy, and GDP per capita compare with the averages for the continent and for the world as a whole in the earliest year of observation and the latest year of observation. (You will need to calculate corresponding means for this)
+3. Show how does the population, life expectancy, and GDP per capita compare with the averages for the continent and for the world as a whole in the earliest year of observation and the latest year of observation. (You can hereby find my calculations of the corresponding means for this)
 
 ```{r}
 
@@ -74,7 +74,7 @@ gapminder %>%
   summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
 ```
 
-4.  Calculate the standard deviation for the continent and for the world for each indicator for the first and last year of observations. How many standard deviations away from the mean was your country in the first year of observation? In the last year of observation? What does it say about the development of your country?
+4.  Calculate the standard deviation for the continent and for the world for each indicator for the first and last year of observations. You can see here how many standard deviations away from the mean was your country in the first year and in the last year of observation. This indicates that Denmark gradually developed through the years.
 
 ```{r}
 #For Denmark (World) population

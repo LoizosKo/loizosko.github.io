@@ -1,0 +1,120 @@
+library(rmarkdown)
+render_site()
+render_site()
+library("gapminder")
+gapminder <- gapminder
+library(dplyr)
+set.seed(5098765)
+randomcountry <- sample_n(gapminder, 1)
+randomcountry
+library("gapminder")
+library(tidyverse)
+(45.9767+4.53-8.9380)-(45.9767-3.71)
+45.9767 + 9.05 -8.9380
+60- 46.0887
+((8/6)/(17/6))
+log(8/6)
+log(17/6)
+log(8/17)
+log(8)
+log(((8/6)/(17/6)))
+180/12
+setwd("~/Desktop/516 directory")
+2 / 2
+2 * 2
+class(2)
+2/0
+0/0 #Not A Number
+2/
+# a + sign indicates that you started an operation and R expects additional
+# input. If you think it's an error you can always press the "escape key" or
+# finish typing the statement.
+2
+2/
+# a + sign indicates that you started an operation and R expects additional
+# input. If you think it's an error you can always press the "escape key" or
+# finish typing the statement.
+2
+2/ #error
+# a + sign indicates that you started an operation and R expects additional
+# input. If you think it's an error you can always press the "escape key" or
+# finish typing the statement.
+2
+2/two
+2/"two"
+2/"two"
+# R allows you to store information inside objects
+one <- "One"
+two <- 2  # single value
+four <- c("One", "Two", "Three")
+five <- c(TRUE, FALSE, TRUE)
+2/"two"
+two/2
+2/two
+three <- c(23, 45, 32, 76, 87) # vector
+four <- c("One", "Two", "Three")
+five <- c(TRUE, FALSE, TRUE)
+age <- c(1, 2, 3,34,23,43,34,3,1,13,41,45, 24,72,24,37,53)
+age
+age <- c(1, 2, 3,34,23,43,34,3,1,13,41,45, 24,72,24,37,53, 13,52 34, 26, 16,13,46,36,27,46)
+age
+age <- c(1, 2, 3,34,23,43,34,3,1,13,41,45, 24,72,24,37,53, 13,52, 34, 26, 16,13,46,36,27,46)
+age
+(vector <- c (1+4, 3-2, 3+5))
+five <- c(TRUE, FALSE, TRUE)
+tibble(a = c(1,2,3),
+b = c("a", "b", "c"),
+c = c(TRUE, TRUE, FALSE))
+library(tidyverse)
+library(readr)
+library(lubridate)
+library(broom)
+library(tidyverse)
+library(readr)
+library(lubridate)
+library(broom)
+install.packages("tidyverse")
+install.packages("tidyverse")
+install.packages("tidyverse")
+install.packages(readr)
+install.packages(lubridate)
+install.packages("broom")
+library(tidyverse)
+library(readr)
+library(lubridate)
+library(broom)
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+install.packages("tibble")
+library(tibble)
+install.packages("dbplyr")
+install.packages("dbplyr")
+install.packages("dbplyr")
+install.packages("dbplyr")
+install.packages("dbplyr")
+install.packages("dbplyr")
+install.packages("dbplyr")
+library(dbplyr)
+library(tidyverse)
+library(readr)
+library(lubridate)
+library(dbplyr)
+library(broom)
+library(tibble)
+install.packages("tidyverse")
+install.packages(readr)
+install.packages(lubridate)
+install.packages("broom")
+install.packages("dbplyr")
+library(tidyverse) #used for data handling
+library(readr)
+library(lubridate)
+library(dbplyr)
+library(broom)
+library(tibble)

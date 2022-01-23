@@ -237,7 +237,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Loizos' Website</a>
+      <a class="navbar-brand" href="index.html">Welcome to Loizos' Website</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -255,7 +255,7 @@ $(document).ready(function () {
       <a href="about.html">About</a>
     </li>
     <li>
-      <a href="Homeworks.html">Homeworks</a>
+      <a href="homeworks.html">Samples working with data</a>
     </li>
   </ul>
 </li>
@@ -289,7 +289,7 @@ library(tidyverse)</code></pre>
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>gapminder &lt;- gapminder</code></pre>
 <ol style="list-style-type: decimal">
-<li>Examine the organization of the data set. Using the code discussed in class, randomly sample one country. Show the code used to sample. Set seed so that I could reproduce your code.</li>
+<li>I hereby examine the organization of the data set and randomly sample one country.</li>
 </ol>
 <pre class="r"><code>library(dplyr)
 set.seed(5098765)
@@ -301,7 +301,7 @@ randomcountry</code></pre>
 ## 1 Denmark Europe     2002    77.2 5374693    32167.</code></pre>
 <p>filter(year==2007)</p>
 <ol start="2" style="list-style-type: decimal">
-<li>For the country that was sampled, describe the dynamics of its population, life expectancy, and GDP per capita from the earliest to the latest year available.</li>
+<li>For the country that was sampled (Denmark), I demonstrate the dynamics of its population, life expectancy, and GDP per capita from the earliest to the latest year available.</li>
 </ol>
 <ul>
 <li>Life expectancy, GDP per capita, and the population of Denmark gradually increased through the years.</li>
@@ -315,7 +315,7 @@ filter(country == &quot;Denmark&quot;)
 <pre class="r"><code> Denmark %&gt;%  ggplot(aes(x=year, y=gdpPercap)) + geom_line()</code></pre>
 <p><img src="homeworks_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>How does the population, life expectancy, and GDP per capita compare with the averages for the continent and for the world as a whole in the earliest year of observation and the latest year of observation. (You will need to calculate corresponding means for this)</li>
+<li>Show how does the population, life expectancy, and GDP per capita compare with the averages for the continent and for the world as a whole in the earliest year of observation and the latest year of observation. (You can hereby find my calculations of the corresponding means for this)</li>
 </ol>
 <pre class="r"><code>#Mean Europe 1952
 gapminder %&gt;%   
@@ -367,7 +367,7 @@ gapminder %&gt;%
 ##     &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 5468120        78.3      35278.</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Calculate the standard deviation for the continent and for the world for each indicator for the first and last year of observations. How many standard deviations away from the mean was your country in the first year of observation? In the last year of observation? What does it say about the development of your country?</li>
+<li>Calculate the standard deviation for the continent and for the world for each indicator for the first and last year of observations. You can see here how many standard deviations away from the mean was your country in the first year and in the last year of observation. This indicates that Denmark gradually developed through the years.</li>
 </ol>
 <pre class="r"><code>#For Denmark (World) population
 zscoreWorld&lt;-gapminder%&gt;% 

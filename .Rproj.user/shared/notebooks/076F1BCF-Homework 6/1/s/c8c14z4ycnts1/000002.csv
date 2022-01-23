@@ -1,0 +1,35 @@
+"0","```r
+library(readxl)
+exp21 <- read_excel(\"experiment_2021C(1)copy.xlsx\", col_names = FALSE,
+    skip = 2)
+```"
+"1","New names:
+* `` -> ...1
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* ...
+"
+"0","```r
+    var_names <- read_excel(\"experiment_2021C(1)copy.xlsx\", n_max = 1) 
+```"
+"1","New names:
+* `Q171_First Click` -> `Q171_First Click...46`
+* `Q171_Last Click` -> `Q171_Last Click...47`
+* `Q171_Page Submit` -> `Q171_Page Submit...48`
+* `Q171_Click Count` -> `Q171_Click Count...49`
+* `Q171_First Click` -> `Q171_First Click...82`
+* ...
+"
+"0","```r
+    colnames(exp21) <- colnames(var_names)
+
+    rm(var_names) 
+
+    columnss <- exp21 %>% 
+      select(starts_with(\"Outcome\"), \"Age\", \"Risk\", \"Gender\", \"SC0\") 
+
+View(exp21)
+
+```"

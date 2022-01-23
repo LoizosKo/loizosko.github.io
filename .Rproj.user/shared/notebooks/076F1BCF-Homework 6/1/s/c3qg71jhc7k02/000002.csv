@@ -1,0 +1,8 @@
+"0","```r
+#for 20 year old
+twentypred <- 0.015*20+4.01
+
+#for 40 year old
+fourtypred <- 0.015*40+4.01
+
+```"
