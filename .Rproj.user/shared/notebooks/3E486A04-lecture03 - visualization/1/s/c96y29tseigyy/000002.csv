@@ -1,0 +1,3 @@
+"0","kard_tidy %>% "
+"0","  ggplot(aes(x = date, y = score, color = name)) +"
+"0","  geom_line()"

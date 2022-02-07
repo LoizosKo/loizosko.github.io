@@ -1,0 +1,32 @@
+{
+    "id": "E1DC6EAE",
+    "path": "~/Desktop/github/LoizosKo/HW2 - Google trends data analysis.Rmd",
+    "project_path": "HW2 - Google trends data analysis.Rmd",
+    "type": "r_markdown",
+    "hash": "4096247522",
+    "contents": "",
+    "dirty": false,
+    "created": 1643328348986.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "tempName": "Untitled3",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "1,22",
+        "scrollLine": "0",
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "2:32"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1643580693,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1643580693987,
+    "read_only": false,
+    "read_only_alternatives": []
+}

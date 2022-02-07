@@ -1,0 +1,2 @@
+"0","kard_tidy %>% "
+"0","  ggplot(aes(x = date, y = score, group = name))"

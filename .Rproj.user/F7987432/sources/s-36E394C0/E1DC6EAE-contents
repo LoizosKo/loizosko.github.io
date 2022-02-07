@@ -1,0 +1,125 @@
+---
+title: "Google trends analysis: Family Guy VS South Park VS The Simpsons"
+output: html_notebook
+---
+
+You are asked to construct your own dataset using [Google Trends (Links to an external site.)](https://trends.google.com/trends/?geo=US) data and conduct some analysis.
+
+**bold**, *italic*
+
+`1.  Identify at least 3 search terms. You can choose whatever you'd like as long as comparing them makese sense. For example, you may choose 3 different companies, 3 different brands, 3 different products, 3 different celebrities, etc. List the three terms in the submission and provide a 1-2 sentence explanation for why these specific search terms were chosen.`
+
+In the following analysis, data from Google Trends will be used to compare the three most popular adult animated sitcoms -- [**Family Guy**](https://www.imdb.com/title/tt0182576/?ref_=ttls_li_i), [**South Park**](https://www.imdb.com/title/tt0121955/?ref_=ttls_li_i) , and [**Simpsons**](https://www.imdb.com/title/tt0096697/?ref_=ttls_li_i). The data would be from 2004 until today. Based on [IMDB](https://www.imdb.com/list/ls006399872/?sort=moviemeter,asc&st_dt=&mode=detail&page=1), *Rick and Morty* is more popular than *Family Guy*. However, *Family Guy* would be included because *Rick and Morty* was first broadcasted in 2013, therefore, there are no data for comparison from 2004-2013. Therefore, the three following programs would be analysed:
+
+a)  **Family Guy** (1999-present)
+
+b)  **South Park** (1997-present)
+
+c)  **Simpsons** (1989-present)
+
+`2. Change the date range to "2004 - present". Download the data separately for the US, World, and another country of your choosing. Please choose a country that makes sense given the search terms. Provide a 1-sentence explanation for why this country was chosen.`
+
+The shows are international and they are broadcasted all over the world. We downloaded the data for the US (the shows' origin), Cyprus(my country of origin), and the World(every person's origin).
+
+`3. Create an R Markdown file (we will learn about these in class on 1/27) and include all of the following in it:`
+
+1.  A code chunk specifically for the libraries you will use.
+
+    ```{r}
+    library(tidyverse)
+    library(readr)
+    library(readxl)
+    library(lubridate)
+    library(broom)
+    library(ggthemes)
+    library(ggsci)
+    ```
+
+2.  Code to load the data into R and prepare it for the analysis. You need to correctly specify data types and choose concise variable names.
+
+    ```{r}
+    #Import data for the US
+    uscoms <- read_csv("uscoms.csv", skip = 1)
+    View(uscoms)
+
+    #Import data for the world
+    worldcoms <- read_csv("worldcoms.csv", skip = 1)
+    View(worldcoms)
+
+    #Import data for Cyprus
+    cycoms <- read_csv("cycoms.csv", skip = 1)
+    View(cycoms)
+    ```
+
+    prepare the data for analysis
+
+    ```{r}
+    #NOW WE CLEAN AND PREPARE THE DATA FOR ANALYSIS
+    #Clean for the US.
+    uscoms_clean <- uscoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (United States)`,
+             southpark = `South Park: (United States)`,
+             simpsons = `The Simpsons: (United States)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      mutate(day = 15, .after = month) %>%
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+
+    #Clean for Worldwide
+    worldcoms_clean <- worldcoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (Worldwide)`,
+             southpark = `South Park: (Worldwide)`,
+             simpsons = `The Simpsons: (Worldwide)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      mutate(day = 15, .after = month) %>%
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+
+    #Clean for Cyprus.
+    cycoms_clean <- cycoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (Cyprus)`,
+             southpark = `South Park: (Cyprus)`,
+             simpsons = `The Simpsons: (Cyprus)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      mutate(day = 15, .after = month) %>%
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+    ```
+
+3.  Code that will calculate the average popularity of the terms by year for each of the search terms in each of the geographies.
+
+    ```{r}
+    #HERE WE SUMMARIZE THE AVERAGE POPULARITY OF THE TERMS BY YEAR OF EACH SEARCH
+    #Summarize for the US
+    uscoms_summary <- uscoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+
+    #Summarize for Worldwide
+    worldcoms_summary <- worldcoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+
+    #Summarize for Cyprus
+    cycoms_summary <- cycoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+    ```
+
+4\. Analyze the data to answer the following questions:
+
+1.  In what year was each term most popular?
+
+2.  In which geography is each of the terms most popular in the year you found in Part A?
+
+3.  Calculate the ratio of the most popular term to the least popular term. Describe how this ratio changed over time in each of the geographies by relying on yearly data.
+
+Please submit the .rmd file, data files from Google Trends, and a knitted .html file. Submissions without a knitted .html file (or improperly knitted file) will result in an automatic deduction of 10 points. \
+\
+Please remember **that answers to analysis questions must always include verbal descriptions.** For example, for Question 4A, we need both the code output alongside your interpretation of the output and how that enables you to determine which year the search term was most popular. Think of submissions for this class as similar to a results section from a scientific paper. If you are drawing conclusions, you need to support those conclusions with evidence and your interpretation of the evidence.

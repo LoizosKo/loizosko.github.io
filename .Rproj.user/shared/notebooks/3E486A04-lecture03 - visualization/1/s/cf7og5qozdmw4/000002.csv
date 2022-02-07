@@ -1,0 +1,3 @@
+"0","kardashians <- read_csv(""multiTimeline.csv"", skip = 1)"
+"2","Error: 'multiTimeline.csv' does not exist in current working directory ('/Users/loizoskon/Desktop/github/LoizosKo').
+"
