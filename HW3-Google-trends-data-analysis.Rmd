@@ -1,0 +1,253 @@
+---
+title: "HW3-"
+output: html_notebook
+---
+
+`Let's continue working with the Google Trends data you obtained for Homework 02.` Homework 3 starts from the line 180 and onward.
+
+```{r}
+library(tidyverse)
+library(readr)
+library(readxl)
+library(lubridate)
+library(broom)
+library(ggthemes)
+library(ggsci)
+```
+
+2.  `Code to load the data into R and prepare it for the analysis. You need to correctly specify data types and choose concise variable names.`
+
+    ```{r}
+    #Import data for the US
+    uscoms <- read_csv("uscoms.csv", skip = 1)
+
+
+    #Import data for the world
+    worldcoms <- read_csv("worldcoms.csv", skip = 1)
+
+
+    #Import data for Cyprus
+    cycoms <- read_csv("cycoms.csv", skip = 1)
+    ```
+
+    prepare the data for analysis
+
+    ```{r}
+    #NOW WE CLEAN AND PREPARE THE DATA FOR ANALYSIS
+    #Clean for the US.
+    uscoms_clean <- uscoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (United States)`,
+             southpark = `South Park: (United States)`,
+             simpsons = `The Simpsons: (United States)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      mutate(day = 15, .after = month) %>%
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+
+    #Clean for Worldwide
+    worldcoms_clean <- worldcoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (Worldwide)`,
+             southpark = `South Park: (Worldwide)`,
+             simpsons = `The Simpsons: (Worldwide)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      mutate(day = 15, .after = month) %>%
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+
+    #Clean for Cyprus.
+    cycoms_clean <- cycoms %>%
+      rename(month = Month,
+             famguy = `Family Guy: (Cyprus)`,
+             southpark = `South Park: (Cyprus)`,
+             simpsons = `The Simpsons: (Cyprus)`) %>% 
+      mutate_if(is.character, str_replace, pattern = "<", replacement = "") %>% 
+      mutate_at(c("famguy", "southpark", "simpsons"), as.numeric) %>% 
+      
+      #I separate the month and  year into two columns. Then I convert the character column to a number.
+      separate(month, into = c("year", "month"), sep = "-", convert = TRUE) %>%
+      
+      #I create a new column that is called day, and I use 15 as it is the middle of the month.
+      mutate(day = 15, .after = month) %>%
+      
+      #Here I create a date column using the ymd (=year month day)function.
+      mutate(date = ymd(paste(year, month, day, sep="-")))
+    ```
+
+3.  `Code that will calculate the average popularity of the terms by year for each of the search terms in each of the geographies.`
+
+    ```{r}
+    #HERE WE SUMMARIZE THE AVERAGE POPULARITY OF THE TERMS BY YEAR OF EACH SEARCH
+    #Summarize for the US
+    uscoms_summary <- uscoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+
+    #Summarize for Worldwide
+    worldcoms_summary <- worldcoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+
+    #Summarize for Cyprus
+    cycoms_summary <- cycoms_clean %>% 
+      group_by(year) %>% 
+      summarize_at(c("famguy", "southpark", "simpsons"), mean)
+    ```
+
+Before we analyse the data, we tidy them. This way, we have three rows that correspond for each month from 2004 until 2021. This makes easier for us to specify what goes where.
+
+```{r}
+uscoms_tidy <- uscoms_clean %>%
+  pivot_longer(cols = c("famguy", "southpark", "simpsons"),
+               names_to = "name",
+               values_to = "score")
+
+worldcoms_tidy <- worldcoms_clean %>%
+  pivot_longer(cols = c("famguy", "southpark", "simpsons"),
+               names_to = "name",
+               values_to = "score")
+
+cycoms_tidy <- cycoms_clean %>%
+  pivot_longer(cols = c("famguy", "southpark", "simpsons"),
+               names_to = "name",
+               values_to = "score")
+```
+
+`4. Analyze the data to answer the following questions:`
+
+1.  `In what year was each term most popular? In which geography is each of the terms most popular in the year you found in Part A?`
+
+    ```{r}
+    uscoms_tidy %>% 
+      ggplot(aes(x = date, y = score, color = name)) +
+      geom_line()+ scale_x_date(date_breaks = "2 year", date_labels = "%Y")
+
+    ```
+
+    ```{r}
+
+    worldcoms_tidy %>% 
+      ggplot(aes(x = date, y = score, color = name)) +
+      geom_line()+ scale_x_date(date_breaks = "2 year", date_labels = "%Y")
+    ```
+
+    ```{r}
+    cycoms_tidy %>% 
+      ggplot(aes(x = date, y = score, color = name)) +
+      geom_line() + scale_x_date(date_breaks = "2 year", date_labels = "%Y")
+    ```
+
+    Based on the graphs the most popular year for
+
+    --F**amily guy** was: 2nd half of **2008** (***USA***)/ 1st half of **2009**(***Worldwide***)/ 1st, 2nd half of **2007** (***Cyprus***)
+
+    --**Simpsons** was: mid-**2007** (***USA***,***Worldwide***)/ 2nd half of **2008** (***Cyprus***)
+
+    --**South Park** was: 1st half of **2010** (***USA, Worldwide***) / first half of **2004** (***Cyprus***)
+
+2.  `Calculate the ratio of the most popular term to the least popular term. Describe how this ratio changed over time in each of the geographies by relying on yearly data.`
+
+```{r}
+#I hereby summarize in three different ways the mean search score of each series.
+worldcoms_clean %>% summarize(mean(southpark), mean(simpsons), mean(famguy))
+worldcoms_clean %>% summarize_at(vars(southpark, simpsons, famguy), mean)
+summary(worldcoms_clean)
+
+#Looking at the results we conclude that the simpsons on average was the most popular by far with 36.18 score. Then southpark follows with 22.22 and then family guy follows with 20.29.
+```
+
+Then we group the averages by year so we can compare the yearly differences.
+
+```{r}
+world_summary <- worldcoms_clean %>% 
+  group_by(year) %>% 
+  summarize_at(c("famguy", "southpark", "simpsons"), mean)
+
+world_tidy <- world_summary %>%
+  pivot_longer(cols = c("famguy", "southpark", "simpsons"),
+               names_to = "name",
+               values_to = "score")
+
+world_tidy %>% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  geom_line() 
+```
+
+------------
+
+HOMEWORK 3 STARTS HERE
+
+1.  `Prepare the graph showing the trends in popularity of the search terms over time. Make sure to add a descriptive title, label the axes, and modify the look of the graph to be presentable. You can choose your own colors or use one of the palettes we talked about in class. Add a one-sentence explanation for the geometry you selected for the graph.`
+
+    ```{r}
+    world_tidy %>% 
+      ggplot(aes(x = year, y = score, color = name)) +
+      geom_line() +
+      labs(x = "Year",
+           y = "Popularity",
+           title = "World Popularity of the main American cartoon sitcoms - Google Trends data") +
+      scale_color_discrete(labels = c("Family Guy", "The Simpsons", "South Park"))
+    ```
+
+2.  `Smooth the data (using a graph) to eliminate random noise. Explain which smoothing method you chose and why.`
+
+```{r}
+world_tidy %>% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  #geom_line() + #I remove this so we can see the variability of each sitcom.
+  geom_smooth(method = "loess") + #This command creates a moving average that smoothes out all the fluctuations.
+  labs(x = "Year",
+       y = "Popularity",
+       title = "World Popularity of the main American cartoon sitcoms - Google Trends data")
+```
+
+For this code we use LOESS command to smooth the fluctuations. LOESS (aka locally weighted smoothing), helps us see the relationship between the three variables and foresee trends. A LOESS smoother takes the data, fits a regression with the subset of data, and uses that linear regression model to get a point for the smoothed curve. The points closer to the fitted line are more impact-full.
+
+3.  `Create a chart to show seasonality by month in your data. What does the chart tell you about the seasonality of your chosen search terms? Some examples of seasonality charts can be found here: https://www.r-graph-gallery.com/142-basic-radar-chart.html (Links to an external site.)`
+
+```{r}
+worldcoms_tidy %>% 
+  group_by(month, name) %>% #I group by month to see which season are popular. By name to see the shows.
+  summarize(mean_score = mean(score)) %>% 
+  ggplot(aes(x = month, y = mean_score, fill = name)) +
+  geom_col(position = "dodge", alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  coord_polar()
+```
+
+As we can see, the Simpsons seasonality graph looks the same. That is probably we have no limits to the popularity score of the variable and every score is close to each other. i.e. popularity does not vary by a lot.
+
+```{r}
+worldcoms_tidy %>% 
+  filter(name == "simpsons") %>% #I filter by name "simpsons" so I can examine the Simpsons show by itself.
+  group_by(month) %>% #I group by month again to see which month is more popular.
+  summarize(mean_score = mean(score)) %>% 
+  ggplot(aes(x = month, y = mean_score)) +
+  geom_col(position = "dodge", alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  scale_y_continuous(limits = c(30, 40)) + #I include score limits from 30 to 40 in order to see the exact seasons where "The simpsons" peaked and scored low in popularity.
+  coord_polar()
+```
+
+```{r}
+worldcoms_tidy %>% 
+  filter(name == "famguy") %>% #I filter by name "famguy" so I can examine the "Family Guy" show by itself.
+  group_by(month) %>% #I group by month again to see which month is more popular.
+  summarize(mean_score = mean(score)) %>% 
+  ggplot(aes(x = month, y = mean_score)) +
+  geom_col(position = "dodge", alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  scale_y_continuous(limits = c(15, 25)) + #I include score limits from 15 to 25 in order to see the exact seasons where "The Family Guy" peaked and scored low in popularity.
+  coord_polar()
+```
+
+`Submit the homework as an .html file rendered from your .rmd, as well as the .rmd file itself.`
