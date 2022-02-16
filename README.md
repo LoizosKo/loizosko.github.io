@@ -1,7 +1,9 @@
 ### Hi there 👋
 🔭 I’m currently working on data science projects on R and Python
 
-🌱 I’m currently learning: **Data Science** 
+🌱 I’m currently learning: 
+
+**Data Science** 
 -  Data management techniques in various file formats and databases
 -  methods of data visualization and exploratory data analysis 
 -  methods to ensure reproducible of results
