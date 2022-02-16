@@ -9,8 +9,7 @@
 -  methods to ensure reproducible of results
 
 **Quantitative Modeling** 
-- framework for quantitative modeling
-- including problem statement exploratory analysis, modeling, and evaluation
+- framework for quantitative modeling including problem statement exploratory analysis, modeling, and evaluation
 - machine learning algorithms and related skills
 - text-based methods of analysis, and other methods of analysis of unstructured data
 
