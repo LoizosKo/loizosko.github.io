@@ -1,9 +1,15 @@
 ### Hi there 👋
 🔭 I’m currently working on data science projects on R and Python
 
-🌱 I’m currently learning **Data Science** (Data management techniques in various file formats and databases; methods of data visualization and exploratory data analysis; methods to ensure reproducible of results) and 
-**Quantitative Modeling** (framework for quantitative modeling, including problem statement, 
-exploratory analysis, modeling, and evaluation; machine learning algorithms and related skills; text-based methods of analysis, and other methods of analysis of unstructured data) 
+🌱 I’m currently learning **Data Science** 
+-  Data management techniques in various file formats and databases
+-  methods of data visualization and exploratory data analysis 
+-  methods to ensure reproducible of results) and 
+**Quantitative Modeling** 
+- framework for quantitative modeling
+- including problem statement exploratory analysis, modeling, and evaluation
+- machine learning algorithms and related skills
+- text-based methods of analysis, and other methods of analysis of unstructured data
 
 📫  If you'd like to connect, please email me at loizos@upenn.edu 
 
