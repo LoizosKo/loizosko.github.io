@@ -1,5 +1,5 @@
 ### Hi there 👋
-🔭 I’m currently working on data science projects on R and Python
+🔭 I’m currently working on projects on R and Python
 
 🌱 I’m currently learning: 
 
