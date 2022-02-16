@@ -5,8 +5,9 @@
 **Quantitative Modeling** (framework for quantitative modeling, including problem statement, 
 exploratory analysis, modeling, and evaluation; machine learning algorithms and related skills; text-based methods of analysis, and other methods of analysis of unstructured data) 
 
-📫 How to reach me: loizos@upenn.edu 
-You can add me on linkedin [here](https://www.linkedin.com/in/loizoskon/)
+📫  If you'd like to connect, please email me at loizos@upenn.edu 
+
+You can also add me on linkedin [here](https://www.linkedin.com/in/loizoskon/)
 
 <!--
 **LoizosKo/loizosko** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
