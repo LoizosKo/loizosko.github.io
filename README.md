@@ -1,4 +1,10 @@
 ### Hi there 👋
+🔭 I’m currently working on data science projects on R and Python
+🌱 I’m currently learning **Data Science** (Data management techniques in various file formats and databases; methods of data visualization and exploratory data analysis; methods to ensure reproducible of results) and 
+**Quantitative Modeling** (framework for quantitative modeling, including problem statement, 
+exploratory analysis, modeling, and evaluation; machine learning algorithms and related skills; text-based methods of analysis, and other methods of analysis of unstructured data) 
+📫 How to reach me: loizos@upenn.edu 
+You can add me on linkedin [here](https://www.linkedin.com/in/loizoskon/)
 
 <!--
 **LoizosKo/loizosko** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
