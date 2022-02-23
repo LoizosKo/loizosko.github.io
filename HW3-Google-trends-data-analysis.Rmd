@@ -1,8 +1,8 @@
 ---
 title: "HW3-Google-Trends-Data-Analysis-of-the-most-popular-American-animated-sitcoms"
 output:
-  html_document:
-    df_print: paged
+  html_document: default
+    # df_print: paged
 ---
 
 `Let's continue working with the Google Trends data you obtained for Homework 02.` Homework 3 starts from the line 180 and onward.
@@ -270,4 +270,3 @@ worldcoms_tidy %>%
   coord_polar()
 ```
 
-`Submit the homework as an .html file rendered from your .rmd, as well as the .rmd file itself.`

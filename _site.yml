@@ -11,6 +11,8 @@ navbar:
         href: about.html
       - text: "Samples working with data"
         href: homeworks.html
+      - text: "American sitcoms Google trends"
+        href: HW3-Google-trends-data-analysis.html 
         
       
       
