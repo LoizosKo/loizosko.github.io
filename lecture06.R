@@ -59,13 +59,14 @@ biplot(pr.out)
 #
 
 fviz_eig(pr.out)
-
+#screte plot --> we can see that there is a lot of staff captured by the first principle component. There are not three different questions, it does seem that we capture the same thing (i.e. one personality trait)
 
 fviz_pca_ind(pr.out,
              col.ind = "cos2", # Color by the quality of representation
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE # Avoid text overlapping
 )
+
 
 fviz_pca_var(pr.out,
              col.var = "contrib", # Color by contributions to the PC
@@ -79,12 +80,17 @@ fviz_pca_biplot(pr.out, repel = TRUE,
                 col.var = "#2E9FDF", # Variables color
                 col.ind = "#696969" # Individuals color
                 )
-
+#same thing as the square box with arrows above, just a bit more pretty.
 
 # We can now do factor analysis
+fa.parallel(SD3, n.obs = 200, fa = "fa", fm = "minres")#we identify how many factors we have using a screte plot. This code is based on some assumption on what would be the case if questions were asked randomly
 
-fa.parallel(SD3, n.obs = 200, fa = "fa", fm = "minres")
 
-EFA_model <- fa(SD3, nfactors = 3)
-fa.diagram(EFA_model)
-EFA_model$loadings
+EFA_model <- fa(SD3, nfactors = 3)#We will work with the three factors.
+fa.diagram(EFA_model)#the results I get from the factor analysis. This is consistent on what we got from PCA.
+EFA_model$loadings#exploratory factor analysis
+
+#we drop all the observation that have missing values. Why drop it in order for everything to work.
+#another way is to do **multiple impuatations** -- make predictions what the person would have said to the question given some other characteristics.
+
+#confirmatory factor analysis = develop the questions and match everything/ test if everything makes sense 
