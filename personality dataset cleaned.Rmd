@@ -1,0 +1,225 @@
+---
+title: "dataset cleaned"
+output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Launch the Libraries & Clean the Data
+
+```{r}
+library(readr)
+library(tidyverse)
+library(dplyr)
+library(cluster)
+library(factoextra)
+library(psych)
+library(corrplot)
+```
+
+Import the dataset. Name it as "perstest".
+
+```{r}
+setwd("/Users/loizoskon/Desktop/github/LoizosKo")
+
+persontest <- read_csv("personality_tests.csv", 
+    col_names = FALSE, skip = 3)
+```
+
+Remove the columns that are irrelevant ==\> Everything but the questions
+
+```{r}
+ptest_useful <- subset (persontest, select = -c(X1, X2, X3, X4, X5, X6, X7, X8, X9, X64, X131:X135))
+
+#nothing having to do with personality questions (remove start date, duration etc.)
+```
+
+Remove the first two rows (mostly responses are NA)
+
+```{r}
+ptest_cut <- ptest_useful[-c(1, 2, 23, 51, 55, 62, 63, 64, 65, 66, 67, 68, 101, 105, 106, 107, 108), ]
+```
+
+Remove all responses that include 'NA'.
+
+```{r}
+ptest_na<- ptest_cut %>% drop_na() 
+```
+
+check
+
+```{r}
+head(ptest_na)
+
+```
+
+Split Data Sets
+
+```{r}
+
+bigfive <- select(ptest_na, X10:X59)
+
+mbti <- select(ptest_na, X60:X130) #I took out the last 3 columns because it looks like they wouldn't relate (its about age, gender, and why they are taking the test)
+
+```
+
+## 1A What components/factors are present in the data for the tests.
+
+\#1A Big Five Factor Analysis
+
+```{r}
+
+fa.parallel(bigfive, n.obs = NULL, fa = "fa", fm = "minres") #Null? 0? 200?
+# telling us to take on 6 factors?
+#ask alex, we wrote null, had 200 in class but here makes sense to do null
+```
+
+```{r}
+
+  EFA_model <- fa(bigfive, nfactors = 5)
+  fa.diagram(EFA_model) 
+
+```
+
+\#\#1B What questions seem to map well on these questions (You may do
+this informally or use loadings as a piece of information to decide
+which components the questions map to).
+
+```{r}
+EFA_model$loadings
+#MR1 works with Q10, X16, X20, X30, X34,X40 X59
+#MR1 opposite w. X13, X35, X38, X58
+#MR2 works with X13, X23, X38, x43, x48 x50 x53, x58
+#MR2 opposite x15x18x45
+#MR3  work with X17 x27, 37
+#MR3 opposite X12, x32, x42, x52, 
+#MR 4 work with X26, 
+
+```
+
+# MBTI PCA
+
+The following shows the correlation of MBTI data:
+
+```{r}
+corrplot(cor(mbti), method="number")
+```
+
+```{r}
+pr.out <- prcomp(mbti,
+                 scale = TRUE,
+                 center = TRUE)
+
+summary(pr.out) #what do we take from this?
+
+biplot(pr.out) 
+
+
+fviz_eig(pr.out) #2 vars
+
+fviz_pca_var(pr.out,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+```
+
+# Question 1a:
+
+**What components/factors are present in the data for the tests?**
+
+**Big 5:** MR1 (yellow) -\> Extroverted/Neurotism (?) MR2 (green) -\>
+Neurotic MR3 (orange) -\> conscientiousness MR4 (blue) -\> Agreeableness
+MR5 (grey) -\> conscientiousness/openness MR6 (purple) -\> ? "I use
+difficult words"
+
+**MBTI:**
+
+# Question 1b
+
+**What questions seem to map well on these questions (You may do this
+informally or use loadings as a piece of information to decide which
+components the questions map to)?** \#Elina
+
+Is this just looking for the questions that are mapped onto each?
+
+**Big 5**
+
+MR1: "I am the life of the party" "I feel comfortable around people" "I
+start conversations" "I have excellent ideas" "I talk to a lot of
+different people at parties" "I am full of ideas" "I am interested in
+people" "I seldom feel blue" "I am quick to understand things" "I make
+people feel at ease"
+
+# Question 1c
+
+**What questions appear to be the most difficult to map on principal
+components/factors (which means they capture something not captured by
+them)?**
+
+**Big 5** X12: "I am always prepared" X21: "I insult people" X24: "I
+have a vivid imagination" X31: "I am not interested in other people's
+problems" X41: "I am not really interested in others" X45: "I don't like
+to draw attention to myself" X46: "I take time out for others" X47: "I
+shirk my duties" X50: " I don't mind being the center of attention" X51:
+"I feel others' emotions" X52: "I follow a schedule" X55: "I am quiet
+around strangers" X57: "I am exacting in my work"
+
+**MBTI**
+
+2.  **pr.out** for bigfive
+
+```{r}
+pr.out1 <- prcomp(bigfive,
+                 scale = TRUE,
+                 center = TRUE)
+
+summary(pr.out) #what do we take from this?
+
+biplot(pr.out) 
+
+
+fviz_eig(pr.out) #2 vars
+
+fviz_pca_var(pr.out,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+```
+
+```{r}
+alex_df <- read_csv("alexahpenev_personality.csv")
+alex_df %>% select(-Q59) -> alex_df2
+
+alex_df2 %>% select(Q55:Q125) -> alex_df3
+alex_df2 %>% select(Q1:Q54) -> alex_df4
+
+names(alex_df3) <- names(mbti)
+names(alex_df4) <- names(bigfive)
+#names(alex_df2) <-  gsub('Q', 'X', names(alex_df2))
+
+predict(pr.out, alex_df3) -> alex_mbti
+predict(pr.out1, alex_df4) -> alex_bigfive
+```
+
+QUESTION 3
+
+Group 2. Examine the clustering of respondents based on the
+Myers-Briggs-type personality test traits (after dimensionality
+reduction, not the original data) using a method of your liking. Does it
+appear that certain personality traits are more influential for
+clustering than others?
+
+```{r}
+pr.outX<-data.frame(pr.out$x)
+
+clustering <- hclust(dist(scale(sales_data)), method = 'complete')
+cutree(clustering, k = 2)
+
+pr.outX%>%
+  mutate(cluster = cutree(clustering, k = 4)) %>% 
+  group_by(cluster) %>% 
+  summarise_all(funs(median(.)))
+```

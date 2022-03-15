@@ -343,14 +343,24 @@ library(dplyr)</code></pre>
 <pre class="r"><code>persontest &lt;- read_csv(&quot;personality_tests.csv&quot;, 
     col_names = FALSE, skip = 3)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6ICdwZXJzb25hbGl0eV90ZXN0cy5jc3YnIGRvZXMgbm90IGV4aXN0IGluIGN1cnJlbnQgd29ya2luZyBkaXJlY3RvcnkgKCcvVXNlcnMvbG9pem9za29uJykuXG4ifQ== -->
-<pre><code>Error: &#39;personality_tests.csv&#39; does not exist in current working directory (&#39;/Users/loizoskon&#39;).</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTM1IENvbHVtbnM6IDEzNVxu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAgKDcpOiBYMSwgWDIsIFg3LCBYOCwgWDksIFgxMzEsIFgxMzVcbmRibCAoMTI4KTogWDMsIFg0LCBYNSwgWDYsIFgxMCwgWDExLCBYMTIsIFgxMywgWDE0LCBYMTUsIFgxNiwgWDE3LCBYMTgsIFgxOSwgWDIwLCBYMjEsIFgyMiwgWDIzLi4uXG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
+<pre><code>Rows: 135 Columns: 135
+── Column specification ───────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr   (7): X1, X2, X7, X8, X9, X131, X135
+dbl (128): X3, X4, X5, X6, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, X20, X21, X22, X23...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Remove the columns that are irrelevant ==&gt; Everything but the questions</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHRlc3RfdXNlZnVsIDwtIHN1YnNldCAocGVyc29udGVzdCwgc2VsZWN0ID0gLWMoWDEsIFgyLCBYMywgWDQsIFg1LCBYNiwgWDcsIFg4LCBYOSwgWDEzNCwgWDEzNSkpXG5gYGAifQ== -->
+<pre class="r"><code>ptest_useful &lt;- subset (persontest, select = -c(X1, X2, X3, X4, X5, X6, X7, X8, X9, X134, X135))</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Remove the first two rows (mostly responses are NA)</p>
@@ -361,11 +371,15 @@ library(dplyr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Remove all responses that include ‘NA’.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHRlc3QgPC0gcHRlc3RfY3V0ICU+JSBkcm9wX25hKClcbmBgYCJ9 -->
+<pre class="r"><code>ptest &lt;- ptest_cut %&gt;% drop_na()</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiZGF0YXNldCBjbGVhbmVkIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpMYXVuY2ggdGhlIGxpYnJhcmllcwoKYGBge3J9CmxpYnJhcnkocmVhZHIpCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpgYGAKCkltcG9ydCB0aGUgZGF0YXNldC4gTmFtZSBpdCBhcyAicGVyc3Rlc3QiLgoKYGBge3J9CnBlcnNvbnRlc3QgPC0gcmVhZF9jc3YoInBlcnNvbmFsaXR5X3Rlc3RzLmNzdiIsIAogICAgY29sX25hbWVzID0gRkFMU0UsIHNraXAgPSAzKQpgYGAKClJlbW92ZSB0aGUgY29sdW1ucyB0aGF0IGFyZSBpcnJlbGV2YW50ID09XD4gRXZlcnl0aGluZyBidXQgdGhlIHF1ZXN0aW9ucwoKYGBge3J9CnB0ZXN0X3VzZWZ1bCA8LSBzdWJzZXQgKHBlcnNvbnRlc3QsIHNlbGVjdCA9IC1jKFgxLCBYMiwgWDMsIFg0LCBYNSwgWDYsIFg3LCBYOCwgWDkpKQpgYGAKClJlbW92ZSB0aGUgZmlyc3QgdHdvIHJvd3MgKG1vc3RseSByZXNwb25zZXMgYXJlIE5BKQoKYGBge3J9CnB0ZXN0X2N1dCA8LSBwdGVzdF91c2VmdWxbLWMoMSwgMiwgMjMsIDUxLCA1NSwgNjIsIDYzLCA2NCwgNjUsIDY2LCA2NywgNjgsIDEwMSwgMTA1LCAxMDYsIDEwNywgMTA4KSwgXQpgYGAKCmBgYHtyfQpwdGVzdCA8LSBwdGVzdF9jdXQgJT4lIGRyb3BfbmEoKQpgYGAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiZGF0YXNldCBjbGVhbmVkIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpMYXVuY2ggdGhlIGxpYnJhcmllcwoKYGBge3J9CmxpYnJhcnkocmVhZHIpCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpgYGAKCkltcG9ydCB0aGUgZGF0YXNldC4gTmFtZSBpdCBhcyAicGVyc3Rlc3QiLgoKYGBge3J9CnBlcnNvbnRlc3QgPC0gcmVhZF9jc3YoInBlcnNvbmFsaXR5X3Rlc3RzLmNzdiIsIAogICAgY29sX25hbWVzID0gRkFMU0UsIHNraXAgPSAzKQpgYGAKClJlbW92ZSB0aGUgY29sdW1ucyB0aGF0IGFyZSBpcnJlbGV2YW50ID09XD4gRXZlcnl0aGluZyBidXQgdGhlIHF1ZXN0aW9ucwoKYGBge3J9CnB0ZXN0X3VzZWZ1bCA8LSBzdWJzZXQgKHBlcnNvbnRlc3QsIHNlbGVjdCA9IC1jKFgxLCBYMiwgWDMsIFg0LCBYNSwgWDYsIFg3LCBYOCwgWDksIFgxMzQsIFgxMzUpKQpgYGAKClJlbW92ZSB0aGUgZmlyc3QgdHdvIHJvd3MgKG1vc3RseSByZXNwb25zZXMgYXJlIE5BKQoKYGBge3J9CnB0ZXN0X2N1dCA8LSBwdGVzdF91c2VmdWxbLWMoMSwgMiwgMjMsIDUxLCA1NSwgNjIsIDYzLCA2NCwgNjUsIDY2LCA2NywgNjgsIDEwMSwgMTA1LCAxMDYsIDEwNywgMTA4KSwgXQpgYGAKClJlbW92ZSBhbGwgcmVzcG9uc2VzIHRoYXQgaW5jbHVkZSAnTkEnLgoKYGBge3J9CnB0ZXN0IDwtIHB0ZXN0X2N1dCAlPiUgZHJvcF9uYSgpCmBgYAo=</div>
 
 
 
