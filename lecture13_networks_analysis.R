@@ -28,7 +28,7 @@ plot(newnetwork,
      vertex.size = 3,
      vertex.label = NA)
 
-edgelist1 <- edgelist %>% filter(tie_type == 3)
+edgelist1 <- edgelist %>% filter(tie_type == 3)#we filter the edge list to just identify one element of interactions (e.g. friendship)
 newnetwork1 <- graph_from_data_frame(d = edgelist1,
                                     vertices = nodelist,
                                     directed = TRUE)
@@ -52,7 +52,6 @@ mean(deg)
 plot(newnetwork, vertex.size=deg/10, edge.arrow.size = 0.1)
 hist(deg, breaks = 20, main="Histogram of node degree")
 
-
 deg.dist <- degree_distribution(newnetwork, cumulative=T, mode="all")
 plot( x=0:max(deg), y=1-deg.dist, pch=19, cex=1.2, col="orange", xlab="Degree", ylab="Cumulative Frequency")
 
@@ -60,9 +59,11 @@ plot( x=0:max(deg), y=1-deg.dist, pch=19, cex=1.2, col="orange", xlab="Degree", 
 degree(newnetwork, mode="in")
 centr_degree(newnetwork, mode="in", normalized=T)
 
-
+#connectedness --> if you are closely connected with others your relatively more influential
 closeness(newnetwork, mode="all", weights=NA)
 
+#betweeness --> e.g. Alex in our class (=all people/connections are passing through Alex)
+#e.g. medici family (not rich, but married strategically so they know cool people)
 betweenness(newnetwork, directed=T, weights=NA)
 
 

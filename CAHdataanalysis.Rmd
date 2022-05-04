@@ -1,0 +1,169 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+`Two data sets, one representing responses to a survey about how far people live from work and one from the transportation department, indicating if a person's bus pass was used. These are from a hypothetical experiment in which CAH tested the effect of an incentive to increase bus use. Your task is to analyze this experiment comparing a control group (no incentive) with a treatment group (received incentive) and write up what you find.`
+
+`Data set A contains:`
+
+`- identifier = a unique identifier`
+
+`- condition = control and treatment`
+
+`- distance_to_work = how far away from work a person lives (more or less than 10 miles)`
+
+`Data set B contains:`
+
+`- identifier = a unique identifier`
+
+`- rode_bus = whether they rode the bus in the week after the incentive was rolled out`
+
+`(hypothetically tracked by recording whether a person's bus pass was used on a local bus)You will need to:`
+
+`1. If necessary, merge, clean and transform the data.`
+
+`2. Produce descriptive statistics.`
+
+`3. Test whether any differences are significant.`
+
+Here, all libraries used for the analysis are imported
+
+```{r}
+library(tidyverse)
+library(ggplot2) #required for the graph in the end
+```
+
+```{r}
+library(readxl)
+Data_set_A <- read_excel("Data set A.xlsx") 
+#represents responses to a survey about how far people live from work.
+
+Data_set_B <- read_excel("Data set B.xlsx")
+#from the transportation department, indicates if a person's bus pass was used.
+```
+
+To explore the data, I create a dataset for control and a dataset for incentive group (dataAi, dataAc). Create a dataset for people that rode a bus (dataBrb).
+
+```{r}
+dataAc <- Data_set_A %>%   
+  filter(condition=="control") #new dataframe ('dataAc') to see how many people are in the control group
+
+dataAi <- Data_set_A %>%
+  filter(condition=="incentive") #new dataframe ('dataAi') to see how many people are in the incentive group
+
+dataBrb <- Data_set_B %>%   
+  filter(rode_bus=="1.0") #new dataframe ('dataAc') to see how many people rode the bus
+```
+
+Rename columns. Then we change the 'condition' column to 'treatment', and 'distance_to_work' to 'morethan10miles'. We do that because it will later help us to convert them in binary variables.
+
+```{r}
+colnames(Data_set_A) <- c('identifier','treatment','morethan10miles')
+#rename the last to columns -- 'condition' to 'treatment' -- and -- distance_to_work to 'morethan10miles'.
+```
+
+For data_set_A, make column name "more than 10 miles" binary variable, yes/no.
+
+```{r}
+Data_set_A$morethan10miles<- ifelse(Data_set_A$morethan10miles=="<10miles",0,1)
+# 0 = No
+# 1 = Yes
+```
+
+We filter to see how many people live more and less than 10 miles away.
+
+1= People that live more than 10 miles
+
+0= people that live less than 10 miles
+
+```{r}
+Data_set_A %>%   
+  filter(morethan10miles=="1") #filter for more than 10 miles
+
+Data_set_A %>%   
+  filter(morethan10miles=="0") #filter for more than 10 miles
+```
+
+Merge the dataframe A with the dataframe B. The left_join command retains all the rows from the one table (datasetA) and matches them with all the rows of the other table (dataset B). The ones that do not have the same identifier remain zero (0) -- assuming that they did not use the bus. While the expired passes did not use the bus, do also count as bus pass buyers. This is because they still tried to use the bus.
+
+```{r}
+datamerge <- left_join(Data_set_A, Data_set_B, by="identifier") %>% 
+  mutate_all(~replace(., is.na(.), 0)) %>% 
+  mutate(rode_bus = case_when(rode_bus == "expired" ~ 1, TRUE ~ as.numeric(rode_bus)))
+```
+
+We convert treatment into a binary variable. Everyone that received a treatment =1
+
+```{r}
+datamerge$treatment<- ifelse(datamerge$treatment=="incentive",0,1)
+# 0 = No
+# 1 = Yes
+```
+
+I conduct logistic regression because I have categorical variables. I am also assuming that the treatments were randomly assigned. This assumption is necessary in order for the model to be as accurate as possible.
+
+```{r}
+glmmodel <-  glm(rode_bus~factor(treatment) + factor(morethan10miles), family = "binomial", data = datamerge)
+
+summary_glm<-summary(glmmodel)
+summary_glm
+```
+
+Here the intercepts are presented as log odds. The intercept (-0.27) tells me that, without any intervention, people that ride the bus are less than 50%. In general terms, in order to get the meaningful interpretation of the coefficients we need to convert the log-odds into odds and then into probabilities.
+
+Here is what the log odds equation looks like:
+
+$$
+log(odds(y)) = β0 + β1*treatment + β2*morethan10miles
+$$
+
+Here is what the odds conversion looks like:
+
+$$
+odds(y) = e^{β_0} * e^{β_1 * treatment} * e^{β_2 * morethan10miles} 
+$$
+
+The following code converts log odds into probability.
+
+```{r}
+logodds <- c(control = -0.27143,  treatment = -0.27143-0.49827, controlmiles = -0.27143 +  0.01323 , treatmentmiles = --0.27143 +  0.01323-0.49827)
+
+exp(logodds)/(1+ exp(logodds)) #we take the exponent of logg odds and devide it by the same number plus one.
+```
+
+Here we have:
+
+1) the probability of the control group that live less than 10 miles away from their work to use the bus
+
+2) the probability of the **treatment** group that live less than 10 miles away from their work to use the bus
+
+3) the probability of the control group that live [more than 10 miles]{.ul} away from their work to use the bus
+
+4) the probability of the **treatment** group that live [more than 10 miles]{.ul} away from their work to use the bus
+
+Now incorporate those probabilities on the original dataframe and we name it 'data.plot'.
+
+```{r}
+data.plot <-  data.frame(prob = datamerge$rode_bus/1003,
+                      treatment = datamerge$treatment,
+                      morethan10miles = datamerge$morethan10miles,
+                      fit = predict(glmmodel, datamerge)) #prediction for the logistic regression model
+
+data.plot$fit_prob <- exp(data.plot$fit)/(1+exp(data.plot$fit))
+```
+
+Essentially, this code uses ggplot2 library to incorporate the four predictions above in a table. The first two are the control groups, the last two are the treatment groups. People at the treatment group use the bus less than the control group. The orange ones, are the people that live less than 10 miles while the blue ones are the people that live more than 10 miles from their work.
+
+```{r}
+ggplot(data.plot, aes(x=treatment, y=fit_prob, group= morethan10miles, fill= factor(morethan10miles))) + 
+  geom_point() +
+  geom_col(position = "dodge")
+
+```
+
+**Further analysis**
+
+I would include demographic variables such as age, gender, and income. Those are usually efficient ways to better understand how different groups perceive buses. Additionally, 'public transport satisfaction' variable that would stem through a questionnaire, would be a variable that could help us better understand why people do not use buses enough.
