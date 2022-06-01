@@ -1,0 +1,57 @@
+---
+title: "Homework 6"
+output: html_notebook
+---
+
+`Prepare a 3-4 page report describing the probability of survival on the Titanic as the function of age, sex, class, and the price the passengers paid for the ticket.`
+
+`The report should contain the description of the data using tables/graphs, the outline of the hypotheses, and their results, followed by the conclusion.`
+
+`Your report should be formatted and presented as if it were a paper, not just a collection of random facts.`
+
+`Submit both the Rmd and the HTML file.`
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+titanic <- read_csv("titanic.csv")
+
+titanic1 <- titanic %>% mutate(surv = ifelse(Survived == 1, "Yes", "No"),
+                               class = case_when(Pclass == 1 ~ "First",
+                                                 Pclass == 2 ~ "Second",
+                                                 Pclass == 3 ~ "Third"))
+```
+
+H0: Reason of survival was unrelated with the age of the passengers, class, sex and price.
+
+H1: Reason of survival is related with the age of passengers, class, sex, and price.
+
+Now I want to test my null hypothesis:
+
+**survival** as a function of **age, class, sex, price**
+
+```{r}
+titanic1 %>% ggplot(aes(x=Survived, y=class)) + geom_point()
+
+plot(titanic)
+plot(titanic1)
+```
+
+clean the titanic1 dataset to only the necessary functions (=survival, age, sex, fare, pass class).
+
+```{r}
+titanic2 <- titanic1 %>% select(Age, Sex, Fare, Pclass, Survived)
+
+plot(titanic2)
+```
+
+```{r}
+titanic3 <- lm(Survived~Age + Sex + Pclass + Fare, data = titanic2)
+summary(titanic3)
+```
+
+```{r}
+
+```

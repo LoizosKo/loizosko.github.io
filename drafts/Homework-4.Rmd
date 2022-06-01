@@ -1,0 +1,295 @@
+---
+title: "Homework 4"
+output:
+  html_document:
+    df_print: paged
+---
+
+Part 2. This needs to be submitted by Sunday 24th on Canvas as an Rmd and a rendered file.
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+```
+
+In this homework, you will have to work with the experiment data we collected for this class.
+
+1.  **`We are interested in whether some people were more likely to make correct guesses. What are the summary statistics for all draws? Plot a histogram. Are there any outliers in the data (i.e. individuals who guess 0 times correctly and individuals who guessed all 20 times correctly?)`**
+
+    **we draw a histogram based on the summary statistics. To find**
+
+    ```{r}
+    library(readxl)
+    exp21 <- read_excel("experiment_2021C(1)copy.xlsx", col_names = FALSE,
+        skip = 2)
+    View(exp21)
+    ```
+
+    I find all the outcome columns and I name them after the variable names of our dataset.
+
+    ```{r}
+    var_names <- read_excel("experiment_2021C (1) copy.xlsx", n_max = 1) 
+    colnames(exp21) <- colnames(var_names)
+
+    rm(var_names) 
+
+    columnss <- exp21 %>% 
+      select(starts_with("Outcome"), "Age", "Risk", "Gender", "SC0") 
+    ```
+
+    Now we pivot longer to have all the outcomes in line. This helps to name the correct answers as "1" and the wrong answers as "0".
+
+    ```{r}
+    countcol <- columnss %>% 
+      pivot_longer(cols = starts_with("Outcome"), names_to= "draw", values_to = "answer") %>%
+      mutate(count= case_when(answer == "Yes (bonus payment of $0.10)" ~ 1,
+             answer == "No (no bonus payment)" ~ 0))
+    ```
+
+    After we pivot wider back in its first format. This helps us to have the data
+
+    ```{r}
+    pilpi <- countcol %>% select(-answer) %>% mutate(id = rep(1:133, each = 20)) %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender), names_from = draw, values_from = count)
+    ```
+
+    We use pivot longer once more in order to have all the observations in one column. Having the observations in one column, is easier for us to group by the id column we created before. So we groupby id. This helps us identify what each person done. In addition, we add a column using mutate in order to have the clear result of each person.
+
+    ```{r}
+    pi <- pilpi %>% pivot_longer(cols = starts_with("Outcome"), names_to= "draw", values_to = "answer") %>% group_by(id) 
+
+    ti<- pi %>% mutate(summm=sum(answer))
+
+    tii<- pi %>% mutate(summm=sum(answer)) %>% separate(draw, into = c("rolsep", "rolnum"), sep = "e") %>% group_by(id)
+
+    # boxplot.stats(data$score)$out
+    # 
+    # rr <- ti %>% separate(draw, into = c("rolsep", "rolnum"), sep = "e") %>% group_by(id, rolnum)
+    ```
+
+    Now we pivot wider once more so the data can be presented in the form that shows how people are doing from the 1st one until the last (133rd).
+
+    ```{r}
+    final <- ti %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender, summm), names_from = draw, values_from = answer)
+
+    # finally <- tii %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender, summm), names_from = rolnum, values_from = answer)
+    # 
+    #   fin <- final %>% inner_join(ex22, by = "id")
+    ```
+
+    We use the code below to do our Histogram.
+
+    ```{r}
+    ggplot(final, aes(summm)) + geom_histogram(bins = 21) + geom_rug()
+    ```
+
+2.  **`Analyze the data by gender, the draw number, and by experimental condition. Are there differences between the genders in terms of the number of wins versus losses? Are there differences between the experimental conditions? Are people more or less likely to win towards the last draws as opposed to the beginning of the experiment?`**
+
+    'Final' is the column that already has everything needed for the analysis. The only missing column is conditions. To do that, I used mutate to create a new column named as condition where each real condition is named after a number from one to five. I also create an id column in the ex2 dataset so I can then inner_join it with our main column.
+
+    ```{r}
+    ex2 <- exp21 %>%
+             mutate(condition = case_when(Control_Msg != "" ~ 1,
+                                   Norm_Pos_Msg != "" ~ 2,
+                                   Norm_Neg_Msg != "" ~ 3,
+                                   Emp_Neg_Msg != "" ~ 4,
+                                   Emp_Pos_Msg != "" ~ 5),
+                    id = 1:133,
+                    rolnum = 1:133) 
+
+    ```
+
+    At this point, I create a new dataset with 'id' and 'condition' columns so it is easier to inner_join them. Then I inner_join them so I have everything in one dataset named 'fin'.
+
+    ```{r}
+    ex22 <- ex2 %>% select(id, condition, rolnum)
+
+    fin <- final %>% inner_join(ex22, by = "id")
+    ```
+
+    Then we group by Gender and summarise by mean. This allows us to see the mean score that each gender got correct. As we can see, females reported a higher correct score than males on average.
+
+    ```{r}
+    fin %>% group_by(Gender) %>% summarise(mean(summm))
+
+    # mutate(rrr, coun)
+    # fin %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+    Analyzing the data regarding the draw number we use the tii dataset. The reason is because this dataset was created in question 1 with a function named seperate. This function separated the column 'draw' into two others (rolsep, rolsum). The first stands for the title of the draw column while the second one stands for the values that a correct answer was reported.
+
+    Therefore, we here use the filter column(rolnum) equal with the number of observation we want piped with summary(answer). This helps us find the stats behind the correct answers in each round. Also, we named a new dataset 'i' where it excludes some irrelevant columns for the purpose of analyzing the data based on draws.
+
+    Regarding the draws we can see that the mean for outcome number 1 is almost 20% (0.1955). That means that one out of five people reported a correct answer in that case. As we can see the mean of correct responses ranges from 0.16 to 0.27. This means that the standard deviation is relatively low. In other words all correct response rates are clustered around the mean.
+
+    ```{r}
+    i <- tii %>% select(-Gender, -Age, -SC0, -id, -Risk, -rolsep, -summm, -id)
+    i %>% filter(rolnum==1) %>% summary(answer)
+    i %>% filter(rolnum==2) %>% summary(answer)
+    i %>% filter(rolnum==3) %>% summary(answer)
+    i %>% filter(rolnum==4) %>% summary(answer)
+    i %>% filter(rolnum==5) %>% summary(answer)
+    i %>% filter(rolnum==6) %>% summary(answer)
+    i %>% filter(rolnum==7) %>% summary(answer)
+    i %>% filter(rolnum==8) %>% summary(answer)
+    i %>% filter(rolnum==9) %>% summary(answer)
+    i %>% filter(rolnum==10) %>% summary(answer)
+    i %>% filter(rolnum==11) %>% summary(answer)
+    i %>% filter(rolnum==12) %>% summary(answer)
+    i %>% filter(rolnum==13) %>% summary(answer)
+    i %>% filter(rolnum==14) %>% summary(answer)
+    i %>% filter(rolnum==15) %>% summary(answer)
+    i %>% filter(rolnum==16) %>% summary(answer)
+    i %>% filter(rolnum==17) %>% summary(answer)
+    i %>% filter(rolnum==18) %>% summary(answer)
+    i %>% filter(rolnum==19) %>% summary(answer)
+    i %>% filter(rolnum==20) %>% summary(answer)
+    ```
+
+    Regarding the experimental condition of the data, we use the groupby function to call it in the fin dataset, and then use summarise to find the mean. Alongside, as we set above, each number corresponds in one condition. As we can see, the most popular experimental condition is normative positive message (2) while the least popular is empirical positive message (5).
+
+    ```{r}
+    fin %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+3.  **`Redo part 2 after excluding outliers. Do you still see the different in the experimental groups after outliers are eliminated? Do you see differences between the first and the last rolls? Are there any differences by gender?`**
+
+    ```{r}
+    # trial <- fin %>% select(-Gender, -Age, -SC0, -Risk, -Outcome1, -Outcome2, -Outcome3, -Outcome4, -Outcome5, -Outcome6, -Outcome7, -Outcome8, -Outcome9, -Outcome10, -Outcome11, -Outcome12, -Outcome13, -Outcome14, -Outcome15, -Outcome16, -Outcome17, -Outcome18, -Outcome19, -Outcome20, -rolnum) %>% 
+    #   boxplot(trial)
+    # 
+    # boxplot.stats(trial$summm)$out 
+
+    ```
+
+    ```{r}
+    boxplot(fin$summm,
+      ylab = "summm")
+
+    boxplot.stats(fin$summm)$out
+
+    out <- boxplot.stats(fin$summm)$out
+    out_ind <- which(fin$summm %in% c(out))
+    out_ind
+
+    # ggplot(fin) +
+    #   aes(x = summm) +
+    #   geom_histogram(bins = 21, fill = "#0c4c8a") +
+    #   theme_minimal()
+    ```
+
+    After, wecreate a new dataset called 'desperate' where we remove the indicative rows with the outliers. This will help us redo exercise 2
+
+    ```{r}
+    desperate <- fin[-c(15, 25,48,57,89,98,121,130), ]
+
+    ```
+
+    **Redoing exercise 2 with the new dataframe 'desperate'.**
+
+    In comparison with exercise 2, we can see that the mean for both male and female has fallen. This was a natural outcome to follow since the outliers were all above the mean. However, the outcome remained the same in matters of which gender reported the most correct answers. On average females report 4 correct answers out of twenty, as opposed to men (3/20).
+
+    ```{r}
+    desperate %>% group_by(Gender) %>% summarise(mean(summm))
+    ```
+
+    For the draws, we are creating a new column to make the analysis named 'abcdefg'. This is to exclude the outlier rows from the the 'tii' dataset we've used at exercise 2. After doing that though, we can see that the mean correct response reporting ratio remained at the same levels ranging from 16.54% to 27.07%. This indicates that the outliers did not affect the variability of the data. No difference between the first and last rows.
+
+    ```{r}
+    abcdefg <- tii[-c(15, 25,48,57,89,98,121,130), ]
+
+    i <- abcdefg %>% select(-Gender, -Age, -SC0, -id, -Risk, -summm, -rolsep, -id)
+    i %>% filter(rolnum==1) %>% summary(answer)
+    i %>% filter(rolnum==2) %>% summary(answer)
+    i %>% filter(rolnum==3) %>% summary(answer)
+    i %>% filter(rolnum==4) %>% summary(answer)
+    i %>% filter(rolnum==5) %>% summary(answer)
+    i %>% filter(rolnum==6) %>% summary(answer)
+    i %>% filter(rolnum==7) %>% summary(answer)
+    i %>% filter(rolnum==8) %>% summary(answer)
+    i %>% filter(rolnum==9) %>% summary(answer)
+    i %>% filter(rolnum==10) %>% summary(answer)
+    i %>% filter(rolnum==11) %>% summary(answer)
+    i %>% filter(rolnum==12) %>% summary(answer)
+    i %>% filter(rolnum==13) %>% summary(answer)
+    i %>% filter(rolnum==14) %>% summary(answer)
+    i %>% filter(rolnum==15) %>% summary(answer)
+    i %>% filter(rolnum==16) %>% summary(answer)
+    i %>% filter(rolnum==17) %>% summary(answer)
+    i %>% filter(rolnum==18) %>% summary(answer)
+    i %>% filter(rolnum==19) %>% summary(answer)
+    i %>% filter(rolnum==20) %>% summary(answer)
+    ```
+
+    In the case of experimental conditions we can see that there are some significant differences. The range between them became smaller (3.36 to 4.69). In other words the data became more disperse. While there is no difference in the lower end, there is a difference in the higher end of the range. This indicates that the previous means were inflated due to the high outliers. For insance, the most popular experimental condition, normative positive message (2), was 6.08, whereas now is just 4.33.
+
+    ```{r}
+    desperate %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+4.  `Split your sample into the "younger" half and the "older half. Are there differences between the two age groups?`
+
+    First we sort the date from highest to lowest reported age using the order function.
+
+```{r}
+ordered<- fin[order(fin$Age, decreasing = TRUE), ]
+```
+
+Then we find the Age median from fin dataset. As we can see, the median is 24 (in the column 67 since is exactly the middle of 133).
+
+```{r}
+median(fin$Age)
+
+```
+
+Since I have the ordered dataframe (from the highest to lowest Age), I use it to create two other dataframes, one for the younger Age group "orderedyoung", and one for the older Age group "orderedold".
+
+```{r}
+orderedyoung <- ordered[-c(1:66), ]
+orderedold <- ordered[-c(68:133), ]
+```
+
+orderedold%\>% ggplot(aes(x= Age, y= summm)) + geom_point()
+
+```{r}
+boxplot(orderedold$Age,
+  ylab = "Age")
+
+boxplot.stats(orderedold$Age)$out
+
+out <- boxplot.stats(orderedold$Age)$out
+out_ind <- which(orderedold$Age %in% c(out))
+out_ind
+
+```
+
+```{r}
+boxplot(orderedyoung$Age,
+  ylab = "Age")
+
+boxplot.stats(orderedyoung$Age)$out
+
+out <- boxplot.stats(orderedyoung$Age)$out
+out_ind <- which(orderedyoung$Age %in% c(out))
+out_ind
+
+```
+
+```{r}
+oo <- orderedold[-c(1,2,3,4), ]
+
+oy <- orderedyoung[-c(67), ]
+```
+
+I use the ggplot function to create a graph that indicates the Age of the participants in the x axes, and the number of correct guesses (summm) in the y axes. As we can see, while the Age column now indicates only the oldest people, the majority is still under 30 -- closer to the median. From the age 24 until 30s, the amount of correct responses seems to decline. We use the median and the mean code in order to see if there is a difference with them. Median indicates that there is no difference among the data as the reported correct outcome. However, if we look at the mean of the two, the younger group tends to report more correct answers on average than the older group. This difference is small though (4.62-3.92)
+
+```{r}
+oo%>% ggplot(aes(x= Age, y= summm)) + geom_point()
+
+median(oo$summm)
+mean(oo$summm)
+
+oy%>% ggplot(aes(x= Age, y= summm)) + geom_point()
+median(oy$summm)
+mean(oy$summm)
+```

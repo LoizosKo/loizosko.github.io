@@ -136,13 +136,13 @@ exp(logodds)/(1+ exp(logodds)) #we take the exponent of logg odds and devide it 
 
 Here we have:
 
-1) the probability of the control group that live less than 10 miles away from their work to use the bus
+1)  the probability of the control group that live less than 10 miles away from their work to use the bus
 
-2) the probability of the **treatment** group that live less than 10 miles away from their work to use the bus
+2)  the probability of the **treatment** group that live less than 10 miles away from their work to use the bus
 
-3) the probability of the control group that live [more than 10 miles]{.ul} away from their work to use the bus
+3)  the probability of the control group that live [more than 10 miles]{.ul} away from their work to use the bus
 
-4) the probability of the **treatment** group that live [more than 10 miles]{.ul} away from their work to use the bus
+4)  the probability of the **treatment** group that live [more than 10 miles]{.ul} away from their work to use the bus
 
 Now incorporate those probabilities on the original dataframe and we name it 'data.plot'.
 

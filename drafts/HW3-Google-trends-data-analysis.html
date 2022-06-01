@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>HW3-Google-Trends-Data-Analysis-of-the-most-popular-American-animated-sitcoms</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Welcome to Loizos' Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Pages
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="about.html">About</a>
+    </li>
+    <li>
+      <a href="homeworks.html">Samples working with data</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">HW3-Google-Trends-Data-Analysis-of-the-most-popular-American-animated-sitcoms</h1>
+
+</div>
+
+
+<p><code>Let's continue working with the Google Trends data you obtained for Homework 02.</code> Homework 3 starts from the line 180 and onward.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
+## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readr)
+library(readxl)
+library(lubridate)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre class="r"><code>library(broom)
+library(ggthemes)
+library(ggsci)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p><code>Code to load the data into R and prepare it for the analysis. You need to correctly specify data types and choose concise variable names.</code></p>
+<pre class="r"><code>#Import data for the US
+uscoms &lt;- read_csv(&quot;uscoms.csv&quot;, skip = 1)</code></pre>
+<pre><code>## Rows: 217 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Month
+## dbl (3): Family Guy: (United States), South Park: (United States), The Simps...</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>#Import data for the world
+worldcoms &lt;- read_csv(&quot;worldcoms.csv&quot;, skip = 1)</code></pre>
+<pre><code>## Rows: 217 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Month
+## dbl (3): Family Guy: (Worldwide), South Park: (Worldwide), The Simpsons: (Wo...</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>#Import data for Cyprus
+cycoms &lt;- read_csv(&quot;cycoms.csv&quot;, skip = 1)</code></pre>
+<pre><code>## Rows: 217 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Month
+## dbl (3): Family Guy: (Cyprus), South Park: (Cyprus), The Simpsons: (Cyprus)</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>prepare the data for analysis</p>
+<pre class="r"><code>#NOW WE CLEAN AND PREPARE THE DATA FOR ANALYSIS
+#Clean for the US.
+uscoms_clean &lt;- uscoms %&gt;%
+  rename(month = Month,
+         famguy = `Family Guy: (United States)`,
+         southpark = `South Park: (United States)`,
+         simpsons = `The Simpsons: (United States)`) %&gt;% 
+  mutate_if(is.character, str_replace, pattern = &quot;&lt;&quot;, replacement = &quot;&quot;) %&gt;% 
+  mutate_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), as.numeric) %&gt;% 
+  separate(month, into = c(&quot;year&quot;, &quot;month&quot;), sep = &quot;-&quot;, convert = TRUE) %&gt;%
+  mutate(day = 15, .after = month) %&gt;%
+  mutate(date = ymd(paste(year, month, day, sep=&quot;-&quot;)))
+
+#Clean for Worldwide
+worldcoms_clean &lt;- worldcoms %&gt;%
+  rename(month = Month,
+         famguy = `Family Guy: (Worldwide)`,
+         southpark = `South Park: (Worldwide)`,
+         simpsons = `The Simpsons: (Worldwide)`) %&gt;% 
+  mutate_if(is.character, str_replace, pattern = &quot;&lt;&quot;, replacement = &quot;&quot;) %&gt;% 
+  mutate_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), as.numeric) %&gt;% 
+  separate(month, into = c(&quot;year&quot;, &quot;month&quot;), sep = &quot;-&quot;, convert = TRUE) %&gt;%
+  mutate(day = 15, .after = month) %&gt;%
+  mutate(date = ymd(paste(year, month, day, sep=&quot;-&quot;)))
+
+#Clean for Cyprus.
+cycoms_clean &lt;- cycoms %&gt;%
+  rename(month = Month,
+         famguy = `Family Guy: (Cyprus)`,
+         southpark = `South Park: (Cyprus)`,
+         simpsons = `The Simpsons: (Cyprus)`) %&gt;% 
+  mutate_if(is.character, str_replace, pattern = &quot;&lt;&quot;, replacement = &quot;&quot;) %&gt;% 
+  mutate_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), as.numeric) %&gt;% 
+
+  #I separate the month and  year into two columns. Then I convert the character column to a number.
+  separate(month, into = c(&quot;year&quot;, &quot;month&quot;), sep = &quot;-&quot;, convert = TRUE) %&gt;%
+
+  #I create a new column that is called day, and I use 15 as it is the middle of the month.
+  mutate(day = 15, .after = month) %&gt;%
+
+  #Here I create a date column using the ymd (=year month day)function.
+  mutate(date = ymd(paste(year, month, day, sep=&quot;-&quot;)))</code></pre></li>
+<li><p><code>Code that will calculate the average popularity of the terms by year for each of the search terms in each of the geographies.</code></p>
+<pre class="r"><code>#HERE WE SUMMARIZE THE AVERAGE POPULARITY OF THE TERMS BY YEAR OF EACH SEARCH
+#Summarize for the US
+uscoms_summary &lt;- uscoms_clean %&gt;% 
+  group_by(year) %&gt;% 
+  summarize_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), mean)
+
+#Summarize for Worldwide
+worldcoms_summary &lt;- worldcoms_clean %&gt;% 
+  group_by(year) %&gt;% 
+  summarize_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), mean)
+
+#Summarize for Cyprus
+cycoms_summary &lt;- cycoms_clean %&gt;% 
+  group_by(year) %&gt;% 
+  summarize_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), mean)</code></pre></li>
+</ol>
+<p>Before we analyse the data, we tidy them. This way, we have three rows that correspond for each month from 2004 until 2021. This makes easier for us to specify what goes where.</p>
+<pre class="r"><code>uscoms_tidy &lt;- uscoms_clean %&gt;%
+  pivot_longer(cols = c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;),
+               names_to = &quot;name&quot;,
+               values_to = &quot;score&quot;)
+
+worldcoms_tidy &lt;- worldcoms_clean %&gt;%
+  pivot_longer(cols = c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;),
+               names_to = &quot;name&quot;,
+               values_to = &quot;score&quot;)
+
+cycoms_tidy &lt;- cycoms_clean %&gt;%
+  pivot_longer(cols = c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;),
+               names_to = &quot;name&quot;,
+               values_to = &quot;score&quot;)</code></pre>
+<p><code>4. Analyze the data to answer the following questions:</code></p>
+<ol style="list-style-type: decimal">
+<li><p><code>In what year was each term most popular? In which geography is each of the terms most popular in the year you found in Part A?</code></p>
+<pre class="r"><code>uscoms_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() + scale_x_date(date_breaks = &quot;2 year&quot;, date_labels = &quot;%Y&quot;)</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>worldcoms_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line()+ scale_x_date(date_breaks = &quot;2 year&quot;, date_labels = &quot;%Y&quot;)</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>cycoms_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() + scale_x_date(date_breaks = &quot;2 year&quot;, date_labels = &quot;%Y&quot;)</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Based on the graphs the most popular year for</p>
+<p>–F<strong>amily guy</strong> was: 2nd half of <strong>2008</strong> (<strong><em>USA</em></strong>)/ 1st half of <strong>2009</strong>(<strong><em>Worldwide</em></strong>)/ 1st, 2nd half of <strong>2007</strong> (<strong><em>Cyprus</em></strong>)</p>
+<p>–<strong>Simpsons</strong> was: mid-<strong>2007</strong> (<strong><em>USA</em></strong>,<strong><em>Worldwide</em></strong>)/ 2nd half of <strong>2008</strong> (<strong><em>Cyprus</em></strong>)</p>
+<p>–<strong>South Park</strong> was: 1st half of <strong>2010</strong> (<strong><em>USA, Worldwide</em></strong>) / first half of <strong>2004</strong> (<strong><em>Cyprus</em></strong>)</p></li>
+<li><p><code>Calculate the ratio of the most popular term to the least popular term. Describe how this ratio changed over time in each of the geographies by relying on yearly data.</code></p></li>
+</ol>
+<pre class="r"><code>#I hereby summarize in three different ways the mean search score of each series.
+worldcoms_clean %&gt;% summarize(mean(southpark), mean(simpsons), mean(famguy))</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   `mean(southpark)` `mean(simpsons)` `mean(famguy)`
+##               &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;
+## 1              22.2             36.2           20.3</code></pre>
+<pre class="r"><code>worldcoms_clean %&gt;% summarize_at(vars(southpark, simpsons, famguy), mean)</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   southpark simpsons famguy
+##       &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+## 1      22.2     36.2   20.3</code></pre>
+<pre class="r"><code>summary(worldcoms_clean)</code></pre>
+<pre><code>##       year          month             day         famguy        southpark    
+##  Min.   :2004   Min.   : 1.000   Min.   :15   Min.   : 5.00   Min.   : 7.00  
+##  1st Qu.:2008   1st Qu.: 3.000   1st Qu.:15   1st Qu.:12.00   1st Qu.:11.00  
+##  Median :2013   Median : 6.000   Median :15   Median :19.00   Median :21.00  
+##  Mean   :2013   Mean   : 6.475   Mean   :15   Mean   :20.29   Mean   :22.22  
+##  3rd Qu.:2017   3rd Qu.: 9.000   3rd Qu.:15   3rd Qu.:29.00   3rd Qu.:29.00  
+##  Max.   :2022   Max.   :12.000   Max.   :15   Max.   :45.00   Max.   :69.00  
+##     simpsons           date           
+##  Min.   : 13.00   Min.   :2004-01-15  
+##  1st Qu.: 23.00   1st Qu.:2008-07-15  
+##  Median : 37.00   Median :2013-01-15  
+##  Mean   : 36.18   Mean   :2013-01-13  
+##  3rd Qu.: 47.00   3rd Qu.:2017-07-15  
+##  Max.   :100.00   Max.   :2022-01-15</code></pre>
+<pre class="r"><code>#Looking at the results we conclude that the simpsons on average was the most popular by far with 36.18 score. Then southpark follows with 22.22 and then family guy follows with 20.29.</code></pre>
+<p>Then we group the averages by year so we can compare the yearly differences.</p>
+<pre class="r"><code>world_summary &lt;- worldcoms_clean %&gt;% 
+  group_by(year) %&gt;% 
+  summarize_at(c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;), mean)
+
+world_tidy &lt;- world_summary %&gt;%
+  pivot_longer(cols = c(&quot;famguy&quot;, &quot;southpark&quot;, &quot;simpsons&quot;),
+               names_to = &quot;name&quot;,
+               values_to = &quot;score&quot;)
+
+world_tidy %&gt;% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  geom_line() </code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<hr />
+<p>HOMEWORK 3 STARTS HERE</p>
+<ol style="list-style-type: decimal">
+<li><p><code>Prepare the graph showing the trends in popularity of the search terms over time. Make sure to add a descriptive title, label the axes, and modify the look of the graph to be presentable. You can choose your own colors or use one of the palettes we talked about in class. Add a one-sentence explanation for the geometry you selected for the graph.</code></p>
+<pre class="r"><code>world_tidy %&gt;% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Year&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;World Popularity of the main American cartoon sitcoms - Google Trends data&quot;) +
+  scale_color_discrete(labels = c(&quot;Family Guy&quot;, &quot;The Simpsons&quot;, &quot;South Park&quot;)) #rename titles</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The same code as before is used to make the graph. The only change here is that we rename the names of the shows in the graph by using the command “scale_color_discrete(labels = c(…)”.</p></li>
+</ol>
+<pre class="r"><code>world_tidy %&gt;% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Year&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;Popularity graph&quot;,
+       subtitle = &quot;Top 3 American sitcoms&quot;
+       ) +
+  scale_color_discrete(name = &quot;Shows:&quot;,
+                       labels = c(&quot;South Park&quot;, &quot;The Simpsons&quot;, &quot;Family Guy&quot;)) +
+  theme_wsj()  #this theme makes the graph more presentable</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>This is a more presentable version of the graph above.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><code>Smooth the data (using a graph) to eliminate random noise. Explain which smoothing method you chose and why.</code></li>
+</ol>
+<pre class="r"><code>world_tidy %&gt;% 
+  ggplot(aes(x = year, y = score, color = name)) +
+  #geom_line() + #I remove this so we can see the variability of each sitcom.
+  geom_smooth(method = &quot;loess&quot;) + #This command creates a moving average that smoothes out all the fluctuations.
+  labs(x = &quot;Year&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;World Popularity of the main American cartoon sitcoms - Google Trends data&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>For this code we use LOESS command to smooth the fluctuations. LOESS (aka locally weighted smoothing), helps us see the relationship between the three variables and foresee trends. A LOESS smoother takes the data, fits a regression with the subset of data, and uses that linear regression model to get a point for the smoothed curve. The points closer to the fitted line are more impact-full.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><code>Create a chart to show seasonality by month in your data. What does the chart tell you about the seasonality of your chosen search terms? Some examples of seasonality charts can be found here: https://www.r-graph-gallery.com/142-basic-radar-chart.html (Links to an external site.)</code></li>
+</ol>
+<pre class="r"><code>worldcoms_tidy %&gt;% 
+  group_by(month, name) %&gt;% #I group by month to see which season are popular. By name to see the shows.
+  summarize(mean_score = mean(score)) %&gt;% 
+  ggplot(aes(x = month, y = mean_score, fill = name)) +
+  geom_col(position = &quot;dodge&quot;, alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  coord_polar()</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;month&#39;. You can override using the `.groups` argument.</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>As we can see, the Simpsons seasonality graph looks the same. That is probably we have no limits to the popularity score of the variable and every score is close to each other. i.e. popularity does not vary by a lot.</p>
+<pre class="r"><code>worldcoms_tidy %&gt;% 
+  filter(name == &quot;simpsons&quot;) %&gt;% #I filter by name &quot;simpsons&quot; so I can examine the Simpsons show by itself.
+  group_by(month) %&gt;% #I group by month again to see which month is more popular.
+  summarize(mean_score = mean(score)) %&gt;% 
+  ggplot(aes(x = month, y = mean_score)) +
+  geom_col(position = &quot;dodge&quot;, alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  scale_y_continuous(limits = c(30, 40)) + #I include score limits from 30 to 40 in order to see the exact seasons where &quot;The simpsons&quot; peaked and scored low in popularity.
+  coord_polar()</code></pre>
+<pre><code>## Warning: Removed 12 rows containing missing values (geom_col).</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code>worldcoms_tidy %&gt;% 
+  filter(name == &quot;famguy&quot;) %&gt;% #I filter by name &quot;famguy&quot; so I can examine the &quot;Family Guy&quot; show by itself.
+  group_by(month) %&gt;% #I group by month again to see which month is more popular.
+  summarize(mean_score = mean(score)) %&gt;% 
+  ggplot(aes(x = month, y = mean_score)) +
+  geom_col(position = &quot;dodge&quot;, alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  scale_y_continuous(limits = c(15, 25)) + #I include score limits from 15 to 25 in order to see the exact seasons where &quot;The Family Guy&quot; peaked and scored low in popularity.
+  coord_polar()</code></pre>
+<pre><code>## Warning: Removed 12 rows containing missing values (geom_col).</code></pre>
+<p><img src="HW3-Google-trends-data-analysis_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><code>Submit the homework as an .html file rendered from your .rmd, as well as the .rmd file itself.</code></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

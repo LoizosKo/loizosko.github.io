@@ -1,0 +1,374 @@
+---
+title: "Lecture 9 annotated"
+author: "Alex Shpenev"
+date: "11/15/2021"
+output: pdf_document
+---
+Last week we discussed about:
+Linear regression.
+Continuous dependent variable. (however, variables could be continuous and)
+
+y=2.5x+3
+
+3 is the intercept, for every 1 increase in x there is a 2.5 increase in y.
+
+
+example
+age is independent variable
+wages is the dependent variable
+
+your model will predict something for people that are 0 years old, however it would be negative only because we don't have data for infant salary.
+
+
+You can work with categorical variable as well (i.e. binary variable)
+i.e. Gender (assume two groups- male=1 and female=2, and ignore the rest one) OR 
+(you can also say female=1, not female=0) This is mutually exclusive, hence more correct. It is also exhaustive.
+dummy variable (variables that are called 0 and 1)
+
+
+eye color (brown, green, blue, hazel, other)
+Then, 
+brown (1=yes, 0=no)
+green(1=yes, 0=no)
+...
+
+
+insurance status (uninsured, private insurance, medicaid/care, other)
+What's the primary insurance that u use? --if we rephrase the question to that it will make mutually exclusive.
+Then,
+uninsured(1=yes, 0=no)
+private insurance (1=yes, 0=no)
+...
+
+knowing somethign does not tell me anything about something else = independent variable
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(car)
+beer <- read_csv("beer.csv")
+hsb2 <- read_csv("hsb2.csv")
+elemapi2 <- read_csv("elemapi2.csv")
+```
+
+
+# Regression analysis. Changing the units of analysis.
+
+In this first section of the lecture, we will look at what happens when we transform variables.
+
+We will work with a dataset that contains the information on the number of bottles of beer a person had and what level of blood alcohol content it resulted in.
+
+I will first plot the data with the regression line and summarize the regression output
+```{r}
+summary(lm(bac ~ beers, data = beer))
+```
+
+Based on this output, we see, that the relationship betwen BAC and beer can be approximated with the following line:
+
+BAC = -0.012701 + 0.017964*beers
+
+In this dataset, each additional bottle of beer resulted in a blood alcohol content that was 0.017964 higher. I will generally prefer to round such numbers to say 0.018 but I will not do it here so that it's easier to follow the logic.
+
+
+Now imagine we care about sixpacks and not bottle. We can easily transform the data:
+```{r}
+beer2 <- beer %>% mutate(sixpack = beers/6)
+summary(lm(bac ~ sixpack, data = beer2))
+```
+
+The intercept didn't change (0 bottles of beer is the same thing as 0 six-packs of beer, so no surprises here).
+
+Note that we divided the variable by 6, but the coefficient went up! It might be confusing arithmetically but logically it should make sense.
+The slope is now 6 times larger now (0.10778 = 0.017964*6). It should make sense since 1 additional sixpack is the same as 6 additional bottles. 
+
+
+
+Now let's try a different transformation. BAC is measured in percents, and because of it the numbers are so small. Percent is probably not the best unit of measurement here simply because the numbers will be way below 1 percent. (the largest in our sample is 0.19). Let's multiply them by 100 so that each number represents the concentration per 10,000, not per 100.
+
+```{r}
+beer3 <- beer2 %>% mutate(bac100 = bac*100)
+summary(lm(bac100 ~ beers, data = beer3))
+```
+
+The constant is now 100 times larger. That makes sense, we are now measuring the outcome in units that are 100 times larger. The slope is also 100 larger.
+
+Note that none of these transformations affect significance or anything substantive about the model. It doesn't matter what units of measurement to use as long as you interpret them correctly! (This is only true for linear transformations, in the homework you will play around with logarithmic transformations and they mess up the data a bit).
+
+
+# Factor variables.
+
+Remember that not all variables are continuous. Sometimes you come across a variable that is nominal or ordinal. In this case, a good strategy is to turn them into factors in R.
+
+```{r}
+summary(lm(write ~ factor(female), data = hsb2))
+```
+#On average, those who have 1 in the female variable (aka women), get a score 4.87 higher than men.
+#Intercept = The predicted value of the outcome when everything is equal to zero. On average, everyone who coded zero (aka men) scored 50.12 (if everything is equal to zero).
+
+Intecept is significant, aka is not zero. However is not that informative for us. That makes no sense though, why would we expect that men got zero in their test.
+
+If intercept is not significant (aka zero), we reject the nul hypothesis. i.e.
+
+The predictive value of a model is measured by an F-test usually.
+If u have more than one independent variable things become more complex.
+
+
+
+#if its not a binary variable (aka, takes values other than 0 and 1), we have to call it factor variable.
+Here I am trying to predict the effect of gender on writing score.
+Because gender is not continuous, I will make R think it's a factor with the factor() command.
+
+What this means is I make R create two switches, commonly referred to as dummy variables: male and female
+
+male = 1 if a person is male and 0 otherwise
+female = 1 if a person is female and 0 otherwise.
+
+Note that only one of these switches can be on at a time. If a person is male, male = 1 and female = 0. if a person is female, female = 1 and male = 0. So knowing whether one switch is on or off gives us all the information about both the switches. So in regression analysis, we omit one of them and treat it as a reference category. In this case, we omitted male. The name of the slope variable is factor(female)1 . Here's how to read it: it's a factor of a variable "female" in the having value 1. So 4.8699 is the difference in scores between women and men (the default category). The intercept is then just the predicted score for men (the default category).
+
+Suppose we instead want to treat women as the default category. I can do that with the relevel command indicating what I want as a reference:
+#i want to make the second variable to be the referernce. if i say ref=3, i make the third category to be the reference category.
+```{r}
+summary(lm(write ~ relevel(factor(female), ref = 2), data = hsb2))
+```
+I'm telling R that I want the second category of the female variable to be defaule. Remember, the first category is female = 0, the second is female = 1.
+
+The regression results changed. Now the intercept is the predicted score for women, and the slope is the difference between men and women. Substantively, however, both regressions contain exactly the same information. 
+Moreover, you can run a t.test on this sample and get substantively exactly the same result:
+
+```{r}
+t.test(write ~ female, data = hsb2, var.equal = TRUE)
+```
+Notice how the predictions for two groups are the same as in teh regression analysis and the t-value is exactly the same (so that the p-value is exactly the same).
+
+So regression wit one binary dummy is exactly the same as just a two sample t-test with equal variances assumed.
+
+
+```{r}
+hsb21 <- hsb2 %>% mutate(male=1)
+```
+#more things on the code
+so now we did that for the male and we get the same number but negative this time. This shows that there is a relationship between the observed data. Men get on abverage 4.87 score less than not male(aka female),
+
+We can also run a two sample t-test
+-it gibes us the true value, it sets 
+
+We can generalize this "dummy language" to more than 2 levels.
+
+```{r}
+summary(lm(write ~ factor(prog), data = hsb2))
+```
+Here we have the output for the model with the program as the independent variable. THere are three programs so we create 3 dummies:
+
+prog1
+
+prog2
+
+prog3
+
+Again, because they are switches, only one can be on at the same time (a student can't be in multiple programs at the same time) and once we know the position of two out of three switches, we know exactly what the third switch is. So we need to omit one of the switches. We omit the first one.
+
+By doing so, we effectively "hide" it in the intercept. Now the intercept 51.333 shows us the predicted score for students in prog1. THe first slope tells us that students in prog2 are getting on average a 4.924 points higher score and students in prog3 a 4.573 lower score than students in the default program (program 1). Again, we can relevel the variable the way we want.
+
+
+Students in program 2 perform better than program 1, on average 4.92 in score.
+Students in program 3 perform worse than program 2, on average -4.57
+
+# Finally, let's look at multiple regression
+I am curious to know if there is an effect of enrollment on school performance.
+y=7.44-0.2*enrollment
+7.44 is the predicted score if the enrollment is zero. (here has no meaning)
+
+I switch it to 100 of students
+=== y=744-20*enrollment
+ie for every additional 100 students there is 20 point fall in score.
+```{r}
+summary(lm(api00 ~ enroll, data = elemapi2))
+```
+
+With each additional student, we expect the score to be 0.19987 lower.
+
+But what if something else affects the outcome? What if in poor neighborhoods enrollment is systematically different and scores are also different for reasons unrelated to enrollment? We might see an association that's biased.
+
+#confounding
+#enrollment+ses (API=performance)
+#enrollment/ ses can also affect API
+#Regression is done to eliminate confounding
+
+Let's adjust for the percentage of students on meal plans. We can do it by just including an additional variable after a + sign:
+api00 is the score (dependent), meals and enrollment (independent)
+```{r}
+summary(lm(api00 ~ enroll + meals, data = elemapi2))
+
+```
+The more students are on meal plans, the less the score will be (-3.89)
+```{r}
+options(scipen = 100)
+summary(lm(api00~enroll*meals, data = elemapi2))
+```
+==
+```{r}
+summary(lm(api00 ~ enroll * meals, data = elemapi2))
+#i.e. -3.42 -0.0009537*1000 (for a thousand students)
+#     =-4.37 -> this means that the effect of meals is bigger (more negative) in large schools
+```
+y=883-0.0009* enroll- 3.4* meals- 0.0009 enroll *meals
+
+#let's increase enrollment by one student
+y=883.26+0.0009* (enrollment+1)- 3.4 * meals- 0.0009 (enroll+1) *meals
+
+#effect of enrollment on API right now, it depends on the meal plans percentage as well.
+
+What this did is estimated the effect of enrollment net of the effect of meals. We see that now each additional student is only expected to lower the score by 0.06741. A much smaller effect. The effect of meals is significant and pretty large substantively. Moreover, it was confounding our estimate of the effect of enrollment.
+
+We can account for other confounders in the same way by just adding variables:
+
+#I use the factor syntax because
+```{r}
+summary(lm(api00 ~ enroll + factor(mealcat), data = elemapi2))
+
+```
+#regardless of enrollment, schools in 47%-80% have 164 lower score than first ones
+# >>   >>     >>      , schools in 81%-100% have 281 than the first ones
+
+
+Here I changed the variable meals to a categorical variable with 3 categories and added a variable for whether a school is year-round or not.
+
+The effect of enrollment is now even smaller.
+
+
+Finally, I might hypothesize that the effect of enrollment on scores might be different for different types of schools. I can estimate that using interactions:
+```{r}
+summary(lm(api00 ~ enroll * factor(mealcat), data = elemapi2))
+```
+#parallel slopes model
+
+
+Let's write out the result as a formula:
+
+api100 = 795.34150 + 0.02362* enrol -138.65061 * mealcat2 - -235.46721 * mealcat3 -0.06620 * enroll * mealcat2 - -0.11610 * enroll * mealcat3
+
+The intercept can again be interpreted as the predicted score when all variables are zero. 
+
+However, the effect of enrollment is now more difficult to interpret.
+
+ 0.0236 is the effect of enrollment only for mealcat1 (the default category).
+ 
+ For mealcat2, the effect is 0.02362 - 0.06620 = -0.04258 (since for the second meal category mealcat2 = 1 and that part of the regression becomes "switched on").
+ 
+ The same logic goes for the effect of enrollment for the third meal category. It is 0.02362 - -0.11610 = -0.09248 (since mealcat3 is swiched on and mealcat2 is switched off).
+ 
+This proves that depending on the mealcat variable, the effect of enrollment is different:
+
+mealcat1: 0.02362
+
+mealcat2: -0.04258
+
+mealcat3: -0.09248
+
+
+We can analyze the same problem from a different angle.
+What is the effect of being in mealcat2 as opposed to mealcat1?
+
+Well, it's again complicated. -138.65061  is only the effect for zero enrollment. Otherwise, "-0.06620 * enroll * mealcat2" becomes swiched on and the effect becomes -138.65061 -0.06620 * enroll
+We can't just write out the number now because for each level of enrollment the effect will be different!
+
+The situation is similar for mealcat3 and I will skip it here, but you can make the derivations yourself.
+ 
+ 
+ 
+# Hypothesis testing
+
+Remember that the default hypothesis R tests in lm() commands is about coefficients being zero.
+
+```{r }
+summary(lm(mpg ~ am + cyl + hp, data = mtcars))
+```
+Suppose now you are interested in testing whether the coefficient of am is 4 and we observe it being 3.9 only because of sampling variability.
+We can load a package named "car" (Companion to applied regression) and use the lht function in it. ()
+
+Car takes two arguments (among other ones, but these are the important ones for us): the model you are testing, and the hypothesis you are testing.
+The hypothesis has to be in quotation marks and list the tested parameters in exactly the same way they are shown in the regression output. Here is an example for us
+
+```{r }
+#First save the model for ease of use
+model01 <- lm(mpg ~ am + cyl + hp, data = mtcars)
+summary(model01)
+
+# Now run car and test if the am coefficient is 4
+
+lht(model01, "am = 4")
+```
+The right-most column lists the p-value. It's 0.9417 so we fail to reject the null that it is 4. There is no statistical evidence against it.
+
+Suppose you want to test that the intercept is 30. Then you run the following command (remember to put the names exactly as in the output. the word Intercept was in parentheses so that's what I'm doing).
+
+```{r }
+lht(model01, "(Intercept) = 40")
+```
+And the null hypothesis is rejected here.
+
+We can also test several hypotheses at once by concatenating them.
+
+```{r }
+lht(model01, c("am = 4", "(Intercept) = 40"))
+```
+
+Here we tested the null that am = 4 and the Intercept = 40 at the same time. A low p-value indicates that at least one of these hypotheses is rejected.
+
+Finally, we can create linear combinations and test them. One reason that might be useful is because regression coefficients can be used to predict outcome.
+Suppose we have a car with the hp of 50, cyl of 6 and am = 1. We wanna see is the mpg of this car is 20
+```{r }
+lht(model01, "(Intercept) + am + 6*cyl + 50*hp = 20 ")
+```
+And it seems that the null hypothesis is rejected.
+
+```{r}
+classmodel <- summary(lm(api00 ~ enroll+hsg+factor(mealcat)+grad_sch+mobility+api99, data = elemapi2))
+classmodel
+
+classmodel1 <- summary(lm(api00 ~ enroll+hsg+factor(mealcat)+grad_sch+mobility, data = elemapi2))
+classmodel1
+
+classmodel2 <- summary(lm(api00 ~ enroll+factor(mealcat)+grad_sch+mobility, data = elemapi2))
+classmodel2
+
+classmodel3 <- summary(lm(api00 ~ api99+growth, data = elemapi2))
+classmodel3
+```
+```{r}
+elemapi2 %>% filter(!is.na(mobility)) -> elemapi2_1
+classmodel4 <- summary(lm(api00 ~ meals+mobility+avg_ed+enroll+full, data = elemapi2))
+classmodel4
+
+classmodel5 <- summary(lm(api00 ~ meals         +avg_ed+enroll+full, data = elemapi2))
+classmodel5
+
+summary(classmodel4)
+summary(classmodel5)
+
+anova(classmodel4, classmodel5)
+
+```
+
+```{r}
+classmodel6 <- summary(lm(api00 ~ meals+mobility+avg_ed+enroll+full+yr_rnd+grad_sch, data = elemapi2))
+#grad scho and average education. No multicolinearity because of that because there are cases that one goes up and the other down.
+classmodel6
+```
+#gradscho is not significant. Year round is. So grad scho might not be that important. Mobility and enroll are also insignificant. so I remove them==
+```{r}
+classmodel7 <- summary(lm(api00 ~ meals+avg_ed+full+yr_rnd, data = elemapi2))
+classmodel7
+```
+#so i remain with this one. Now how good is this procedure. Did I really need to drop those.
+
+
+
+
+```{r}
+
+```
+
+
+
+

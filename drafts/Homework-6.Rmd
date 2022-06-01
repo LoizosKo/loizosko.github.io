@@ -1,0 +1,194 @@
+---
+title: "Homework 6"
+output:
+  html_document:
+    df_print: paged
+---
+
+`Let's work with the norm experiment data some more.`
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(descr)
+library(infer)
+```
+
+`Let's study how the number of wins depends on certain factors:`
+
+```{r}
+library(readxl)
+exp21 <- read_excel("experiment_2021C(1)copy.xlsx", col_names = FALSE,
+    skip = 2)
+    var_names <- read_excel("experiment_2021C(1)copy.xlsx", n_max = 1) 
+    colnames(exp21) <- colnames(var_names)
+
+    rm(var_names) 
+
+    columnss <- exp21 %>% 
+      select(starts_with("Outcome"), "Age", "Risk", "Gender", "SC0") 
+
+View(exp21)
+
+```
+
+normal numbers, the more \* the more signif
+
+```{r}
+datac <- columnss %>% mutate(score = SC0 *10)
+
+datacool <- datac %>% select(-Outcome1, -Outcome2, -Outcome3, -Outcome4, -Outcome5, -Outcome6, -Outcome7, -Outcome8, -Outcome9, -Outcome10, -Outcome11, -Outcome12, -Outcome13, -Outcome14, -Outcome15, -Outcome16, -Outcome17, -Outcome18, -Outcome19, -Outcome20, -SC0)
+
+dataex1<- datacool %>% select(-Risk, - Age)
+```
+
+```{r}
+options(scipen = 100)
+```
+
+`1. Examine the relationship between gender and the number of wins using regression analysis.`
+
+independent variable x = the cause explanatory, dependent variable y = outcome
+
+Number of wins is referred to as the Score in our data, and it is a continuous dependent variable(=y).
+
+Gender is a categorical variable and is the independent variable(=x).
+
+On the first chunk I create one new column name 'Gendering' where I assign values 0 and 1 to female and male correspondingly.
+
+On the second and third chunks, I do the linear regression between Gender(x) and Score - aka number of wins - (y).
+
+```{r}
+datacool1 <- datacool %>% mutate(Gendering = case_when(Gender == "Male" ~ "1",
+                                        Gender== "Female" ~ "0"))
+
+dataex1 %>% summary(lm(score ~ factor(Gendering), data = datacool1))
+
+model<- lm(formula= score~Gendering, data= datacool1)
+(summary(model))
+```
+
+Looking at the results from the intercept and the Gendering column (1 = given that is a male), we can see that the regression equation is the following:
+
+y=-1.07x+4.75
+
+`a) What is the effect (the slope) of gender?`
+
+To see the effect we look to the slope of x. It indicates that on average males win one time less than females.
+
+`b) How strong is the predictive power of gender?`
+
+Looking at the multiple R square we can see that the effect of gender explains 2,947% of the variability of the score.
+
+`c) What are the predicted outcomes for men and women?`
+
+For this I substitute the values for male and female on the regression equation. For male x=1, for female x=0. After doing that, we will have a result that demonstrates the predicted score for females and males given that our initial assumption holds true.
+
+```{r}
+#for male
+malepred <- -1.07*1+4.75
+
+#for female
+femalepred <- -1.07*0+4.75
+```
+
+The predicted score for male on average is 3.68, while the equivalent predicted score for female is 4.75.
+
+`2. Examine the relationship between age and the number of wins using regression analysis.`
+
+```{r}
+model1<- lm(formula = score~Age, data= datacool1)
+summary(model1)
+```
+
+After following the same procedure as we followed in exercise 1, we have the equivalent regression results for Age as independent variable x, and score as dependent variable y. The equation is as follows:
+
+y=0.015x+4.01
+
+multiple R-squared, how much of the score variability is explained assuming that there is an effect of age.
+
+`a) What is the effect of age?`
+
+The effect (aka slope) of age is 0.015. This implies that there is an observed higher score of 0.015 with people that are older. Put differerently, the age factor has a negligible result to the score as is almost zero.
+
+`b) How strong is the predictive power of age?`
+
+Looking at the multiple R square we can see that the effect of age has almost zero explanation for the variability of the score. In other words, the predictive power of age on the time of victories is very weak.
+
+`c) What's the predicted outcome for a 20 year old person? For a 40 year old person?`
+
+```{r}
+#for 20 year old
+twentypred <- 0.015*20+4.01
+
+#for 40 year old
+fourtypred <- 0.015*40+4.01
+
+```
+
+For this I substitute the values for 20year old and 40year old on the regression equation. For 20year x=20, for 40year old x=40. After doing that, we will have a result that demonstrates the predicted score for 20year old and 40year old given that our initial assumption holds true.
+
+The predicted score for 20year old on average is 4.31, while the equivalent predicted score for 40year old is 4.61.
+
+`3. Examine the relationship between age and gender combined.`
+
+why the numbers are changing slightly (=men and women have different ages. when u plug both coefficients together it tries to)
+
+`a) What are the effects now? How do they compare with the results in 1 and 2? Explain the differences`
+
+```{r}
+model1<- lm(formula = score~Age+factor(Gendering), data= datacool1)
+summary(model1)
+```
+
+Now the equation becomes:
+
+y=0.02x1-1.1x2+4.08
+
+with x1 being the age, and x2 being the gender given is a male (if that one is zero then is a female)
+
+As we can see here, while the age effect is still close to zero, now it is a bit higher (0.026 as opposed to 0.015); however it still remains a weak factor. With respect to Gender, now is also higher ton the other end than its corresponding previous result (-1.10 as opposed to -1.07).
+
+Consequently, there is a very slight inter correlation between the two factors as the model tends to become slightly stronger. How ever the differences are minimal. This is indicated also in the adjusted R squared (=0.016) which is even lower than R squared. This means that at least one of the two variables does not explain the dependent variable score. As we can see from the exercises 1 and 2, this variable is Age because its adjusted R squared is negative when we have Age as the only independent variable (see exercise 2).
+
+Then we proceed to an interaction coefficient just to observe the cross sections between our independent variables. Despite that the numbers are changing a bit though interaction coefficient is not necessary for the purpose of this exercise.
+
+```{r}
+cool3 <- lm(score~ Age * factor(Gendering), data = datacool1)
+summary(cool3)
+```
+
+We observe that the estimations between age and gender are not significant.
+
+`b) How strong is the predictive power of this model?`
+
+Looking at the adjusted R square we can see that the effect of age combined with the effect of gender explains 1,6% the variability of the score - when doing multiple regression, adjusted R squared is a better indication to look at for the predictive power of the models. And in conclusion, this one does not have a strong predictive power.
+
+`c) What is the predicted outcome for a 20 year old man? 20 year old woman? 40 year old man? 40 year old woman?`
+
+Following similar procedure as the exercise 1 and 2 c, we substitute the age and gender factors in the equation for the equivalent results we need in the four different instances:
+
+```{r}
+#for 20year old man
+twentyman <- 0.02*20-1.1*1+4.08
+
+#for 20year old woman
+twentywoman <- 0.02*20-1.1*0+4.08
+
+#for 40year old man
+fourtyman <- 0.02*40-1.1*1+4.08
+
+#for 40year old woman
+fourtywoman <- 0.02*40-1.1*0+4.08
+
+```
+
+As we can see, the predicted scores are the following:\
+for 20year old man = 3.38
+
+for 20year old woman = 4.48
+
+for 40year old man = 3.78
+
+for 40year old woman = 4.88

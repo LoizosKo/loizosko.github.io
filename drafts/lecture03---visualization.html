@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Alex Shpenev" />
+
+
+<title>Lecture 03</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Welcome to Loizos' Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Pages
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="about.html">About</a>
+    </li>
+    <li>
+      <a href="homeworks.html">Samples working with data</a>
+    </li>
+    <li>
+      <a href="HW3-Google-trends-data-analysis.html">American sitcoms Google trends</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lecture 03</h1>
+<h4 class="author">Alex Shpenev</h4>
+<h4 class="date">1/27/2022</h4>
+
+</div>
+
+
+<div id="a-brief-intro-to-rmarkdown" class="section level1">
+<h1>A brief intro to Rmarkdown</h1>
+<p>In this <strong>class</strong> we will start using Rmarkdown. We will work with R notebooks, which are slightly different from what you might have been using before. Notebooks contains different types of information and are very flexible. You type in them as you would in a text editor, and your text would be displayed nicely when you “render” your notebook.</p>
+<p>You can add formatting to your notebooks, but the approach is slightly different from, say, Microsoft Word.</p>
+<p>Refer to the markdown cheat sheet to help you figure out how to do some of the things I show below:</p>
+<p>I can make the text <strong>bold</strong>, <em>italic</em>, or <u>underlined</u>. Note that underlining text is considered bad practice in R notebooks as it makes such text look as if it is a <a href="https://www.upenn.edu/">hyperlink</a>.</p>
+<p>You can also make lists:</p>
+<ol style="list-style-type: decimal">
+<li><p>That are numbered</p></li>
+<li><p>Just like that</p></li>
+</ol>
+<p>Or lists that are not numbered:</p>
+<ul>
+<li><p>Just like that</p></li>
+<li><p>And that</p></li>
+</ul>
+<p>You can also create tables and add captions to them:</p>
+<table>
+<caption>Table 1: My Day (and Other Misfortunes)</caption>
+<thead>
+<tr class="header">
+<th>Time of the Day</th>
+<th>Meal</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Morning</td>
+<td>Breakfast</td>
+<td>Wish you were still sleeping</td>
+</tr>
+<tr class="even">
+<td>Afternoon</td>
+<td>Lunch</td>
+<td>Wish you were still sleeping</td>
+</tr>
+<tr class="odd">
+<td>Evening</td>
+<td>Dinner</td>
+<td>Wish you didn’t have to go to bed</td>
+</tr>
+</tbody>
+</table>
+<p>If you look at the top bar you will see many more buttons that can be used to create elements of a workbook. Clicking the rightmost button allows you to see the underlying code. It is not too scary, but it is also not too pretty. Eventually you will learn most of it.</p>
+<p>At first it might seem very cumbersome, but there are benefits to using R Notebooks to any other format of homework submission.</p>
+<p>The most important of those benefits is that your notebooks become fully reproducible. Say a dataset got modified, and all the calculations you did need to be redone. If you typed your answers in Word, you would need to manually make a lot of changes in your file. If your answers are in an R notebook, all you need to do is to render it again and all the field will be updated based on the new data that you provided.</p>
+<p>tidyverse = collection of packages readr = package to read excel files lubridate = package that works with dates broom = packages statistical analysis ggthemes = package to make graphs that look like pre-defined standards ggsci = same as ggthemes but it makes it look cooler e.g. simpsons/south-park theme</p>
+</div>
+<div id="data-chunks" class="section level1">
+<h1>Data chunks</h1>
+<p>We create data chunks for R code that we are using. Think of data chunks as fragments of code from your script. Always leave at least one blank line between the text and the code chunk.</p>
+<pre class="r"><code>library(tidyverse)
+library(readr)
+library(lubridate)
+library(broom)
+library(ggthemes)
+library(ggsci)</code></pre>
+<p>Here is the (slightly condensed) code that we produced last class:</p>
+<pre class="r"><code>kardashians &lt;- read_csv(&quot;multiTimeline.csv&quot;, skip = 1)</code></pre>
+<pre><code>## Rows: 217 Columns: 6</code></pre>
+<pre><code>## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): Month, Khloé Kardashian: (Worldwide), Kourtney Kardashian: (Worldwide), Kendall Jenner: (Worldwide...
+## dbl (1): Kim Kardashian: (Worldwide)</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>kard_clean &lt;- kardashians %&gt;%
+  rename(month = Month,
+         kim = `Kim Kardashian: (Worldwide)`,
+         khloe = `Khloé Kardashian: (Worldwide)`,
+         kourtney = `Kourtney Kardashian: (Worldwide)`,
+         kendall = `Kendall Jenner: (Worldwide)`,
+         kylie = `Kylie Jenner: (Worldwide)`) %&gt;% 
+  mutate_if(is.character, str_replace, pattern = &quot;&lt;&quot;, replacement = &quot;&quot;) %&gt;% 
+  mutate_at(c(&quot;khloe&quot;, &quot;kourtney&quot;, &quot;kendall&quot;, &quot;kylie&quot;), as.numeric) %&gt;% 
+  separate(month, into = c(&quot;year&quot;, &quot;month&quot;), sep = &quot;-&quot;, convert = TRUE) %&gt;%
+  mutate(day = 15, .after = month) %&gt;%
+  mutate(date = ymd(paste(year, month, day, sep=&quot;-&quot;)))
+
+kard_summary &lt;- kard_clean %&gt;% 
+  group_by(year) %&gt;% 
+  summarize_at(c(&quot;kim&quot;, &quot;khloe&quot;, &quot;kourtney&quot;, &quot;kendall&quot;, &quot;kylie&quot;), mean)</code></pre>
+<p>What we want to do now is to plot these data</p>
+<pre class="r"><code>kard_clean</code></pre>
+<pre><code>## # A tibble: 217 × 9
+##     year month   day   kim khloe kourtney kendall kylie date      
+##    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;    
+##  1  2004     1    15     2     0        1       1     2 2004-01-15
+##  2  2004     2    15     1     1        1       1     2 2004-02-15
+##  3  2004     3    15     1     0        0       1     2 2004-03-15
+##  4  2004     4    15     2     1        1       1     2 2004-04-15
+##  5  2004     5    15     1     1        1       1     1 2004-05-15
+##  6  2004     6    15     1     1        0       1     1 2004-06-15
+##  7  2004     7    15     1     0        0       1     2 2004-07-15
+##  8  2004     8    15     1     1        1       1     1 2004-08-15
+##  9  2004     9    15     1     0        1       1     1 2004-09-15
+## 10  2004    10    15     1     0        0       1     1 2004-10-15
+## # … with 207 more rows</code></pre>
+<p>Let’s think about what is wrong with this table and how else we can improve it.</p>
+<pre class="r"><code>kard_tidy &lt;- kard_clean %&gt;%
+  pivot_longer(cols = c(&quot;kim&quot;, &quot;khloe&quot;, &quot;kourtney&quot;, &quot;kendall&quot;, &quot;kylie&quot;),
+               names_to = &quot;name&quot;,
+               values_to = &quot;score&quot;)
+
+kard_tidy</code></pre>
+<pre><code>## # A tibble: 1,085 × 6
+##     year month   day date       name     score
+##    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;
+##  1  2004     1    15 2004-01-15 kim          2
+##  2  2004     1    15 2004-01-15 khloe        0
+##  3  2004     1    15 2004-01-15 kourtney     1
+##  4  2004     1    15 2004-01-15 kendall      1
+##  5  2004     1    15 2004-01-15 kylie        2
+##  6  2004     2    15 2004-02-15 kim          1
+##  7  2004     2    15 2004-02-15 khloe        1
+##  8  2004     2    15 2004-02-15 kourtney     1
+##  9  2004     2    15 2004-02-15 kendall      1
+## 10  2004     2    15 2004-02-15 kylie        2
+## # … with 1,075 more rows</code></pre>
+<p>Now this is a tidy dataset and we can use it to plot</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, group = name))</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Nothing appears in this graph because we specified the aesthetics but never specified what to do with them</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_point()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_col(position = &quot;dodge&quot;)</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() + 
+  geom_smooth(method = &quot;loess&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Are they on average growing in popularity or not?</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() + 
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><a href="https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/" class="uri">https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/</a> for theme colors</p>
+<p>We can modify the coordinate system</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  scale_y_log10()</code></pre>
+<pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>We can also modify the labels</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians, Google Trends data&quot;,
+       )</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>We can also modify the legend text</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians, Google Trends data&quot;,
+       ) +
+  scale_color_discrete(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;))</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>The grey background is not the most aesthetically pleasing so we can remove it:</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians, Google Trends data&quot;,
+       ) +
+  scale_color_discrete(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>There are a lot of cool themes inside <code>ggthemes</code></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians, Google Trends data&quot;,
+       ) +
+  scale_color_discrete(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)) +
+  theme_wsj()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Let’s fix the title since it doesn’t display properly</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the \n Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_discrete(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)) +
+  theme_wsj()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_discrete(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)) +
+  theme_economist()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>We might want to change the colors of the lines now</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_viridis_d(name = &quot;Name&quot;,
+                       labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;),
+                       option = &quot;D&quot;) +
+  theme_economist()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_brewer(name = &quot;Name&quot;,
+                     labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;),
+                     type = &quot;qual&quot;
+                       ) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_lancet(name = &quot;Name&quot;,
+                     labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)
+                       ) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>If none of the color palettes work, we can always create our own</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_line() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_manual(name = &quot;Name&quot;,
+                     labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;),
+                     values = c(&quot;#C9D2FF&quot;, &quot;#F26379&quot;, &quot;#4B67F2&quot;, &quot;#F2C333&quot;, &quot;#3FF262&quot;)) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>We can also try different aesthetics to see what works better.</p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name)) +
+  geom_point() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_color_lancet(name = &quot;Name&quot;,
+                     labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)
+                       ) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  ggplot(aes(x = date, y = score, color = name, fill = name)) +
+  geom_col() +
+  labs(x = &quot;Date&quot;,
+       y = &quot;Popularity&quot;,
+       title = &quot;The Popularity of the Kardashians&quot;,
+       subtitle = &quot;Google trends data&quot;
+       ) +
+  scale_fill_lancet(name = &quot;Name&quot;,
+                     labels = c(&quot;Kendall&quot;, &quot;Khloe&quot;, &quot;Kim&quot;, &quot;Kourtney&quot;, &quot;Kylie&quot;)
+                       ) +
+  scale_color_discrete(guide = &quot;none&quot;) +
+  theme_classic()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<pre class="r"><code>kard_tidy %&gt;% 
+  group_by(month, name) %&gt;% 
+  summarize(mean_score = mean(score)) %&gt;% 
+  ggplot(aes(x = month, y = mean_score, fill = name)) +
+  geom_col(position = &quot;dodge&quot;, alpha = 0) +
+  geom_point() +
+  geom_polygon(alpha = 0.2) + 
+  scale_x_continuous(breaks = 1:12, labels =  month.abb[1:12]) + 
+  coord_polar()</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;month&#39;. You can override using the `.groups` argument.</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Maps are nothing more than just graphs, too We can load the map of the US</p>
+<pre class="r"><code>library(usmap)</code></pre>
+<p>and use it to plot the popularity of search terms by state</p>
+<pre class="r"><code>plot_usmap(regions = &quot;states&quot;)</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<pre class="r"><code>wawa &lt;- read_csv(&quot;geoMap.csv&quot;, skip = 1)</code></pre>
+<pre><code>## Rows: 51 Columns: 2</code></pre>
+<pre><code>## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Region
+## dbl (1): Wawa: (1/1/04 - 1/27/22)</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>wawa_clean &lt;- wawa %&gt;% rename(state = Region,
+                wawa = `Wawa: (1/1/04 - 1/27/22)`) %&gt;% 
+  mutate(fips = fips(state))
+  
+plot_usmap(data = wawa_clean, regions = &quot;states&quot;, values = &quot;wawa&quot;) +
+scale_fill_viridis_c()</code></pre>
+<p><img src="lecture03---visualization_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

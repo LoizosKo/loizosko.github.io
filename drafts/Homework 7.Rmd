@@ -1,0 +1,194 @@
+---
+title: "Homework 7 (Last One)"
+output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+`Let's work with the titanic dataset.`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+titanic <- read.csv("titanic3.csv")
+```
+
+`1. Construct a table showing the distribution of passengers by class and survival.`
+
+```{r}
+table(survived, pclass)
+```
+
+`2. Construct a logistic regression model that links survival to the passenger class. Write out the equation first without Running it in R. HINT: Class is a factor variable`
+
+$$
+log(odds(y)) = β0 + β1*pclass2 + β2*plcass3 
+$$
+
+$$
+odds(y) = e^{β_0} * e^{β_1 * pclass2} * e^{β_2 * pclass3} 
+$$
+
+β0 = intercept
+
+y = survival
+
+`3. Using hand-calculations, determine the coefficients in the model and interpret them (HINT: all you need to do is to use the table, calculate odds for the default category and the odds-ratios for the other categories versus the default)`
+
+**e.g. not survival is the default exercise (i.e. =0). prob of survival of:**
+
+first class =\> 200/(200+123) = 62% of people survived
+
+second class =\> 119/(119+158) = 43% of people survived
+
+third class =\> 181/(181+528) = 26% of people survived
+
+**Probabilities vary between zero and one. Instead, for the purpose of the logistical regression we can calculate odds of survival of**:
+
+first class =\>200/123=1.62 =\> for each first class person who died, 1.62 first class people survived.
+
+second class =\>119/158 = 0.75 =\> for each second class person who died, 0.75 second class person survived.
+
+third class =\>181/528 = 0.34 =\> for each third class person who died, 0.34 third class person survived.
+
+**When we take the log of odds, the result varies from - infinity to + infinity. log of survival of:**
+
+first class people: log(200/123)=0.486
+
+second class people: log(119/158)=-0.28
+
+third class people: log(181/528)=-1.07
+
+`4. Now Run the model in R. Confirm that you got the same results as in part c). Interpret the results and talk about significance (both statistical and substantive).`
+
+```{r}
+summary(glm(survived ~ factor(pclass), family = "binomial"))
+question2 <- glm(survived ~ factor(pclass), family = "binomial")
+exp(question2$coefficients)
+```
+
+This code leaves us with the following equation of log odds:
+
+Survived = 0.486 -0.77class2 -1.56class3
+
+The significant p-values are telling us that the intercept is not zero.
+It means that the beta one (β1) is different from zero.
+This implies that there is a difference between classes and survival.
+We do not know yet what is the magnitude of the difference because this is a difference in log odds.
+
+Since is negative it means that classes 2 and 3 have lower survival chances from the first class.
+The 3rd class has the lowest chances of survival since its β1 coefficient has the highest negative number.
+
+`5. What's the probability of survival for each class of passengers?`
+
+**First class had the odds of survival of 1.62**.
+We can calculate the probability of survival as (1.62)/(1 + 1.62) = 0.6183206 or about 61.8%.
+
+**Second class had the odds of survival of 0.75**.
+We can calculate the probability of survival as (0.75)/(1 + 0.75) = 0.4285714 or about 42.8%
+
+**Third class had the odds of survival of 0.34**.
+We can calculate the probability of survival as (0.34)/(1 + 0.34) = 0.2537313 or about 25.3%
+
+`6. Construct a model that interacts class of passenger and his/her gender. Interpret the results the same way you did before.`
+
+First we conduct the model just like as before but this time we add gender (aka 'sex') as a factor variable.
+This time though we either add or multiply the one variable with the other.
+This model would help us make predictions for a passenger.
+
+Because here the model assumes interaction between class and gender we construct the model with a '\*' sign.
+If we add a '\*' sign we assume that there are interactions; meaning that the effect of class depends on gender OR the effect of gender depends on class.
+
+---The alternative was the '+' sign.
+If we add a '+' sign we assume that there are no interactions; meaning that the effect of class does not depend on gender.
+This was our assumption when we were doing linear models.---
+
+```{r}
+summary(glm(survived~factor(pclass) * factor(sex), family = "binomial", data = titanic))
+```
+
+**Let's make an assumption for a male sitting in first class.**
+
+log odds of survival =\> 3.325 - 3.9848 = -0.6598
+
+odds of survival =\> exp(-0.6598) = 0.5169547
+
+probability of survival =\> 0.5169547/(1+0.5169547) = 0.3407845 or 34%
+
+**Let's make an assumption for a male sitting in second class.**
+
+log odds of survival =\> 3.325 -1.2666 - 3.9848+0.1617 = -1.7647
+
+odds of survival =\> exp(-1.7647) = 0.1712382
+
+probability of survival =\> 0.1712382/(1+0.1712382) = 0.1462027 or 14.6%
+
+**Let's make an assumption for a male sitting in third class.**
+
+log odds of survival =\> 3.325 -3.3621 - 3.9848 +2.3039 = -1.718
+
+odds of survival =\> exp(-1.718) = 0.1794246
+
+probability of survival =\> 0.1794246/(1+0.1794246) = 0.1521289 or 15.21%
+
+**Let's make an assumption for a female sitting in first class.**
+
+log odds of survival =\> 3.325
+
+odds of survival =\> exp(3.325) = 27.799
+
+probability of survival =\> 27.799/(1+27.799) = 0.9652766 or 96.5%
+
+**Let's make an assumption for a female sitting in second class.**
+
+log odds of survival =\> 3.325 -1.2666 = 2.0584
+
+odds of survival =\> exp(2.0584) = 7.833426
+
+probability of survival =\> 7.833426/(1+7.833426) = 0.8867936 or 88.6%
+
+**Let's make an assumption for a female sitting in third class.**
+
+log odds of survival =\> 3.325 -3.3621 = -0.0371
+
+odds of survival =\> exp(-0.0371) = 0.9635798
+
+probability of survival =\> 0.9635798/(1+0.9635798) = 0.4907261 or 49%
+
+[**Interpretation of results**]{.ul}
+
+It looks like the closer someone is in the first class, the better the chance to survive.
+However, there is an interesting result between men of third and second category, where the men in third category had slightly higher chances of survival than the men in second class.
+In general, females had higher chances of survival.
+Even the females in the third class had 15% higher chance of survival than the males in the first class (49% vs 34%).
+Around 9 out of 10 women survived in classes 1 and 2.
+One out of two women survived out of the third class.
+Only one out of three men in the first class survived while in classes 2 and 3 men had the lowest chances of survival (14.6% and 15.2%).
+This slight difference though can also be due to random noise.
+
+[How we arrived to those results]{.ul}:
+
+After running the logistical regression model we came up with the intercept and coefficient number odds which where in log form; hence we had to convert those in actual odds.
+Before converting them to odds, we sum up the related variables that we want to find in order to also have the log odds of survival (e.g. for female in second class we used the intercept 3.325 and the pclass2 value -1.2666).
+
+Then, we exponentiate the log odds of survival to find the actual odds of survival (e.g. female in second class = 7.83 --- which means each female who died, 7.83 survived).
+
+Because human brain is not well designed enough to perceive odds as a measurement, we converted those to probability using the formula:
+
+$$
+probability = odds/1+odds
+$$
+
+We did that for each one of the six outcomes
+
+-   male 1st class = 34%
+
+-   male 2nd class = 14.6%
+
+-   male 3rd class = 15.2%
+
+-   female 1st class = 96.5%
+
+-   female 2nd class = 88.6%
+
+-   female 3rd class = 49%
