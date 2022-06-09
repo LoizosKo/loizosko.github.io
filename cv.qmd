@@ -3,4 +3,4 @@ title: "Resume"
 editor: visual
 ---
 
-Here's my [Resume](lkr.pdf)
+Here is my up-to-date [Resume](lkr.pdf)
