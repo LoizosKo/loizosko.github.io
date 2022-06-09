@@ -1,8 +1,0 @@
-"0","```r
-table(survived, pclass)
-```"
-"1","        pclass
-survived   1   2   3
-       0 123 158 528
-       1 200 119 181
-"

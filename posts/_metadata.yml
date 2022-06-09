@@ -1,0 +1,8 @@
+freeze: true
+page-layout: article
+comments:
+  utterances:
+      repo: loizosko/loizosko
+toc: true
+toc-depth: 2
+toc-location: "left"

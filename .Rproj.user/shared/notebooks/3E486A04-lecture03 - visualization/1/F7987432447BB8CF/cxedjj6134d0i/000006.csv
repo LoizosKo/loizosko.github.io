@@ -1,6 +1,0 @@
-"0","kard_tidy <- kard_clean %>%"
-"0","  pivot_longer(cols = c(""kim"", ""khloe"", ""kourtney"", ""kendall"", ""kylie""),"
-"0","               names_to = ""name"","
-"0","               values_to = ""score"")"
-"0",""
-"0","kard_tidy"

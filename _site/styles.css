@@ -1,0 +1,78 @@
+.navbar-dark {
+  background-color: #144854;
+}
+
+
+#posts> table, td {
+  --bs-table-accent-bg: 0;
+  --bs-table-bg: #002b36;
+  border-color: rgba(255, 0, 0, 0.0);
+  border-collapse:collapse
+}
+
+#posts > table > thead {
+  border-bottom: 0px;
+  display: none;
+  border-bottom-color: rgba(255, 0, 0, 0.0);
+}
+
+#posts >table>:not(:first-child) {
+    border-top-width: 0px;
+    border-top-color: #073642;
+}
+
+a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    color: #03dece;
+    transition: background-size .3s;
+}
+
+a:hover, a:focus {
+  background-size: 100% 2px;
+  color: #83fff6;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+#quarto-document-content > p:nth-child(1)
+
+
+
+#quarto-content > div > div { 
+  flex-direction: row;
+  column-gap: 0.8em;
+  row-gap: 15px;
+  flex-wrap: wrap;
+}
+
+div.quarto-about-jolla {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+div.quarto-about-jolla .about-link {
+    font-size: 1.8em;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+}
+
+#quarto-content > div > hr {
+  margin-top: 0;
+  margin-bottom: 28.5px;
+}
+
+
+div.quarto-about-jolla .about-link i.bi {
+    margin-right: 0.15em;
+    margin-left: 0.15rem;
+}

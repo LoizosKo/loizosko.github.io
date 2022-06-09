@@ -1,3 +1,0 @@
-"0","```r
- Denmark %>%  ggplot(aes(x=year, y=lifeExp)) + geom_line()
-```"

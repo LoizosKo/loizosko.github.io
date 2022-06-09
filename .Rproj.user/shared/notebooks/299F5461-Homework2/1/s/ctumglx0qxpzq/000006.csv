@@ -1,9 +1,0 @@
-"0","```r
-
-
-#For purposes of answering question 9:
-#Mean Denmark 1952
-gapminder %>%
-  filter(country==\"Denmark\", year == min(year)) %>%
-  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
-```"

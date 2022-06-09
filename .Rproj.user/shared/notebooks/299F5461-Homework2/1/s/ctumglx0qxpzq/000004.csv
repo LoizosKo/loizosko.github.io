@@ -1,7 +1,0 @@
-"0","```r
-
-#Mean Europe 2007
-gapminder %>%
-  filter(continent==\"Europe\", year == max(year)) %>%
-  summarise(avg_pop=mean(pop), avg_lifeExp=mean(lifeExp), avg_gdpPCap= mean(gdpPercap))
-```"

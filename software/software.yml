@@ -1,0 +1,18 @@
+- category: RStudio projects
+  tiles:
+    - title: Google Trends
+      subtitle: Top 3 American Sitcoms
+      href: sitcoms.html
+      thumbnail: img/white-googletrends-removebg-preview.png
+
+
+      
+- category: Python projects
+  tiles:
+    - title: 
+      subtitle: 
+      href: 
+      thumbnail: 
+
+      
+      

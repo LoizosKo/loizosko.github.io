@@ -1,0 +1,38 @@
+project:
+  type: website
+  repo-url: https://loizosko.github.io/loizosko/
+
+website:
+  title: "Loizos Konstantinou"
+  favicon: favicon.ico
+  site-url: https://loizosko.github.io/loizosko/
+  repo-url: https://loizosko.github.io/loizosko/
+  repo-branch: quarto
+  page-navigation: true
+  google-analytics:
+    tracking-id: "G-K5PK7P3TJZ"
+    anonymize-ip: true
+  navbar:
+    background: primary
+    right:
+      - href: blog.qmd
+        text: Blog
+      - href: software/index.qmd
+        text: Projects
+      - href: cv.qmd
+        text: Resume
+      - icon: linkedin
+        href: https://www.linkedin.com/in/loizoskon/
+      - icon: github
+        href: https://github.com/LoizosKo
+      - icon: twitter
+        href: https://twitter.com/loizoskon
+
+  search:
+    location: navbar
+    type: overlay
+format:
+  html:
+    theme:
+      light: solar
+    css: styles.css

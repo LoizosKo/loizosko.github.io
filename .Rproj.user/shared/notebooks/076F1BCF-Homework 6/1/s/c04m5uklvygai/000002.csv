@@ -1,7 +1,0 @@
-"0","```r
-datac <- columnss %>% mutate(score = SC0 *10)
-
-datacool <- datac %>% select(-Outcome1, -Outcome2, -Outcome3, -Outcome4, -Outcome5, -Outcome6, -Outcome7, -Outcome8, -Outcome9, -Outcome10, -Outcome11, -Outcome12, -Outcome13, -Outcome14, -Outcome15, -Outcome16, -Outcome17, -Outcome18, -Outcome19, -Outcome20, -SC0)
-
-dataex1<- datacool %>% select(-Risk, - Age)
-```"

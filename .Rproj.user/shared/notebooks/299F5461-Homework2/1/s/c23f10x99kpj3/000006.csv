@@ -1,3 +1,0 @@
-"0","```r
- Denmark %>%  ggplot(aes(x=year, y=gdpPercap)) + geom_line()
-```"

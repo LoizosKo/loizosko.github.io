@@ -1,0 +1,6 @@
+---
+title: "Resume"
+editor: visual
+---
+
+Here's my [Resume](lkr.pdf)

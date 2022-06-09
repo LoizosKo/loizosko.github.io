@@ -1,7 +1,0 @@
-"0","```r
-#for male
-malepred <- -1.07*1+4.75
-
-#for female
-femalepred <- -1.07*0+4.75
-```"
