@@ -1,12 +1,13 @@
 project:
   type: website
-  repo-url: https://loizosko.github.io/loizosko/
+  output-dir: docs
+  repo-url: https://www.loizos.xyz
 
 website:
   title: "Loizos Konstantinou"
   favicon: favicon.ico
-  site-url: https://loizosko.github.io/loizosko/
-  repo-url: https://loizosko.github.io/loizosko/
+  site-url: https://www.loizos.xyz
+  repo-url: https://www.loizos.xyz
   repo-branch: quarto
   page-navigation: true
   google-analytics:

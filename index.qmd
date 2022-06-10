@@ -13,21 +13,11 @@ about:
         href: https://www.youtube.com/channel/UCAAuUtKAD8o5PviWxuQ3NSg
 ---
 
-
-
-Hi 👋 I am Loizos! This is my personal website. 
-
-I am **currently pursuing** a **Master of Behavioral and Decision Sciences** from the **University of Pennsylvania**, **graduating in December 2022**. Through my graduate coursework I am doing concentration in consumer analytics.
-
-At UPenn, I am taking a challenging coursework including 'Statistical Reasoning for Behavioral Science', 'Data Science and Quantitative Modeling', 'Judgments and Decisions', 'Public policy and Public Finance'. I was also elected as a **student representative** for [GAPSA](https://web.sas.upenn.edu/lps-gov/program-representatives/) (Graduate and Professional Student Assembly) where I advocated for graduate student needs, and helped to organize activities that enhance the ties of the school's graduate community. 
-
-My passion lies at the intersection of consumer behavior, marketing, technology, and data analysis. I believe behavioral science can inform marketing decisions to improve the consumer experience, satisfaction, and welfare. In my experience at previous positions, I developed analytical and problem-solving skills, an understanding of quantitative and qualitative methodologies, as well as strong interpersonal skills. While in school, I've worked for non-governmental organizations and represented Cyprus in educational programs in Europe and the US. 
-
-I am always seeking new ways to improve marketing and consumer relations using behavioral science and analytics. During school, I've gained experience in Python, R, MS office, and SPSS. Looking forward to pursuing my interests and gaining experience in the field of consumer experience and market research. 
+Hi 👋 I am Loizos! This is my personal website.
 
 I have a [blog](https://loizosko.github.io/loizosko/_site/blog.html) that is infrequently updated 📝
 
-See my [projects](https://loizosko.github.io/loizosko/_site/software/) for some things I’ve been working 🛠
+See my [projects](https://loizosko.github.io/loizosko/_site/software/) for some things I've been working 🛠
 
 Feel free to get in contact below
 

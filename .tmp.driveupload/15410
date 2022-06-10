@@ -1,0 +1,1247 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "ff76c405",
+   "metadata": {},
+   "source": [
+    "Refer to the state of the union addresses made by US presidents since WWII. To simplify the task, only looks at the first address for each president. (You can find the archive here: https://www.presidency.ucsb.edu/documents/presidential-documents-archive-guidebook/annual-messages-congress-the-state-the-union (Links to an external site.)) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c805b005",
+   "metadata": {},
+   "source": [
+    "\n",
+    "1. Look at the frequency of words\n",
+    "2. Look at topic modeling (what do they talk about)\n",
+    "3. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "0102776b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package averaged_perceptron_tagger to\n",
+      "[nltk_data]     /Users/loizoskon/nltk_data...\n",
+      "[nltk_data]   Package averaged_perceptron_tagger is already up-to-\n",
+      "[nltk_data]       date!\n",
+      "[nltk_data] Downloading package wordnet to\n",
+      "[nltk_data]     /Users/loizoskon/nltk_data...\n",
+      "[nltk_data]   Package wordnet is already up-to-date!\n",
+      "[nltk_data] Downloading package vader_lexicon to\n",
+      "[nltk_data]     /Users/loizoskon/nltk_data...\n",
+      "[nltk_data]   Package vader_lexicon is already up-to-date!\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# We start as always with importing the necessary libraries\n",
+    "import requests #PACKAGE THAT allows us download texts from online (e.g. I request Moby Dick's online book without downloading it)\n",
+    "import re\n",
+    "from requests import get\n",
+    "from bs4 import BeautifulSoup #Submodule of bs4 (I don't need the entire package). \n",
+    "import nltk #natural language processing (NLP)\n",
+    "from nltk.sentiment.vader import SentimentIntensityAnalyzer\n",
+    "from collections import Counter \n",
+    "from requests import get\n",
+    "import pandas as pd\n",
+    "import plotly.express as px\n",
+    "import plotly.graph_objs as go\n",
+    "import plotly.offline as py\n",
+    "import numpy as np\n",
+    "from sklearn.feature_extraction.text import CountVectorizer\n",
+    "from sklearn.decomposition import LatentDirichletAllocation as LDA\n",
+    "import numpy as np\n",
+    "import itertools\n",
+    "import matplotlib.pyplot as plt\n",
+    "from gensim import corpora, similarities\n",
+    "from gensim.models import TfidfModel\n",
+    "from scipy.cluster import hierarchy\n",
+    "from nltk.stem import PorterStemmer\n",
+    "import pickle\n",
+    "import warnings\n",
+    "import wordninja\n",
+    "from selenium import webdriver\n",
+    "from selenium.webdriver.common.by import By\n",
+    "from autocorrect import Speller\n",
+    "from nltk.stem import WordNetLemmatizer\n",
+    "from nltk.corpus import wordnet\n",
+    "import contractions\n",
+    "import nltk\n",
+    "from sklearn.feature_extraction.text import TfidfVectorizer\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "from scipy.cluster.vq import kmeans, vq\n",
+    "from sklearn.naive_bayes import MultinomialNB\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn import metrics\n",
+    "from sklearn.svm import LinearSVC\n",
+    "\n",
+    "#for the code to work\n",
+    "nltk.download('averaged_perceptron_tagger')\n",
+    "nltk.download('wordnet')\n",
+    "nltk.download('vader_lexicon')\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f3377875",
+   "metadata": {},
+   "source": [
+    "1. Refer to the state of the union addresses made by US presidents since WWII. To simplify the task, only looks at the first address for each president. (You can find the archive here: https://www.presidency.ucsb.edu/documents/presidential-documents-archive-guidebook/annual-messages-congress-the-state-the-union (Links to an external site.)) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac63fd05",
+   "metadata": {},
+   "source": [
+    "We ask BeautifulSoup to locate a table on the page, scan through the rows of this table, and then get the first link on each of the rows."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "14c8e80e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#url = \"https://www.presidency.ucsb.edu/documents/presidential-documents-archive-guidebook/annual-messages-congress-the-state-the-union\"\n",
+    "\n",
+    "#https://www.presidency.ucsb.edu/documents/app-categories/spoken-addresses-and-remarks/presidential/state-the-union-addresses\n",
+    "#\n",
+    "# Find the first instance of a table on the page (this will simplify work for us)\n",
+    "#response = get(url)\n",
+    "#soup = BeautifulSoup(response.text, 'html.parser')\n",
+    "#table = soup.find('table')\n",
+    "\n",
+    "# Create an empty list to keep all the links\n",
+    "#links = []\n",
+    "\n",
+    "# Look through each row of the table to identify if there are links,\n",
+    "# if there are any, then get the first link, if there aren't any, just skip that row\n",
+    "#if table.findAll(\"tr\"):\n",
+    "#    trs = table.findAll('tr') \n",
+    "#    for tr in trs:\n",
+    "#        try:\n",
+    "#            link = tr.find('a')['href'] # Finds the first link in a row\n",
+    "#            links.append(link) # Appends that link to the links list.\n",
+    "#        except:\n",
+    "#            pass\n",
+    "#print(table)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "852526da",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# We can also find all instances of the links on a page and that's what the code below does\n",
+    "# You can use the code below but I want to solve a more general version of the homework, \n",
+    "# so I will use this code here:\n",
+    "############\n",
+    "#trs= table.findAll('tr')\n",
+    "#for tr in trs:\n",
+    "#    try:\n",
+    "#        aas = tr.find_all('a') # Finds the first link in a row\n",
+    "#        for a in aas:\n",
+    "#            link = a['href']\n",
+    "#            links.append(link) # Appends that link to the links list.\n",
+    "#    except:\n",
+    "  #      pass\n",
+    "#\n",
+    "#links\n",
+    "#############\n",
+    "# Note that we had to use the try: and except:,\n",
+    "# because otherwise the code would result in an error as some rows don't have any links    \n",
+    "# Uncomment the code below to see this for yourself.\n",
+    "\n",
+    "# Select the links that are needed\n",
+    "#links_needed = links[0:22]\n",
+    "\n",
+    "#for tr in trs:\n",
+    "#    link = tr.find('a')['href'] # Finds the first link in a row\n",
+    "#    links.append(link) # Appends that link to the links list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "9a3abf91",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Links now has all the links we needed. I can save them to an excel file \n",
+    "# just in case I need them\n",
+    "\n",
+    "#pd.DataFrame(links).to_excel(\"links.xlsx\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "0aea9690",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# We can now go through individual links and extract the information we want.\n",
+    "# If we examine the pages of each speech, we will notice each speech is stored inside\n",
+    "# the following tag \"<div class=\"field-docs-content\"> </div>\". \n",
+    "# That's what we can grab.\n",
+    "\n",
+    "# We can also grab the date stored inside the following tag:\n",
+    "#  <div class=\"field-docs-start-date-time\"></div>\n",
+    "\n",
+    "# Finally, to make our life even more easy, let's grab the name of the President\n",
+    "# It's in the tag \"<div class=\"field-title\"></div>\"\n",
+    "\n",
+    "# I will also grab the title of the speech just in case I need to use it since the titles differed somewhat\n",
+    "\n",
+    "\n",
+    "# We start with creating empty containers\n",
+    "\n",
+    "#names = []\n",
+    "#dates = []\n",
+    "#speeches = []\n",
+    "#titles = [] \n",
+    "\n",
+    "#for link in links:\n",
+    "#    try:\n",
+    "#        response = get(link)\n",
+    "#    except: # I need this because Nixon's speech in 1973 in done in an annoying way, it's a footnote actually\n",
+    "#        pass # so the code without it would result in an error\n",
+    "   # soup = BeautifulSoup(response.text, 'html.parser')\n",
+    "  #  name =  soup.find(\"div\", class_ =\"field-title\").get_text(strip=True)\n",
+    " #   date = soup.find(\"div\", class_ =\"field-docs-start-date-time\").get_text(strip=True)\n",
+    " #   title = soup.find(\"div\", class_ =\"field-ds-doc-title\").get_text(strip=True)\n",
+    "#    #speech = soup.find(\"div\", class_ =\"field-docs-content\").get_text(strip=True)\n",
+    "   # names.append(name)\n",
+    "  #  dates.append(date)\n",
+    " #   titles.append(title)\n",
+    "#    speeches.append(speech)\n",
+    "    \n",
+    "#    print(names)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "170e36f9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#df = pd.DataFrame({'name': names, 'date': dates, 'title': titles, \"speech\": speeches})\n",
+    "#display(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "90c60f90",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'df' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_44428/2776134776.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mto_excel\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"speeches.xlsx\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdate\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'df' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "df.to_excel(\"speeches.xlsx\")\n",
+    "print(date)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "01ff04db",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'links' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_44428/2056139331.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      8\u001b[0m \u001b[0mlink_index\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m2\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m7\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m14\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m22\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m30\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m34\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m42\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m49\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m52\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m59\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m68\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m79\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m91\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m \u001b[0;31m#link_index = [1,2,7,14,22,30,34,42,49,52,59,65,68,79,88]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 10\u001b[0;31m \u001b[0mnewlink\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mlinks\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mi\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mlink_index\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     11\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mPresidentName\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_44428/2056139331.py\u001b[0m in \u001b[0;36m<listcomp>\u001b[0;34m(.0)\u001b[0m\n\u001b[1;32m      8\u001b[0m \u001b[0mlink_index\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m2\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m7\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m14\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m22\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m30\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m34\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m42\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m49\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m52\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m59\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m68\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m79\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m91\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m \u001b[0;31m#link_index = [1,2,7,14,22,30,34,42,49,52,59,65,68,79,88]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 10\u001b[0;31m \u001b[0mnewlink\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mlinks\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mi\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mlink_index\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     11\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mPresidentName\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'links' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#create a list of president names\n",
+    "PresidentName = ['Joseph R. Biden', 'Donald J. Trump', 'Barack Obama', 'George W. Bush', \n",
+    "                 'William J. Clinton', 'George Bush', 'Ronald Reagan', 'Jimmy Carter',\n",
+    "                'Gerald R. Ford','Richard Nixon', 'Lyndon B. Johnson','Dwight D. Eisenhower',\n",
+    "                'Harry S. Truman', 'Franklin D. Roosevelt']\n",
+    "\n",
+    "#manually extract linksof first speech of each president\n",
+    "link_index = [1,2,7,14,22,30,34,42,49,52,59,68,79,91]\n",
+    "#link_index = [1,2,7,14,22,30,34,42,49,52,59,65,68,79,88]\n",
+    "newlink=[links[i] for i in link_index]\n",
+    "\n",
+    "print(PresidentName)\n",
+    "print(newlink)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "0347b899",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'newlink' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_44428/2496295729.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0mdf\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mDataFrame\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'PresidentName'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mPresidentName\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Links'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnewlink\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      5\u001b[0m \u001b[0mdisplay\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mLinks\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mvalues\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdf\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'newlink' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#create a dataframe\n",
+    "df = pd.DataFrame()\n",
+    "df['PresidentName'] = PresidentName\n",
+    "df['Links'] = newlink\n",
+    "display(df.Links.values)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2db6f65d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "outcome = []\n",
+    "for lnk in df.Links.values:\n",
+    "    r = requests.get(lnk)\n",
+    "    r.encoding = 'utf-8'\n",
+    "    html = r.text\n",
+    "    soup = BeautifulSoup(html,'html.parser')\n",
+    "    text = soup.get_text()\n",
+    "    outcome.append(text)\n",
+    "    \n",
+    "print(pd.DataFrame(outcome))#all the speeches in tabular format"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "62e862db",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "outcome1 = [x.replace(\"\\n\", \"\") for x in outcome]#I replace 'n' with nothing\n",
+    "df2 = pd.DataFrame(outcome1)#I create a new dataframe\n",
+    "\n",
+    "df2[[0]]\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "907e1923",
+   "metadata": {},
+   "source": [
+    "1. What are the 10 most common \"meaningful\" words used by each president since Harry Truman? What does it say about the shift in priorities in the American politics? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "676b52f8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Previous speech links were not scraped so we import the excel that includes them here for the analysis\n",
+    "speeches = pd.read_excel('state_of_the_union_speeches.xlsx')\n",
+    "\n",
+    "#I use a function and include the code that want to apply for every president.\n",
+    "def my_function(x):\n",
+    "    r = requests.get(x['html'])\n",
+    "    r.encoding = 'utf-8' \n",
+    "    html = r.text \n",
+    "    #print(html[0:2000]) \n",
+    "\n",
+    "    soup = BeautifulSoup(html, \"html.parser\")\n",
+    "    president_text = soup.get_text()\n",
+    "    #print(president_text[0:2000])\n",
+    "\n",
+    "    #THE DOCUMENT IS TOKENIZED -- SPLITTING TEXT INTO INDIVUDUAL WORDS\n",
+    "    tokenizer = nltk.tokenize.RegexpTokenizer('\\w+')\n",
+    "    tokens = tokenizer.tokenize(president_text) \n",
+    "    #print(tokens[0:10])\n",
+    "\n",
+    "    #Defining stopwords and adding more to the list. This list is same across all 14 presidents' speeches. \n",
+    "    sw = nltk.corpus.stopwords.words('english') \n",
+    "    newsw = ['annual', 'number', 'help', 'thank', 'get',  'going', 'think', 'look', 'said', \n",
+    "             'create', 'citizens', 'citizen', 'across', 'since', 'go', 'believe', 'say', \n",
+    "             'long', 'better', 'plan', 'national', 'ask' '10', 'much', 'good', 'great', \n",
+    "             'best', 'cannot', 'still', 'know', 'years', '1', 'major', 'want', 'able', 'put', \n",
+    "             'capacity', 'programs', 'per', 'percent', 'million', 'act', 'provide', 'afford', \n",
+    "             'needed', 'may', 'possible', 'full', '2', 'effort', 'meeting', 'address', 'ever', \n",
+    "             'measures', 'ago', 'delivered', '5', 'program', 'past', 'future', 'need', 'needs', \n",
+    "             'house', 'also', 'tonight', 'propose', 'toward', 'continue', 'society','country', \n",
+    "             'seek', 'period', 'year', 'man', 'men', 'one', 'areas', 'begin', 'live', 'make', \n",
+    "             'let', 'upon', 'well', 'office', 'meet', 'make' 'citizens', 'human', 'self', 'among', \n",
+    "             'peoples', 'affairs', 'would', 'field', 'first', 'interest', 'today', 'recommendations', \n",
+    "             'recomenndation', 'within', 'shall', 'administration', 'nation', 'nations', 'us', 'we', \n",
+    "             'policy', 'legislation', 'time', 'new', 'many', 'several', 'few', 'government', 'world', \n",
+    "             'people', 'united', 'states', 'system', 'every', 'people', 'must', '626','give', \n",
+    "             'categories', '226762', '17608', '24532', '430', '38','statistics', 'analyses', \n",
+    "             'miscellaneous', 'congressional', 'skip', 'content', 'documents', 'attributes', 'media', 'message', \n",
+    "             'congress', 'state', 'union', 'america', 'american', 'americans', 'presidency', 'president', \n",
+    "             'project', 'search', 'toggle', 'navigation', 'search', 'guidebook', 'archive', 'category', \n",
+    "             'main', 'take','like','yet','j','000', 'ask', '1974', 'federal', 'http', 'www', 'usb',\n",
+    "             'edu', 'the', 'the', 'before', 'joint', 'session', 'the','american', 'america',\n",
+    "            'year','congress','let','time', 'nation', 'new', 'people']\n",
+    "    sw.extend(newsw)\n",
+    "    #print(sw[0:30])\n",
+    "\n",
+    "    president_words = [token.lower() for token in tokens] \n",
+    "    words_ns = [word for word in president_words if word not in sw] \n",
+    "    #print(words_ns[:20])\n",
+    "    president_ns = \" \".join(words_ns)\n",
+    "\n",
+    "    #Determining the most commoon words \n",
+    "    count = Counter(words_ns)\n",
+    "    top_ten_president = count.most_common(10)\n",
+    "    top_10_string = ','.join([str(x) for x in top_ten_president])\n",
+    "    print_list = [top_10_string]\n",
+    "    return print_list\n",
+    "\n",
+    "#for i in range(13):\n",
+    "# #    fun(df2)\n",
+    "top_list = []\n",
+    "for index, row in speeches.iterrows():\n",
+    "    top = my_function(row)\n",
+    "    top_list.append(top)\n",
+    "\n",
+    "speeches['top ten'] = top_list\n",
+    "\n",
+    "display(speeches)\n",
+    "print(speeches)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "414f4861",
+   "metadata": {},
+   "source": [
+    "## **Interpretation of all president's words since Truman**\n",
+    "American priorities shifted over time. As we can see, From Hoover (1929) until Nixon (1974) issues and words related to \"freedom\", and \"peace\" were emphasized. This makes sense since during that time, WW2 and the Vietnam War were fought. \n",
+    "\n",
+    "\"Economy\" seems like a topic that is popular in almost every presidency.\n",
+    "\n",
+    "During Ford's and Reagan's presidency, \"tax\", and \"growth\" became really hot buzz words. Especially during Reagan administration, big tax reforms were introduced which they have significantly reduce taxes for businesses.\n",
+    "\n",
+    "\"inflation\" and \"energy\" were also popular during Nixon, Ford, and Reagan. It is important because especially during Nixon, the US economy after 14 years of economic development got in a stagflationary state; oil and gas crisis at the 70s was also a part of that.\n",
+    "\n",
+    "During George W Bush (2005), \"security\" was the most popular word used. This is because especially after 911, security became the main focus of his presidency.\n",
+    "\n",
+    "Healthcare gained importance during the Clinton Administration, and two administrations later, the Obama Administration expanded Medicaid. With the Covid-19 pandemic, healthcare again dominated the policy priorities in Biden's 2022 address.\n",
+    "\n",
+    "All the presidents, irrespective of their political affiliation (Democrats vs Republicans), mentioned about strengthening / growing the economy. Only presidents affiliated with the Democratic party seemed to emphasize on \"healthcare\", whereas a common theme among the Republican presidents' addresses was \"war / military spending / terrorism\"."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3001bd0e",
+   "metadata": {},
+   "source": [
+    "Top ten words of all Democrat Presidents"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "aa537b35",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Previous speech links were not scraped so we import the excel that includes them here for the analysis\n",
+    "democrat_speeches = pd.read_excel('democrat_speeches.xlsx')\n",
+    "\n",
+    "#I use a function and include the code that want to apply for every president.\n",
+    "def my_function(x):\n",
+    "    r = requests.get(x['html'])\n",
+    "    r.encoding = 'utf-8' \n",
+    "    html = r.text \n",
+    "    #print(html[0:2000]) \n",
+    "\n",
+    "    soup = BeautifulSoup(html, \"html.parser\")\n",
+    "    president_text = soup.get_text()\n",
+    "    #print(president_text[0:2000])\n",
+    "\n",
+    "    #THE DOCUMENT IS TOKENIZED -- SPLITTING TEXT INTO INDIVUDUAL WORDS\n",
+    "    tokenizer = nltk.tokenize.RegexpTokenizer('\\w+')\n",
+    "    tokens = tokenizer.tokenize(president_text) \n",
+    "    #print(tokens[0:10])\n",
+    "\n",
+    "    #Defining stopwords and adding more to the list. This list is same across all 14 presidents' speeches. \n",
+    "    sw = nltk.corpus.stopwords.words('english') \n",
+    "    newsw = ['annual', 'number', 'help', 'thank', 'get',  'going', 'think', 'look', 'said', \n",
+    "             'create', 'citizens', 'citizen', 'across', 'since', 'go', 'believe', 'say', \n",
+    "             'long', 'better', 'plan', 'national', 'ask' '10', 'much', 'good', 'great', \n",
+    "             'best', 'cannot', 'still', 'know', 'years', '1', 'major', 'want', 'able', 'put', \n",
+    "             'capacity', 'programs', 'per', 'percent', 'million', 'act', 'provide', 'afford', \n",
+    "             'needed', 'may', 'possible', 'full', '2', 'effort', 'meeting', 'address', 'ever', \n",
+    "             'measures', 'ago', 'delivered', '5', 'program', 'past', 'future', 'need', 'needs', \n",
+    "             'house', 'also', 'tonight', 'propose', 'toward', 'continue', 'society','country', \n",
+    "             'seek', 'period', 'year', 'man', 'men', 'one', 'areas', 'begin', 'live', 'make', \n",
+    "             'let', 'upon', 'well', 'office', 'meet', 'make' 'citizens', 'human', 'self', 'among', \n",
+    "             'peoples', 'affairs', 'would', 'field', 'first', 'interest', 'today', 'recommendations', \n",
+    "             'recomenndation', 'within', 'shall', 'administration', 'nation', 'nations', 'us', 'we', \n",
+    "             'policy', 'legislation', 'time', 'new', 'many', 'several', 'few', 'government', 'world', \n",
+    "             'people', 'united', 'states', 'system', 'every', 'people', 'must', '626','give', \n",
+    "             'categories', '226762', '17608', '24532', '430', '38','statistics', 'analyses', \n",
+    "             'miscellaneous', 'congressional', 'skip', 'content', 'documents', 'attributes', 'media', 'message', \n",
+    "             'congress', 'state', 'union', 'america', 'american', 'americans', 'presidency', 'president', \n",
+    "             'project', 'search', 'toggle', 'navigation', 'search', 'guidebook', 'archive', 'category', \n",
+    "             'main', 'take','like','yet','j','000', 'ask', '1974', 'federal', 'http', 'www', 'usb',\n",
+    "             'edu', 'the', 'the', 'before', 'joint', 'session', 'the','american', 'america',\n",
+    "            'year','congress','let','time', 'nation', 'new', 'people']\n",
+    "    sw.extend(newsw)\n",
+    "    #print(sw[0:30])\n",
+    "\n",
+    "    president_words = [token.lower() for token in tokens] \n",
+    "    words_ns = [word for word in president_words if word not in sw] \n",
+    "    #print(words_ns[:20])\n",
+    "    president_ns = \" \".join(words_ns)\n",
+    "\n",
+    "    #Determining the most commoon words \n",
+    "    count = Counter(words_ns)\n",
+    "    top_ten_president = count.most_common(10)\n",
+    "    top_10_string = ','.join([str(x) for x in top_ten_president])\n",
+    "    print_list = [top_10_string]\n",
+    "    return print_list\n",
+    "\n",
+    "#for i in range(13):\n",
+    "# #    fun(df2)\n",
+    "top_list = []\n",
+    "for index, row in democrat_speeches.iterrows():\n",
+    "    top = my_function(row)\n",
+    "    top_list.append(top)\n",
+    "\n",
+    "democrat_speeches['top ten'] = top_list\n",
+    "\n",
+    "display(democrat_speeches)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7ae1538e",
+   "metadata": {},
+   "source": [
+    "Top ten words of all Republican Presidents"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3f3dd68e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Previous speech links were not scraped so we import the excel that includes them here for the analysis\n",
+    "republican_speeches = pd.read_excel('republican_speeches.xlsx')\n",
+    "\n",
+    "#I use a function and include the code that want to apply for every president.\n",
+    "def my_function(x):\n",
+    "    r = requests.get(x['html'])\n",
+    "    r.encoding = 'utf-8' \n",
+    "    html = r.text \n",
+    "    #print(html[0:2000]) \n",
+    "\n",
+    "    soup = BeautifulSoup(html, \"html.parser\")\n",
+    "    president_text = soup.get_text()\n",
+    "    #print(president_text[0:2000])\n",
+    "\n",
+    "    #THE DOCUMENT IS TOKENIZED -- SPLITTING TEXT INTO INDIVUDUAL WORDS\n",
+    "    tokenizer = nltk.tokenize.RegexpTokenizer('\\w+')\n",
+    "    tokens = tokenizer.tokenize(president_text) \n",
+    "    #print(tokens[0:10])\n",
+    "\n",
+    "    #Defining stopwords and adding more to the list. This list is same across all 14 presidents' speeches. \n",
+    "    sw = nltk.corpus.stopwords.words('english') \n",
+    "    newsw = ['annual', 'number', 'help', 'thank', 'get',  'going', 'think', 'look', 'said', \n",
+    "             'create', 'citizens', 'citizen', 'across', 'since', 'go', 'believe', 'say', \n",
+    "             'long', 'better', 'plan', 'national', 'ask' '10', 'much', 'good', 'great', \n",
+    "             'best', 'cannot', 'still', 'know', 'years', '1', 'major', 'want', 'able', 'put', \n",
+    "             'capacity', 'programs', 'per', 'percent', 'million', 'act', 'provide', 'afford', \n",
+    "             'needed', 'may', 'possible', 'full', '2', 'effort', 'meeting', 'address', 'ever', \n",
+    "             'measures', 'ago', 'delivered', '5', 'program', 'past', 'future', 'need', 'needs', \n",
+    "             'house', 'also', 'tonight', 'propose', 'toward', 'continue', 'society','country', \n",
+    "             'seek', 'period', 'year', 'man', 'men', 'one', 'areas', 'begin', 'live', 'make', \n",
+    "             'let', 'upon', 'well', 'office', 'meet', 'make' 'citizens', 'human', 'self', 'among', \n",
+    "             'peoples', 'affairs', 'would', 'field', 'first', 'interest', 'today', 'recommendations', \n",
+    "             'recomenndation', 'within', 'shall', 'administration', 'nation', 'nations', 'us', 'we', \n",
+    "             'policy', 'legislation', 'time', 'new', 'many', 'several', 'few', 'government', 'world', \n",
+    "             'people', 'united', 'states', 'system', 'every', 'people', 'must', '626','give', \n",
+    "             'categories', '226762', '17608', '24532', '430', '38','statistics', 'analyses', \n",
+    "             'miscellaneous', 'congressional', 'skip', 'content', 'documents', 'attributes', 'media', 'message', \n",
+    "             'congress', 'state', 'union', 'america', 'american', 'americans', 'presidency', 'president', \n",
+    "             'project', 'search', 'toggle', 'navigation', 'search', 'guidebook', 'archive', 'category', \n",
+    "             'main', 'take','like','yet','j','000', 'ask', '1974', 'federal', 'http', 'www', 'usb',\n",
+    "             'edu', 'the', 'the', 'before', 'joint', 'session', 'the','american', 'america',\n",
+    "            'year','congress','let','time', 'nation', 'new', 'people']\n",
+    "    sw.extend(newsw)\n",
+    "    #print(sw[0:30])\n",
+    "\n",
+    "    president_words = [token.lower() for token in tokens] \n",
+    "    words_ns = [word for word in president_words if word not in sw] \n",
+    "    #print(words_ns[:20])\n",
+    "    president_ns = \" \".join(words_ns)\n",
+    "\n",
+    "    #Determining the most commoon words \n",
+    "    count = Counter(words_ns)\n",
+    "    top_ten_president = count.most_common(10)\n",
+    "    top_10_string = ','.join([str(x) for x in top_ten_president])\n",
+    "    print_list = [top_10_string]\n",
+    "    return print_list\n",
+    "\n",
+    "#for i in range(13):\n",
+    "# #    fun(df2)\n",
+    "top_list = []\n",
+    "for index, row in republican_speeches.iterrows():\n",
+    "    top = my_function(row)\n",
+    "    top_list.append(top)\n",
+    "\n",
+    "republican_speeches['top ten'] = top_list\n",
+    "\n",
+    "display(republican_speeches)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "19423e2a",
+   "metadata": {},
+   "source": [
+    "2. Can you conduct topic analysis of LDA using the speeches to determine what things presidents talk about in state of the union speeches?\n",
+    "\n",
+    "Linear Discriminant Analysis (LDA) is like PCA, but it focuses on maximizing the seperatibility among known categories"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6edadb4d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "type(df2.iloc[:,0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6c8c258a",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "dataset = pd.read_excel('speeches53463.xlsx')\n",
+    "\n",
+    "grouped = dataset.groupby('name')\n",
+    "dataset['date'] = pd.to_datetime(dataset['date'])\n",
+    "\n",
+    "#print(dataset.head())\n",
+    "grouped = dataset.groupby('name')\n",
+    "\n",
+    "dataset2 = dataset.loc[dataset.groupby('name').date.idxmin()]\n",
+    "#.filter(lambda x: x['date'] == min(x['date']))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d5a04656",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import re\n",
+    "import numpy as np\n",
+    "    \n",
+    "# Print the titles of the first rows \n",
+    "print(df2[[0]].head())\n",
+    "\n",
+    "# Remove punctuation\n",
+    "dataset['title_processed'] = dataset['speech'].map(lambda x: re.sub('[,\\.!?]', '', x))\n",
+    "\n",
+    "# Convert the titles to lowercase\n",
+    "dataset['title_processed'] = dataset['title_processed'].map(lambda x: x.lower())\n",
+    "\n",
+    "# Print the processed titles of the first rows \n",
+    "dataset['title_processed'].head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6a5d13c6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load the library with the CountVectorizer method\n",
+    "from sklearn.feature_extraction.text import CountVectorizer\n",
+    "import numpy as np\n",
+    "\n",
+    "# Helper function\n",
+    "def plot_10_most_common_words(count_data, count_vectorizer):\n",
+    "    import matplotlib.pyplot as plt\n",
+    "    words = count_vectorizer.get_feature_names()\n",
+    "    total_counts = np.zeros(len(words))\n",
+    "    for t in count_data:\n",
+    "        total_counts+=t.toarray()[0]\n",
+    "    \n",
+    "    count_dict = (zip(words, total_counts))\n",
+    "    count_dict = sorted(count_dict, key=lambda x:x[1], reverse=True)[0:10]\n",
+    "    words = [w[0] for w in count_dict]\n",
+    "    counts = [w[1] for w in count_dict]\n",
+    "    x_pos = np.arange(len(words)) \n",
+    "\n",
+    "    plt.bar(x_pos, counts,align='center')\n",
+    "    plt.xticks(x_pos, words, rotation=90) \n",
+    "    plt.xlabel('words')\n",
+    "    plt.ylabel('counts')\n",
+    "    plt.title('10 most common words')\n",
+    "    plt.show()\n",
+    "\n",
+    "# Initialise the count vectorizer with the English stop words\n",
+    "count_vectorizer = CountVectorizer(stop_words='english')\n",
+    "\n",
+    "# Fit and transform the processed titles\n",
+    "count_data = count_vectorizer.fit_transform(dataset['title_processed'])\n",
+    "\n",
+    "# Visualise the 10 most common words\n",
+    "plot_10_most_common_words(count_data, count_vectorizer)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "68282a69",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "\n",
+    "While the most common words do not seem to reveal something particular, when those generic words are cleaned as we saw above, we get specific topics and buzz words from each president."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f9fe98ec",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import warnings\n",
+    "warnings.simplefilter(\"ignore\", DeprecationWarning)\n",
+    "\n",
+    "# Load the LDA model from sk-learn\n",
+    "from sklearn.decomposition import LatentDirichletAllocation as LDA\n",
+    " \n",
+    "# Helper function\n",
+    "def print_topics(model, count_vectorizer, n_top_words):\n",
+    "    words = count_vectorizer.get_feature_names()\n",
+    "    for topic_idx, topic in enumerate(model.components_):\n",
+    "        print(\"\\nTopic #%d:\" % topic_idx)\n",
+    "        print(\" \".join([words[i]\n",
+    "                        for i in topic.argsort()[:-n_top_words - 1:-1]]))\n",
+    "        \n",
+    "# Tweak the two parameters below (use int values below 15)\n",
+    "number_topics = 5\n",
+    "number_words = 25\n",
+    "\n",
+    "# Create and fit the LDA model\n",
+    "lda = LDA(n_components=number_topics)\n",
+    "lda.fit(count_data)\n",
+    "\n",
+    "# Print the topics found by the LDA model\n",
+    "print(\"Topics found via LDA:\")\n",
+    "print_topics(lda, count_vectorizer, number_words)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26f6176e",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "\n",
+    "**Topic 0**: aligns with internal state laws and political stability.\n",
+    "\n",
+    "**Topic 1**: seems to align mostly with internal US issues. It is targeted to citizens stability (jobs) and needs.\n",
+    "\n",
+    "**Topic 2**: Seems to be more related with tax policy and approach to the US economy.\n",
+    "\n",
+    "**Topic 3**: It has to do with public policy and foreign affairs.\n",
+    "\n",
+    "**Topic 4**: Mainly targeted to defence department and peace status maintenance while protecting the interests of the US."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "229785ae",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b8def467",
+   "metadata": {},
+   "source": [
+    "3. Can you determine the sentiment of each state of the union using nltk's Vader module?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "148896a5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "analyzer=SentimentIntensityAnalyzer()\n",
+    "def polarity_score(text):\n",
+    "    if len(text)>0:\n",
+    "        score=analyzer.polarity_scores(text)['compound']\n",
+    "        return score\n",
+    "    else:\n",
+    "        return 0\n",
+    "dataset['polarityscore'] = dataset['speech'].apply(lambda text : polarity_score(text))\n",
+    "dataset['polarityscore']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "87266c2a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def sentianamolybarplot(df):\n",
+    "    polarity_scale=[0.9991,0.9992,0.9993,0.9994,0.9995,0.9996,0.9997,0.9998,0.9999,1]\n",
+    "    #'Review_polarity' is column name of sentiment score calculated for whole review.\n",
+    "    df3=df[(df['polarityscore']>0)]\n",
+    "    out = pd.cut(df3['polarityscore'],polarity_scale)\n",
+    "    ax = out.value_counts(sort=False).plot.bar(rot=0, color=\"b\", figsize=(12,8))\n",
+    "    for p in ax.patches:\n",
+    "        ax.annotate(str(p.get_height()), (p.get_x() * 1.040, p.get_height() * 1.015))\n",
+    "    plt.show()\n",
+    "sentianamolybarplot(dataset)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f760432e",
+   "metadata": {},
+   "source": [
+    "**Interpretation**\n",
+    "\n",
+    "In the State of Union Speeches, the presidents talk about important issues facing Americans and offers their ideas on solving the nation's problems, including suggestions for new laws and policies. As displayed in the plot, the polarity scores for 13 speeches (barring W. Bush) is positive. This is understandable as the State of Union speeches are a PR vehicle, leveraged to display the President's power and positive influence."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dbc30229",
+   "metadata": {},
+   "source": [
+    "4. Do speeches of different presidents cluster in any way that can allow you to determine their political party? How different are Biden and Trump according to this clustering?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cdcb7555",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def remove_noise(text, stop_words = nltk.corpus.stopwords.words('english')):\n",
+    "    newsw = ['annual', 'number', 'help', 'thank', 'get', 'going', 'think', 'look', 'said', 'create',\n",
+    "             'citizens', 'citizen', 'across', 'since', 'go', 'believe', 'say', 'long', 'better', \n",
+    "             'plan', 'national', 'ask' '10', 'much', 'good', 'great', 'best', 'cannot', 'still', \n",
+    "             'know', 'years', '1', 'major', 'want', 'able', 'put', 'capacity', 'programs', 'per', \n",
+    "             'percent', 'million', 'act', 'provide', 'afford', 'needed', 'may', 'possible', 'full',\n",
+    "             '2', 'effort', 'meeting', 'address', 'ever', 'measures', 'ago', 'delivered', '5', \n",
+    "             'program', 'past', 'future', 'need', 'needs', 'house', 'also', 'tonight', 'propose', \n",
+    "             'toward', 'continue', 'society','country', 'seek', 'period', 'year', 'man', 'men', \n",
+    "             'one', 'areas', 'begin', 'live', 'make', 'let', 'upon', 'well', 'office', 'meet', \n",
+    "             'make' 'citizens', 'human', 'self', 'among', 'peoples', 'affairs', 'would', 'field', \n",
+    "             'first', 'interest', 'today', 'recommendations', 'recomenndation', 'within', 'shall', \n",
+    "             'administration', 'nation', 'nations', 'us', 'we', 'policy', 'legislation', 'time', \n",
+    "             'new', 'many', 'several', 'few', 'government', 'world', 'people', 'united', 'states', \n",
+    "             'system', 'every', 'people', 'must', '626','give', 'categories', '226762', '17608', \n",
+    "             '24532', '430', '38','statistics', 'analyses', 'miscellaneous', 'congressional', \n",
+    "             'skip', 'content', 'documents', 'attributes', 'media', 'message', 'congress', 'state',\n",
+    "             'union', 'america', 'american', 'americans', 'presidency', 'president', 'project', \n",
+    "             'search', 'toggle', 'navigation', 'search', 'guidebook', 'archive', 'category', 'main', \n",
+    "             'take','like','yet','j','000']\n",
+    "    stop_words = stop_words + newsw\n",
+    "    tokens = word_tokenize(text)\n",
+    "    cleaned_tokens = []\n",
+    "    for token in tokens:\n",
+    "        token = re.sub('[^A-Za-z0-9]+', '', token)\n",
+    "        if len(token) > 1 and token.lower() not in stop_words:\n",
+    "            # Get lowercase\n",
+    "            cleaned_tokens.append(token.lower())\n",
+    "    return cleaned_tokens"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "38180e51",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Initialize TfidfVectorizer\n",
+    "tfidf_vectorizer = TfidfVectorizer(max_df = 0.8,\n",
+    "                                   max_features = 50,\n",
+    "                                   min_df = 0.1,\n",
+    "                                   tokenizer = remove_noise)\n",
+    "\n",
+    "# Use the .fit_transform() method on the list plots\n",
+    "tfidf_matrix = tfidf_vectorizer.fit_transform(dataset['speech'].values)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9643da35",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "num_clusters = 2\n",
+    "\n",
+    "# Generate cluster centers through the kmeans function\n",
+    "cluster_centers, distortion = kmeans(tfidf_matrix.todense(), num_clusters)\n",
+    "# display(cluster_centers)\n",
+    "# Generate terms from the tfidf_vectorizer object\n",
+    "terms = tfidf_vectorizer.get_feature_names()\n",
+    "\n",
+    "for i in range(num_clusters):\n",
+    "    print('Cluster: {}'.format(i+1))\n",
+    "    # Sort the terms and print top 3 terms\n",
+    "    center_terms = dict(zip(terms, list(cluster_centers[i])))\n",
+    "    sorted_terms = sorted(center_terms, key=center_terms.get, reverse=True)\n",
+    "    print(sorted_terms [:15])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b1dee11d",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "\n",
+    "On clustering the popular words in the speech, it seems like Cluster 1 aligns with speeches by Republican presidents and Cluster 2 with that of speeches by Democartic presidents."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a2d62218",
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "#Converting the datafram into list for further analysis.\n",
+    "speech_list = []\n",
+    "for i in range(len(dataset2)):\n",
+    "    speech_list.append(dataset2.iloc[[i]]['speech'].item())\n",
+    "    \n",
+    "titles = []\n",
+    "for i in range(len(dataset2)):\n",
+    "    titles.append(dataset2.iloc[[i]]['name'].item())\n",
+    "    \n",
+    "texts = [txt.split() for txt in speech_list]\n",
+    "\n",
+    "# Create an instance of a PorterStemmer object\n",
+    "porter = PorterStemmer()\n",
+    "\n",
+    "# For each token of each text, we generated its stem \n",
+    "texts_stem = [[porter.stem(token) for token in text] for text in texts]\n",
+    "\n",
+    "# Create a dictionary from the stemmed tokens\n",
+    "dictionary = corpora.Dictionary(texts_stem)\n",
+    "\n",
+    "# Create a bag-of-words model for each speech, using the previously generated dictionary\n",
+    "bows = [dictionary.doc2bow(text) for text in texts_stem]\n",
+    "\n",
+    "# Generate the tf-idf model\n",
+    "model = TfidfModel(bows)\n",
+    "\n",
+    "# Compute the similarity matrix (pairwise distance between all speeches)\n",
+    "sims = similarities.MatrixSimilarity(model[bows])\n",
+    "\n",
+    "# Transform the resulting list into a DataFrame\n",
+    "sim_df = pd.DataFrame(list(sims))\n",
+    "\n",
+    "# Add the name of the presidents as columns and index of the DataFrame\n",
+    "sim_df.columns = titles\n",
+    "sim_df.index = titles\n",
+    "\n",
+    "# Print the resulting matrix\n",
+    "sim_df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f4d80cde",
+   "metadata": {},
+   "source": [
+    "Here we can see the degree of similarity of each president's speech with each other. There is no speech with similarity more than 40%. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e334eeaa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute the clusters from the similarity matrix,\n",
+    "# using the Ward variance minimization algorithm\n",
+    "Z = hierarchy.linkage(sim_df, 'ward')\n",
+    "plt.rcParams['figure.figsize'] = [10,20]\n",
+    "# Display this result as a horizontal dendrogram\n",
+    "a = hierarchy.dendrogram(Z,  leaf_font_size=20, labels=sim_df.index,  orientation=\"left\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3fa5c31d",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "\n",
+    "In the dendrogram above, the presidents seem to be clustered based on the era that they served. Two big clusters are distinct -- the green one which includes mostly recent presidents 20th and 21st century, and -- the orange one which includes presidents of the 18th and 19th century."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7ced9049",
+   "metadata": {},
+   "source": [
+    "5. Who was the president whose speech was the most similar to the speech of Biden in 2022?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "159013a2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "v = sim_df[['Joseph R. Biden']]\n",
+    "v"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7cee48d7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# This is needed to display plots in a notebook\n",
+    "%matplotlib inline\n",
+    "plt.rcParams['figure.figsize'] = [10,10]\n",
+    "\n",
+    "# Select the column corresponding to Biden's address and \n",
+    "v = sim_df['Joseph R. Biden']\n",
+    "\n",
+    "# Sort by ascending scores\n",
+    "v_sorted = v.sort_values(ascending=True)\n",
+    "\n",
+    "# Plot this data has a horizontal bar plot\n",
+    "v_sorted.plot.barh(x='lab', y='val', rot=0).plot()\n",
+    "\n",
+    "# Modify the axes labels and plot title for better readability\n",
+    "plt.xlabel(\"Cosine distance\")\n",
+    "plt.ylabel(\"\")\n",
+    "plt.title(\"Most similar to Biden's\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f967620c",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "\n",
+    "Biden's address is most similar to that of Obama's, follwed by Clinton and George Bush. As we can see, George Washington, John Adams and James Madison are the least similar to Biden. This can be explained by the different eras that each president lived. Speeches in 18th century are different than speeches of today. Biden's speech similarity with Obama and Clinton makes sense also because they are all recently elected democrats."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "393c84d6",
+   "metadata": {},
+   "source": [
+    "5. Bonus points: (5 points): Develop and algorithm that can allow you to determine if the speech was given by a Democrat or by a republican. \n",
+    "\n",
+    "PS2: I will go over this homework on Thursday to help you think through how to solve it. You will be able to recycle a lot of code discussed."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "528d75a6",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "speeches"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4bd6e131",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2[[0]]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "93afcc4e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "state_speeches = pd.read_excel('state_speeches.xlsx')\n",
+    "state_speeches"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3c33d6a9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Split training and testing data\n",
+    "X_train, X_test, y_train, y_test = train_test_split(state_speeches['address'], state_speeches['party'], test_size=0.3, \n",
+    "                 random_state=53)\n",
+    "\n",
+    "# Initialize count vectorizer\n",
+    "count_vectorizer = CountVectorizer(stop_words='english', \n",
+    "                                   min_df=0.05, max_df=0.9)\n",
+    "\n",
+    "# Create count train and test variables\n",
+    "count_train = count_vectorizer.fit_transform(X_train)\n",
+    "count_test = count_vectorizer.transform(X_test)\n",
+    "\n",
+    "# Initialize tfidf vectorizer\n",
+    "tfidf_vectorizer = TfidfVectorizer(stop_words='english', \n",
+    "                                   min_df=0.05, max_df=0.9)\n",
+    "\n",
+    "\n",
+    "# Create tfidf train and test variables\n",
+    "tfidf_train = tfidf_vectorizer.fit_transform(X_train)\n",
+    "tfidf_test = tfidf_vectorizer.transform(X_test)\n",
+    "\n",
+    "tfidf_nb = MultinomialNB()\n",
+    "tfidf_nb.fit(tfidf_train, y_train)\n",
+    "tfidf_nb_pred = tfidf_nb.predict(tfidf_test)\n",
+    "tfidf_nb_score = metrics.accuracy_score(y_test, tfidf_nb_pred)\n",
+    "\n",
+    "count_nb = MultinomialNB()\n",
+    "count_nb.fit(count_train, y_train)\n",
+    "count_nb_pred = count_nb.predict(count_test)\n",
+    "count_nb_score = metrics.accuracy_score(y_test, count_nb_pred)\n",
+    "\n",
+    "print('NaiveBayes Tfidf Score: ', tfidf_nb_score)\n",
+    "print('NaiveBayes Count Score: ', count_nb_score)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1d58c626",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%matplotlib inline\n",
+    "from tweets.helper_functions import plot_confusion_matrix\n",
+    "\n",
+    "\n",
+    "tfidf_nb_cm = metrics.confusion_matrix(y_test, tfidf_nb_pred, labels=['republican', 'democrat'])\n",
+    "count_nb_cm = metrics.confusion_matrix(y_test, count_nb_pred, labels=['republican', 'democrat'])\n",
+    "\n",
+    "plot_confusion_matrix(tfidf_nb_cm, classes=['republican', 'democrat'], title=\"TF-IDF NB Confusion Matrix\")\n",
+    "\n",
+    "plot_confusion_matrix(count_nb_cm, classes=['republican', 'democrat'], title=\"Count NB Confusion Matrix\", figure=1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "68b3fcc0",
+   "metadata": {},
+   "source": [
+    "## **Interpretation**\n",
+    "It looks like that algorithm's power to identify whether the speech comes from a democrat or a republican is only 20%. In this case, for the algorithm to get stronger, more speeches are necessary from both sides, and maybe more text cleaning."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
