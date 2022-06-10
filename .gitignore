@@ -10,3 +10,5 @@ drafts.Rmd
 /.quarto/
 *.rda
 *.rdb
+
+.tmp.driveupload/
