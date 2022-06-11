@@ -11,6 +11,7 @@ about:
         href: https://twitter.com/loizoskon
       - icon: youtube
         href: https://www.youtube.com/channel/UCAAuUtKAD8o5PviWxuQ3NSg
+
 ---
 
 Hi 👋 I am Loizos! This is my personal website.

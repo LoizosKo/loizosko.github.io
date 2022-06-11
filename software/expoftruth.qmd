@@ -1,0 +1,476 @@
+---
+title: "Homework 4"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(descr)
+library(infer)
+```
+
+Here we will have to work with the experiment data we collected for this class.
+
+1.  **`We are interested in whether some people were more likely to make correct guesses. What are the summary statistics for all draws? Plot a histogram. Are there any outliers in the data (i.e. individuals who guess 0 times correctly and individuals who guessed all 20 times correctly?)`**
+
+    **we draw a histogram based on the summary statistics. To find**
+
+    ```{r}
+    library(readxl)
+    exp21 <- read_excel("experiment_2021C(1)copy.xlsx", col_names = FALSE,
+        skip = 2)
+
+    ```
+
+    I find all the outcome columns and I name them after the variable names of our dataset.
+
+    ```{r}
+    var_names <- read_excel("experiment_2021C(1)copy.xlsx", n_max = 1) 
+    colnames(exp21) <- colnames(var_names)
+
+    rm(var_names) 
+
+    columnss <- exp21 %>% 
+      select(starts_with("Outcome"), "Age", "Risk", "Gender", "SC0") 
+    ```
+
+    Now we pivot longer to have all the outcomes in line. This helps to name the correct answers as "1" and the wrong answers as "0".
+
+    ```{r}
+    countcol <- columnss %>% 
+      pivot_longer(cols = starts_with("Outcome"), names_to= "draw", values_to = "answer") %>%
+      mutate(count= case_when(answer == "Yes (bonus payment of $0.10)" ~ 1,
+             answer == "No (no bonus payment)" ~ 0))
+    ```
+
+    After we pivot wider back in its first format. This helps us to have the data
+
+    ```{r}
+    pilpi <- countcol %>% select(-answer) %>% mutate(id = rep(1:133, each = 20)) %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender), names_from = draw, values_from = count)
+    ```
+
+    We use pivot longer once more in order to have all the observations in one column. Having the observations in one column, is easier for us to group by the id column we created before. So we groupby id. This helps us identify what each person done. In addition, we add a column using mutate in order to have the clear result of each person.
+
+    ```{r}
+    pi <- pilpi %>% pivot_longer(cols = starts_with("Outcome"), names_to= "draw", values_to = "answer") %>% group_by(id) 
+
+    ti<- pi %>% mutate(summm=sum(answer))
+
+    tii<- pi %>% mutate(summm=sum(answer)) %>% separate(draw, into = c("rolsep", "rolnum"), sep = "e") %>% group_by(id)
+
+    # boxplot.stats(data$score)$out
+    # 
+    # rr <- ti %>% separate(draw, into = c("rolsep", "rolnum"), sep = "e") %>% group_by(id, rolnum)
+    ```
+
+    Now we pivot wider once more so the data can be presented in the form that shows how people are doing from the 1st one until the last (133rd).
+
+    ```{r}
+    final <- ti %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender, summm), names_from = draw, values_from = answer)
+
+    # finally <- tii %>%  pivot_wider(id_cols = c(id, Age, SC0, Risk, Gender, summm), names_from = rolnum, values_from = answer)
+    # 
+    #   fin <- final %>% inner_join(ex22, by = "id")
+    ```
+
+    We use the code below to do our Histogram.
+
+    ```{r}
+    ggplot(final, aes(summm)) + geom_histogram(bins = 21) + geom_rug()
+    ```
+
+2.  **`Analyze the data by gender, the draw number, and by experimental condition. Are there differences between the genders in terms of the number of wins versus losses? Are there differences between the experimental conditions? Are people more or less likely to win towards the last draws as opposed to the beginning of the experiment?`**
+
+    'Final' is the column that already has everything needed for the analysis. The only missing column is conditions. To do that, I used mutate to create a new column named as condition where each real condition is named after a number from one to five. I also create an id column in the ex2 dataset so I can then inner_join it with our main column.
+
+    ```{r}
+    ex2 <- exp21 %>%
+             mutate(condition = case_when(Control_Msg != "" ~ 1,
+                                   Norm_Pos_Msg != "" ~ 2,
+                                   Norm_Neg_Msg != "" ~ 3,
+                                   Emp_Neg_Msg != "" ~ 4,
+                                   Emp_Pos_Msg != "" ~ 5),
+                    id = 1:133,
+                    rolnum = 1:133) 
+
+    ```
+
+    At this point, I create a new dataset with 'id' and 'condition' columns so it is easier to inner_join them. Then I inner_join them so I have everything in one dataset named 'fin'.
+
+    ```{r}
+    ex22 <- ex2 %>% select(id, condition, rolnum)
+
+    fin <- final %>% inner_join(ex22, by = "id")
+    ```
+
+    Then we group by Gender and summarise by mean. This allows us to see the mean score that each gender got correct. As we can see, females reported a higher correct score than males on average.
+
+    ```{r}
+    fin %>% group_by(Gender) %>% summarise(mean(summm))
+
+    # mutate(rrr, coun)
+    # fin %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+    Analyzing the data regarding the draw number we use the tii dataset. The reason is because this dataset was created in question 1 with a function named seperate. This function separated the column 'draw' into two others (rolsep, rolsum). The first stands for the title of the draw column while the second one stands for the values that a correct answer was reported.
+
+    Therefore, we here use the filter column(rolnum) equal with the number of observation we want piped with summary(answer). This helps us find the stats behind the correct answers in each round. Also, we named a new dataset 'i' where it excludes some irrelevant columns for the purpose of analyzing the data based on draws.
+
+    Regarding the draws we can see that the mean for outcome number 1 is almost 20% (0.1955). That means that one out of five people reported a correct answer in that case. As we can see the mean of correct responses ranges from 0.16 to 0.27. This means that the standard deviation is relatively low. In other words all correct response rates are clustered around the mean.
+
+    ```{r}
+    i <- tii %>% select(-Gender, -Age, -SC0, -id, -Risk, -rolsep, -summm, -id)
+    i %>% filter(rolnum==1) %>% summary(answer)
+    i %>% filter(rolnum==2) %>% summary(answer)
+    i %>% filter(rolnum==3) %>% summary(answer)
+    i %>% filter(rolnum==4) %>% summary(answer)
+    i %>% filter(rolnum==5) %>% summary(answer)
+    i %>% filter(rolnum==6) %>% summary(answer)
+    i %>% filter(rolnum==7) %>% summary(answer)
+    i %>% filter(rolnum==8) %>% summary(answer)
+    i %>% filter(rolnum==9) %>% summary(answer)
+    i %>% filter(rolnum==10) %>% summary(answer)
+    i %>% filter(rolnum==11) %>% summary(answer)
+    i %>% filter(rolnum==12) %>% summary(answer)
+    i %>% filter(rolnum==13) %>% summary(answer)
+    i %>% filter(rolnum==14) %>% summary(answer)
+    i %>% filter(rolnum==15) %>% summary(answer)
+    i %>% filter(rolnum==16) %>% summary(answer)
+    i %>% filter(rolnum==17) %>% summary(answer)
+    i %>% filter(rolnum==18) %>% summary(answer)
+    i %>% filter(rolnum==19) %>% summary(answer)
+    i %>% filter(rolnum==20) %>% summary(answer)
+    ```
+
+    Regarding the experimental condition of the data, we use the groupby function to call it in the fin dataset, and then use summarise to find the mean. Alongside, as we set above, each number corresponds in one condition. As we can see, the most popular experimental condition is normative positive message (2) while the least popular is empirical positive message (5).
+
+    ```{r}
+    fin %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+3.  **`Redo part 2 after excluding outliers. Do you still see the different in the experimental groups after outliers are eliminated? Do you see differences between the first and the last rolls? Are there any differences by gender?`**
+
+    ```{r}
+    # trial <- fin %>% select(-Gender, -Age, -SC0, -Risk, -Outcome1, -Outcome2, -Outcome3, -Outcome4, -Outcome5, -Outcome6, -Outcome7, -Outcome8, -Outcome9, -Outcome10, -Outcome11, -Outcome12, -Outcome13, -Outcome14, -Outcome15, -Outcome16, -Outcome17, -Outcome18, -Outcome19, -Outcome20, -rolnum) %>% 
+    #   boxplot(trial)
+    # 
+    # boxplot.stats(trial$summm)$out 
+
+    ```
+
+    ```{r}
+    boxplot(fin$summm,
+      ylab = "summm")
+
+    boxplot.stats(fin$summm)$out
+
+    out <- boxplot.stats(fin$summm)$out
+    out_ind <- which(fin$summm %in% c(out))
+    out_ind
+
+    # ggplot(fin) +
+    #   aes(x = summm) +
+    #   geom_histogram(bins = 21, fill = "#0c4c8a") +
+    #   theme_minimal()
+    ```
+
+    After, wecreate a new dataset called 'desperate' where we remove the indicative rows with the outliers. This will help us redo exercise 2
+
+    ```{r}
+    desperate <- fin[-c(15, 25,48,57,89,98,121,130), ]
+
+    ```
+
+    **Redoing exercise 2 with the new dataframe 'desperate'.**
+
+    In comparison with exercise 2, we can see that the mean for both male and female has fallen. This was a natural outcome to follow since the outliers were all above the mean. However, the outcome remained the same in matters of which gender reported the most correct answers. On average females report 4 correct answers out of twenty, as opposed to men (3/20).
+
+    ```{r}
+    desperate %>% group_by(Gender) %>% summarise(mean(summm))
+    ```
+
+    For the draws, we are creating a new column to make the analysis named 'abcdefg'. This is to exclude the outlier rows from the the 'tii' dataset we've used at exercise 2. After doing that though, we can see that the mean correct response reporting ratio remained at the same levels ranging from 16.54% to 27.07%. This indicates that the outliers did not affect the variability of the data. No difference between the first and last rows.
+
+    ```{r}
+    abcdefg <- tii[-c(15, 25,48,57,89,98,121,130), ]
+
+    i <- abcdefg %>% select(-Gender, -Age, -SC0, -id, -Risk, -summm, -rolsep, -id)
+    i %>% filter(rolnum==1) %>% summary(answer)
+    i %>% filter(rolnum==2) %>% summary(answer)
+    i %>% filter(rolnum==3) %>% summary(answer)
+    i %>% filter(rolnum==4) %>% summary(answer)
+    i %>% filter(rolnum==5) %>% summary(answer)
+    i %>% filter(rolnum==6) %>% summary(answer)
+    i %>% filter(rolnum==7) %>% summary(answer)
+    i %>% filter(rolnum==8) %>% summary(answer)
+    i %>% filter(rolnum==9) %>% summary(answer)
+    i %>% filter(rolnum==10) %>% summary(answer)
+    i %>% filter(rolnum==11) %>% summary(answer)
+    i %>% filter(rolnum==12) %>% summary(answer)
+    i %>% filter(rolnum==13) %>% summary(answer)
+    i %>% filter(rolnum==14) %>% summary(answer)
+    i %>% filter(rolnum==15) %>% summary(answer)
+    i %>% filter(rolnum==16) %>% summary(answer)
+    i %>% filter(rolnum==17) %>% summary(answer)
+    i %>% filter(rolnum==18) %>% summary(answer)
+    i %>% filter(rolnum==19) %>% summary(answer)
+    i %>% filter(rolnum==20) %>% summary(answer)
+    ```
+
+    In the case of experimental conditions we can see that there are some significant differences. The range between them became smaller (3.36 to 4.69). In other words the data became more disperse. While there is no difference in the lower end, there is a difference in the higher end of the range. This indicates that the previous means were inflated due to the high outliers. For insance, the most popular experimental condition, normative positive message (2), was 6.08, whereas now is just 4.33.
+
+    ```{r}
+    desperate %>% group_by(condition) %>% summarise(mean(summm))
+    ```
+
+4.  `Split your sample into the "younger" half and the "older half. Are there differences between the two age groups?`
+
+    First we sort the date from highest to lowest reported age using the order function.
+
+```{r}
+ordered<- fin[order(fin$Age, decreasing = TRUE), ]
+```
+
+Then we find the Age median from fin dataset. As we can see, the median is 24 (in the column 67 since is exactly the middle of 133).
+
+```{r}
+median(fin$Age)
+
+```
+
+Since I have the ordered dataframe (from the highest to lowest Age), I use it to create two other dataframes, one for the younger Age group "orderedyoung", and one for the older Age group "orderedold".
+
+```{r}
+orderedyoung <- ordered[-c(1:66), ]
+orderedold <- ordered[-c(68:133), ]
+```
+
+orderedold%\>% ggplot(aes(x= Age, y= summm)) + geom_point()
+
+```{r}
+boxplot(orderedold$Age,
+  ylab = "Age")
+
+boxplot.stats(orderedold$Age)$out
+
+out <- boxplot.stats(orderedold$Age)$out
+out_ind <- which(orderedold$Age %in% c(out))
+out_ind
+
+```
+
+```{r}
+boxplot(orderedyoung$Age,
+  ylab = "Age")
+
+boxplot.stats(orderedyoung$Age)$out
+
+out <- boxplot.stats(orderedyoung$Age)$out
+out_ind <- which(orderedyoung$Age %in% c(out))
+out_ind
+
+```
+
+```{r}
+oo <- orderedold[-c(1,2,3,4), ]
+
+oy <- orderedyoung[-c(67), ]
+```
+
+I use the ggplot function to create a graph that indicates the Age of the participants in the x axes, and the number of correct guesses (summm) in the y axes. As we can see, while the Age column now indicates only the oldest people, the majority is still under 30 -- closer to the median. From the age 24 until 30s, the amount of correct responses seems to decline. We use the median and the mean code in order to see if there is a difference with them. Median indicates that there is no difference among the data as the reported correct outcome. However, if we look at the mean of the two, the younger group tends to report more correct answers on average than the older group. This difference is small though (4.62-3.92)
+
+```{r}
+oo%>% ggplot(aes(x= Age, y= summm)) + geom_point()
+
+median(oo$summm)
+mean(oo$summm)
+
+oy%>% ggplot(aes(x= Age, y= summm)) + geom_point()
+median(oy$summm)
+mean(oy$summm)
+```
+
+
+############# PART TWO
+
+`Let's study how the number of wins depends on certain factors:`
+
+```{r}
+library(readxl)
+exp21 <- read_excel("experiment_2021C(1)copy.xlsx", col_names = FALSE,
+    skip = 2)
+    var_names <- read_excel("experiment_2021C(1)copy.xlsx", n_max = 1) 
+    colnames(exp21) <- colnames(var_names)
+
+    rm(var_names) 
+
+    columnss <- exp21 %>% 
+      select(starts_with("Outcome"), "Age", "Risk", "Gender", "SC0") 
+
+```
+
+normal numbers, the more \* the more signif
+
+```{r}
+datac <- columnss %>% mutate(score = SC0 *10)
+
+datacool <- datac %>% select(-Outcome1, -Outcome2, -Outcome3, -Outcome4, -Outcome5, -Outcome6, -Outcome7, -Outcome8, -Outcome9, -Outcome10, -Outcome11, -Outcome12, -Outcome13, -Outcome14, -Outcome15, -Outcome16, -Outcome17, -Outcome18, -Outcome19, -Outcome20, -SC0)
+
+dataex1<- datacool %>% select(-Risk, - Age)
+```
+
+```{r}
+options(scipen = 100)
+```
+
+`1. Examine the relationship between gender and the number of wins using regression analysis.`
+
+independent variable x = the cause explanatory, dependent variable y = outcome
+
+Number of wins is referred to as the Score in our data, and it is a continuous dependent variable(=y).
+
+Gender is a categorical variable and is the independent variable(=x).
+
+On the first chunk I create one new column name 'Gendering' where I assign values 0 and 1 to female and male correspondingly.
+
+On the second and third chunks, I do the linear regression between Gender(x) and Score - aka number of wins - (y).
+
+```{r}
+datacool1 <- datacool %>% mutate(Gendering = case_when(Gender == "Male" ~ "1",
+                                        Gender== "Female" ~ "0"))
+
+dataex1 %>% summary(lm(score ~ factor(Gendering), data = datacool1))
+
+model<- lm(formula= score~Gendering, data= datacool1)
+(summary(model))
+```
+
+Looking at the results from the intercept and the Gendering column (1 = given that is a male), we can see that the regression equation is the following:
+
+y=-1.07x+4.75
+
+`a) What is the effect (the slope) of gender?`
+
+To see the effect we look to the slope of x. It indicates that on average males win one time less than females.
+
+`b) How strong is the predictive power of gender?`
+
+Looking at the multiple R square we can see that the effect of gender explains 2,947% of the variability of the score.
+
+`c) What are the predicted outcomes for men and women?`
+
+For this I substitute the values for male and female on the regression equation. For male x=1, for female x=0. After doing that, we will have a result that demonstrates the predicted score for females and males given that our initial assumption holds true.
+
+```{r}
+#for male
+malepred <- -1.07*1+4.75
+
+#for female
+femalepred <- -1.07*0+4.75
+```
+
+The predicted score for male on average is 3.68, while the equivalent predicted score for female is 4.75.
+
+`2. Examine the relationship between age and the number of wins using regression analysis.`
+
+```{r}
+model1<- lm(formula = score~Age, data= datacool1)
+summary(model1)
+```
+
+After following the same procedure as we followed in exercise 1, we have the equivalent regression results for Age as independent variable x, and score as dependent variable y. The equation is as follows:
+
+y=0.015x+4.01
+
+multiple R-squared, how much of the score variability is explained assuming that there is an effect of age.
+
+`a) What is the effect of age?`
+
+The effect (aka slope) of age is 0.015. This implies that there is an observed higher score of 0.015 with people that are older. Put differerently, the age factor has a negligible result to the score as is almost zero.
+
+`b) How strong is the predictive power of age?`
+
+Looking at the multiple R square we can see that the effect of age has almost zero explanation for the variability of the score. In other words, the predictive power of age on the time of victories is very weak.
+
+`c) What's the predicted outcome for a 20 year old person? For a 40 year old person?`
+
+```{r}
+#for 20 year old
+twentypred <- 0.015*20+4.01
+
+#for 40 year old
+fourtypred <- 0.015*40+4.01
+
+```
+
+For this I substitute the values for 20year old and 40year old on the regression equation. For 20year x=20, for 40year old x=40. After doing that, we will have a result that demonstrates the predicted score for 20year old and 40year old given that our initial assumption holds true.
+
+The predicted score for 20year old on average is 4.31, while the equivalent predicted score for 40year old is 4.61.
+
+`3. Examine the relationship between age and gender combined.`
+
+why the numbers are changing slightly (=men and women have different ages. when u plug both coefficients together it tries to)
+
+`a) What are the effects now? How do they compare with the results in 1 and 2? Explain the differences`
+
+```{r}
+model1<- lm(formula = score~Age+factor(Gendering), data= datacool1)
+summary(model1)
+```
+
+Now the equation becomes:
+
+y=0.02x1-1.1x2+4.08
+
+with x1 being the age, and x2 being the gender given is a male (if that one is zero then is a female)
+
+As we can see here, while the age effect is still close to zero, now it is a bit higher (0.026 as opposed to 0.015); however it still remains a weak factor. With respect to Gender, now is also higher ton the other end than its corresponding previous result (-1.10 as opposed to -1.07).
+
+Consequently, there is a very slight inter correlation between the two factors as the model tends to become slightly stronger. How ever the differences are minimal. This is indicated also in the adjusted R squared (=0.016) which is even lower than R squared. This means that at least one of the two variables does not explain the dependent variable score. As we can see from the exercises 1 and 2, this variable is Age because its adjusted R squared is negative when we have Age as the only independent variable (see exercise 2).
+
+Then we proceed to an interaction coefficient just to observe the cross sections between our independent variables. Despite that the numbers are changing a bit though interaction coefficient is not necessary for the purpose of this exercise.
+
+```{r}
+cool3 <- lm(score~ Age * factor(Gendering), data = datacool1)
+summary(cool3)
+```
+
+We observe that the estimations between age and gender are not significant.
+
+`b) How strong is the predictive power of this model?`
+
+Looking at the adjusted R square we can see that the effect of age combined with the effect of gender explains 1,6% the variability of the score - when doing multiple regression, adjusted R squared is a better indication to look at for the predictive power of the models. And in conclusion, this one does not have a strong predictive power.
+
+`c) What is the predicted outcome for a 20 year old man? 20 year old woman? 40 year old man? 40 year old woman?`
+
+Following similar procedure as the exercise 1 and 2 c, we substitute the age and gender factors in the equation for the equivalent results we need in the four different instances:
+
+```{r}
+#for 20year old man
+twentyman <- 0.02*20-1.1*1+4.08
+
+#for 20year old woman
+twentywoman <- 0.02*20-1.1*0+4.08
+
+#for 40year old man
+fourtyman <- 0.02*40-1.1*1+4.08
+
+#for 40year old woman
+fourtywoman <- 0.02*40-1.1*0+4.08
+
+```
+
+As we can see, the predicted scores are the following:\
+for 20year old man = 3.38
+
+for 20year old woman = 4.48
+
+for 40year old man = 3.78
+
+for 40year old woman = 4.88
+
