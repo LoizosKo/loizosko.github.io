@@ -16,9 +16,9 @@ about:
 
 Hi 👋 I am Loizos! This is my personal website.
 
-I have a [blog](https://loizosko.github.io/loizosko/_site/blog.html) that is infrequently updated 📝
+I have a [blog](https://www.loizos.xyz/blog.html) that is infrequently updated 📝
 
-See my [projects](https://loizosko.github.io/loizosko/_site/software/) for some things I've been working 🛠
+See my [projects](https://www.loizos.xyz/software/) for some things I've been working 🛠
 
 Feel free to get in contact below
 
