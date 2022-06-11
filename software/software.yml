@@ -11,8 +11,8 @@
   tiles:
     - title: State of The Union Addresses
       subtitle: US presidents speech analysis
-      href: 
-      thumbnail: 
+      href: presidents_analysis.html
+      thumbnail: img/dendrogram.png
 
       
       
