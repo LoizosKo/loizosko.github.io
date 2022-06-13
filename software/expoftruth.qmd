@@ -1,5 +1,5 @@
 ---
-title: "Homework 4"
+title: "Class Die Experiment"
 output:
   html_document:
     df_print: paged

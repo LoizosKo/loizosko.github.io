@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.80">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Loizos Konstantinou – credcardpred</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../favicon.ico" rel="icon">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K5PK7P3TJZ"></script>
+
+  <script type="text/javascript">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K5PK7P3TJZ', { 'anonymize_ip': true});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="fullcontent">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Loizos Konstantinou</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../software/index.html">Projects</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html">Resume</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/loizoskon/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LoizosKo"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/loizoskon"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<p>#1. Properly load the data into Jupyter Notebooks</p>
+<div class="cell" data-scrolled="true" data-execution_count="62">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co">#matplotlib generates graphs.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> GradientBoostingClassifier, RandomForestClassifier</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC <span class="co">#i.e. Support Vector Classifier</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> svm</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> PassiveAggressiveClassifier</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> RadiusNeighborsClassifier</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"crx.data"</span>, header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Int64Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], dtype='int64')</code></pre>
+</div>
+</div>
+<p>Change the column names to correspond to the “real” labels from the second link.</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="dv">1</span> : <span class="st">"age"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">2</span> : <span class="st">"debt"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">3</span> : <span class="st">"married"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">4</span> : <span class="st">"bankcustomer"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">5</span> : <span class="st">"educationlevel"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">6</span> : <span class="st">"ethnicity"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">7</span> : <span class="st">"yearsemployed"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">8</span> : <span class="st">"priordefault"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">9</span> : <span class="st">"employed"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">10</span> : <span class="st">"creditscore"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">11</span> : <span class="st">"driverslicense"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">12</span> : <span class="st">"citizen"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">13</span> : <span class="st">"zipcode"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">14</span> : <span class="st">"income"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">15</span> : <span class="st">"approved"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>   0    age   debt married bankcustomer educationlevel ethnicity  \
+0  b  30.83  0.000       u            g              w         v   
+1  a  58.67  4.460       u            g              q         h   
+2  a  24.50  0.500       u            g              q         h   
+3  b  27.83  1.540       u            g              w         v   
+4  b  20.17  5.625       u            g              w         v   
+
+   yearsemployed priordefault employed  creditscore driverslicense citizen  \
+0           1.25            t        t            1              f       g   
+1           3.04            t        t            6              f       g   
+2           1.50            t        f            0              f       g   
+3           3.75            t        t            5              t       g   
+4           1.71            t        f            0              f       s   
+
+  zipcode  income approved  
+0   00202       0        +  
+1   00043     560        +  
+2   00280     824        +  
+3   00100       3        +  
+4   00120       0        +  </code></pre>
+</div>
+</div>
+<p>Remove all question marks from value ‘age’, and convert it to numerical.</p>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">83</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">86</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">92</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">97</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">254</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">286</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">329</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">445</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">450</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">500</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">515</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="dv">608</span>,<span class="st">'age'</span>] <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'age'</span>] <span class="op">=</span> pd.to_numeric(data[<span class="st">'age'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>#2. Summarize the data.Frequency tables for categorical variables and histograms for continuous variables.</p>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> data.hist(column<span class="op">=</span>[<span class="st">'debt'</span>, <span class="st">'age'</span>, <span class="st">'yearsemployed'</span>, <span class="st">'income'</span>, <span class="st">'creditscore'</span>],bins<span class="op">=</span><span class="dv">5</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">7</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z) <span class="co">#is not adding them i.e. it creates a longer list.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>summary_data <span class="op">=</span> data.describe()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary_data)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Categorical variables:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#             "married", </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#             "bankcustomer", </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             'educationlevel', </span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#             'ethnicity',  </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#             'priordefault', </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#             'employed', </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#             'driverslicense',</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#             'citizen',</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#             'approved'</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>married <span class="op">=</span> data.loc[:,<span class="st">"married"</span>].value_counts()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(married)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>bankcustomer <span class="op">=</span> data.loc[:,<span class="st">"bankcustomer"</span>].value_counts()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bankcustomer)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>educationlevel <span class="op">=</span> data.loc[:,<span class="st">"educationlevel"</span>].value_counts()</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(educationlevel)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>ethnicity <span class="op">=</span> data.loc[:,<span class="st">"ethnicity"</span>].value_counts()</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ethnicity)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>priordefault <span class="op">=</span> data.loc[:,<span class="st">"priordefault"</span>].value_counts()</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(priordefault)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>employed <span class="op">=</span> data.loc[:,<span class="st">"employed"</span>].value_counts()</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employed)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>driverslicense <span class="op">=</span> data.loc[:,<span class="st">"driverslicense"</span>].value_counts()</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(driverslicense)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>approved <span class="op">=</span> data.loc[:,<span class="st">"approved"</span>].value_counts()</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(approved)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>citizen <span class="op">=</span> data.loc[:,<span class="st">"citizen"</span>].value_counts()</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(citizen)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[[&lt;AxesSubplot:title={'center':'debt'}&gt;
+  &lt;AxesSubplot:title={'center':'age'}&gt;]
+ [&lt;AxesSubplot:title={'center':'yearsemployed'}&gt;
+  &lt;AxesSubplot:title={'center':'income'}&gt;]
+ [&lt;AxesSubplot:title={'center':'creditscore'}&gt; &lt;AxesSubplot:&gt;]]
+              age        debt  yearsemployed  creditscore         income
+count  678.000000  690.000000     690.000000    690.00000     690.000000
+mean    31.568171    4.758725       2.223406      2.40000    1017.385507
+std     11.957862    4.978163       3.346513      4.86294    5210.102598
+min     13.750000    0.000000       0.000000      0.00000       0.000000
+25%     22.602500    1.000000       0.165000      0.00000       0.000000
+50%     28.460000    2.750000       1.000000      0.00000       5.000000
+75%     38.230000    7.207500       2.625000      3.00000     395.500000
+max     80.250000   28.000000      28.500000     67.00000  100000.000000
+u    519
+y    163
+?      6
+l      2
+Name: married, dtype: int64
+g     519
+p     163
+?       6
+gg      2
+Name: bankcustomer, dtype: int64
+c     137
+q      78
+w      64
+i      59
+aa     54
+ff     53
+k      51
+cc     41
+m      38
+x      38
+d      30
+e      25
+j      10
+?       9
+r       3
+Name: educationlevel, dtype: int64
+v     399
+h     138
+bb     59
+ff     57
+?       9
+j       8
+z       8
+dd      6
+n       4
+o       2
+Name: ethnicity, dtype: int64
+t    361
+f    329
+Name: priordefault, dtype: int64
+f    395
+t    295
+Name: employed, dtype: int64
+f    374
+t    316
+Name: driverslicense, dtype: int64
+-    383
++    307
+Name: approved, dtype: int64
+g    625
+s     57
+p      8
+Name: citizen, dtype: int64</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="credcardpred_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Our data is skewed towards the left of the distribution because there are some outliers in our data, such as customers with a high income and credit score relative to the overall dataset. However, we are working with a limited number of data and it is still in the initial stage of development, we can leave it as-is for now. We can try to remove the outliers when we are tuning our model or when we have more data to work with.</p>
+<p>#3. Split the sample into a test set and a train set with 20% of data being in the test dataset. Your random seed should be 808.</p>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#split dataset into train and test, and set the random_state so it maintain the same result</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data_features <span class="op">=</span> data[[<span class="st">'debt'</span>, <span class="st">"age"</span>, <span class="st">"married"</span>,<span class="st">"bankcustomer"</span>, <span class="st">"educationlevel"</span>, <span class="st">"ethnicity"</span>, <span class="st">"yearsemployed"</span>, <span class="st">"priordefault"</span>,<span class="st">"employed"</span>,<span class="st">"creditscore"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">"driverslicense"</span>,<span class="st">"citizen"</span>,<span class="st">"income"</span>]]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data_target <span class="op">=</span> data[<span class="st">'approved'</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(data_features,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                                                    data_target,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                                                    test_size <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                                                    random_state <span class="op">=</span> <span class="dv">808</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>#4. Try the following algorithms and choose the one that generates the best accuracy:</p>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#First, we convert categorical variables to numerical.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.get_dummies(data).dropna()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data1)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(data1.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>       age    debt  yearsemployed  creditscore  income  0_?  0_a  0_b  \
+0    30.83   0.000           1.25            1       0    0    0    1   
+1    58.67   4.460           3.04            6     560    0    1    0   
+2    24.50   0.500           1.50            0     824    0    1    0   
+3    27.83   1.540           3.75            5       3    0    0    1   
+4    20.17   5.625           1.71            0       0    0    0    1   
+..     ...     ...            ...          ...     ...  ...  ...  ...   
+685  21.08  10.085           1.25            0       0    0    0    1   
+686  22.67   0.750           2.00            2     394    0    1    0   
+687  25.25  13.500           2.00            1       1    0    1    0   
+688  17.92   0.205           0.04            0     750    0    0    1   
+689  35.00   3.375           8.29            0       0    0    0    1   
+
+     married_?  married_l  ...  zipcode_00720  zipcode_00760  zipcode_00840  \
+0            0          0  ...              0              0              0   
+1            0          0  ...              0              0              0   
+2            0          0  ...              0              0              0   
+3            0          0  ...              0              0              0   
+4            0          0  ...              0              0              0   
+..         ...        ...  ...            ...            ...            ...   
+685          0          0  ...              0              0              0   
+686          0          0  ...              0              0              0   
+687          0          0  ...              0              0              0   
+688          0          0  ...              0              0              0   
+689          0          0  ...              0              0              0   
+
+     zipcode_00928  zipcode_00980  zipcode_01160  zipcode_02000  zipcode_?  \
+0                0              0              0              0          0   
+1                0              0              0              0          0   
+2                0              0              0              0          0   
+3                0              0              0              0          0   
+4                0              0              0              0          0   
+..             ...            ...            ...            ...        ...   
+685              0              0              0              0          0   
+686              0              0              0              0          0   
+687              0              0              0              0          0   
+688              0              0              0              0          0   
+689              0              0              0              0          0   
+
+     approved_+  approved_-  
+0             1           0  
+1             1           0  
+2             1           0  
+3             1           0  
+4             1           0  
+..          ...         ...  
+685           0           1  
+686           0           1  
+687           0           1  
+688           0           1  
+689           0           1  
+
+[678 rows x 223 columns]
+['age', 'debt', 'yearsemployed', 'creditscore', 'income', '0_?', '0_a', '0_b', 'married_?', 'married_l', 'married_u', 'married_y', 'bankcustomer_?', 'bankcustomer_g', 'bankcustomer_gg', 'bankcustomer_p', 'educationlevel_?', 'educationlevel_aa', 'educationlevel_c', 'educationlevel_cc', 'educationlevel_d', 'educationlevel_e', 'educationlevel_ff', 'educationlevel_i', 'educationlevel_j', 'educationlevel_k', 'educationlevel_m', 'educationlevel_q', 'educationlevel_r', 'educationlevel_w', 'educationlevel_x', 'ethnicity_?', 'ethnicity_bb', 'ethnicity_dd', 'ethnicity_ff', 'ethnicity_h', 'ethnicity_j', 'ethnicity_n', 'ethnicity_o', 'ethnicity_v', 'ethnicity_z', 'priordefault_f', 'priordefault_t', 'employed_f', 'employed_t', 'driverslicense_f', 'driverslicense_t', 'citizen_g', 'citizen_p', 'citizen_s', 'zipcode_00000', 'zipcode_00017', 'zipcode_00020', 'zipcode_00021', 'zipcode_00022', 'zipcode_00024', 'zipcode_00028', 'zipcode_00029', 'zipcode_00030', 'zipcode_00032', 'zipcode_00040', 'zipcode_00043', 'zipcode_00045', 'zipcode_00049', 'zipcode_00050', 'zipcode_00052', 'zipcode_00056', 'zipcode_00060', 'zipcode_00062', 'zipcode_00070', 'zipcode_00073', 'zipcode_00075', 'zipcode_00076', 'zipcode_00080', 'zipcode_00086', 'zipcode_00088', 'zipcode_00092', 'zipcode_00093', 'zipcode_00094', 'zipcode_00096', 'zipcode_00099', 'zipcode_00100', 'zipcode_00102', 'zipcode_00108', 'zipcode_00110', 'zipcode_00112', 'zipcode_00117', 'zipcode_00120', 'zipcode_00121', 'zipcode_00128', 'zipcode_00129', 'zipcode_00130', 'zipcode_00132', 'zipcode_00136', 'zipcode_00140', 'zipcode_00141', 'zipcode_00144', 'zipcode_00145', 'zipcode_00150', 'zipcode_00152', 'zipcode_00154', 'zipcode_00156', 'zipcode_00160', 'zipcode_00163', 'zipcode_00164', 'zipcode_00167', 'zipcode_00168', 'zipcode_00170', 'zipcode_00171', 'zipcode_00174', 'zipcode_00176', 'zipcode_00178', 'zipcode_00180', 'zipcode_00181', 'zipcode_00186', 'zipcode_00188', 'zipcode_00195', 'zipcode_00200', 'zipcode_00202', 'zipcode_00204', 'zipcode_00208', 'zipcode_00210', 'zipcode_00211', 'zipcode_00212', 'zipcode_00216', 'zipcode_00220', 'zipcode_00221', 'zipcode_00224', 'zipcode_00225', 'zipcode_00228', 'zipcode_00230', 'zipcode_00231', 'zipcode_00232', 'zipcode_00239', 'zipcode_00240', 'zipcode_00250', 'zipcode_00252', 'zipcode_00253', 'zipcode_00254', 'zipcode_00256', 'zipcode_00260', 'zipcode_00263', 'zipcode_00268', 'zipcode_00272', 'zipcode_00274', 'zipcode_00276', 'zipcode_00280', 'zipcode_00288', 'zipcode_00290', 'zipcode_00292', 'zipcode_00300', 'zipcode_00303', 'zipcode_00309', 'zipcode_00311', 'zipcode_00312', 'zipcode_00320', 'zipcode_00329', 'zipcode_00330', 'zipcode_00333', 'zipcode_00340', 'zipcode_00348', 'zipcode_00349', 'zipcode_00350', 'zipcode_00352', 'zipcode_00356', 'zipcode_00360', 'zipcode_00368', 'zipcode_00369', 'zipcode_00370', 'zipcode_00371', 'zipcode_00372', 'zipcode_00375', 'zipcode_00380', 'zipcode_00381', 'zipcode_00383', 'zipcode_00393', 'zipcode_00395', 'zipcode_00396', 'zipcode_00399', 'zipcode_00400', 'zipcode_00408', 'zipcode_00410', 'zipcode_00411', 'zipcode_00416', 'zipcode_00420', 'zipcode_00422', 'zipcode_00431', 'zipcode_00432', 'zipcode_00434', 'zipcode_00440', 'zipcode_00443', 'zipcode_00450', 'zipcode_00454', 'zipcode_00455', 'zipcode_00460', 'zipcode_00465', 'zipcode_00470', 'zipcode_00480', 'zipcode_00487', 'zipcode_00491', 'zipcode_00500', 'zipcode_00510', 'zipcode_00515', 'zipcode_00519', 'zipcode_00520', 'zipcode_00523', 'zipcode_00550', 'zipcode_00560', 'zipcode_00583', 'zipcode_00600', 'zipcode_00640', 'zipcode_00680', 'zipcode_00711', 'zipcode_00720', 'zipcode_00760', 'zipcode_00840', 'zipcode_00928', 'zipcode_00980', 'zipcode_01160', 'zipcode_02000', 'zipcode_?', 'approved_+', 'approved_-']</code></pre>
+</div>
+</div>
+<p>As before, we split the sample into a test set and a train set with 20% of data being in the test dataset. Your random seed should be 808. This needs to be done after the “get_dummies()” command for decision tree to work.</p>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_features <span class="op">=</span> data1.loc[:,<span class="st">"age"</span>:<span class="st">"citizen_s"</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data_target <span class="op">=</span> data1[<span class="st">'approved_+'</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(data_features,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                                                    data_target,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                                                    test_size <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                                                    random_state <span class="op">=</span> <span class="dv">808</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_train, x_test, y_train, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>       age    debt  yearsemployed  creditscore  income  0_?  0_a  0_b  \
+27   56.58  18.500         15.000           17       0    0    0    1   
+100  37.50   1.750          0.250            0     400    0    0    1   
+132  47.42   8.000          6.500            6   51100    0    1    0   
+404  34.00   5.085          1.085            0       0    0    0    1   
+401  28.92   0.375          0.290            0     140    0    0    1   
+..     ...     ...            ...          ...     ...  ...  ...  ...   
+480  16.92   0.500          0.165            6      35    0    1    0   
+384  22.08  11.460          1.585            0    1212    0    0    1   
+300  57.58   2.000          6.500            1      10    0    1    0   
+249  21.83  11.000          0.290            6       0    0    0    1   
+471  21.08   4.125          0.040            0     100    0    0    1   
+
+     married_?  married_l  ...  ethnicity_z  priordefault_f  priordefault_t  \
+27           0          0  ...            0               0               1   
+100          0          0  ...            0               0               1   
+132          0          0  ...            0               0               1   
+404          0          0  ...            0               1               0   
+401          0          0  ...            0               1               0   
+..         ...        ...  ...          ...             ...             ...   
+480          0          0  ...            0               1               0   
+384          0          0  ...            0               1               0   
+300          0          0  ...            0               1               0   
+249          0          0  ...            0               0               1   
+471          0          0  ...            0               1               0   
+
+     employed_f  employed_t  driverslicense_f  driverslicense_t  citizen_g  \
+27            0           1                 0                 1          1   
+100           1           0                 0                 1          1   
+132           0           1                 1                 0          1   
+404           1           0                 0                 1          1   
+401           1           0                 1                 0          1   
+..          ...         ...               ...               ...        ...   
+480           0           1                 0                 1          1   
+384           1           0                 0                 1          1   
+300           0           1                 1                 0          1   
+249           0           1                 1                 0          1   
+471           1           0                 1                 0          1   
+
+     citizen_p  citizen_s  
+27           0          0  
+100          0          0  
+132          0          0  
+404          0          0  
+401          0          0  
+..         ...        ...  
+480          0          0  
+384          0          0  
+300          0          0  
+249          0          0  
+471          0          0  
+
+[542 rows x 50 columns]        age   debt  yearsemployed  creditscore  income  0_?  0_a  0_b  \
+207  28.67  9.335          5.665            6     168    0    0    1   
+406  40.33  8.125          0.165            2      18    0    1    0   
+231  47.42  3.000         13.875            2    1704    0    1    0   
+452  36.50  4.250          3.500            0      50    0    0    1   
+567  25.17  2.875          0.875            0       0    0    1    0   
+..     ...    ...            ...          ...     ...  ...  ...  ...   
+457  29.67  0.750          0.040            0       0    0    0    1   
+544  30.08  1.040          0.500           10      28    0    0    1   
+145  32.83  2.500          2.750            6    2072    0    0    1   
+342  26.92  2.250          0.500            0    4000    0    0    1   
+323  48.58  0.205          0.250           11    2732    0    0    1   
+
+     married_?  married_l  ...  ethnicity_z  priordefault_f  priordefault_t  \
+207          0          0  ...            0               0               1   
+406          0          0  ...            0               1               0   
+231          0          0  ...            0               0               1   
+452          0          0  ...            0               1               0   
+567          0          0  ...            0               0               1   
+..         ...        ...  ...          ...             ...             ...   
+457          0          0  ...            0               1               0   
+544          0          0  ...            0               0               1   
+145          0          0  ...            0               0               1   
+342          0          0  ...            0               1               0   
+323          0          0  ...            0               0               1   
+
+     employed_f  employed_t  driverslicense_f  driverslicense_t  citizen_g  \
+207           0           1                 1                 0          1   
+406           0           1                 1                 0          1   
+231           0           1                 0                 1          1   
+452           1           0                 1                 0          1   
+567           1           0                 1                 0          1   
+..          ...         ...               ...               ...        ...   
+457           1           0                 1                 0          1   
+544           0           1                 0                 1          1   
+145           0           1                 1                 0          1   
+342           1           0                 0                 1          1   
+323           0           1                 1                 0          1   
+
+     citizen_p  citizen_s  
+207          0          0  
+406          0          0  
+231          0          0  
+452          0          0  
+567          0          0  
+..         ...        ...  
+457          0          0  
+544          0          0  
+145          0          0  
+342          0          0  
+323          0          0  
+
+[136 rows x 50 columns] 27     1
+100    0
+132    1
+404    0
+401    0
+      ..
+480    0
+384    0
+300    0
+249    1
+471    0
+Name: approved_+, Length: 542, dtype: uint8 207    1
+406    0
+231    1
+452    0
+567    1
+      ..
+457    0
+544    0
+145    1
+342    0
+323    1
+Name: approved_+, Length: 136, dtype: uint8</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_features.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 678 entries, 0 to 689
+Data columns (total 50 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   age                678 non-null    float64
+ 1   debt               678 non-null    float64
+ 2   yearsemployed      678 non-null    float64
+ 3   creditscore        678 non-null    int64  
+ 4   income             678 non-null    int64  
+ 5   0_?                678 non-null    uint8  
+ 6   0_a                678 non-null    uint8  
+ 7   0_b                678 non-null    uint8  
+ 8   married_?          678 non-null    uint8  
+ 9   married_l          678 non-null    uint8  
+ 10  married_u          678 non-null    uint8  
+ 11  married_y          678 non-null    uint8  
+ 12  bankcustomer_?     678 non-null    uint8  
+ 13  bankcustomer_g     678 non-null    uint8  
+ 14  bankcustomer_gg    678 non-null    uint8  
+ 15  bankcustomer_p     678 non-null    uint8  
+ 16  educationlevel_?   678 non-null    uint8  
+ 17  educationlevel_aa  678 non-null    uint8  
+ 18  educationlevel_c   678 non-null    uint8  
+ 19  educationlevel_cc  678 non-null    uint8  
+ 20  educationlevel_d   678 non-null    uint8  
+ 21  educationlevel_e   678 non-null    uint8  
+ 22  educationlevel_ff  678 non-null    uint8  
+ 23  educationlevel_i   678 non-null    uint8  
+ 24  educationlevel_j   678 non-null    uint8  
+ 25  educationlevel_k   678 non-null    uint8  
+ 26  educationlevel_m   678 non-null    uint8  
+ 27  educationlevel_q   678 non-null    uint8  
+ 28  educationlevel_r   678 non-null    uint8  
+ 29  educationlevel_w   678 non-null    uint8  
+ 30  educationlevel_x   678 non-null    uint8  
+ 31  ethnicity_?        678 non-null    uint8  
+ 32  ethnicity_bb       678 non-null    uint8  
+ 33  ethnicity_dd       678 non-null    uint8  
+ 34  ethnicity_ff       678 non-null    uint8  
+ 35  ethnicity_h        678 non-null    uint8  
+ 36  ethnicity_j        678 non-null    uint8  
+ 37  ethnicity_n        678 non-null    uint8  
+ 38  ethnicity_o        678 non-null    uint8  
+ 39  ethnicity_v        678 non-null    uint8  
+ 40  ethnicity_z        678 non-null    uint8  
+ 41  priordefault_f     678 non-null    uint8  
+ 42  priordefault_t     678 non-null    uint8  
+ 43  employed_f         678 non-null    uint8  
+ 44  employed_t         678 non-null    uint8  
+ 45  driverslicense_f   678 non-null    uint8  
+ 46  driverslicense_t   678 non-null    uint8  
+ 47  citizen_g          678 non-null    uint8  
+ 48  citizen_p          678 non-null    uint8  
+ 49  citizen_s          678 non-null    uint8  
+dtypes: float64(3), int64(2), uint8(45)
+memory usage: 61.6 KB</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data1.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="70">
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>age</th>
+      <th>debt</th>
+      <th>yearsemployed</th>
+      <th>creditscore</th>
+      <th>income</th>
+      <th>0_?</th>
+      <th>0_a</th>
+      <th>0_b</th>
+      <th>married_?</th>
+      <th>married_l</th>
+      <th>...</th>
+      <th>zipcode_00720</th>
+      <th>zipcode_00760</th>
+      <th>zipcode_00840</th>
+      <th>zipcode_00928</th>
+      <th>zipcode_00980</th>
+      <th>zipcode_01160</th>
+      <th>zipcode_02000</th>
+      <th>zipcode_?</th>
+      <th>approved_+</th>
+      <th>approved_-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>30.83</td>
+      <td>0.000</td>
+      <td>1.25</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>58.67</td>
+      <td>4.460</td>
+      <td>3.04</td>
+      <td>6</td>
+      <td>560</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24.50</td>
+      <td>0.500</td>
+      <td>1.50</td>
+      <td>0</td>
+      <td>824</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27.83</td>
+      <td>1.540</td>
+      <td>3.75</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20.17</td>
+      <td>5.625</td>
+      <td>1.71</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 223 columns</p>
+</div>
+</div>
+</div>
+<p>#a. Decision Trees</p>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>init_model <span class="op">=</span> DecisionTreeClassifier ()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fitted_model <span class="op">=</span> init_model.fit(x_train ,y_train)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> fitted_model.predict(x_test)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>accuracy_score <span class="op">=</span> fitted_model.score(x_test,y_test)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_score)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#overall how many of the predictions are correct</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#overall out of those defaults how many of those 0.17 are correct and not correct?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.8455882352941176</code></pre>
+</div>
+</div>
+<p>#b. Logistic Regression</p>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Logistic regression</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>model_lr <span class="op">=</span> LogisticRegression()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>fitted_model_lr <span class="op">=</span> model_lr.fit(x_train, y_train)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>test_predictions_lr <span class="op">=</span> fitted_model_lr.predict(x_test)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>accuracy_lr <span class="op">=</span> fitted_model_lr.score(x_test,y_test)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fitted_model_lr.coef_)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_lr)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#overall how many of the predictions are correct</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[[ 4.84069824e-03 -2.46678805e-02  1.20267584e-01  1.64279116e-01
+   5.13339863e-04 -7.02796069e-03 -1.76746656e-01 -2.76489739e-02
+   1.08863388e-01  3.10703871e-02 -8.26650419e-02 -2.68692324e-01
+   1.08863388e-01 -8.26650419e-02  3.10703871e-02 -2.68692324e-01
+   1.08863388e-01 -9.05194758e-02 -9.94068100e-02  1.87520056e-01
+  -2.93554456e-02  3.49157435e-02 -3.61569082e-01 -2.52229191e-01
+  -9.00501443e-04 -2.10370142e-01 -8.76721486e-02  1.76003560e-01
+  -5.84801526e-03  1.76604192e-01  2.42540281e-01  1.08863388e-01
+  -1.29883594e-01 -2.29978369e-02 -3.51268838e-01  1.80746065e-01
+   5.79890564e-02  1.89933137e-02 -1.73749301e-08 -9.58931264e-02
+   2.20279985e-02 -1.72796178e+00  1.51653819e+00 -3.04359173e-01
+   9.29355818e-02 -1.62785055e-03 -2.09795740e-01 -2.90778257e-01
+   9.97707085e-02 -2.04160423e-02]]
+0.8602941176470589</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>/Users/loizoskon/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:763: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(</code></pre>
+</div>
+</div>
+<p>#c.&nbsp;Bagging</p>
+<div class="cell" data-scrolled="true" data-execution_count="73">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bagging, need to explore the concept and what each parameter does</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> BaggingClassifier</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#n_estimators is a number of randomly sampled datasets, similar to cv</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>model_bag <span class="op">=</span> BaggingClassifier(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    base_estimator <span class="op">=</span> tree.DecisionTreeClassifier(),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    n_estimators <span class="op">=</span> <span class="dv">400</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    max_samples <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    oob_score <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    random_state <span class="op">=</span> <span class="dv">808</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>fitted_model_bag <span class="op">=</span> model_bag.fit(x_train,y_train)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>test_predictions_bag <span class="op">=</span> fitted_model_bag.predict(x_test)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>accuracy_bag <span class="op">=</span> fitted_model_bag.score(x_test,y_test)<span class="co">#validation accuracy, because I want to see if the model works generalize in new data</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_bag)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_bag.oob_score_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.8823529411764706
+0.8616236162361623</code></pre>
+</div>
+</div>
+<p>#d.&nbsp;Boosting</p>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> GradientBoostingClassifier, RandomForestClassifier</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>model_boost <span class="op">=</span> GradientBoostingClassifier()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>fitted_model_boost <span class="op">=</span> model_boost.fit(x_train,y_train)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>test_predictions_boost <span class="op">=</span> fitted_model_boost.predict(x_test)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>accuracy_boost <span class="op">=</span> fitted_model_boost.score(x_test,y_test)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_boost)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_boost)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.8529411764705882
+GradientBoostingClassifier()</code></pre>
+</div>
+</div>
+<p>#e. Random Forest</p>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>randomforest <span class="op">=</span> RandomForestClassifier (random_state <span class="op">=</span> <span class="dv">808</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>model_randforest <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>fitted_model_randforest <span class="op">=</span> model_randforest.fit(x_train,y_train)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>test_predictions_randforest <span class="op">=</span> fitted_model_randforest.predict(x_test)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>accuracy_randforest <span class="op">=</span> fitted_model_randforest.score(x_test,y_test)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_randforest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.8382352941176471</code></pre>
+</div>
+</div>
+<p>#f.&nbsp;SVM</p>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC <span class="co">#i.e. Support Vector Classifier</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>svm<span class="op">=</span>svm.SVC(random_state <span class="op">=</span> <span class="dv">808</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(svm.fit(x_train, y_train).score(x_test,y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.6985294117647058</code></pre>
+</div>
+</div>
+<p>#g. Passive Aggressive Classifier (Links to an external site.)</p>
+<div class="cell" data-execution_count="77">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pa<span class="op">=</span>PassiveAggressiveClassifier(random_state <span class="op">=</span> <span class="dv">808</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pa.fit(x_train, y_train).score(x_test,y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.7573529411764706</code></pre>
+</div>
+</div>
+<p>#h. Radius Neighbors Classifier (Links to an external site.)</p>
+<div class="cell" data-execution_count="78">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model_rn <span class="op">=</span> RadiusNeighborsClassifier(radius<span class="op">=</span><span class="dv">11700</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fitted_model_rn <span class="op">=</span> model_rn.fit(x_train,y_train)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>test_predictions_rn <span class="op">=</span> fitted_model_rn.predict(x_test)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>accuracy_rn <span class="op">=</span> fitted_model_rn.score(x_test,y_test)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_rn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>0.6470588235294118</code></pre>
+</div>
+</div>
+<p>#5. After completing Step 4, explain: # Which algorithm you recommend? What accuracy it has? Why you measured accuracy the way you did? The accuracy of the algorithms above indicate the percentage of predictions that are actually correct. I would reccommend the bagging algorithm because it has the highest accuracy percentage (88,23%).</p>
+<p>The confusion matrix below indicates that <strong>Bagging</strong> is the most suitable approach in reaching to the accuracy of the algorithms. In particular, the confusion matrix above shows us that the Bagging models have a higher number of true positives and true negatives than rest accuracy models. In this example above, we can see that <em>bagging</em> is compared with <em>logistic regression</em> and <em>random forest classifiers</em>, the 2nd and the 3rd highest accuracy models.</p>
+<div class="cell" data-execution_count="80">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Confusion matrix: Bagging Classifiers'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, test_predictions_bag))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Confusion matrix: Logistic Regression'</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, test_predictions_lr))</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Confusion matrix: Random Forest Classifiers'</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, test_predictions_randforest))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Confusion matrix: Bagging Classifiers
+[[75 12]
+ [ 4 45]]
+Confusion matrix: Logistic Regression
+[[70 17]
+ [ 2 47]]
+Confusion matrix: Random Forest Classifiers
+[[70 17]
+ [ 5 44]]</code></pre>
+</div>
+</div>
+<section id="brief-overview-of-the-last-two-classifiers-passive-agressive-radius-neighbors." class="level1">
+<h1>6. Brief overview of the last two classifiers (Passive Agressive &amp; Radius Neighbors).</h1>
+<p><strong>Passive Agressive classifier</strong> is an online learning predictor best suited for systems that receive data in a continuous stream. The calculation passively corrects for the classifications and penalizes ‘aggressive’ for any miscalculation. While the model can perfectly predict all data, it will not change the algorithm; hence it is called <em>passive</em>. The term <em>aggressive</em> referst to the fact that when the model fails to predict the outcome variable just in the slightest, it will change the algorithm to compensate for the failed prediction for every set of a new sample of data.</p>
+<p><strong>Radius Neighbors classifer</strong> is similar to the KNN (k-nearest-neighbours) concept and makes predictions based on the data within a radius. Instead of locating the k-neighbors, the Radius Neighbors Classifier locates all examples in the dataset that are within a given radius of the new example. The radius neighbors are then used to make a prediction for the new example. The radius is defined in the feature space and generally assumes that the input variables are numeric and scaled to the range 0-1, e.g.&nbsp;normalized. The radius-based approach to locating neighbors is appropriate for those datasets where it is desirable for the contribution of neighbors to be proportional to the density of examples in the feature space.</p>
+
+
+</section>
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

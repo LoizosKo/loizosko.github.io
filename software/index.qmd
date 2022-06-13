@@ -10,7 +10,7 @@ listing:
   
 ---
 
-Some things I made
+Some things I made 🪄
 
 
 :::{#software}

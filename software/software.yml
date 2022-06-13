@@ -17,6 +17,10 @@
       subtitle: US presidents speech analysis
       href: presidents_analysis.html
       thumbnail: img/dendrogram.png
+    - title: Credit Card Application
+      subtitle: Predicting a bank's customer credit card application outcome
+      href: credcardpred.html
+      thumbnail: img/transparent-credcard.png
 
       
       
