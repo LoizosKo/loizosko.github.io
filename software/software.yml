@@ -1,20 +1,25 @@
 - category: RStudio projects
   tiles:
     - title: Google Trends
-      subtitle: Top 3 American Sitcoms
+      subtitle: Top 3 American Animated Sitcoms
       href: sitcoms.html
       thumbnail: img/white-googletrends-removebg-preview.png
     - title: Class Die Experiment
       subtitle: Correct guesses Vs cheats ~ summary statistics
       href: expoftruth.html
       thumbnail: img/transparent-sumstat.png
+    - title: Titanic Dataset
+      subtitle: Probabilities of surviving in terms of class and gender
+      href: titanic.html
+      thumbnail: img/transparent-titanic.png
+      
 
 
       
 - category: Python projects
   tiles:
     - title: State of The Union Addresses
-      subtitle: US presidents speech analysis
+      subtitle: US presidents speech, keyword similarity analysis
       href: presidents_analysis.html
       thumbnail: img/dendrogram.png
     - title: Credit Card Application
