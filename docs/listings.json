@@ -1,0 +1,12 @@
+[
+  {
+    "listing": "/software/index.html",
+    "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/2022-06-09-denmark/index.html"
+    ]
+  }
+]
