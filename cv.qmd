@@ -3,7 +3,7 @@ title: "Resume"
 editor: visual
 ---
 
-Here is my up-to-date [Resume](lkr.pdf)
+Here is my up-to-date [Resume](Resume_Konstantinou.pdf)
 
 I am **currently pursuing** a **Master of Behavioral and Decision Sciences** from the **University of Pennsylvania**, **graduating in December 2022**. Through my graduate coursework I am doing concentration in consumer analytics.
 
