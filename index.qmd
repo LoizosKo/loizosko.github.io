@@ -11,7 +11,6 @@ about:
         href: https://twitter.com/loizoskon
       - icon: youtube
         href: https://www.youtube.com/channel/UCAAuUtKAD8o5PviWxuQ3NSg
-
 ---
 
 Hi 👋 I am Loizos! This is my personal website.
@@ -20,13 +19,11 @@ Loizos Konstantinou (he/him) is **currently pursuing** a **Master of Behavioral 
 
 His passion lies at the intersection of consumer behavior, marketing, technology, and data analysis. He believes behavioral science can inform marketing decisions to improve the consumer experience, satisfaction, and welfare. In experience at previous positions, he developed analytical and problem-solving skills, an understanding of quantitative and qualitative methodologies, as well as strong interpersonal skills. While in school, he worked for non-governmental organizations and represented Cyprus in educational programs in Europe and the US.
 
-He is always seeking new ways to improve marketing and consumer relations using behavioral science and analytics. During school, He gained experience in Python, RStudio, MS office, and SPSS. 
-
 I have a [blog](https://www.loizos.xyz/blog.html) that is infrequently updated 📝
 
 See my [projects](https://www.loizos.xyz/software/) for some things I've been working 🛠
 
-*Currently learning French follow me on 🦉 Duolingo* ➡ **LoizosKons**
+*Currently learning French and Spanish follow me on 🦉 Duolingo* ➡ **LoizosKons**
 
 Feel free to get in contact below
 

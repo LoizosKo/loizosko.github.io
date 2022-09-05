@@ -5,8 +5,8 @@ editor: visual
 
 Here is my up-to-date [Resume](Resume_Konstantinou.pdf)
 
-I have a \[blog\](https://www.loizos.xyz/blog.html) that is infrequently updated 📝
+I have a [blog](https://www.loizos.xyz/blog.html) that is infrequently updated 📝
 
-See my \[projects\](https://www.loizos.xyz/software/) for some things I've been working 🛠
+See my [projects](https://www.loizos.xyz/software/) for some things I've been working 🛠
 
-Currently learning French follow me on 🦉 Duolingo ➡ LoizosKons
+Currently learning *French*, and *Spanish* follow me on 🦉 Duolingo ➡ LoizosKons
