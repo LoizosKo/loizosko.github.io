@@ -1,5 +1,5 @@
 ---
-title: "Student Tips for Freshmen"
+title: "Undergrad Experience & Tips for Freshmen"
 description: |
     Undergrad student life guide through my experience studying in European University Cyprus
 image: images/euc_cyprus.jpeg  
