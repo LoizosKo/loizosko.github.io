@@ -6,7 +6,6 @@ image: images/euc_cyprus.jpeg
 date: 10/20/2022
 categories: 
   - education
-  - student life
 format: html
 execute: 
   cache: true
