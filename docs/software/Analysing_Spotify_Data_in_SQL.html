@@ -1,0 +1,4059 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Loizos Konstantinou – analysing_spotify_data_in_sql</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K5PK7P3TJZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K5PK7P3TJZ', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Loizos Konstantinou</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../software/index.html">Projects</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html">Resume</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/loizoskon/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LoizosKo"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/loizoskon"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="sql-analysis-in-big-data" class="level1">
+<h1>SQL analysis in big data</h1>
+<section id="working-with-sql-to-understand-songs-in-spotify" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-sql-to-understand-songs-in-spotify">Working with SQL to understand songs in Spotify</h2>
+<p>This assignment focuses on helping you get to grips with a new tool: SQL.</p>
+<p>Through this assignment, we will be working with SQL (specifically <strong>pandasql</strong>) by exploring a Spotify dataset containing song reviews and statistics. At parts 3 and 4 you can see some text analysis of song reviews.</p>
+</section>
+<section id="part-0-libraries-and-set-up-jargon-the-usual-wall-of-imports" class="level2">
+<h2 class="anchored" data-anchor-id="part-0-libraries-and-set-up-jargon-the-usual-wall-of-imports">Part 0: Libraries and Set Up Jargon (The usual wall of imports)</h2>
+<div class="cell" data-outputid="78b1db2a-b1cf-420a-ca6b-93980e52e159" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install pandasql</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip3 install pandas</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip3 install pandasql</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip3 install nltk</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip3 install wordcloud</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip3 install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>1870.64s - pydevd: Sending message related to process being replaced timed-out after 5 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: pandasql in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (0.7.3)
+Requirement already satisfied: pandas in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from pandasql) (1.5.1)
+Requirement already satisfied: sqlalchemy in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from pandasql) (1.4.42)
+Requirement already satisfied: numpy in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from pandasql) (1.23.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from pandas-&gt;pandasql) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from pandas-&gt;pandasql) (2022.5)
+Requirement already satisfied: six&gt;=1.5 in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas-&gt;pandasql) (1.16.0)
+Requirement already satisfied: greenlet!=0.4.17 in /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages (from sqlalchemy-&gt;pandasql) (1.1.3.post0)
+WARNING: You are using pip version 21.2.3; however, version 22.3 is available.
+You should consider upgrading via the '/usr/local/bin/python3 -m pip install --upgrade pip' command.
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>UsageError: Line magic function `%pip3` not found.</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="a02ba373-4755-4b2e-c620-cb843623511c" data-execution_count="156">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandasql <span class="im">as</span> ps </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package punkt to /Users/loizoskon/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="0b6fcf1e-3f51-4629-ce67-e2d8174ac563" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three datasets that I am using (you can download them from here if the code does not work for you put them in the working directory)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> wget <span class="op">-</span>nc https:<span class="op">//</span>storage.googleapis.com<span class="op">/</span>penn<span class="op">-</span>cis5450<span class="op">/</span>spotify_features.csv</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> wget <span class="op">-</span>nc https:<span class="op">//</span>storage.googleapis.com<span class="op">/</span>penn<span class="op">-</span>cis5450<span class="op">/</span>spotify_songs.csv</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> wget <span class="op">-</span>nc https:<span class="op">//</span>storage.googleapis.com<span class="op">/</span>penn<span class="op">-</span>cis5450<span class="op">/</span>spotify_rankings.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>1877.21s - pydevd: Sending message related to process being replaced timed-out after 5 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>zsh:1: command not found: wget</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>1882.68s - pydevd: Sending message related to process being replaced timed-out after 5 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>zsh:1: command not found: wget</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>1888.20s - pydevd: Sending message related to process being replaced timed-out after 5 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>zsh:1: command not found: wget</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="70486b69-6c06-4fe9-eb1e-af2275aa907d" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.__version__ )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.5.1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="music-for-everyone" class="level1">
+<h1>Music for everyone!</h1>
+<br>
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Spotify_logo13.png" width="500" align="center">
+</center>
+<p><br></p>
+<p>I’ll be working with a dataset containing Top Tracks on Spotify in 2017, along with their reviews and rankings.</p>
+<p>Here I’ll be exploring the following attributes of the song data:</p>
+<ul>
+<li><p>Song-specific metadata (eg. artist name)</p></li>
+<li><p>The songs’ rankings based on date and listener location</p></li>
+<li><p>Acoustic / musical properties of the song, eg. danceability</p></li>
+</ul>
+<p>I’ll be loading this data into various dataframes and querying them. I am primarily using PandaSQL for these tasks. Some tasks though are performed in Pandas.</p>
+<section id="part-1-loading-processing-our-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-loading-processing-our-datasets">Part 1: Loading &amp; Processing our Datasets</h2>
+<p>Before we get into the data, we first need to load and clean our datasets.</p>
+</section>
+</section>
+<section id="metadata" class="level1">
+<h1>Metadata</h1>
+<p>You’ll be working with three CSV files: - <code>spotify_features.csv</code> - <code>songs_features.csv</code> - <code>spotify_rankings.csv</code></p>
+<p>The file <code>spotify_features.csv</code> contains musical / acoustic data for each song, obtained via the Spotify API.</p>
+<p>The file <code>songs_features.csv</code> includes the names, artists, Spotify URLs of the Top Songs of 2017.</p>
+<p>Each row in the file <code>spotify_rankings.csv</code> contains a song’s ranking on a specific day in a particular region, where regions are sorted alphabetically.</p>
+<p>For example, the first 200 rows of <code>spotify_rankings.csv</code> represent the ranks of various songs on 1st of January in Argentina. The next 200 rows contain the rankings of songs during the 2nd of January in Argentina.</p>
+<p>Note that the Spotify dataset may containing missing data, so don’t rely on the interval between successive dates as 200 rows.</p>
+<p>Instead, it would be preferable to read all the data and then filter by region &amp; date. This way, you can be sure that you have the required data.</p>
+<p>So below I am: * Loading <code>spotify_songs.csv</code> and saving the data to a dataframe called <code>songs_df</code>. * Loading <code>spotify_rankings.csv</code> and saving the data to a dataframe called <code>rankings_df</code>. * Loading <code>spotify_features.csv</code> and saving the data to a dataframe called <code>features_df</code> without the index column being included.</p>
+<div class="cell" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing the datasets to pandas dataframes </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>songs_df <span class="op">=</span> pd.read_csv(<span class="st">"spotify_songs.csv"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rankings_df <span class="op">=</span> pd.read_csv(<span class="st">"spotify_rankings.csv"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>features_df <span class="op">=</span> pd.read_csv(<span class="st">"spotify_features.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="c681bd5d-0445-465c-cfab-f292c152cf0c" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view songs_df to make sure the import was successful</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>display(songs_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>artists</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>233713</td>
+      <td>4</td>
+      <td>vocal has a nice warm quality.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5CtI0qwDJkDQGwXD1H1cL</td>
+      <td>Despacito - Remix</td>
+      <td>Luis Fonsi</td>
+      <td>228827</td>
+      <td>4</td>
+      <td>Very European feeling. I like that the singer ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4aWmUDTfIPGksMNLV2rQP</td>
+      <td>Despacito (Featuring Daddy Yankee)</td>
+      <td>Luis Fonsi</td>
+      <td>228200</td>
+      <td>4</td>
+      <td>Unique and quirky. Arrangement was good and ni...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6RUKPb4LETWmmr3iAEQkt</td>
+      <td>Something Just Like This</td>
+      <td>The Chainsmokers</td>
+      <td>247160</td>
+      <td>4</td>
+      <td>Tastefully put together song. Good instrumenta...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3DXncPQOG4VBw3QHh3S81</td>
+      <td>I'm the One</td>
+      <td>DJ Khaled</td>
+      <td>288600</td>
+      <td>4</td>
+      <td>Your voice is awesome</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1PSBzsahR2AKwLJgx8ehB</td>
+      <td>Bad Things (with Camila Cabello)</td>
+      <td>Machine Gun Kelly</td>
+      <td>239293</td>
+      <td>4</td>
+      <td>Good strong voice</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>0QsvXIfqM0zZoerQfsI9l</td>
+      <td>Don't Let Me Down</td>
+      <td>The Chainsmokers</td>
+      <td>208053</td>
+      <td>4</td>
+      <td>good movie sound track</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>7mldq42yDuxiUNn08nvzH</td>
+      <td>Body Like A Back Road</td>
+      <td>Sam Hunt</td>
+      <td>165387</td>
+      <td>4</td>
+      <td>Good melody. A little different</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>7i2DJ88J7jQ8K7zqFX2fW</td>
+      <td>Now Or Never</td>
+      <td>Halsey</td>
+      <td>214802</td>
+      <td>4</td>
+      <td>Good lyrics...</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>Dusk Till Dawn - Radio Edit</td>
+      <td>ZAYN</td>
+      <td>239000</td>
+      <td>4</td>
+      <td>Good hook - unique vocal presentation - I like...</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="dd5de857-ab46-45e5-ae4c-566fae7cea88" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view rankings_df to make sure the import was successful</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>display(rankings_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>URL</th>
+      <th>Date</th>
+      <th>Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>Reggaetón Lento (Bailemos)</td>
+      <td>CNCO</td>
+      <td>19272</td>
+      <td>https://open.spotify.com/track/3AEZUABDXNtecAO...</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Chantaje</td>
+      <td>Shakira</td>
+      <td>19270</td>
+      <td>https://open.spotify.com/track/6mICuAdrwEjh6Y6...</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+      <td>Otra Vez (feat. J Balvin)</td>
+      <td>Zion &amp; Lennox</td>
+      <td>15761</td>
+      <td>https://open.spotify.com/track/3QwBODjSEzelZyV...</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>4</td>
+      <td>Vente Pa' Ca</td>
+      <td>Ricky Martin</td>
+      <td>14954</td>
+      <td>https://open.spotify.com/track/7DM4BPaS7uofFul...</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>5</td>
+      <td>Safari</td>
+      <td>J Balvin</td>
+      <td>14269</td>
+      <td>https://open.spotify.com/track/6rQSrBHf7HlZjtc...</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3441192</th>
+      <td>3441192</td>
+      <td>196</td>
+      <td>More Than You Know</td>
+      <td>Axwell /\ Ingrosso</td>
+      <td>2126</td>
+      <td>https://open.spotify.com/track/71bBFbfn2OBK5Qw...</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+    </tr>
+    <tr>
+      <th>3441193</th>
+      <td>3441193</td>
+      <td>197</td>
+      <td>Issues</td>
+      <td>Julia Michaels</td>
+      <td>2117</td>
+      <td>https://open.spotify.com/track/7vu0JkJh0ldukEY...</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+    </tr>
+    <tr>
+      <th>3441194</th>
+      <td>3441194</td>
+      <td>198</td>
+      <td>Tuo Fei Lun</td>
+      <td>Eason Chan</td>
+      <td>2112</td>
+      <td>https://open.spotify.com/track/0pmGleExiQyd0Hx...</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+    </tr>
+    <tr>
+      <th>3441195</th>
+      <td>3441195</td>
+      <td>199</td>
+      <td>面具</td>
+      <td>Alfred Hui</td>
+      <td>2102</td>
+      <td>https://open.spotify.com/track/58SUsgamkW6vFFq...</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+    </tr>
+    <tr>
+      <th>3441196</th>
+      <td>3441196</td>
+      <td>200</td>
+      <td>Let Her Go</td>
+      <td>Passenger</td>
+      <td>2088</td>
+      <td>https://open.spotify.com/track/2jyjhRf6DVbMPU5...</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+    </tr>
+  </tbody>
+</table>
+<p>3441197 rows × 8 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="7459abcd-f4ab-48c6-f180-e4afee67a24b" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view features_df to make sure the import was successful</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>display(features_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>id</th>
+      <th>danceability</th>
+      <th>energy</th>
+      <th>key</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+      <td>0.825</td>
+      <td>0.652</td>
+      <td>1.0</td>
+      <td>-3.183</td>
+      <td>0.0</td>
+      <td>0.0802</td>
+      <td>0.5810</td>
+      <td>0.000000</td>
+      <td>0.0931</td>
+      <td>0.9310</td>
+      <td>95.977</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>5CtI0qwDJkDQGwXD1H1cL</td>
+      <td>0.694</td>
+      <td>0.815</td>
+      <td>2.0</td>
+      <td>-4.328</td>
+      <td>1.0</td>
+      <td>0.1200</td>
+      <td>0.2290</td>
+      <td>0.000000</td>
+      <td>0.0924</td>
+      <td>0.8130</td>
+      <td>88.931</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>4aWmUDTfIPGksMNLV2rQP</td>
+      <td>0.660</td>
+      <td>0.786</td>
+      <td>2.0</td>
+      <td>-4.757</td>
+      <td>1.0</td>
+      <td>0.1700</td>
+      <td>0.2090</td>
+      <td>0.000000</td>
+      <td>0.1120</td>
+      <td>0.8460</td>
+      <td>177.833</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>6RUKPb4LETWmmr3iAEQkt</td>
+      <td>0.617</td>
+      <td>0.635</td>
+      <td>11.0</td>
+      <td>-6.769</td>
+      <td>0.0</td>
+      <td>0.0317</td>
+      <td>0.0498</td>
+      <td>0.000014</td>
+      <td>0.1640</td>
+      <td>0.4460</td>
+      <td>103.019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>3DXncPQOG4VBw3QHh3S81</td>
+      <td>0.609</td>
+      <td>0.668</td>
+      <td>7.0</td>
+      <td>-4.284</td>
+      <td>1.0</td>
+      <td>0.0367</td>
+      <td>0.0552</td>
+      <td>0.000000</td>
+      <td>0.1670</td>
+      <td>0.8110</td>
+      <td>80.924</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>95</td>
+      <td>1PSBzsahR2AKwLJgx8ehB</td>
+      <td>0.675</td>
+      <td>0.690</td>
+      <td>2.0</td>
+      <td>-4.761</td>
+      <td>1.0</td>
+      <td>0.1320</td>
+      <td>0.2100</td>
+      <td>0.000000</td>
+      <td>0.2870</td>
+      <td>0.2720</td>
+      <td>137.817</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>96</td>
+      <td>0QsvXIfqM0zZoerQfsI9l</td>
+      <td>0.542</td>
+      <td>0.859</td>
+      <td>11.0</td>
+      <td>-5.651</td>
+      <td>1.0</td>
+      <td>0.1970</td>
+      <td>0.1600</td>
+      <td>0.004660</td>
+      <td>0.1370</td>
+      <td>0.4030</td>
+      <td>159.797</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>97</td>
+      <td>7mldq42yDuxiUNn08nvzH</td>
+      <td>0.731</td>
+      <td>0.469</td>
+      <td>5.0</td>
+      <td>-7.226</td>
+      <td>1.0</td>
+      <td>0.0326</td>
+      <td>0.4630</td>
+      <td>0.000001</td>
+      <td>0.1030</td>
+      <td>0.6310</td>
+      <td>98.963</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>98</td>
+      <td>7i2DJ88J7jQ8K7zqFX2fW</td>
+      <td>0.658</td>
+      <td>0.588</td>
+      <td>6.0</td>
+      <td>-4.902</td>
+      <td>0.0</td>
+      <td>0.0367</td>
+      <td>0.1050</td>
+      <td>0.000001</td>
+      <td>0.1250</td>
+      <td>0.4340</td>
+      <td>110.075</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>99</td>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>0.258</td>
+      <td>0.437</td>
+      <td>11.0</td>
+      <td>-6.593</td>
+      <td>0.0</td>
+      <td>0.0390</td>
+      <td>0.1010</td>
+      <td>0.000001</td>
+      <td>0.1060</td>
+      <td>0.0967</td>
+      <td>180.043</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 13 columns</p>
+</div>
+</div>
+</div>
+<section id="data-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="data-preprocessing">1.1 Data Preprocessing</h3>
+<p>I am now going to clean our dataframes <code>songs_df</code> and <code>rankings_df</code> by performing the following tasks:<br>
+1) fixing columns<br>
+2) changing datatypes<br>
+3) handling nulls.</p>
+<p>First, let us view the first few rows of <code>songs_df</code>. We may also call <code>.info()</code> and check the cardinality of each column to view the specifics of the dataframe. This is a good first step to take during Exploratory Data Analysis (EDA).</p>
+<div class="cell" data-outputid="4cecb0ae-bfa5-49c9-df79-b388b446df44" data-execution_count="163">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view info information regarding movies_df</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>songs_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 100 entries, 0 to 99
+Data columns (total 6 columns):
+ #   Column          Non-Null Count  Dtype 
+---  ------          --------------  ----- 
+ 0   id              100 non-null    object
+ 1   name            100 non-null    object
+ 2   artists         100 non-null    object
+ 3   duration_ms     100 non-null    int64 
+ 4   time_signature  100 non-null    int64 
+ 5   reviews         100 non-null    object
+dtypes: int64(2), object(4)
+memory usage: 4.8+ KB</code></pre>
+</div>
+</div>
+<section id="cleaning-songs_df" class="level4">
+<h4 class="anchored" data-anchor-id="cleaning-songs_df">1.1.1 Cleaning <code>songs_df</code></h4>
+<p><code>.info()</code> gives us meaningful information regarding columns, their types, and the amount of nulls. With this information, we can now clean our dataframe.</p>
+<ul>
+<li>Here I am Dropping the column <code>time_signature</code> as it will not be relevant for this analysis.</li>
+</ul>
+<div class="cell" data-outputid="a7df1d2c-f3d8-47eb-b25f-8162259813c3" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#clean songs_df</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>songs_df <span class="op">=</span> songs_df[[<span class="st">'id'</span>,  <span class="st">'name'</span>, <span class="st">'artists'</span>,  <span class="st">'duration_ms'</span>, <span class="st">'reviews'</span>]]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>songs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>artists</th>
+      <th>duration_ms</th>
+      <th>reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>233713</td>
+      <td>vocal has a nice warm quality.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5CtI0qwDJkDQGwXD1H1cL</td>
+      <td>Despacito - Remix</td>
+      <td>Luis Fonsi</td>
+      <td>228827</td>
+      <td>Very European feeling. I like that the singer ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4aWmUDTfIPGksMNLV2rQP</td>
+      <td>Despacito (Featuring Daddy Yankee)</td>
+      <td>Luis Fonsi</td>
+      <td>228200</td>
+      <td>Unique and quirky. Arrangement was good and ni...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6RUKPb4LETWmmr3iAEQkt</td>
+      <td>Something Just Like This</td>
+      <td>The Chainsmokers</td>
+      <td>247160</td>
+      <td>Tastefully put together song. Good instrumenta...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3DXncPQOG4VBw3QHh3S81</td>
+      <td>I'm the One</td>
+      <td>DJ Khaled</td>
+      <td>288600</td>
+      <td>Your voice is awesome</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1PSBzsahR2AKwLJgx8ehB</td>
+      <td>Bad Things (with Camila Cabello)</td>
+      <td>Machine Gun Kelly</td>
+      <td>239293</td>
+      <td>Good strong voice</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>0QsvXIfqM0zZoerQfsI9l</td>
+      <td>Don't Let Me Down</td>
+      <td>The Chainsmokers</td>
+      <td>208053</td>
+      <td>good movie sound track</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>7mldq42yDuxiUNn08nvzH</td>
+      <td>Body Like A Back Road</td>
+      <td>Sam Hunt</td>
+      <td>165387</td>
+      <td>Good melody. A little different</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>7i2DJ88J7jQ8K7zqFX2fW</td>
+      <td>Now Or Never</td>
+      <td>Halsey</td>
+      <td>214802</td>
+      <td>Good lyrics...</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>Dusk Till Dawn - Radio Edit</td>
+      <td>ZAYN</td>
+      <td>239000</td>
+      <td>Good hook - unique vocal presentation - I like...</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="processing-rankings" class="level4">
+<h4 class="anchored" data-anchor-id="processing-rankings">1.1.2 Processing Rankings</h4>
+<p><code>rankings_df</code> contains a <code>URL</code> column that represents the URL of the Spotify track. This URL contains the track ID. We would like to extract the ID corresponding to each song.</p>
+<p>To maintain consistency, begin by sorting this dataframe according to <code>Date</code> in ascending order.</p>
+<p>Below I am: - Sorting the <code>Date</code> column in ascending order - Splitting the strings in the <code>URL</code> column to extract the ID for each song, and saving this as a new column called <code>ID</code> in <code>rankings_df</code> - Dropping the <code>URL</code> column</p>
+<p><strong>Example</strong>: &gt;URL | ID &gt;— | — &gt; https://open.spotify.com/track/3AEZUABDXNtecAOSC1qTf | 3AEZUABDXNtecAOSC1qTf</p>
+<p>After performing these steps, <code>rankings_df</code> should have the following schema: <strong>Final Schema</strong>: &gt;Position | Track Name | Artist | Streams | Date | Region | ID &gt;— | — | — |— |— |— |— |</p>
+<p><strong>Hint</strong>: Note the delimiter within the URL and consult the documentation for the <code>.split()</code> function</p>
+<div class="cell" data-outputid="2fed289e-bbfb-489a-c05e-0b3320a59077" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract ID and drop URL</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rankings_df <span class="op">=</span> rankings_df.sort_values(by<span class="op">=</span>[<span class="st">'Date'</span>], ascending<span class="op">=</span><span class="va">True</span>) <span class="co">#sort ascending order</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>rankings_df[<span class="st">'ID'</span>] <span class="op">=</span> rankings_df[<span class="st">'URL'</span>].<span class="bu">str</span>.split(<span class="st">'/'</span>).<span class="bu">str</span>[<span class="op">-</span><span class="dv">1</span>].tolist() <span class="co">#create an ID column, split from 'track/', the [1] puts it in an array. tolist() ID</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>rankings_df <span class="op">=</span> rankings_df[[<span class="st">'Position'</span>, <span class="st">'Track Name'</span>, <span class="st">'Artist'</span>, <span class="st">'Streams'</span>, <span class="st">'Date'</span>, <span class="st">'Region'</span>, <span class="st">'ID'</span>]]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>rankings_df</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rankings_df = rankings_df.split()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="165">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Reggaetón Lento (Bailemos)</td>
+      <td>CNCO</td>
+      <td>19272</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+      <td>3AEZUABDXNtecAOSC1qTf</td>
+    </tr>
+    <tr>
+      <th>2658317</th>
+      <td>118</td>
+      <td>Steady 1234 (feat. Jasmine Thompson &amp; Skizzy M...</td>
+      <td>Vice</td>
+      <td>15142</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>40UroIGvsMPLPBYwH8rMN</td>
+    </tr>
+    <tr>
+      <th>2658316</th>
+      <td>117</td>
+      <td>Dynamite (feat. Pretty Sister)</td>
+      <td>Nause</td>
+      <td>15152</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2Ae5awwKvQpTBKQHr1TYC</td>
+    </tr>
+    <tr>
+      <th>2658315</th>
+      <td>116</td>
+      <td>Hello</td>
+      <td>Adele</td>
+      <td>15170</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>4sPmO7WMQUAf45kwMOtON</td>
+    </tr>
+    <tr>
+      <th>2658314</th>
+      <td>115</td>
+      <td>One Night Stand</td>
+      <td>B-Brave</td>
+      <td>15510</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2no9x9FRytP9PnB3CQPYS</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1498830</th>
+      <td>109</td>
+      <td>Sky Walker</td>
+      <td>Miguel</td>
+      <td>1581</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5WoaF1B5XIEnWfmb5NZik</td>
+    </tr>
+    <tr>
+      <th>1498829</th>
+      <td>108</td>
+      <td>Back to You (feat. Bebe Rexha &amp; Digital Farm A...</td>
+      <td>Louis Tomlinson</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>7F9vK8hNFMml4GtHsaXui</td>
+    </tr>
+    <tr>
+      <th>1498828</th>
+      <td>107</td>
+      <td>Betrayed</td>
+      <td>Lil Xan</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>6NWl2m8asvH83xjuXVNsu</td>
+    </tr>
+    <tr>
+      <th>1498841</th>
+      <td>120</td>
+      <td>Rockabye (feat. Sean Paul &amp; Anne-Marie)</td>
+      <td>Clean Bandit</td>
+      <td>1490</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5knuzwU65gJK7IF5yJsua</td>
+    </tr>
+    <tr>
+      <th>3441196</th>
+      <td>200</td>
+      <td>Let Her Go</td>
+      <td>Passenger</td>
+      <td>2088</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+      <td>2jyjhRf6DVbMPU5zxagN2</td>
+    </tr>
+  </tbody>
+</table>
+<p>3441197 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning-rankings_df" class="level4">
+<h4 class="anchored" data-anchor-id="cleaning-rankings_df">1.1.3 Cleaning <code>rankings_df</code></h4>
+<p>Now let’s clean <code>rankings_df</code> and make it usable.</p>
+<div class="cell" data-outputid="020ffd23-d57b-4f90-ae7c-8df45631939c" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine rankings_df using the .info() function</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rankings_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 3441197 entries, 0 to 3441196
+Data columns (total 7 columns):
+ #   Column      Dtype 
+---  ------      ----- 
+ 0   Position    int64 
+ 1   Track Name  object
+ 2   Artist      object
+ 3   Streams     int64 
+ 4   Date        object
+ 5   Region      object
+ 6   ID          object
+dtypes: int64(2), object(5)
+memory usage: 210.0+ MB</code></pre>
+</div>
+</div>
+<p>Now let’s: * Drop all rows that have a null value in <code>rankings_df</code> * Convert column <code>Date</code> into type <code>datetime64[ns]</code>.</p>
+<div class="cell" data-outputid="125a20b8-8982-42b4-e113-71091c938bf2" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rankings_df <span class="op">=</span> rankings_df.dropna()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>rankings_df[<span class="st">'Date'</span>] <span class="op">=</span> rankings_df[<span class="st">'Date'</span>].astype(<span class="st">'datetime64'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>rankings_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/661023765.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  rankings_df['Date'] = rankings_df['Date'].astype('datetime64')</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="167">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Reggaetón Lento (Bailemos)</td>
+      <td>CNCO</td>
+      <td>19272</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+      <td>3AEZUABDXNtecAOSC1qTf</td>
+    </tr>
+    <tr>
+      <th>2658317</th>
+      <td>118</td>
+      <td>Steady 1234 (feat. Jasmine Thompson &amp; Skizzy M...</td>
+      <td>Vice</td>
+      <td>15142</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>40UroIGvsMPLPBYwH8rMN</td>
+    </tr>
+    <tr>
+      <th>2658316</th>
+      <td>117</td>
+      <td>Dynamite (feat. Pretty Sister)</td>
+      <td>Nause</td>
+      <td>15152</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2Ae5awwKvQpTBKQHr1TYC</td>
+    </tr>
+    <tr>
+      <th>2658315</th>
+      <td>116</td>
+      <td>Hello</td>
+      <td>Adele</td>
+      <td>15170</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>4sPmO7WMQUAf45kwMOtON</td>
+    </tr>
+    <tr>
+      <th>2658314</th>
+      <td>115</td>
+      <td>One Night Stand</td>
+      <td>B-Brave</td>
+      <td>15510</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2no9x9FRytP9PnB3CQPYS</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1498830</th>
+      <td>109</td>
+      <td>Sky Walker</td>
+      <td>Miguel</td>
+      <td>1581</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5WoaF1B5XIEnWfmb5NZik</td>
+    </tr>
+    <tr>
+      <th>1498829</th>
+      <td>108</td>
+      <td>Back to You (feat. Bebe Rexha &amp; Digital Farm A...</td>
+      <td>Louis Tomlinson</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>7F9vK8hNFMml4GtHsaXui</td>
+    </tr>
+    <tr>
+      <th>1498828</th>
+      <td>107</td>
+      <td>Betrayed</td>
+      <td>Lil Xan</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>6NWl2m8asvH83xjuXVNsu</td>
+    </tr>
+    <tr>
+      <th>1498841</th>
+      <td>120</td>
+      <td>Rockabye (feat. Sean Paul &amp; Anne-Marie)</td>
+      <td>Clean Bandit</td>
+      <td>1490</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5knuzwU65gJK7IF5yJsua</td>
+    </tr>
+    <tr>
+      <th>3441196</th>
+      <td>200</td>
+      <td>Let Her Go</td>
+      <td>Passenger</td>
+      <td>2088</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+      <td>2jyjhRf6DVbMPU5zxagN2</td>
+    </tr>
+  </tbody>
+</table>
+<p>3440540 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-2-exploring-the-data-with-pandassql-and-pandas" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-exploring-the-data-with-pandassql-and-pandas">Part 2: Exploring the Data with PandasSQL (and Pandas)</h2>
+<p>Now that we’re more familiar with the dataset, we’ll now go in SQL language. Specifically, I’ll be using <strong>pandasql</strong></p>
+<p>The typical flow of using pandasql (shortened to <strong>ps</strong>) is as follows: 1. Write a SQL query in the form of a string (Tip: use triple quotes “““x”“” to write multi-line strings) 2. Run the query using <strong>ps.sqldf(your_query, locals())</strong></p>
+<p>PandaSQL is convenient as it allows you to reference the dataframes that are currently defined in your notebook, so you will be able to fully utilize the dataframes <code>songs_df</code>, <code>rankings_df</code> and <code>features_df</code> that you have created above!</p>
+<p>###2.1 Bruno Mars songs</p>
+<section id="how-many-bruno-mars-songs-were-popular-in-2017" class="level4">
+<h4 class="anchored" data-anchor-id="how-many-bruno-mars-songs-were-popular-in-2017">2.1.1 How many Bruno Mars’ songs were popular in 2017?</h4>
+<p>The dataframe <code>songs_df</code> contains all top songs in 2017. We want to know whether Bruno Mars was a part of it (he obviously was) - but which of his songs made it to the top?</p>
+<p>Using <strong>pandas</strong>, let’s filter out the songs and reviews from <code>songs_df</code> that were by <code>Bruno Mars</code>. Then, let’s save this data to a DataFrame called <code>bruno_df</code> that has the following schema:</p>
+<blockquote class="blockquote">
+<table>
+<thead>
+<tr class="header">
+<th>name</th>
+<th>reviews</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<div class="cell" data-outputid="d29e6096-aaa3-4d71-8119-721d3fd8e71e" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using pandas to obtain songs by `Bruno Mars`</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># bruno_df = songs_df.groupby('artists' == 'Bruno Mars')</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>bruno_df <span class="op">=</span> songs_df[songs_df[<span class="st">'artists'</span>] <span class="op">==</span> <span class="st">'Bruno Mars'</span>]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bruno_df = songs_df.groupby() #how to get b mars</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>bruno_df <span class="op">=</span> bruno_df[[<span class="st">'name'</span>, <span class="st">'reviews'</span>]]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>bruno_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="168">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>That's What I Like</td>
+      <td>You have a really cool voice! I like the way y...</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>24K Magic</td>
+      <td>Lyrics are very good. Backing sounds nice.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="how-many-of-bruno-mars-songs-were-deemed-good" class="level4">
+<h4 class="anchored" data-anchor-id="how-many-of-bruno-mars-songs-were-deemed-good">2.1.2 How many of Bruno Mars’ songs were deemed “good”?</h4>
+<p>We now want to see which of these songs contained the word “good” in the <code>reviews</code> column.</p>
+<p>Here we update <code>bruno_df</code> so that it only contains songs that have the word ‘good’ in the <code>reviews</code> column.</p>
+<div class="cell" data-outputid="c726aece-2ea4-484e-920d-04dc1b7279c8" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using pandasql to obtain only "good" songs of bruno mars</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>good_song_query <span class="op">=</span> <span class="st">"""SELECT * FROM bruno_df WHERE reviews LIKE '</span><span class="sc">%g</span><span class="st">ood%'"""</span> <span class="co"># syntax after like == wildcards - look at the string and ignore everything before% and after% 'good'</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>bruno_df <span class="op">=</span> ps.sqldf(good_song_query, <span class="bu">locals</span>())</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>bruno_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="169">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24K Magic</td>
+      <td>Lyrics are very good. Backing sounds nice.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>###2.2 You can seeing the hit songs</p>
+</section>
+<section id="extract-the-total-no.-of-streams" class="level4">
+<h4 class="anchored" data-anchor-id="extract-the-total-no.-of-streams">2.2.1 Extract the total no. of streams</h4>
+<p>We now want to see what songs formed the top 75% of the year 2017 from <code>rankings_df</code>. We can measure the popularity of the songs using the total number of streams the song received.</p>
+<ul>
+<li>You can see the total number of streams per song and save it into a dataframe called <code>streams_df</code></li>
+<li>Understand the quartile ranges in <code>streams_df</code></li>
+</ul>
+<div class="cell" data-outputid="8254d606-70c9-4647-9f27-64c54a284fc1" data-execution_count="170">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rankings_df.describe()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we use `.describe()` to understand quartiles. It would be helpful to save the necessary quartile value to use in the querying section that follows.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="170">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>3.440540e+06</td>
+      <td>3.440540e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>9.465220e+01</td>
+      <td>5.188452e+04</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.739412e+01</td>
+      <td>2.017733e+05</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000e+00</td>
+      <td>1.001000e+03</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>4.500000e+01</td>
+      <td>3.321000e+03</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>9.200000e+01</td>
+      <td>9.226000e+03</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.430000e+02</td>
+      <td>2.965600e+04</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.000000e+02</td>
+      <td>1.138152e+07</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="35530809-084d-49ba-9237-ba5f70f3045b" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rankings_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="171">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Reggaetón Lento (Bailemos)</td>
+      <td>CNCO</td>
+      <td>19272</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+      <td>3AEZUABDXNtecAOSC1qTf</td>
+    </tr>
+    <tr>
+      <th>2658317</th>
+      <td>118</td>
+      <td>Steady 1234 (feat. Jasmine Thompson &amp; Skizzy M...</td>
+      <td>Vice</td>
+      <td>15142</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>40UroIGvsMPLPBYwH8rMN</td>
+    </tr>
+    <tr>
+      <th>2658316</th>
+      <td>117</td>
+      <td>Dynamite (feat. Pretty Sister)</td>
+      <td>Nause</td>
+      <td>15152</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2Ae5awwKvQpTBKQHr1TYC</td>
+    </tr>
+    <tr>
+      <th>2658315</th>
+      <td>116</td>
+      <td>Hello</td>
+      <td>Adele</td>
+      <td>15170</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>4sPmO7WMQUAf45kwMOtON</td>
+    </tr>
+    <tr>
+      <th>2658314</th>
+      <td>115</td>
+      <td>One Night Stand</td>
+      <td>B-Brave</td>
+      <td>15510</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2no9x9FRytP9PnB3CQPYS</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1498830</th>
+      <td>109</td>
+      <td>Sky Walker</td>
+      <td>Miguel</td>
+      <td>1581</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5WoaF1B5XIEnWfmb5NZik</td>
+    </tr>
+    <tr>
+      <th>1498829</th>
+      <td>108</td>
+      <td>Back to You (feat. Bebe Rexha &amp; Digital Farm A...</td>
+      <td>Louis Tomlinson</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>7F9vK8hNFMml4GtHsaXui</td>
+    </tr>
+    <tr>
+      <th>1498828</th>
+      <td>107</td>
+      <td>Betrayed</td>
+      <td>Lil Xan</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>6NWl2m8asvH83xjuXVNsu</td>
+    </tr>
+    <tr>
+      <th>1498841</th>
+      <td>120</td>
+      <td>Rockabye (feat. Sean Paul &amp; Anne-Marie)</td>
+      <td>Clean Bandit</td>
+      <td>1490</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5knuzwU65gJK7IF5yJsua</td>
+    </tr>
+    <tr>
+      <th>3441196</th>
+      <td>200</td>
+      <td>Let Her Go</td>
+      <td>Passenger</td>
+      <td>2088</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+      <td>2jyjhRf6DVbMPU5zxagN2</td>
+    </tr>
+  </tbody>
+</table>
+<p>3440540 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="b089af7e-c7eb-4afe-f539-e63a2e0d55d4" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>streams_df <span class="op">=</span> rankings_df.groupby(by <span class="op">=</span> <span class="st">'Track Name'</span>).<span class="bu">sum</span>()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>streams_df</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pandas extract the total number of streams per song from rankings_df</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># streams_df = rankings_df['Streams'&gt;2.965800e+04]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/1744104746.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  streams_df = rankings_df.groupby(by = 'Track Name').sum()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="172">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+    <tr>
+      <th>Track Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>"All That Is or Ever Was or Ever Will Be"</th>
+      <td>383</td>
+      <td>7311</td>
+    </tr>
+    <tr>
+      <th>"Read All About It, Pt. III"</th>
+      <td>2306</td>
+      <td>57025</td>
+    </tr>
+    <tr>
+      <th>#99</th>
+      <td>1126</td>
+      <td>31826</td>
+    </tr>
+    <tr>
+      <th>#Askip</th>
+      <td>3184</td>
+      <td>296862</td>
+    </tr>
+    <tr>
+      <th>#Biziz - feat. Lil Bege</th>
+      <td>4488</td>
+      <td>403591</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>전야 前夜 The Eve</th>
+      <td>17063</td>
+      <td>976392</td>
+    </tr>
+    <tr>
+      <th>지나갈 테니 Been Through</th>
+      <td>1180</td>
+      <td>87456</td>
+    </tr>
+    <tr>
+      <th>쩔어 DOPE</th>
+      <td>7545</td>
+      <td>209493</td>
+    </tr>
+    <tr>
+      <th>피 땀 눈물</th>
+      <td>2757</td>
+      <td>68673</td>
+    </tr>
+    <tr>
+      <th>피카부 Peek-A-Boo</th>
+      <td>24895</td>
+      <td>2078217</td>
+    </tr>
+  </tbody>
+</table>
+<p>18597 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="9ca4b353-8f8c-4e3c-8ce0-10211156e2b0" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>streams_df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="173">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.859700e+04</td>
+      <td>1.859700e+04</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.751114e+04</td>
+      <td>9.598901e+06</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>7.505320e+04</td>
+      <td>6.903221e+07</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000e+01</td>
+      <td>1.001000e+03</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.200000e+02</td>
+      <td>2.133400e+04</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.362000e+03</td>
+      <td>1.225160e+05</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>7.620000e+03</td>
+      <td>1.072171e+06</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.604987e+06</td>
+      <td>2.993989e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="top-75-of-streams" class="level4">
+<h4 class="anchored" data-anchor-id="top-75-of-streams">2.2.2 Top 75% of streams</h4>
+<p>Now that we’ve seen the distribution of the streams, we’d like to extract songs with streams within the top 75%.</p>
+<p>We filter out songs from <code>streams_df</code> whose stream count is in the top 75%, then save this data as the Pandas dataframe <code>pd_top_streams</code>.</p>
+<div class="cell" data-outputid="178f27d5-480a-4e02-e44d-eb78ae74d46a" data-execution_count="174">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>streams_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="174">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+    <tr>
+      <th>Track Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>"All That Is or Ever Was or Ever Will Be"</th>
+      <td>383</td>
+      <td>7311</td>
+    </tr>
+    <tr>
+      <th>"Read All About It, Pt. III"</th>
+      <td>2306</td>
+      <td>57025</td>
+    </tr>
+    <tr>
+      <th>#99</th>
+      <td>1126</td>
+      <td>31826</td>
+    </tr>
+    <tr>
+      <th>#Askip</th>
+      <td>3184</td>
+      <td>296862</td>
+    </tr>
+    <tr>
+      <th>#Biziz - feat. Lil Bege</th>
+      <td>4488</td>
+      <td>403591</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>전야 前夜 The Eve</th>
+      <td>17063</td>
+      <td>976392</td>
+    </tr>
+    <tr>
+      <th>지나갈 테니 Been Through</th>
+      <td>1180</td>
+      <td>87456</td>
+    </tr>
+    <tr>
+      <th>쩔어 DOPE</th>
+      <td>7545</td>
+      <td>209493</td>
+    </tr>
+    <tr>
+      <th>피 땀 눈물</th>
+      <td>2757</td>
+      <td>68673</td>
+    </tr>
+    <tr>
+      <th>피카부 Peek-A-Boo</th>
+      <td>24895</td>
+      <td>2078217</td>
+    </tr>
+  </tbody>
+</table>
+<p>18597 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="f00c00e9-ddb1-47ee-9b2f-1f69ea887995" data-execution_count="175">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using pandasql extract the top 75% based on number of streams</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>top_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT * </span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM streams_df</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE Streams &gt; 21334</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>sql_top_streams <span class="op">=</span> ps.sqldf(top_query, <span class="bu">locals</span>())</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>sql_top_streams</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="175">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Track Name</th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>"Read All About It, Pt. III"</td>
+      <td>2306</td>
+      <td>57025</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#99</td>
+      <td>1126</td>
+      <td>31826</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>#Askip</td>
+      <td>3184</td>
+      <td>296862</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>#Biziz - feat. Lil Bege</td>
+      <td>4488</td>
+      <td>403591</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>#CTZK</td>
+      <td>20515</td>
+      <td>669563</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>13941</th>
+      <td>전야 前夜 The Eve</td>
+      <td>17063</td>
+      <td>976392</td>
+    </tr>
+    <tr>
+      <th>13942</th>
+      <td>지나갈 테니 Been Through</td>
+      <td>1180</td>
+      <td>87456</td>
+    </tr>
+    <tr>
+      <th>13943</th>
+      <td>쩔어 DOPE</td>
+      <td>7545</td>
+      <td>209493</td>
+    </tr>
+    <tr>
+      <th>13944</th>
+      <td>피 땀 눈물</td>
+      <td>2757</td>
+      <td>68673</td>
+    </tr>
+    <tr>
+      <th>13945</th>
+      <td>피카부 Peek-A-Boo</td>
+      <td>24895</td>
+      <td>2078217</td>
+    </tr>
+  </tbody>
+</table>
+<p>13946 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="duration-of-songs" class="level3">
+<h3 class="anchored" data-anchor-id="duration-of-songs">2.3 Duration of songs</h3>
+<p>Now that we know which songs are hits, we’d like to listen to songs that are not too short nor too long.</p>
+<p>Using <strong>pandas</strong>, we filter out songs from <code>songs_df</code> whose duration is between 3 and 5 minutes.</p>
+<ul>
+<li>Creating a new column in <code>songs_df</code> called “duration_min” that converts the duration in “duration_ms” from milliseconds to minutes</li>
+<li>Extracting only songs whose duration is at least 3 minutes and at most 5 minutes. Then, saving the output to <code>ideal_songs_df</code>.</li>
+</ul>
+<div class="cell" data-outputid="dec9a94f-86ed-43e6-8d0a-fd9d1dde4ae4" data-execution_count="176">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>songs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="176">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>artists</th>
+      <th>duration_ms</th>
+      <th>reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>233713</td>
+      <td>vocal has a nice warm quality.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5CtI0qwDJkDQGwXD1H1cL</td>
+      <td>Despacito - Remix</td>
+      <td>Luis Fonsi</td>
+      <td>228827</td>
+      <td>Very European feeling. I like that the singer ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4aWmUDTfIPGksMNLV2rQP</td>
+      <td>Despacito (Featuring Daddy Yankee)</td>
+      <td>Luis Fonsi</td>
+      <td>228200</td>
+      <td>Unique and quirky. Arrangement was good and ni...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6RUKPb4LETWmmr3iAEQkt</td>
+      <td>Something Just Like This</td>
+      <td>The Chainsmokers</td>
+      <td>247160</td>
+      <td>Tastefully put together song. Good instrumenta...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3DXncPQOG4VBw3QHh3S81</td>
+      <td>I'm the One</td>
+      <td>DJ Khaled</td>
+      <td>288600</td>
+      <td>Your voice is awesome</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1PSBzsahR2AKwLJgx8ehB</td>
+      <td>Bad Things (with Camila Cabello)</td>
+      <td>Machine Gun Kelly</td>
+      <td>239293</td>
+      <td>Good strong voice</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>0QsvXIfqM0zZoerQfsI9l</td>
+      <td>Don't Let Me Down</td>
+      <td>The Chainsmokers</td>
+      <td>208053</td>
+      <td>good movie sound track</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>7mldq42yDuxiUNn08nvzH</td>
+      <td>Body Like A Back Road</td>
+      <td>Sam Hunt</td>
+      <td>165387</td>
+      <td>Good melody. A little different</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>7i2DJ88J7jQ8K7zqFX2fW</td>
+      <td>Now Or Never</td>
+      <td>Halsey</td>
+      <td>214802</td>
+      <td>Good lyrics...</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>Dusk Till Dawn - Radio Edit</td>
+      <td>ZAYN</td>
+      <td>239000</td>
+      <td>Good hook - unique vocal presentation - I like...</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="98905b88-33e6-42d8-adfb-50fcf46afbf7" data-execution_count="177">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>songs_df <span class="co">#convert ms to min</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>songs_df[<span class="st">'duration_min'</span>] <span class="op">=</span>  songs_df[<span class="st">'duration_ms'</span>] <span class="op">/</span> <span class="dv">60000</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>ideal_songs_df <span class="op">=</span> songs_df[(songs_df[<span class="st">'duration_min'</span>] <span class="op">&gt;=</span> <span class="dv">3</span>) <span class="op">&amp;</span> (songs_df[<span class="st">'duration_min'</span>] <span class="op">&lt;=</span><span class="dv">5</span>)]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>ideal_songs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="177">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>artists</th>
+      <th>duration_ms</th>
+      <th>reviews</th>
+      <th>duration_min</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>233713</td>
+      <td>vocal has a nice warm quality.</td>
+      <td>3.895217</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5CtI0qwDJkDQGwXD1H1cL</td>
+      <td>Despacito - Remix</td>
+      <td>Luis Fonsi</td>
+      <td>228827</td>
+      <td>Very European feeling. I like that the singer ...</td>
+      <td>3.813783</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4aWmUDTfIPGksMNLV2rQP</td>
+      <td>Despacito (Featuring Daddy Yankee)</td>
+      <td>Luis Fonsi</td>
+      <td>228200</td>
+      <td>Unique and quirky. Arrangement was good and ni...</td>
+      <td>3.803333</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6RUKPb4LETWmmr3iAEQkt</td>
+      <td>Something Just Like This</td>
+      <td>The Chainsmokers</td>
+      <td>247160</td>
+      <td>Tastefully put together song. Good instrumenta...</td>
+      <td>4.119333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3DXncPQOG4VBw3QHh3S81</td>
+      <td>I'm the One</td>
+      <td>DJ Khaled</td>
+      <td>288600</td>
+      <td>Your voice is awesome</td>
+      <td>4.810000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>2fQrGHiQOvpL9UgPvtYy6</td>
+      <td>Bank Account</td>
+      <td>21 Savage</td>
+      <td>220307</td>
+      <td>Good vocal, Good arrangement, Good subject mat...</td>
+      <td>3.671783</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1PSBzsahR2AKwLJgx8ehB</td>
+      <td>Bad Things (with Camila Cabello)</td>
+      <td>Machine Gun Kelly</td>
+      <td>239293</td>
+      <td>Good strong voice</td>
+      <td>3.988217</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>0QsvXIfqM0zZoerQfsI9l</td>
+      <td>Don't Let Me Down</td>
+      <td>The Chainsmokers</td>
+      <td>208053</td>
+      <td>good movie sound track</td>
+      <td>3.467550</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>7i2DJ88J7jQ8K7zqFX2fW</td>
+      <td>Now Or Never</td>
+      <td>Halsey</td>
+      <td>214802</td>
+      <td>Good lyrics...</td>
+      <td>3.580033</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>Dusk Till Dawn - Radio Edit</td>
+      <td>ZAYN</td>
+      <td>239000</td>
+      <td>Good hook - unique vocal presentation - I like...</td>
+      <td>3.983333</td>
+    </tr>
+  </tbody>
+</table>
+<p>90 rows × 6 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="who-are-the-highest-ranked-artists" class="level3">
+<h3 class="anchored" data-anchor-id="who-are-the-highest-ranked-artists">2.4 Who are the highest ranked artists?</h3>
+<p>Which artists have been ranked #1 the most times in 2017?</p>
+<p>Using the dataframe <code>rankings_df</code>, we perform the following tasks on <strong>pandasql</strong>: - We extract the names of artist that have <code>position</code> as 1, and store this data in <code>pd_pos_df</code> - Using <code>pd_pos_df</code>, You can see the number of times each artist was ranked #1 - Then we get the Top 10 artists, i.e.&nbsp;the 10 artists which have been ranked #1 the most times.</p>
+<p>The dataframe <code>pd_pos_df</code> should have the following schema:</p>
+<blockquote class="blockquote">
+<table>
+<thead>
+<tr class="header">
+<th>Artist</th>
+<th>Position</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<div class="cell" data-outputid="6d5269b2-a983-4bdd-92b1-5a7ae16e931d" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandasql</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>pos_query <span class="op">=</span> <span class="st">""" </span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT Artist, COUNT (Position) AS Position</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM rankings_df</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE Position = 1</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY Artist</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY Position DESC</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 10</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>sql_pos_df <span class="op">=</span> ps.sqldf(pos_query, <span class="bu">locals</span>())</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>sql_pos_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="178">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Artist</th>
+      <th>Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Luis Fonsi</td>
+      <td>4085</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ed Sheeran</td>
+      <td>3780</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Post Malone</td>
+      <td>1737</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>J Balvin</td>
+      <td>1195</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Maluma</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Natti Natasha</td>
+      <td>416</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Bad Bunny</td>
+      <td>311</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Taylor Swift</td>
+      <td>304</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Danny Ocean</td>
+      <td>291</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Camila Cabello</td>
+      <td>272</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="popular-artists" class="level3">
+<h3 class="anchored" data-anchor-id="popular-artists">2.5 Popular Artists!</h3>
+<p>Are there artists whose songs are streamed more often than others? Let’s see!</p>
+<ul>
+<li>We consider rows in <code>rankings_df</code> that are during Summer 2017
+<ul>
+<li>I assume that the duration of summer is from 15th June 2017 to 16th September 2017 (both dates inclusive)</li>
+</ul></li>
+<li>Then I am finding the total number of streams corresponding to each artist, then storing this data in a new column called <code>Number</code>.</li>
+<li>Then I am sorting this dataframe on the <code>Number</code> column so that the most popular artists appear first (i.e.&nbsp;sort according to the <code>Number</code> column in descending order).</li>
+</ul>
+<p>Calling the output dataframe <code>sql_summer_df</code>.</p>
+<div class="cell" data-outputid="9d2bd60b-4937-4e47-9de7-1d78fa153671" data-execution_count="179">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandasql</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>summer_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT Artist, SUM(Streams) AS Number</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM rankings_df</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE strftime ('%Y-%m-</span><span class="sc">%d</span><span class="st">', DATE) BETWEEN '2017-06-15' AND '2017-09-16'</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY Artist</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY Number DESC</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>sql_summer_df <span class="op">=</span> ps.sqldf(summer_query, <span class="bu">locals</span>())</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>sql_summer_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="179">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Artist</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ed Sheeran</td>
+      <td>1331033447</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>DJ Khaled</td>
+      <td>1298364289</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Luis Fonsi</td>
+      <td>1186212514</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Calvin Harris</td>
+      <td>1033045563</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>J Balvin</td>
+      <td>1021849673</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3096</th>
+      <td>Á Móti Sól</td>
+      <td>1052</td>
+    </tr>
+    <tr>
+      <th>3097</th>
+      <td>Huntar</td>
+      <td>1049</td>
+    </tr>
+    <tr>
+      <th>3098</th>
+      <td>The Panas</td>
+      <td>1032</td>
+    </tr>
+    <tr>
+      <th>3099</th>
+      <td>Stefán Hilmarsson</td>
+      <td>1022</td>
+    </tr>
+    <tr>
+      <th>3100</th>
+      <td>Delano</td>
+      <td>1010</td>
+    </tr>
+  </tbody>
+</table>
+<p>3101 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="which-songs-are-danceable-but-also-mellow" class="level3">
+<h3 class="anchored" data-anchor-id="which-songs-are-danceable-but-also-mellow">2.6 Which songs are danceable but also mellow?</h3>
+<p>Now let us switch gears and examine <code>songs_df</code> and <code>features_df</code>. In particular, we want to You can see the songs with high danceability and low tempo.</p>
+<p>STEPS to to solution: - Round the <code>danceability</code> column to one decimal place, and calling the resultant column <code>r_danceability</code>. This will allow us to conduct a more general (coarser) analysis of the data. - Merge <code>songs_df</code> and <code>features_df</code>, then sort the songs with danceability in <em>descending</em> order and tempo in <em>ascending</em> order. (When sorting, make sure to use the <code>r_danceability</code> column.) - Call the output dataframe <code>sql_songs_features_df</code>.</p>
+<div class="cell" data-outputid="8f6a0356-a904-46a1-9aaf-7f0bbadd2fae" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandasql</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>song_feature_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT *, ROUND (danceability, 1) AS r_danceability</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM features_df</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN songs_df ON features_df.id = songs_df.id</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY ROUND (danceability, 1) DESC, tempo ASC</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>sql_song_features_df <span class="op">=</span> ps.sqldf(song_feature_query, <span class="bu">locals</span>())</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>sql_song_features_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="180">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>id</th>
+      <th>danceability</th>
+      <th>energy</th>
+      <th>key</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>id</th>
+      <th>name</th>
+      <th>artists</th>
+      <th>duration_ms</th>
+      <th>reviews</th>
+      <th>duration_min</th>
+      <th>r_danceability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>94</td>
+      <td>2fQrGHiQOvpL9UgPvtYy6</td>
+      <td>0.884</td>
+      <td>0.346</td>
+      <td>8.0</td>
+      <td>-8.228</td>
+      <td>0.0</td>
+      <td>0.3510</td>
+      <td>0.0151</td>
+      <td>0.000007</td>
+      <td>0.0871</td>
+      <td>0.3760</td>
+      <td>75.016</td>
+      <td>2fQrGHiQOvpL9UgPvtYy6</td>
+      <td>Bank Account</td>
+      <td>21 Savage</td>
+      <td>220307</td>
+      <td>Good vocal, Good arrangement, Good subject mat...</td>
+      <td>3.671783</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>42</td>
+      <td>5bcTCxgc7xVfSaMV3RuVk</td>
+      <td>0.893</td>
+      <td>0.745</td>
+      <td>11.0</td>
+      <td>-3.105</td>
+      <td>0.0</td>
+      <td>0.0571</td>
+      <td>0.0642</td>
+      <td>0.000000</td>
+      <td>0.0943</td>
+      <td>0.8720</td>
+      <td>101.018</td>
+      <td>5bcTCxgc7xVfSaMV3RuVk</td>
+      <td>Feels</td>
+      <td>Calvin Harris</td>
+      <td>223413</td>
+      <td>Overall quite a nice sound.</td>
+      <td>3.723550</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47</td>
+      <td>6mICuAdrwEjh6Y6lroV2K</td>
+      <td>0.852</td>
+      <td>0.773</td>
+      <td>8.0</td>
+      <td>-2.921</td>
+      <td>0.0</td>
+      <td>0.0776</td>
+      <td>0.1870</td>
+      <td>0.000030</td>
+      <td>0.1590</td>
+      <td>0.9070</td>
+      <td>102.034</td>
+      <td>6mICuAdrwEjh6Y6lroV2K</td>
+      <td>Chantaje</td>
+      <td>Shakira</td>
+      <td>195840</td>
+      <td>NICE TUNE WITH SOME NEAT CHORD CHANGES....VERY...</td>
+      <td>3.264000</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>38</td>
+      <td>6EpRaXYhGOB3fj4V2uDkM</td>
+      <td>0.869</td>
+      <td>0.485</td>
+      <td>6.0</td>
+      <td>-5.595</td>
+      <td>1.0</td>
+      <td>0.0545</td>
+      <td>0.2460</td>
+      <td>0.000000</td>
+      <td>0.0765</td>
+      <td>0.5270</td>
+      <td>106.028</td>
+      <td>6EpRaXYhGOB3fj4V2uDkM</td>
+      <td>Strip That Down</td>
+      <td>Liam Payne</td>
+      <td>204502</td>
+      <td>Rich clean vocals. Nice incidental instrumenta...</td>
+      <td>3.408367</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>91</td>
+      <td>4c2W3VKsOFoIg2SFaO6DY</td>
+      <td>0.855</td>
+      <td>0.624</td>
+      <td>1.0</td>
+      <td>-4.093</td>
+      <td>1.0</td>
+      <td>0.0488</td>
+      <td>0.1580</td>
+      <td>0.000000</td>
+      <td>0.0513</td>
+      <td>0.9620</td>
+      <td>117.959</td>
+      <td>4c2W3VKsOFoIg2SFaO6DY</td>
+      <td>Your Song</td>
+      <td>Rita Ora</td>
+      <td>180757</td>
+      <td>Great music ,Great voice ,arrangement, etc.</td>
+      <td>3.012617</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>52</td>
+      <td>4pdPtRcBmOSQDlJ3Fk945</td>
+      <td>0.476</td>
+      <td>0.718</td>
+      <td>8.0</td>
+      <td>-5.309</td>
+      <td>1.0</td>
+      <td>0.0576</td>
+      <td>0.0784</td>
+      <td>0.000010</td>
+      <td>0.1220</td>
+      <td>0.1420</td>
+      <td>199.864</td>
+      <td>4pdPtRcBmOSQDlJ3Fk945</td>
+      <td>Let Me Love You</td>
+      <td>DJ Snake</td>
+      <td>205947</td>
+      <td>Nice melodies, especially in the beginning. Ha...</td>
+      <td>3.432450</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>22</td>
+      <td>5uCax9HTNlzGybIStD3vD</td>
+      <td>0.358</td>
+      <td>0.557</td>
+      <td>10.0</td>
+      <td>-7.398</td>
+      <td>1.0</td>
+      <td>0.0590</td>
+      <td>0.6950</td>
+      <td>0.000000</td>
+      <td>0.0902</td>
+      <td>0.4940</td>
+      <td>85.043</td>
+      <td>5uCax9HTNlzGybIStD3vD</td>
+      <td>Say You Won't Let Go</td>
+      <td>James Arthur</td>
+      <td>211467</td>
+      <td>truely unique, i like it</td>
+      <td>3.524450</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>63</td>
+      <td>6520aj0B4FSKGVuKNsOCO</td>
+      <td>0.448</td>
+      <td>0.801</td>
+      <td>0.0</td>
+      <td>-5.363</td>
+      <td>1.0</td>
+      <td>0.1650</td>
+      <td>0.0733</td>
+      <td>0.000000</td>
+      <td>0.1460</td>
+      <td>0.4620</td>
+      <td>189.798</td>
+      <td>6520aj0B4FSKGVuKNsOCO</td>
+      <td>Chained To The Rhythm</td>
+      <td>Katy Perry</td>
+      <td>237734</td>
+      <td>Like the recording .nice and clear,smooth</td>
+      <td>3.962233</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>66</td>
+      <td>5hYTyyh2odQKphUbMqc5g</td>
+      <td>0.314</td>
+      <td>0.555</td>
+      <td>9.0</td>
+      <td>-9.601</td>
+      <td>1.0</td>
+      <td>0.3700</td>
+      <td>0.1570</td>
+      <td>0.000108</td>
+      <td>0.0670</td>
+      <td>0.1590</td>
+      <td>179.666</td>
+      <td>5hYTyyh2odQKphUbMqc5g</td>
+      <td>How Far I'll Go - From "Moana"</td>
+      <td>Alessia Cara</td>
+      <td>175517</td>
+      <td>Kind of reminds me of new music.</td>
+      <td>2.925283</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>99</td>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>0.258</td>
+      <td>0.437</td>
+      <td>11.0</td>
+      <td>-6.593</td>
+      <td>0.0</td>
+      <td>0.0390</td>
+      <td>0.1010</td>
+      <td>0.000001</td>
+      <td>0.1060</td>
+      <td>0.0967</td>
+      <td>180.043</td>
+      <td>1j4kHkkpqZRBwE0A4CN4Y</td>
+      <td>Dusk Till Dawn - Radio Edit</td>
+      <td>ZAYN</td>
+      <td>239000</td>
+      <td>Good hook - unique vocal presentation - I like...</td>
+      <td>3.983333</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 20 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="do-we-like-the-same-songs" class="level3">
+<h3 class="anchored" data-anchor-id="do-we-like-the-same-songs">2.7 Do we like the same songs?</h3>
+<section id="which-regions-have-the-most-streams" class="level4">
+<h4 class="anchored" data-anchor-id="which-regions-have-the-most-streams">2.7.1 Which regions have the most streams?</h4>
+<ul>
+<li>Extracted rows belonging to the top 2 regions that have the most streams.</li>
+<li>Storeed output in a new dataframe called <code>sql_top_regions_df</code>. The schema is as <code>rankings_df</code>.</li>
+</ul>
+<p>Note: Since we want to focus on specific regions, we should disregard rows where the <code>Region</code> column has the value <code>"global"</code>.</p>
+<div class="cell" data-execution_count="181">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandas</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pd_top_regions_df <span class="op">=</span> rankings_df[rankings_df[<span class="st">'Region'</span>] <span class="op">!=</span> <span class="st">'global'</span>] <span class="co">#remove global from column region</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>pd_top_regions_df <span class="op">=</span> pd_top_regions_df.groupby(by <span class="op">=</span> <span class="st">'Region'</span>).<span class="bu">sum</span>().reset_index() <span class="co">#group by Region</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>pd_top_regions_df <span class="op">=</span> pd_top_regions_df.sort_values(by <span class="op">=</span> [<span class="st">'Streams'</span>], ascending <span class="op">=</span> [<span class="va">False</span>]).head(<span class="dv">2</span>) <span class="co">#We want the ones with most Streams</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>pd_top_regions_df <span class="op">=</span> rankings_df[rankings_df[<span class="st">'Region'</span>].isin([<span class="st">'us'</span>, <span class="st">'gb'</span>])] <span class="co">#checking for us and gb</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>pd_top_regions_df <span class="co">#we use that in pandasql below in our subquery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/905598242.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  pd_top_regions_df = pd_top_regions_df.groupby(by = 'Region').sum().reset_index() #group by Region</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="181">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3042585</th>
+      <td>143</td>
+      <td>The Sound</td>
+      <td>The 1975</td>
+      <td>30799</td>
+      <td>2017-01-01</td>
+      <td>gb</td>
+      <td>316r1KLN0bcmpr7TZcMCX</td>
+    </tr>
+    <tr>
+      <th>3042584</th>
+      <td>142</td>
+      <td>Is This Love - Remix</td>
+      <td>Bob Marley &amp; The Wailers</td>
+      <td>31000</td>
+      <td>2017-01-01</td>
+      <td>gb</td>
+      <td>1w5sLDYzYAGI0AkLc6FPl</td>
+    </tr>
+    <tr>
+      <th>3042583</th>
+      <td>141</td>
+      <td>Sidewalks</td>
+      <td>The Weeknd</td>
+      <td>31453</td>
+      <td>2017-01-01</td>
+      <td>gb</td>
+      <td>4h90qkbnW1Qq6pBhoPvwk</td>
+    </tr>
+    <tr>
+      <th>3042582</th>
+      <td>140</td>
+      <td>False Alarm</td>
+      <td>Matoma</td>
+      <td>31527</td>
+      <td>2017-01-01</td>
+      <td>gb</td>
+      <td>7gZQfdEQpmwAoPHSbEHzm</td>
+    </tr>
+    <tr>
+      <th>3042581</th>
+      <td>139</td>
+      <td>Jumpman</td>
+      <td>Drake</td>
+      <td>31716</td>
+      <td>2017-01-01</td>
+      <td>gb</td>
+      <td>27GmP9AWRs744SzKcpJsT</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>845636</th>
+      <td>15</td>
+      <td>Pick It Up (feat. A$AP Rocky)</td>
+      <td>Famous Dex</td>
+      <td>687929</td>
+      <td>2018-01-09</td>
+      <td>us</td>
+      <td>3ncgNpxLoBQ65ABk4djDy</td>
+    </tr>
+    <tr>
+      <th>845635</th>
+      <td>14</td>
+      <td>River (feat. Ed Sheeran)</td>
+      <td>Eminem</td>
+      <td>724892</td>
+      <td>2018-01-09</td>
+      <td>us</td>
+      <td>5UEnHoDYpsxlfzWLZIc7L</td>
+    </tr>
+    <tr>
+      <th>845634</th>
+      <td>13</td>
+      <td>Candy Paint</td>
+      <td>Post Malone</td>
+      <td>735421</td>
+      <td>2018-01-09</td>
+      <td>us</td>
+      <td>42CeaId2XNlxugDvyqHfD</td>
+    </tr>
+    <tr>
+      <th>845632</th>
+      <td>11</td>
+      <td>Codeine Dreaming (feat. Lil Wayne)</td>
+      <td>Kodak Black</td>
+      <td>839826</td>
+      <td>2018-01-09</td>
+      <td>us</td>
+      <td>4DTpngLjoHj5gFxEZFeD3</td>
+    </tr>
+    <tr>
+      <th>845662</th>
+      <td>41</td>
+      <td>Bad At Love</td>
+      <td>Halsey</td>
+      <td>474255</td>
+      <td>2018-01-09</td>
+      <td>us</td>
+      <td>7y9iMe8SOB6z3NoHE2OfX</td>
+    </tr>
+  </tbody>
+</table>
+<p>148374 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="3d8ab044-4047-433d-aaa0-96777e6cab0c" data-execution_count="182">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandasql</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>top_regions_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT *</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM rankings_df</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE Region IN (</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT Region FROM pd_top_regions_df</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE Region&lt;&gt;'global'</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="st">  LIMIT 2</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="st">)</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY Streams DESC</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>sql_top_regions_df <span class="op">=</span> ps.sqldf(top_regions_query, <span class="bu">locals</span>())</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>sql_top_regions_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="182">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Last Christmas</td>
+      <td>Wham!</td>
+      <td>1357938</td>
+      <td>2017-12-25 00:00:00.000000</td>
+      <td>gb</td>
+      <td>2FRnf9qhLbvw8fu4IBXx7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>1323982</td>
+      <td>2017-01-09 00:00:00.000000</td>
+      <td>gb</td>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>All I Want for Christmas Is You</td>
+      <td>Mariah Carey</td>
+      <td>1299377</td>
+      <td>2017-12-25 00:00:00.000000</td>
+      <td>gb</td>
+      <td>0bYg9bo50gSsH3LtXe2SQ</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>1280898</td>
+      <td>2017-01-06 00:00:00.000000</td>
+      <td>gb</td>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Shape of You</td>
+      <td>Ed Sheeran</td>
+      <td>1258743</td>
+      <td>2017-01-10 00:00:00.000000</td>
+      <td>gb</td>
+      <td>7qiZfU4dY1lWllzX7mPBI</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>74185</th>
+      <td>196</td>
+      <td>Famous</td>
+      <td>Kanye West</td>
+      <td>25248</td>
+      <td>2017-01-01 00:00:00.000000</td>
+      <td>gb</td>
+      <td>19a3JfW8BQwqHWUMbcqSx</td>
+    </tr>
+    <tr>
+      <th>74186</th>
+      <td>197</td>
+      <td>Girls Just Want to Have Fun</td>
+      <td>Cyndi Lauper</td>
+      <td>25176</td>
+      <td>2017-01-01 00:00:00.000000</td>
+      <td>gb</td>
+      <td>4y1LsJpmMti1PfRQV9AWW</td>
+    </tr>
+    <tr>
+      <th>74187</th>
+      <td>198</td>
+      <td>Dog Days Are Over</td>
+      <td>Florence + The Machine</td>
+      <td>24904</td>
+      <td>2017-01-01 00:00:00.000000</td>
+      <td>gb</td>
+      <td>1YLJVmuzeM2YSUkCCaTNU</td>
+    </tr>
+    <tr>
+      <th>74188</th>
+      <td>199</td>
+      <td>Half the World Away - Remastered</td>
+      <td>Oasis</td>
+      <td>24806</td>
+      <td>2017-01-01 00:00:00.000000</td>
+      <td>gb</td>
+      <td>6z1Xz89avh1KA7d3Ek7DQ</td>
+    </tr>
+    <tr>
+      <th>74189</th>
+      <td>200</td>
+      <td>Shut Up</td>
+      <td>Stormzy</td>
+      <td>24727</td>
+      <td>2017-01-01 00:00:00.000000</td>
+      <td>gb</td>
+      <td>2LPUvD5DDOO4UYGkWgjI2</td>
+    </tr>
+  </tbody>
+</table>
+<p>74190 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="do-the-regions-with-the-most-streams-like-different-songs" class="level4">
+<h4 class="anchored" data-anchor-id="do-the-regions-with-the-most-streams-like-different-songs">2.7.2 Do the regions with the most streams like different songs?</h4>
+<ul>
+<li>Finding the songs that the two regions (found in 2.7.1) <strong>DO NOT</strong> have in common</li>
+<li>Storing the result in a new dataframe called <code>sql_diff_tracks_df</code>.</li>
+</ul>
+<div class="cell" data-outputid="510b9d5e-1a46-45ba-9fcd-50a4e6f995f5" data-execution_count="183">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandasql</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>diff_tracks_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="st">WITH USdf AS(</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="st">   SELECT DISTINCT `Track Name`, Artist, ID</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="st">   FROM pd_top_regions_df</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="st">   WHERE Region='us'),</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="st">GBdf AS (</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT DISTINCT `Track Name`, Artist, ID</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM pd_top_regions_df</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE Region='gb'),</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="st">USonly AS (</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT USdf.`Track Name`, USdf.Artist, USdf.ID as ID </span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM USdf</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="st">  LEFT JOIN GBdf ON USdf.id = GBdf.id</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE GBdf.id IS NULL),</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="st"> GBonly AS (</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="st">   SELECT USdf.`Track Name`, USdf.Artist, GBdf.ID as ID</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="st">   FROM GBdf</span></span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="st">   LEFT JOIN USdf ON USdf.id = GBdf.id</span></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="st">   WHERE USdf.id IS NULL)</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="st"> SELECT * FROM USonly</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="st"> UNION</span></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="st"> SELECT * FROM GBonly</span></span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>sql_diff_tracks_df <span class="op">=</span> ps.sqldf(diff_tracks_query, <span class="bu">locals</span>())</span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>sql_diff_tracks_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="183">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>00l1uBtEO4WwmsfxqbeTW</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>None</td>
+      <td>None</td>
+      <td>0181HMomm7xM3Ks5YNlA9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>None</td>
+      <td>01VXGDL8Ox3SWmvM8ZyvS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>None</td>
+      <td>None</td>
+      <td>023lag1AgeOf7YChojecR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>None</td>
+      <td>None</td>
+      <td>02KgB1Qyk4PrFweUMGl9N</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2447</th>
+      <td>playboy shit (feat. lil aaron)</td>
+      <td>blackbear</td>
+      <td>031QO44Ql8D7D3ePdI7fk</td>
+    </tr>
+    <tr>
+      <th>2448</th>
+      <td>santa monica &amp; la brea</td>
+      <td>blackbear</td>
+      <td>3Tvs5NbIqszxl7ctruIqa</td>
+    </tr>
+    <tr>
+      <th>2449</th>
+      <td>top priority (with Ne-Yo)</td>
+      <td>blackbear</td>
+      <td>2yjwPmZ3XKKoVVPzKQ9d0</td>
+    </tr>
+    <tr>
+      <th>2450</th>
+      <td>up in this (with Tinashe)</td>
+      <td>blackbear</td>
+      <td>7xmaCmiSOCtQ6nFENK22b</td>
+    </tr>
+    <tr>
+      <th>2451</th>
+      <td>wokeuplikethis*</td>
+      <td>Playboi Carti</td>
+      <td>59J5nzL1KniFHnU120dQz</td>
+    </tr>
+  </tbody>
+</table>
+<p>2452 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="new-years-eve-party" class="level3">
+<h3 class="anchored" data-anchor-id="new-years-eve-party">2.8 New Years Eve Party!</h3>
+<p>Who doesn’t love to dance? Let’s You can see some songs to groove to!</p>
+<ul>
+<li>You can see the songs that made it to the charts in December 2017 (2017-12-01 to 2017-12-31) and whose duration is longer than 3 minutes</li>
+<li>You can see the artist and the danceability of these songs. Be sure to only include songs with danceability &gt; 0.5.</li>
+<li>The result is stored in a new dataframe called <code>sql_dance_df</code> that has the following schema:</li>
+</ul>
+<blockquote class="blockquote">
+<table>
+<thead>
+<tr class="header">
+<th>Artist</th>
+<th>Track Name</th>
+<th>danceability</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<p><strong>Hint</strong>: Think about which data resides in which table!</p>
+<div class="cell" data-execution_count="184">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SQL SKELETON</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># FROM</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># WHERE</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># _______</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co"># GROUP BY</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># HAVING</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ________</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># _______</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ORDER BY</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># LIMIT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="185">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>rankings_df.rename(columns <span class="op">=</span> {<span class="st">'ID'</span>:<span class="st">'id'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>rankings_df</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#making ID work as id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/2501768206.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  rankings_df.rename(columns = {'ID':'id'}, inplace = True)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="185">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Reggaetón Lento (Bailemos)</td>
+      <td>CNCO</td>
+      <td>19272</td>
+      <td>2017-01-01</td>
+      <td>ec</td>
+      <td>3AEZUABDXNtecAOSC1qTf</td>
+    </tr>
+    <tr>
+      <th>2658317</th>
+      <td>118</td>
+      <td>Steady 1234 (feat. Jasmine Thompson &amp; Skizzy M...</td>
+      <td>Vice</td>
+      <td>15142</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>40UroIGvsMPLPBYwH8rMN</td>
+    </tr>
+    <tr>
+      <th>2658316</th>
+      <td>117</td>
+      <td>Dynamite (feat. Pretty Sister)</td>
+      <td>Nause</td>
+      <td>15152</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2Ae5awwKvQpTBKQHr1TYC</td>
+    </tr>
+    <tr>
+      <th>2658315</th>
+      <td>116</td>
+      <td>Hello</td>
+      <td>Adele</td>
+      <td>15170</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>4sPmO7WMQUAf45kwMOtON</td>
+    </tr>
+    <tr>
+      <th>2658314</th>
+      <td>115</td>
+      <td>One Night Stand</td>
+      <td>B-Brave</td>
+      <td>15510</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>2no9x9FRytP9PnB3CQPYS</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1498830</th>
+      <td>109</td>
+      <td>Sky Walker</td>
+      <td>Miguel</td>
+      <td>1581</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5WoaF1B5XIEnWfmb5NZik</td>
+    </tr>
+    <tr>
+      <th>1498829</th>
+      <td>108</td>
+      <td>Back to You (feat. Bebe Rexha &amp; Digital Farm A...</td>
+      <td>Louis Tomlinson</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>7F9vK8hNFMml4GtHsaXui</td>
+    </tr>
+    <tr>
+      <th>1498828</th>
+      <td>107</td>
+      <td>Betrayed</td>
+      <td>Lil Xan</td>
+      <td>1582</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>6NWl2m8asvH83xjuXVNsu</td>
+    </tr>
+    <tr>
+      <th>1498841</th>
+      <td>120</td>
+      <td>Rockabye (feat. Sean Paul &amp; Anne-Marie)</td>
+      <td>Clean Bandit</td>
+      <td>1490</td>
+      <td>2018-01-09</td>
+      <td>hu</td>
+      <td>5knuzwU65gJK7IF5yJsua</td>
+    </tr>
+    <tr>
+      <th>3441196</th>
+      <td>200</td>
+      <td>Let Her Go</td>
+      <td>Passenger</td>
+      <td>2088</td>
+      <td>2018-01-09</td>
+      <td>hk</td>
+      <td>2jyjhRf6DVbMPU5zxagN2</td>
+    </tr>
+  </tbody>
+</table>
+<p>3440540 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="e83134fa-ccea-4184-f175-c9809c0fe07f" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pandasql</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>dance_query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT DISTINCT Artist, `Track Name`,   danceability</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM songs_df AS s </span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN rankings_df AS r ON r.id= s.id</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN features_df AS f ON f.id=r.id</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE duration_min &gt; 3</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="st">  AND strftime('%Y-%m-</span><span class="sc">%d</span><span class="st">', DATE) BETWEEN '2017-12-01' AND '2017-12-31'</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="st">  AND danceability  &gt; 0.5</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>sql_dance_df <span class="op">=</span> ps.sqldf(dance_query, <span class="bu">locals</span>())</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>sql_dance_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="186">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Artist</th>
+      <th>Track Name</th>
+      <th>danceability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ed Sheeran</td>
+      <td>Shape of You</td>
+      <td>0.825</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Luis Fonsi</td>
+      <td>Despacito - Remix</td>
+      <td>0.694</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Luis Fonsi</td>
+      <td>Despacito (Featuring Daddy Yankee)</td>
+      <td>0.660</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Chainsmokers</td>
+      <td>Something Just Like This</td>
+      <td>0.617</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DJ Khaled</td>
+      <td>I'm the One</td>
+      <td>0.609</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>Justin Bieber</td>
+      <td>Friends (with BloodPop®)</td>
+      <td>0.744</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>21 Savage</td>
+      <td>Bank Account</td>
+      <td>0.884</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>Machine Gun Kelly</td>
+      <td>Bad Things (with Camila Cabello)</td>
+      <td>0.675</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>The Chainsmokers</td>
+      <td>Don't Let Me Down</td>
+      <td>0.542</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>Halsey</td>
+      <td>Now Or Never</td>
+      <td>0.658</td>
+    </tr>
+  </tbody>
+</table>
+<p>85 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-3-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-data-visualization">Part 3: Data Visualization</h2>
+<p>The popularity of songs fluctuates as time progresses. We want to create a graph that illustrates the no. of streams for the most and least popular songs during each month in 2017.</p>
+<p>Perform the following tasks: - You can see the song that had the <em>most</em> streams on <code>2017-01-01</code> - You can see the song that had the <em>least</em> streams on <code>2017-01-01</code> - You can see the no. of streams that these two songs received on the first day of each month in 2017 (eg. 2017-01-01, 2017-02-01, 2017-03-01 … 2017-12-01)</p>
+<p>Plot a line graph which shows the trend you found! Make sure you use the ID of the two songs when creating this graph.</p>
+<p>useful resource: https://seaborn.pydata.org/generated/seaborn.lineplot.html</p>
+<p>The line graph has the following features: 1. The X-axis should be labelled “Date”, and the Y-axis should be labelled “Streams”. 2. There should be markers on the plot to specify the no. of streams each song received ia particular month. 3. The lines corresponding to the two songs should have different colors.</p>
+<div class="cell" data-outputid="fdf591ec-ac44-4d45-850c-a23a6a0fd596" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first we take a look which songs are streamed the most</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>filter_rankings <span class="op">=</span> rankings_df[(rankings_df[<span class="st">'Date'</span>] <span class="op">==</span> <span class="st">'2017-01-01'</span>)] <span class="co">#setting the date asked</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>filter_rankings <span class="op">=</span> filter_rankings.groupby(<span class="st">'id'</span>).<span class="bu">sum</span>().reset_index()</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>sorted_rankings <span class="op">=</span> filter_rankings.sort_values(by<span class="op">=</span>[<span class="st">'Streams'</span>], ascending<span class="op">=</span><span class="va">False</span>).reset_index() <span class="co">#sorting from most streams to least</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>top_bottom_rankings <span class="op">=</span> pd.concat([sorted_rankings.head(<span class="dv">1</span>), sorted_rankings.tail(<span class="dv">1</span>)]) <span class="co">#getting the most and least streamed song </span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>display(top_bottom_rankings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/745237006.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  filter_rankings = filter_rankings.groupby('id').sum().reset_index()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>index</th>
+      <th>id</th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1690</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>422</td>
+      <td>6266206</td>
+    </tr>
+    <tr>
+      <th>2360</th>
+      <td>2302</td>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>199</td>
+      <td>1001</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="39ac9fa9-26ea-4ad6-c33b-b5679fee393c" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#You can see the no. of streams that these two songs received on the first day of each month in 2017</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>list_of_dates <span class="op">=</span> [<span class="st">'2017-01-01'</span>, <span class="st">'2017-02-01'</span>, <span class="st">'2017-03-01'</span>, <span class="st">'2017-04-01'</span>, <span class="st">'2017-05-01'</span>, <span class="st">'2017-06-01'</span>, <span class="st">'2017-07-01'</span>, <span class="st">'2017-08-01'</span>, <span class="st">'2017-09-01'</span>,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">'2017-10-01'</span>, <span class="st">'2017-11-01'</span>, <span class="st">'2017-12-01'</span>]</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>all_months_rankings <span class="op">=</span> rankings_df[rankings_df[<span class="st">'Date'</span>].isin(list_of_dates)] <span class="co">#filter for list_of_dates asked</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>all_months_rankings <span class="op">=</span> all_months_rankings[all_months_rankings[<span class="st">'id'</span>].isin(top_bottom_rankings[<span class="st">'id'</span>])]</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>all_months_rankings</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Track Name</th>
+      <th>Artist</th>
+      <th>Streams</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2755014</th>
+      <td>18</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>16013</td>
+      <td>2017-01-01</td>
+      <td>co</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>2732400</th>
+      <td>1</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>2197</td>
+      <td>2017-01-01</td>
+      <td>sk</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>462008</th>
+      <td>10</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>104708</td>
+      <td>2017-01-01</td>
+      <td>ph</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>2658204</th>
+      <td>5</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>76076</td>
+      <td>2017-01-01</td>
+      <td>nl</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>445200</th>
+      <td>1</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>2583</td>
+      <td>2017-01-01</td>
+      <td>lt</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2272744</th>
+      <td>185</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>44109</td>
+      <td>2017-12-01</td>
+      <td>mx</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>2124327</th>
+      <td>168</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>2765</td>
+      <td>2017-12-01</td>
+      <td>pt</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>837998</th>
+      <td>177</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>219100</td>
+      <td>2017-12-01</td>
+      <td>us</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>763686</th>
+      <td>65</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>13676</td>
+      <td>2017-12-01</td>
+      <td>tr</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+    <tr>
+      <th>951109</th>
+      <td>195</td>
+      <td>Starboy</td>
+      <td>The Weeknd</td>
+      <td>2393</td>
+      <td>2017-12-01</td>
+      <td>cr</td>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+    </tr>
+  </tbody>
+</table>
+<p>456 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="09dd5749-ea6c-4bb6-d128-958c9911c58a" data-execution_count="190">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>IDdateGroup <span class="op">=</span> all_months_rankings.groupby([<span class="st">'id'</span>, <span class="st">'Date'</span>]).<span class="bu">sum</span>().reset_index()</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>IDdateGroup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/1523896782.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  IDdateGroup = all_months_rankings.groupby(['id', 'Date']).sum().reset_index()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="190">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>Date</th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-01-01</td>
+      <td>422</td>
+      <td>6266206</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-02-01</td>
+      <td>939</td>
+      <td>5697420</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-03-01</td>
+      <td>1803</td>
+      <td>4259480</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-04-01</td>
+      <td>2609</td>
+      <td>3263163</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-05-01</td>
+      <td>4094</td>
+      <td>2179513</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-06-01</td>
+      <td>4306</td>
+      <td>1906610</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-07-01</td>
+      <td>4027</td>
+      <td>1641376</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-08-01</td>
+      <td>3973</td>
+      <td>1348133</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-09-01</td>
+      <td>4190</td>
+      <td>1380447</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-10-01</td>
+      <td>3558</td>
+      <td>1061926</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-11-01</td>
+      <td>2525</td>
+      <td>1040093</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-12-01</td>
+      <td>1521</td>
+      <td>999344</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-01-01</td>
+      <td>199</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-02-01</td>
+      <td>122</td>
+      <td>1440</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-03-01</td>
+      <td>144</td>
+      <td>1245</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-04-01</td>
+      <td>147</td>
+      <td>1198</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-07-01</td>
+      <td>160</td>
+      <td>1112</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>IDdateGroup <span class="op">=</span> all_months_rankings.groupby([<span class="st">'id'</span>, <span class="st">'Date'</span>]).<span class="bu">sum</span>().reset_index()</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>IDdateGroup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/71/m9n1tm292gg25xn0m44ccvxh0000gn/T/ipykernel_13596/1523896782.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  IDdateGroup = all_months_rankings.groupby(['id', 'Date']).sum().reset_index()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="191">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>Date</th>
+      <th>Position</th>
+      <th>Streams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-01-01</td>
+      <td>422</td>
+      <td>6266206</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-02-01</td>
+      <td>939</td>
+      <td>5697420</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-03-01</td>
+      <td>1803</td>
+      <td>4259480</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-04-01</td>
+      <td>2609</td>
+      <td>3263163</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-05-01</td>
+      <td>4094</td>
+      <td>2179513</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-06-01</td>
+      <td>4306</td>
+      <td>1906610</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-07-01</td>
+      <td>4027</td>
+      <td>1641376</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-08-01</td>
+      <td>3973</td>
+      <td>1348133</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-09-01</td>
+      <td>4190</td>
+      <td>1380447</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-10-01</td>
+      <td>3558</td>
+      <td>1061926</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-11-01</td>
+      <td>2525</td>
+      <td>1040093</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>5aAx2yezTd8zXrkmtKl66</td>
+      <td>2017-12-01</td>
+      <td>1521</td>
+      <td>999344</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-01-01</td>
+      <td>199</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-02-01</td>
+      <td>122</td>
+      <td>1440</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-03-01</td>
+      <td>144</td>
+      <td>1245</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-04-01</td>
+      <td>147</td>
+      <td>1198</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7qxgfIAuWUY9VHLn35Sqw</td>
+      <td>2017-07-01</td>
+      <td>160</td>
+      <td>1112</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-outputid="18bd1b9f-9d46-4a49-aba6-06d9ab5ea8db" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>seaborn.lineplot(data<span class="op">=</span>IDdateGroup, x<span class="op">=</span><span class="st">'Date'</span>, y<span class="op">=</span><span class="st">'Streams'</span>, markers<span class="op">=</span><span class="va">True</span>, hue<span class="op">=</span><span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<pre><code>&lt;AxesSubplot: xlabel='Date', ylabel='Streams'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Analysing_Spotify_Data_in_SQL_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="part-4-working-with-text-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-working-with-text-data">Part 4: Working with Text Data</h2>
+<p>Now, let’s switch gears and try to text-based analysis. Textual data is complex, but can also be used to generate extremely interpretable results, making it both valuable and interesting.</p>
+<p>Throughout this section, we will attempt to answer the following question:</p>
+<p><strong>According to the <code>songs_df</code> dataframe, what do the reviews for the Top Tracks of 2017 look like?</strong></p>
+<p>###4.1 Tokenizing the text</p>
+<p>We are going to split the contents of in the Reviews column into a list of words. We will use the <strong>nltk</strong> library, which contains an extensive set of tools for text processing. We are only going to use the following components of the library: - <code>nltk.word_tokenize()</code>: a function used to tokenize text - <code>nltk.corpus.stopwords</code>: a list of commonly used words such as “a”, “an”,“in” that are often ignored in text analysis</p>
+<p>Note that for this question, we didn’t have to clean the text data first as our original dataset was well-formatted. However, in practice, we would typically clean the text first using regular expressions (regex). Keep this in mind as you work on the project later on in the semester.</p>
+<ul>
+<li>Using <strong>nltk.corpus.stopwords</strong> to create a set containing the most common English stopwords.</li>
+<li>Implementing the function <strong>tokenized_content(content)</strong>, which takes in a string and does the following:</li>
+</ul>
+<ol type="1">
+<li>Tokenizing the text</li>
+<li>Keeping tokens that only contain alphabetic characters (i.e.&nbsp;tokens with no punctuation)</li>
+<li>Converting each token to lowercase</li>
+<li>Removing stopwords (commonly used words such as “a”, “an”, “in”)</li>
+</ol>
+<div class="cell" data-outputid="0f579dd8-100a-41ea-b91f-74ee2bdf8ec9" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>nltk.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="193">
+<pre><code>'3.7'</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="0e88bd8d-d1b2-4b34-d810-bc66f651217f" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package stopwords to
+[nltk_data]     /Users/loizoskon/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tokenize_content(content):</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  content <span class="op">=</span> word_tokenize(content)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  content <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> content <span class="cf">if</span> word.isalpha()]</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  content <span class="op">=</span> [word.lower() <span class="cf">for</span> word <span class="kw">in</span> content]</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  content <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> content <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stopwords]</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What is happening in the following columns - Extracting the <code>reviews</code> column of <code>songs_df</code> as a list called <code>reviews</code>. - Applying your <code>tokenize_content()</code> function to each item in the list <code>reviews</code>. Calling the resultant list <code>top_tokens_list</code>. - Flattening the list <code>top_tokens_list</code>, and call the resultant list <strong>top_tokens</strong>.</p>
+<div class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> songs_df[<span class="st">'reviews'</span>].tolist() <span class="co">#Extract the reviews column of songs_df as a list called reviews.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="197">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize and flatten</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>top_tokens_list <span class="op">=</span> []</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> reviews:</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>     top_tokens_list.append(tokenize_content(i))</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>top_tokens <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> top_tokens_list <span class="cf">for</span> item <span class="kw">in</span> sublist]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="most-frequent-words" class="level3">
+<h3 class="anchored" data-anchor-id="most-frequent-words">4.2 Most Frequent Words</h3>
+<p>Here you can see the 20 most common words in the list <code>top_tokens</code>. Saving the result as a list of <code>(word, count)</code> tuples, in descending order of <code>count</code>.</p>
+<p>For this question, <code>Counter</code> from the Python <code>collections</code> library is used: https://docs.python.org/2/library/collections.html#counter-objects</p>
+<div class="cell" data-outputid="895fecf9-caff-4fe1-8dd6-da1635f04494" data-execution_count="198">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> Counter(top_tokens)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>top_most_common <span class="op">=</span> count.most_common(<span class="dv">20</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top_most_common)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[('good', 35), ('nice', 31), ('like', 26), ('song', 21), ('voice', 18), ('great', 14), ('really', 13), ('unique', 12), ('lyrics', 12), ('sound', 11), ('love', 9), ('interesting', 9), ('vocal', 8), ('tune', 8), ('vocals', 8), ('instrumentation', 7), ('melody', 7), ('music', 7), ('feel', 6), ('overall', 6)]</code></pre>
+</div>
+</div>
+</section>
+<section id="word-clouds" class="level3">
+<h3 class="anchored" data-anchor-id="word-clouds">4.3 Word Clouds</h3>
+<p>Before we move on from this dataset, let’s visualize our results using a word cloud.</p>
+<p>Here I create a word cloud containing all the words in the list <code>top_tokens</code> (created in question 4.1). <a href="https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html">The WordCloud documentation</a> contains instructions on how to do this.</p>
+<div class="cell" data-execution_count="199">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re <span class="co">#Load the regular expression library</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> wordcloud <span class="co"># Import the wordcloud library</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="78a9d038-1b4b-489b-e8e1-3c68be8f61da" data-execution_count="200">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the titles of the first rows </span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Here I create a word cloud for top tokens</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>plt.subplots(figsize <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>wordcloud <span class="op">=</span> WordCloud (</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>                    background_color <span class="op">=</span> <span class="st">'white'</span>,</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>                    width <span class="op">=</span> <span class="dv">510</span>,</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>                    height <span class="op">=</span> <span class="dv">380</span></span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>                        ).generate_from_frequencies(count)</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>plt.imshow(wordcloud) <span class="co"># image show</span></span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>) <span class="co"># to off the axis of x and y</span></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Analysing_Spotify_Data_in_SQL_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
