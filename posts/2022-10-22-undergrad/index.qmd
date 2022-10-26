@@ -2,7 +2,7 @@
 title: "European University Cyprus — Student Tips for Freshmen"
 description: |
     Undergrad student life guide through my experience studying in Cyprus.
-image: images/denmark.jpeg    
+image: images/euc_cyprus.jpeg  
 date: 10/20/2022
 categories: 
   - education
