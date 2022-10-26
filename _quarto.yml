@@ -28,6 +28,8 @@ website:
         href: https://github.com/LoizosKo
       - icon: twitter
         href: https://twitter.com/loizoskon
+      - icon: medium
+        href: https://medium.com/@loizoskon       
 
   search:
     location: navbar
