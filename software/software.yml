@@ -26,6 +26,12 @@
       subtitle: Predicting a  customer's credit card application outcome
       href: credcardpred.html
       thumbnail: img/white-credcard.png
-
+    - title: SQL - Sorting and Analysing Spotify Data
+      subtitle: Worked with a dataset containing Top2017 Spotify Tracks, along with their reviews and rankings. I am working with the followig properties
+      -Song-specific metadata (eg. artist name) -The songs' rankings based on date and listener location-Acoustic / musical properties of the song, eg. danceability
+      Text analysis of Spotify reviews at the end
+      href: Analysing_Spotify_Data_in_SQL.html
+      thumbnail: img/SQLquery.png
+      
       
       
