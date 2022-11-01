@@ -15,15 +15,15 @@ about:
 
 Hi 👋 I am Loizos! This is my personal website.
 
-Currently pursuing a **Master of Behavioral and Decision Sciences** from the **University of Pennsylvania**
+**Master of Behavioral and Decision Sciences** ![](images/paste-10C56948.png){width="17" height="17"} **University of Pennsylvania**
 
 Graduating 🎓 **December 2022**
 
 I have a [blog](https://www.loizos.xyz/blog.html) that is infrequently updated 📝
 
-See my [projects](https://www.loizos.xyz/software/) for some things I've been working 🛠
+See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
 
-Currently learning ![](images/paste-491BD3EC.png){width="15"} and ![](images/paste-3A990530.png){width="15"} --- ![](images/paste-E2C57FB1.png){width="20"}: **LoizosKons**
+Currently learning ![](images/paste-491BD3EC.png){width="15"} and ![](images/paste-3A990530.png){width="15"} on ![](images/paste-E2C57FB1.png){width="20"}: **LoizosKons**
 
 `Feel free to get in contact below`
 
