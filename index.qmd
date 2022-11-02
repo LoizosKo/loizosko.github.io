@@ -7,15 +7,15 @@ about:
         href: https://www.linkedin.com/in/loizoskon/
       - icon: github
         href: https://github.com/LoizosKo
-      - icon: twitter
-        href: https://twitter.com/loizoskon
+      - icon: medium
+        href: https://medium.com/@loizoskon
       - icon: youtube
         href: https://www.youtube.com/channel/UCAAuUtKAD8o5PviWxuQ3NSg
 ---
 
 Hi 👋 I am Loizos! This is my personal website.
 
-**Master of Behavioral and Decision Sciences** ![](images/paste-10C56948.png){width="17" height="17"} **University of Pennsylvania**
+**Master of Behavioral and Decision Sciences Degree** ![](images/paste-10C56948.png){width="17" height="17"} **University of Pennsylvania**
 
 Graduating 🎓 **December 2022**
 
