@@ -17,7 +17,7 @@ Hi 👋 I am Loizos! This is my personal website.
 
 **Behavioral Economist** @ **UPenn** ![](images/paste-10C56948.png){width="17" height="17"} Graduating 🎓 **December 2022**
 
-Problem solver 🔐and Data enthusiast 📊
+Problem solver 🔐• Data enthusiast 📊
 
 See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
 
