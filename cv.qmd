@@ -3,7 +3,7 @@ title: "Resume"
 editor: visual
 ---
 
-Here is my up-to-date [Resume](Resume_Konstantinou.pdf)
+Here is my up-to-date [Resume](Resume_Kοnstantinou.pdf)
 
 See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
 
