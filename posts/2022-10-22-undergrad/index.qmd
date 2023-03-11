@@ -1,5 +1,5 @@
 ---
-title: "Undergrad Experience & Tips for Freshmen"
+title: "Making the Most of Your University Experience at EUC: A Student's Perspective"
 description: |
     Undergrad student life guide through my experience studying in European University Cyprus
 image: images/euc_cyprus.jpeg  

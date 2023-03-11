@@ -1,7 +1,7 @@
 ---
-title: "Things to do in Copenhagen"
+title: "Copenhagen: The Ultimate Bucket List for Your Next Visit"
 description: |
-    Guide for visiting Copenhagen.
+    A travel guide for a memorable visit in Copenhagen.
 image: images/denmark.jpeg    
 date: 06/09/2022
 categories: 
