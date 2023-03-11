@@ -1,7 +1,6 @@
 project:
   type: website
   output-dir: docs
-  repo-url: https://www.loizos.xyz
 
 website:
   title: "Loizos Konstantinou"
