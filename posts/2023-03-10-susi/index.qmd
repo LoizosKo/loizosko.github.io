@@ -2,7 +2,7 @@
 title: "SUSI Entrepreneurship Program: A Free Ticket to an American Dream"
 description: |
     My experience from the Study of the US Institutes for Student Leaders Program at University of Tennessee Chattanooga.
-image: images/susi_utc.jpeg  
+image: images/last_day.jpeg  
 date: 01/15/2023
 categories: 
   - education
@@ -14,7 +14,7 @@ execute:
   cache: true
 ---
 
-![SUSI group at the University of Tennesee at Chattanooga](images/last_day.jpeg)
+![SUSI group at the University of Tennesee at Chattanooga](images/susi_utc.jpeg)
 
 
 Study of the US Institutes for Student Leaders is an intensive academic program for undergraduate students from Europe. I was a part of the Entrepreneurship and Economic Development 2019 cohort which took place in Tennessee, Chattanooga. Twenty (20) Students from seventeen (17) different European countries were selected for this program. We spent five weeks in the United States getting a deeper understanding of American culture, business environment in social and corporate settings, and enhancing our leadership skills. New friends, entrepreneurial exposure, business visits, US cultural learning, and travel experiences, and the opportunity to get funding for future projects on the benefits side, PLUS all of these for $0 dollars! On the cost side, only opportunity cost.
