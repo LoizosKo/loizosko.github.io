@@ -7,8 +7,6 @@ date: 01/15/2023
 categories: 
   - education
   - travel
-  - exchange student
-  - USA
 format: html
 execute: 
   cache: true
