@@ -1,5 +1,5 @@
 ---
-title: "Copenhagen: The Ultimate Bucket List for Your Next Visit"
+title: "Copenhagen: A Great Travel Guide for Your Next Visit"
 description: |
     A travel guide for a memorable visit in Copenhagen.
 image: images/denmark.jpeg    
