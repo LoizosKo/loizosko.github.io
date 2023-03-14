@@ -3,7 +3,7 @@ title: "Experience Cyprus Like a Local!"
 description: |
     The article provides recommendations for activities, transportation, beaches, nature, villages, and food to help tourists experience Cyprus like a local.
 image: images/cy.jpeg  
-date: 02/21/2023
+date: 02/05/2023
 categories: 
   - travel
   - tourism

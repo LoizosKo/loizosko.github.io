@@ -3,7 +3,7 @@ title: "Making the Most of Your University Experience at EUC: A Student's Perspe
 description: |
     Undergrad student life guide through my experience studying in European University Cyprus
 image: images/euc_cyprus.jpeg  
-date: 10/20/2022
+date: 10/02/2022
 categories: 
   - education
 format: html

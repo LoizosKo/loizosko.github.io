@@ -3,7 +3,7 @@ title: "Nepal on a Budget: Backpacking Through Kathmandu, Pokhara, and the Austr
 description: |
     The article provides practical advice and tips for traveling in Nepal through personal experience.
 image: images/nepal.jpeg  
-date: 03/11/2023
+date: 03/07/2023
 categories: 
   - travel
   - tourism

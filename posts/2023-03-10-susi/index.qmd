@@ -3,7 +3,7 @@ title: "SUSI Entrepreneurship Program: A Free Ticket to an American Dream"
 description: |
     My experience from the Study of the US Institutes for Student Leaders Program at University of Tennessee Chattanooga.
 image: images/last_day.jpeg  
-date: 01/15/2023
+date: 01/05/2023
 categories: 
   - education
   - travel
