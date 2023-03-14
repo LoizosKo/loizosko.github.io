@@ -15,6 +15,10 @@ editor:
     wrap: 72
 ---
 
+![Kathmandu](images/ktm.jpeg)
+
+
+
 If you're thinking of visiting Nepal, there are several things you need
 to know to make the most out of your trip. Nepal is a destination known
 for its natural beauty, cultural richness, and friendly people. Whether
@@ -152,8 +156,6 @@ security and people, I felt safer than I feel in Philadelphia.
 
 *Roadhouse cafe seems to be a local chain as we found couple of them in
 Pokhara and Kathmandu.*
-
-![Kathmandu](images/ktm.jpeg)
 
 
 ## DAY 2: Exploring Kathmandu
