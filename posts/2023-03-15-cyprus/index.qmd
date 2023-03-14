@@ -46,6 +46,7 @@ For nice scenery, you can visit Cape Greco, where you can see sea caves. There a
 For greenery and nature, you can go to [Troodos National Forest Park](https://www.youtube.com/watch?v=wN8OOwNJtrM) around Mount Olympus. It is an area of outstanding natural beauty, suitable for activities such as hiking, winter skiing, biking, nature study, camping, and picnics. The highest point is Chionistra (1,952 m) and the lowest is Moni forest (700m).
 
 ![Xyliatos Dam](images/xyliatos.jpeg)
+
 Beautiful Villages to visit:
 
 [Kalopanagiotis](https://www.google.com/maps/place/Kalopanayiotis,+Cyprus/@34.998942,32.8187369,15z/data=!3m1!4b1!4m6!3m5!1s0x14e744b4b522921f:0x27e3dbc3f310f1c7!8m2!3d34.9916085!4d32.8282406!16s%2Fm%2F06608fj) (It is known as the ornament of Marathasa Valley, a village that kept its old character while it evolved. With an old Unesco heritage church from the Venetian era, walking trails in the forest, and restaurants around, it attracts thousands of visitors every year. A lot of locals go there to relax, especially during summer.)
@@ -68,36 +69,37 @@ Beautiful Villages to visit:
 
 💻 Remote working / Reading. Yfantourgeio is a great place to work remotely from. It is a quiet co-working space and in the heart of Nicosia. Another quiet place you can go is the library of the University of Cyprus. Moreover, you can go to one of the multiple coffee shops in Cyprus Nero, Costa Coffee, and Gloria Jeans (less quiet but more social).
 
-## FOOD (min $ /max $$$$)
+## FOOD min $ /max $$$$
 
 🥖 Zorbas $ (The most famous bakery in Cyprus where any local goes to. They are even operating in New York. For a quick breakfast, a sweet, or a traditional cooked meal for lunch or dinner, this is your go-to place. They have many locations in different cities in Cyprus.)
 
 ![Zorbas bakeries](images/zorbas.jpeg)
-🍖 ETHA Egkomis cat("$", "$", sep="")
+
+🍖 ETHA Egkomis `$$`
  (Traditional Cypriot food)
 
-🍖 Zannetos catcat("$", "$", sep="")
+🍖 Zannetos `$$`
  (Traditional Cypriot food. Best place for meze.)
 
 🍖 Piatsa Gourounaki $ (Traditonal Cypriot food; fast food that it is convenientily located downtown.)
 
-🍔 The Garrison Bar cat("$", "$", sep="")
+🍔 The Garrison Bar `$$`
  (Burger bar with a Peaky Blinders theme and menu.)
 
-🍔 Babylon Bar cat("$", "$", sep="")
+🍔 Babylon Bar `$$`
  (A local bar with a billiard and nice atmosphere.)
 
-🍔 Moondogs Bar cat("$", "$", sep="")
+🍔 Moondogs Bar `$$`
  (A local sports bar with billiard and a nice atmosphere.)
 
-🍱 China Spice cat("$", "$", "$", sep="")
+🍱 China Spice `$$$`
  (Chinese restaurant. Great place for dinner, good value for money for its fanciness, with a variety of dishes. My favorite Chinese in Cyprus, especially on Tuesdays, there is an all-you-can-eat buffet for $25/person.)
 
 🍕 Alfa Pizza $ (Cypriot fast food pizza chain)
 
 🥙 Avo $ (If you are a backpacker this is your place. It is the cheapest place you can get food in Nicosia. While you can get all sorts of food from souvlaki to pizza, Armenian food and lahmacun is their specialty.)
 
-🥞 Edem’s Yard cat("$", "$", sep="")
+🥞 Edem’s Yard `$$`
  (Breakfast/brunch in Larnaca’s palm trees area)
 
 🍦 Papafilippou Ice-Cream $ (The most famous local ice-cream. Enjoy your ice cream while playing arcade games. If you want to try this but cannot go to their main store, papafilippou ice-cream is being sold in any kiosk.)
