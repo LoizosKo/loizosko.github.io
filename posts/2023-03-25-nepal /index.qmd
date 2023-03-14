@@ -1,7 +1,7 @@
 ---
 title: "Nepal on a Budget: Backpacking Through Kathmandu, Pokhara, and the Australian Base Camp"
 description: |
-    The article provides practical advice and tips for traveling in Nepal through personal experience.
+    The article provides practical advice and tips for traveling in Nepal.
 image: images/nepal.jpeg  
 date: 03/07/2023
 categories: 
