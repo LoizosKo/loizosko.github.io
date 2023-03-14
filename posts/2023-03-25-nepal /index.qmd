@@ -1,0 +1,422 @@
+---
+title: "Nepal on a Budget: Backpacking Through Kathmandu, Pokhara, and the Australian Base Camp"
+description: |
+    The article provides practical advice and tips for traveling in Nepal through personal experience.
+image: images/nepal.jpeg  
+date: 03/11/2023
+categories: 
+  - travel
+  - tourism
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![Kathmandu](images/ktm.jpeg) 👈
+
+If you're thinking of visiting Nepal, there are several things you need
+to know to make the most out of your trip. Nepal is a destination known
+for its natural beauty, cultural richness, and friendly people. Whether
+you're seeking adventure or a peaceful escape, Nepal has something for
+everyone.
+
+This article provides a valuable firsthand account of a traveler's
+experiences in Nepal. Here you can find practical advice and tips on
+currency exchange, transportation, and sightseeing in Kathmandu and
+Pokhara, as well as recommendations on where to eat and what to do. The
+article also highlights the friendliness and safety of the Nepalese
+people, which is important information for anyone considering a trip to
+Nepal.
+
+When planning your trip, there are two options to consider:
+
+1.  Traveling with a travel agency
+
+2.  Planning your trip alone
+
+Visiting Nepal with a travel agency can offer many advantages such as
+access to local knowledge and expertise, organized activities and
+transportation, and peace of mind. Especially if you are going for
+high-altitude hikes, a guide and a porter to carry your bags can be very
+helpful. On the other hand, planning a trip alone gives you more
+flexibility, freedom, and the opportunity to design a more personalized
+itinerary. I would recommend that option if your main plan is to explore
+Nepal's culture and interact with locals. You save a lot and you have no
+one to deal with. Also, it is completely safe to make the trip to Nepal
+alone!
+
+If you are going with a tourist agency, [Himalayan
+Wonders](https://www.himalayanwonders.com/?selocation=US) is extremely
+organized that takes care of the whole trip for you. They answer fast
+when you email them. If you are price sensitive, they have a sister
+company, [Adventurehero](https://www.adventurehero.com/), which does the
+same trips but for cheaper prices --- less fancy hotels and jeep rides
+instead of internal flights. When organizing your trip with an agency,
+it can also be stressful if you leave everything for the last moment so
+consider finalizing the booking some days in advance.
+
+When I visited Nepal with a friend in February 2023, we went without a
+guide. While doing the proper research can be time-consuming, hopefully,
+this article saves you some time.
+
+## TASKS BEFORE VISITING
+
+💉Health: Consult your doctor before going. Typically, there are
+suggested vaccines such as rabies, typhoid, hepatitis, and tetanus, but
+recommendations vary depending on each traveler. Malaria is uncommon
+there but also depends on the cities that you are going to. Usually,
+malaria cases are reported in the lower west side of Nepal e.g.
+[Ilam](https://www.google.com/maps/place/Ilam+57300,+Nepal/@26.8984852,87.8876952,13z/data=!3m1!4b1!4m6!3m5!1s0x39e5c3933be14d23:0x90060622ff0776f8!8m2!3d26.9111769!4d87.9236747!16s%2Fm%2F026mh1d).
+It is recommended to have international health insurance that covers you
+before going. I got mine from Revolut by upgrading from free to premium
+paying \$8.99/month. If you don't have revolut, feel free to create an
+account through my
+[referral](https://www.revolut.com/en-US/referral/?referral-code=loizosq28%21FEB1-23-AR).
+
+If you are going for a big hike i.e. Everest base camp, it is
+recommended to get an insurance that covers evacuation with a
+helicopter, because if anything happens to you while in the mountain and
+you are uninsured, the bill you pay will be over `$`2500! I did not need
+it, but in case you do, here is the email of the guy that I asked for
+information from (this advice applies to you if you are from Cyprus);
+*giorgostheodorou4\@gmail.com* ; He works at Metlife, and when I shared
+him a trip schedule that was including everest, he drafted me a `$`90
+insurance.
+
+🍣 Food: If you are considering going hiking, bring with you some
+protein bars that will keep you during the day. It is not certain that
+you will find proper restaurants in the mountain while hiking. The
+following comes from my doctor's advice--- In general, eat only
+well-cooked food to minimize the risk of food poisoning. When it comes
+to water, bottled drinks are your go-to. Avoid using ice cubes or
+drinking from glasses. When brushing your teeth use bottled water and
+when shower with your mouth closed.
+
+🛂 Visa: You can do it when you arrive there at the airport (highly
+recommended) or [apply for it](https://nepaliport.immigration.gov.np/)
+in advance. You will need two recent passport-size photos and a fee.
+There are three options: Visa for 15 days (`$`30), for 30 days (`$`50),
+and for 90 days (`$`125).
+
+🥾 Hiking: In Nepal, you need a permit to go hiking called
+[TIMS](https://www.himalayastrek.com/information/trekkers-information-management-system-tims/),
+which you can do there. You will need two recent passport-size photos
+for this. In general, nature in Nepal can be dangerous and you can be
+lost if you try to do big hikes without taking someone experienced with
+you.
+
+![Backpack essentials](images/backpack.jpeg)
+
+## CURRENCY & SIMCARD
+
+**Currency**: Nepalese rupees. Do the conversion
+[here](https://www.google.com/search?q=nepalese+rupee+to+dollar&ei=eCDlY7yBGMbUkwXJzoS4Ag&ved=0ahUKEwi8ndSV74j9AhVG6qQKHUknAScQ4dUDCA8&uact=5&oq=nepalese+rupee+to+dollar&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhCCAjIJCAAQFhAeEPEEMgkIABAWEB4Q8QQyBggAEBYQHjIJCAAQFhAeEPEEMgYIABAWEB4yCQgAEBYQHhDxBDIJCAAQFhAeEPEEMgkIABAWEB4Q8QQyBQgAEIYDOgoIABBHENYEELADOgcIABCwAxBDOgUIABCABEoECEEYAEoECEYYAFCsBljQDGD0D2gCcAF4AIABywSIAbwKkgEHMy0xLjEuMZgBAKABAcgBCcABAQ&sclient=gws-wiz-serp)
+before you buy something.
+
+You can exchange your money at the airport (don't do it before you pass
+the passport check), afterwards you find better rates. You also need a
+Sim card. You can get that also at the airport, after you arrive, the
+provider [Ncell](https://www.ncell.axiata.com/en) will have a brunch
+near the exit/entrance of the airport and you can get a sim card from
+there. I got mine with 25GB internet data and it was around [600
+Rupees](https://www.google.com/search?q=600+nepalese+rupees+to+usd&ei=nCLlY6-MOormsAev0YyACg&ved=0ahUKEwivyp2b8Yj9AhUKM-wKHa8oA6AQ4dUDCA8&uact=5&oq=600+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIJCAAQgAQQDRAKMgsIABAIEB4QDRDxBDILCAAQCBAeEA0Q8QQyCwgAEAgQHhANEPEEMgsIABAIEB4QDRDxBDILCAAQCBAeEA0Q8QQyCAgAEAgQHhANMgUIABCGAzIFCAAQhgMyBQgAEIYDOgoIABBHENYEELADOgcIABCwAxBDSgQIQRgASgQIRhgAUNUEWLsNYMAOaAFwAXgAgAGKAogBoQ6SAQMyLTiYAQCgAQHIAQrAAQE&sclient=gws-wiz-serp).
+
+## tips from 8-day trip
+
+## DAY 1: Arrival in Kathmandu
+
+Arrived in Kathmandu at 6 pm in the evening, and met with my friend in
+the airport. It's important to note that when it comes to
+transportation, you should avoid anyone that asks to give you a ride
+beside the taxis with green labels, which are the official ones.
+
+We took a taxi ([1000
+rupees](https://www.google.com/search?q=1000+nepalese+rupees+to+usd&ei=mY3qY832GpmXxc8P2q-4wA0&ved=0ahUKEwiNp4r5m5P9AhWZS_EDHdoXDtgQ4dUDCA8&uact=5&oq=1000+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwA0oECEEYAEoECEYYAFCKBljCCmD2C2gCcAF4AIABxAKIAYIHkgEFMi0yLjGYAQCgAQHIAQPAAQE&sclient=gws-wiz-serp))
+from the airport to our hotel ([Flock Hostel
+Kathmandu](https://www.booking.com/hotel/np/flock-hostel-kathmandu.en-gb.html?label=gen173rf-1BCAsoqwFCFmZsb2NrLWhvc3RlbC1rYXRobWFuZHVIM1gDaKcCiAEBmAEJuAEHyAEM2AEB6AEBiAIBogIKbWVkaXVtLmNvbagCA7gC9fC_oAbAAgHSAiRiZjBmMDZjNy03NjMzLTRlZDItYjIxZi00ZjQ5MmU0NTRmMzHYAgXgAgE&sid=4acf5d0463d423e375c14608aa454ac4&dist=0&keep_landing=1&sb_price_type=total&type=total&))
+and we met there our potential trip guide. We were planning to go at
+Pokhara and stay there for a couple of nights, do some activities and
+some hikes around the area. The guide was not clear about his pricings
+during our negotiation and he asked us to pay for his expenses as well
+on top of his fee, so we decided to do the trip by ourselves.
+
+At night we went out to get some dinner. We ended up at [Roadhouse
+cafe](https://www.google.com/maps/place/Roadhouse+Cafe/@27.7161884,85.3004017,15.49z/data=!4m10!1m2!2m1!1sroadhouse+cafe+kathmandu!3m6!1s0x39eb18fcf090a315:0x4ecba2d034b5135b!8m2!3d27.7143996!4d85.3103329!15sChhyb2FkaG91c2UgY2FmZSBrYXRobWFuZHVaGiIYcm9hZGhvdXNlIGNhZmUga2F0aG1hbmR1kgEQcGl6emFfcmVzdGF1cmFudJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VRdGVtVlFiMDlSRUFF4AEA!16s%2Fg%2F1tjgm_wj)
+and we had some oven pizza. It was a central place with nice atmoshpere
+inside, mostly tourists were in it though. After we returned home. The
+city, despite the functionally chaotic driving (i.e. there are no
+traffic lights) and the fact that some people will try to sell you
+drugs, is safe; no robberies or violence. Honestly, when it comes to
+security and people, I felt safer than I feel in Philadelphia.
+
+*Roadhouse cafe seems to be a local chain as we found couple of them in
+Pokhara and Kathmandu.*
+
+
+## DAY 2: Exploring Kathmandu
+
+Woke up early and went to our respective embassies; the [French
+embassy](https://www.google.com/maps/place/Embassy+of+France/@27.7045644,85.3196779,14.01z/data=!4m6!3m5!1s0x39eb191b9d54514d:0x7f4ebc8975141067!8m2!3d27.7200851!4d85.3194274!16s%2Fg%2F1234z3n3),
+and the [consulate of
+Cyprus](https://www.google.com/maps/place/Honorary+Consulate+of+the+Republic+of+Cyprus/@27.7045644,85.3196779,14.01z/data=!4m6!3m5!1s0x39eb197bfb7e77d1:0xb53c334ba958624b!8m2!3d27.7109734!4d85.3145653!16s%2Fg%2F11j4hhg6vs).
+French embassy asked from my friend to sign a document with his address
+in it; they did not allow us to enter. While the consulate of Cyprus was
+more accessible, there are no Cypriots working there. It is operated by
+locals, and they mostly issue tourist and student visas for Nepalese
+people that visit Cyprus.
+
+Next destination, [Gaia Restro & Coffee
+Shop](https://www.google.com/maps/place/Gaia+Restro+%26+Coffee+Shop/@27.7132225,85.3106978,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb18fd9a95c763:0x106bfc1dbd8cea66!8m2!3d27.7132225!4d85.3128918!16s%2Fg%2F1hc1s1f5v)
+for breakfast. It is a relaxed place with open space to sit outside and
+nice food.
+
+Afterwards, we went to buy bus tickets for Pokhara, the place we were
+about to go the next day. We bought the tickets from [East and West
+International Tours and Travels
+Ltd](https://www.google.com/maps/place/27%C2%B042'54.5%22N+85%C2%B018'39.3%22E/@27.7151389,85.3109167,19z/data=!3m1!4b1!4m4!3m3!8m2!3d27.7151389!4d85.3109167)
+([front](https://www.google.com/maps/@27.7151149,85.3108937,3a,75y,20.01h,91.54t/data=!3m8!1e1!3m6!1sAF1QipOlHbgbRWqvQ4s7VdRyhoke9a32x4bWKz1NcgtP!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOlHbgbRWqvQ4s7VdRyhoke9a32x4bWKz1NcgtP%3Dw203-h100-k-no-pi-0-ya53.29282-ro-0-fo100!7i8704!8i4352)).
+Normal Bus was 1400Rupees, and the Luxury/more comfortable one was
+[1800Rupees](https://www.google.com/search?q=1800+nepalese+rupees+to+usd&ei=xzPlY7W6IsLIlAbSiIa4DA&ved=0ahUKEwj1ud_KgYn9AhVCJMUKHVKEAccQ4dUDCA8&uact=5&oq=1800+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICCEQoAEQwwQ6CggAEEcQ1gQQsANKBAhBGABKBAhGGABQqAlYpQ1gvhFoAnABeACAAYUCiAG3B5IBAzItNJgBAKABAcgBAsABAQ&sclient=gws-wiz-serp)
+--- normal prices, not overcharge. Luxury bus is recommended since the
+road to Kathmandu is bumpy. Normally it takes around 7--8 hours the trip
+from Kathmandu to Pokhara. As long as you have your ticket, make sure to
+be at the [tourist bus
+stop](https://www.google.com/maps/place/Tourist+Bus+Stop/@27.7107721,85.3089046,14.16z/data=!4m6!3m5!1s0x39eb19022390cd3b:0x628cd4e65f9d0fba!8m2!3d27.7186097!4d85.3083489!16s%2Fg%2F11c1s0g237)
+early in the morning half an hour before your bus.
+
+Then we started walking towards the [Monkey
+Temple](https://www.google.com/search?q=monkey+temple&ei=oyLlY5NijIGL6A_ImLywCA&ved=0ahUKEwjTv4-e8Yj9AhWMwAIHHUgMD4YQ4dUDCA8&uact=5&oq=monkey+temple&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BQguEJECOgUIABCRAjoFCC4QgAQ6CwguEIAEEMcBENEDOgcILhDUAhBDOgsILhDHARDRAxCRAjoECAAQQzoLCC4QrwEQxwEQgAQ6CwguEIAEEMcBEK8BOgYIABAKEEM6BwgAEIAEEAo6CAguEIAEENQCSgQIQRgASgQIRhgAUABYmRFg7xJoAHABeAGAAbIEiAHfGpIBCTItNS4xLjMuMZgBAKABAcABAQ&sclient=gws-wiz-serp).
+From there that we bought the tickets it was a 35-minute walk, however
+it was nice as we were able to stop along the way to shops and buy
+clothes and souvenirs.
+
+The monkey temple is awesome because there is more trees, many monkeys,
+and a beautiful view of the city. The ticket to get in was [200
+Rupees](https://www.google.com/search?q=200+nepalese+rupees+to+usd&ei=yzPlY-LpJ5CakgWkgonIAQ&ved=0ahUKEwii-9jMgYn9AhUQjaQKHSRBAhkQ4dUDCA8&uact=5&oq=200+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIJCAAQBxAeEPEEMgUIABCGAzIFCAAQhgMyBQgAEIYDMgUIABCGAzoKCAAQRxDWBBCwA0oECEEYAEoECEYYAFCyB1iRC2DNDWgCcAF4AIAB5AGIAZ0FkgEDMi0zmAEAoAEByAEEwAEB&sclient=gws-wiz-serp)
+per person. Try not to feed the monkeys and keep your stuff on you cause
+they are [sneaky animals](https://www.youtube.com/watch?v=8q1MyVUze8M)!
+My advice; enjoy the view, take some pictures, and go continue exploring
+the city.
+
+Next, on the way to [Durbar
+Square](https://www.google.com/search?q=durbar+square&ei=fzPlY5eTM8X2kwW3o4WoDw&oq=dhurbar+sq&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMggIABAWEB4QCjoKCC4QxwEQ0QMQQzoECAAQQzoLCC4QgAQQxwEQ0QM6BQgAEIAEOgUIABCRAjoFCC4QgAQ6BAguEEM6BwgAEIAEEAo6BwguEIAEEAo6DQguEIAEEMcBEK8BEAo6BggAEB4QCjoICAAQHhAPEAo6BggAEB4QDzoLCAAQBRAeEPEEEAo6CAgAEAUQHhAKOgUIIRCgAUoECEEYAEoECEYYAFAAWIMdYM8saABwAXgBgAHOBogBoh6SAQsyLTYuMC4yLjAuMpgBAKABAcABAQ&sclient=gws-wiz-serp),
+we found a local football court, the one that is visible from the monkey
+temple, where many kids were playing football. It looked like they
+frequently play there. Playing football with the kids was for me the
+best experience of the day. Football is a universal sport that makes
+everyone forget life problems and enjoy the game and in that moment that
+was the definition we lived in.
+
+Durbar Square was a positive surprise for us. There we found many
+restaurants, coffee shops, and there are no cars in that area so many
+people walk there. Nearby you can also find the temple of [Kumari
+Ghar](https://www.google.com/search?q=durbar+square&ei=fzPlY5eTM8X2kwW3o4WoDw&oq=dhurbar+sq&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMggIABAWEB4QCjoKCC4QxwEQ0QMQQzoECAAQQzoLCC4QgAQQxwEQ0QM6BQgAEIAEOgUIABCRAjoFCC4QgAQ6BAguEEM6BwgAEIAEEAo6BwguEIAEEAo6DQguEIAEEMcBEK8BEAo6BggAEB4QCjoICAAQHhAPEAo6BggAEB4QDzoLCAAQBRAeEPEEEAo6CAgAEAUQHhAKOgUIIRCgAUoECEEYAEoECEYYAFAAWIMdYM8saABwAXgBgAHOBogBoh6SAQsyLTYuMC4yLjAuMpgBAKABAcABAQ&sclient=gws-wiz-serp).
+
+*Kumari Ghar is a historical place of worship for Hindus and Bhuddists.*
+
+Note that some people try to scam tourists and ask them to pay to go to
+the square. We walked through the square and headed towards [Civil
+Mall](https://www.google.com/maps/place/Civil+Mall/@27.689842,85.3042242,14.56z/data=!4m6!3m5!1s0x39eb1854a0c1c183:0x864be1bcc05db676!8m2!3d27.6993613!4d85.3129001!16s%2Fg%2F11yq9fjlt),
+one of the country's biggest malls. Besides many shops, cafes, and
+restaurants (including the
+[KKFC](https://www.google.com/search?q=kkfc+nepal&source=hp&ei=Ck7lY6TYH9TzkgXm1YWoAg&iflsig=AK50M_UAAAAAY-VcGoI2LdZXkVOnDD_GkYVaT30Q53hH&ved=0ahUKEwikhcDQmon9AhXUuaQKHeZqASUQ4dUDCAg&uact=5&oq=kkfc+nepal&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIJCAAQFhAeEPEEMgYIABAWEB4yBggAEBYQHjIICAAQFhAeEAoyCAgAEBYQHhAKMgUIABCGAzIFCAAQhgMyBQgAEIYDOgUILhCABDoOCC4QgAQQxwEQ0QMQ1AI6DQguEIAEEMcBENEDEAo6CggAEIAEEMkDEAo6BwgAEIAEEAo6DQguEIAEEMcBEK8BEAo6DQguEK8BEMcBEIAEEApQAFjWDmCKEGgAcAB4AIAB7QKIAaARkgEFMi01LjOYAQCgAQE&sclient=gws-wiz)
+local fried chicken chain), on the 6th floor, you can find all sorts of
+games such as billiards, ping pong, bowling, and basketball throws.
+Great place to hang with friends. Before going home, we stopped at pizza
+hut for dinner.
+
+
+## DAY 3: Traveling to Pokhara
+
+Since the bus was leaving at 7 am, you have to be at the [Tourist bus
+station](https://www.google.com/maps/place/Tourist+Bus+Stop/@27.7107721,85.3089046,14.16z/data=!4m6!3m5!1s0x39eb19022390cd3b:0x628cd4e65f9d0fba!8m2!3d27.7186097!4d85.3083489!16s%2Fg%2F11c1s0g237)
+half an hour earlier. The bus ride is bumpy but doable. The driver makes
+3 stops until Pokhara. At the stops, there are restaurants and
+restrooms. We ate at one of the road restaurants just rice and noodles,
+since we are used to different diet we did not want to risk eating meat
+and uncooked vegetables.
+
+We arrived at Pokhara at 5 pm, and then took a taxi (we also got the
+number of the driver for future rides) from [the tourist bus
+park](https://www.google.com/maps/place/Tourist+Bus+Park/@28.201115,83.9704186,17z/data=!4m14!1m7!3m6!1s0x399595086931689d:0xf26fc25b618f70b8!2sTourist+Bus+Park!8m2!3d28.2011103!4d83.9726073!16s%2Fg%2F1td_929t!3m5!1s0x399595086931689d:0xf26fc25b618f70b8!8m2!3d28.2011103!4d83.9726073!16s%2Fg%2F1td_929t)
+to our hotel, [Hotel Middle Path and
+Spa](https://www.google.com/maps/place/Hotel+Middle+Path+%26+Spa/@28.2110123,83.9573078,17z/data=!4m18!1m8!3m7!1s0x3995951dc419405b:0xcf221638ba298cf4!2sMiddle+Path+St,+Pokhara+33700,+Nepal!3b1!8m2!3d28.2110076!4d83.9594965!16s%2Fg%2F11bx26l3n7!3m8!1s0x3995951dc6cff135:0xf1cd87f548ab101d!5m2!4m1!1i2!8m2!3d28.2110147!4d83.9596463!16s%2Fg%2F1vbnmtgq).
+It is a very good hotel with a lot of
+[facilities](https://www.booking.com/searchresults.en-gb.html?aid=375654&label=msn-jrwrFdUb9zKNuCHIkGmz2g-80745410834425%3Atikwd-80745436851624%3Aloc-188%3Anes%3Amte%3Alp132923%3Adec%3Aqsbooking&no_rooms=1&srpvid=8a2980fea6eb0420&highlighted_hotels=470992&redirected=1&city=-1022488&hlrd=no_dates&group_adults=2&source=hotel&group_children=0&expand_sb=1&keep_landing=1&sid=4acf5d0463d423e375c14608aa454ac4#hotelTmpl)
+such as a gym, heated pool, spa, and sauna. We visited in February and a
+twin room was \$25/night. Since we liked the hotel, we extended our
+accommodation there for two more nights. Then for dinner we went at
+[Rice Garden
+Restaurant](https://www.google.com/maps/place/Rice+Garden+Restaurant+%26+Bar/@28.2106731,83.9547754,17z/data=!3m1!4b1!4m6!3m5!1s0x399595ca5ff101bb:0xe0d3bb91628f8a0d!8m2!3d28.2106731!4d83.9569694!16s%2Fg%2F11slt4xx13),
+a central restaurant in the main street; while it was not amazing, it
+was good enough. We had typical noodles and rice.
+
+*Middle Path & Spa Hotel: The best value for money hotel I have ever
+been!*
+
+
+## DAY 4: Sunrise and Tibetan Refugee Camp
+
+Our day started early. At 5.40 am, yesterday's taxi driver picked us up
+from the hotel, and drove us to
+[Sarangkot](https://www.google.com/maps/place/Sarangkot+View+Tower/@28.2343211,84.0024179,11.69z/data=!4m6!3m5!1s0x399594bc9701c979:0x1abee2e4f733a4be!8m2!3d28.2460666!4d83.9486371!16s%2Fg%2F11d_88881x)
+to see the sunrise. The view from there was amazing. You could see all
+the big hikes of the area such as Dhaulagiri (8167m), Machhapuchhare
+(6993m) and, Annapurna II (8,091m), and a panoramic view of Pokhara.
+Then the driver took us back to the hotel where we slept for a while.
+After, we went for breakfast at [White Rabbit
+cafe](https://www.google.com/maps/place/White+Rabbit+Coffee/@28.2096141,83.9547407,17z/data=!3m1!4b1!4m6!3m5!1s0x3995951ef3fe215f:0x316ee9634cc49838!8m2!3d28.2096094!4d83.9569294!16s%2Fg%2F11c0rm_w_n)
+nearby Pokhara's lake. It was the best breakfast we had in Nepal so far!
+We also had a great lake view and we saw a football tournament going on
+next to the lake. So after our breakfast, we wanted to get closer to
+watch and play with them. The tournament seemed very well organized and
+was taken seriously by the participants. We found out that the prize for
+the winning team was `$`2000. We watched a very entertaining game with
+last-minute goals and a penalty shootout. Then, we borrowed a ball from
+the court and we played with the kids in the field. It was a beautiful
+experience.
+
+Subsequently, we left to buy a return bus ticket from Pokhara to
+Kathmandu. We asked a local tourist agency which sold us the bus ticket
+for [1600
+rupees](https://www.google.com/search?q=1600+nepalese+rupees+to+usd&ei=FePnY-XvO8-GgQaEx4f4CQ&ved=0ahUKEwilzriGkY79AhVPQ8AKHYTjAZ8Q4dUDCA8&uact=5&oq=1600+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCAAQogQyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEOgoIABBHENYEELADSgQIQRgASgQIRhgAUMsHWMEMYKMOaAFwAXgAgAGDAogBgwKSAQMyLTGYAQCgAQHIAQTAAQE&sclient=gws-wiz-serp).
+My friend was asking to rent a motorcycle for the next week. He
+negotiated with the guy there and he promised him a fee if he was going
+to help him find a good motorcycle at a good price. Finally, he got an
+offer to rent it for `$`35/day. We left satisfied from there.
+
+*If you're planning on renting a motorcycle in Nepal, there are a few
+important tips to keep in mind according to my friend. First, make sure
+to choose a trustworthy rental company and inspect the motorcycle
+carefully before renting it. You can do that by negotiating with
+multiple rental places. When it comes to places to go, Lower Mustang is
+a great option with recommended stops in Kalopani, Jomson, Kagbeni, and
+Muktinath, each for a day. Upper Mustang is another great option with a
+recommended 4-day trip from Kagbeni to the Tibetan border, including a
+night in Ghami and the other nights in the forbidden kingdom of Lo.
+Remember that you will need to obtain a permit to enter these regions,
+which costs 500€. While it's possible to complete this itinerary in 7
+days, it's recommended to allow for a total of 10 days to enjoy the trip
+at a more relaxing pace.*
+
+In the afternoon, we took a taxi for [Tibetan Refugee
+Camp](https://www.google.com/maps/place/Tibetan+Refugee+Camp+Pokhara/@28.1766224,83.9794185,13.24z/data=!4m6!3m5!1s0x3995956b19944761:0x1de39cca0ad80f1a!8m2!3d28.1879939!4d83.9565757!16s%2Fg%2F11ggs7n0n3).
+
+*The Tibetan Refugee Camp in Pokhara, Nepal, is home to thousands of
+Tibetan refugees who fled from their homeland in Tibet due to political
+and religious persecution by the Chinese government. After the Chinese
+takeover of Tibet in 1959, the 14th Dalai Lama and many Tibetans fled to
+India and Nepal, where they established a number of refugee settlements,
+including the camp in Pokhara. The camp in Pokhara was established in
+the 1960s and has since then provided a home and a sense of community
+for Tibetan refugees. The camp is run by the Tibetan Refugee Welfare
+Office and provides basic facilities, such as housing, schools, medical
+clinics, and workshops, to its residents.*
+
+Despite the challenges Tibetan refugees face, such as limited resources
+and difficult living conditions, the Tibetan refugees in Pokhara have
+maintained their rich cultural heritage and traditions. They have
+established monasteries, schools, and community centers, where they can
+practice their religion, preserve their language, and pass their
+traditions down to future generations.
+
+
+## DAY 5: Hiking to Australian Base Camp
+
+Early morning we packed our stuff and went for breakfast at [Crown
+restro and lounge
+cafe](https://www.google.com/maps/place/Crown+Restro+And+Lounge/@28.211777,83.9548804,17z/data=!3m1!4b1!4m6!3m5!1s0x39959527d7d743e3:0x278c11b13a49fb81!8m2!3d28.2117723!4d83.9570691!16s%2Fg%2F11sm6xt8g7?coh=164777&entry=tt&shorturl=1).
+It did not meet our expectations. They brought us different order, then
+they delayed bringing us our normal one, and at the end they mistakenly
+charged us 600Rupees more; all of this took us an hour.
+
+Then we called our taxi driver to drive us from our hotel to
+[Phedi](https://www.google.com/maps/place/Phedi,+Pokhara+-+Baglung+Hwy,+33700,+Nepal/@28.2918072,83.8717747,17z/data=!3m1!4b1!4m6!3m5!1s0x3995ec488de2d8d3:0x391079059c4b460f!8m2!3d28.2920108!4d83.8716543!16s%2Fg%2F11bvtgj6th)
+(drive costed
+[1500rupees](https://www.google.com/search?q=600+nepalese+rupees+to+usd&ei=nCLlY6-MOormsAev0YyACg&ved=0ahUKEwivyp2b8Yj9AhUKM-wKHa8oA6AQ4dUDCA8&uact=5&oq=600+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIJCAAQgAQQDRAKMgsIABAIEB4QDRDxBDILCAAQCBAeEA0Q8QQyCwgAEAgQHhANEPEEMgsIABAIEB4QDRDxBDILCAAQCBAeEA0Q8QQyCAgAEAgQHhANMgUIABCGAzIFCAAQhgMyBQgAEIYDOgoIABBHENYEELADOgcIABCwAxBDSgQIQRgASgQIRhgAUNUEWLsNYMAOaAFwAXgAgAGKAogBoQ6SAQMyLTiYAQCgAQHIAQrAAQE&sclient=gws-wiz-serp))
+to start our hike. We passed through
+[Dhampus](https://www.google.com/maps/place/Dhampus+33700,+Nepal/@28.3119906,83.8412834,14z/data=!3m1!4b1!4m6!3m5!1s0x3995ee7a0fef010f:0xd99ed1864c55199b!8m2!3d28.3068725!4d83.8419989!16s%2Fm%2F04myv4t)
+and end up in [Australian Base
+Camp](https://www.google.com/maps/place/Australian+Camp+Trail+head/@28.2772131,83.8227424,12z/data=!4m6!3m5!1s0x3995ef0b99454d61:0x7aaa4a803fb16f66!8m2!3d28.2942329!4d83.821166!16s%2Fg%2F11sl38cbmv).
+To reach Dhampus took us 1 hour. Dhampus to Australian camp distance is
+4.7 kilometers / 2.9 miles. It takes 2 to 3 hours to reach the
+Australian camp passing through Dhampus Jungle. On Dhampus we found two
+travelers, Todd and Ruth. We briefly talked, and we exchanged Instagram
+accounts.
+
+We reached at Australian Base Camp at 4 pm. There there are two options
+you can stay at 1) [Angels Guest house
+hotel](https://www.angelguesthome.com/), 2) [Hotel
+Gurans](https://www.google.com/maps/place/Hotel+Gurans/@28.3044325,83.8265012,18.27z/data=!4m6!3m5!1s0x3995ee60c3340a71:0x6b4f7f3a47ac9e07!8m2!3d28.3050474!4d83.82805!16s%2Fg%2F11cryy35g7).
+We stayed at Hotel Gurans. Even if you book one in advance, the people
+there are flexible with canceling last minute. So when you go there,
+make sure to check and negotiate prices between the two. Both are very
+similar; the main differences are room availability, room view, and
+price.
+
+
+## DAY 6: Enjoying the Himalayas from our hotel
+
+Woke up to see the sunrise at 6.30 and we had an amazing view of the
+Himalayas. The view was so nice, that kept us there for half of our day;
+we ate breakfast (omelet and pancakes), listen to music, played
+football, and enjoyed the view. It was the most beautiful view I have
+ever seen! At 2 pm we left for [Kande](https://www.google.com/maps/place/Restaurant/@28.2941787,83.8207712,17z/data=!4m10!1m2!2m1!1sKande!3m6!1s0x3995eef3a0a505b3:0xe4b05d6a3ae1ea9d!8m2!3d28.2926241!4d83.8234034!15sCgVLYW5kZVoHIgVrYW5kZZIBCnJlc3RhdXJhbnTgAQA!16s%2Fg%2F11c2pg702g) --- 1 hour to get down there. As we
+reached the street, we tried to call our driver. It would have taken him
+an hour to come so we hitchhiked and a family in a jeep drove us to
+Pokhara for [1000rupees](https://www.google.com/search?q=1000+nepalese+rupees+to+usd&ei=mY3qY832GpmXxc8P2q-4wA0&ved=0ahUKEwiNp4r5m5P9AhWZS_EDHdoXDtgQ4dUDCA8&uact=5&oq=1000+nepalese+rupees+to+usd&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwA0oECEEYAEoECEYYAFCKBljCCmD2C2gCcAF4AIABxAKIAYIHkgEFMi0yLjGYAQCgAQHIAQPAAQE&sclient=gws-wiz-serp).
+
+We got some rest, and for the evening we arranged dinner with the
+travelers we met yesterday, Todd and Ruth. We had dinner at [Soul Origin
+cafe and restaurant](https://www.google.com/maps/place/Soul+Origin+Cafe+and+Restaurant/@28.2190095,83.9384699,15z/data=!4m6!3m5!1s0x3995950681125859:0x98bf80537f95f95c!8m2!3d28.2125683!4d83.9569968!16s%2Fg%2F11pcg8q19j), and then dessert at [French creperie](https://www.google.com/maps/place/French+Creperie/@28.2190095,83.9384699,14.57z/data=!4m6!3m5!1s0x399594e3deb2d8f1:0xfcfd00f27b1b2434!8m2!3d28.2170838!4d83.9587202!16s%2Fg%2F11g6wd8kb6); both amazing
+places. Todd and Ruth are an amazing duo! They are from California, they
+traveled in 58 countries, they love to immerse themselves in new
+cultures and both have great stories to tell throughout their global
+exploration journey; Todd is a great photographer ([check his IG page](https://www.instagram.com/toddrafalovich/?igshid=NzAzN2Q1NTE%3D)),
+and Ruth is an amazing planner, she gave us some of the most useful
+traveling tips (check her article here).
+
+Highlights from our discussion:
+
+-   The most adverse trip moments are usually accompanied by strong
+    lessons and memorable experiences.
+
+-   The little moments we share with people are undervalued. Traveling
+    helps us understand better how the world works.
+
+-   Our lives in Europe and USA are much easier than we frequently think
+    they are.
+
+-   Bears in Alaska don't bother people if their bellies are full of
+    salmon.
+
+-   When traveling, keep your valuables safe with a tracker.
+
+
+## DAY 7: Shopping in Pokhara
+
+Last day in Pokhara started with a late wake-up. We had breakfast with Todd and Ruth and then went shopping at Pokhara’s main street. There are many quality products such as cashmere clothing, and brands such as NorthFace, Colombia, Patagonia that you can find much cheaper than Europe and America. On top of that negotiating is expected so you can get an even better price. After negotiating I got the following deals: a NorthFace jacket from 8500 initial price to [7000 rupees](https://www.google.com/search?q=7000+nepalese+rupee+to+dollar&source=hp&ei=4mLsY_boMNGExc8P0fSpgA8&iflsig=AK50M_UAAAAAY-xw8pH-vJejz91Zm_C1QFUG6Uvhd9qG&ved=0ahUKEwj24YS_25b9AhVRQvEDHVF6CvAQ4dUDCAg&uact=5&oq=7000+nepalese+rupee+to+dollar&gs_lcp=Cgdnd3Mtd2l6EAMyCQgAEBYQHhDxBDIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CwguEIAEEMcBENEDOgUILhCABDoICC4QgAQQ1AI6BQgAEIAEOgoIABCABBBGEIICOgwIABCABBANEEYQggI6BwgAEIAEEA06BQghEKABOgcIIRCgARAKUABY-YYBYKiJAWgGcAB4AIAByAKIAZJckgEHMi0xNS4yNJgBAKABAQ&sclient=gws-wiz), a NorthFace sweatpants from 2500 to [1800 rupees](https://www.google.com/search?q=1800+nepalese+rupee+to+dollar&ei=9WLsY4vlPMeSxc8Pv8Gm4Ac&ved=0ahUKEwjLs5jI25b9AhVHSfEDHb-gCXwQ4dUDCA8&uact=5&oq=1800+nepalese+rupee+to+dollar&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICCEQoAEQwwQ6CggAEEcQ1gQQsAM6BQgAEKIESgQIQRgASgQIRhgAUJkGWJkiYIMnaAFwAXgAgAHKAogB_QmSAQUyLTEuM5gBAKABAcgBB8ABAQ&sclient=gws-wiz-serp), gloves for snow from 1000 to [900 rupees](https://www.google.com/search?q=900+nepalese+rupee+to+dollar&ei=FmPsY4Uwlr3Fzw-M4YrwBA&ved=0ahUKEwiFk7rX25b9AhWWXvEDHYywAk4Q4dUDCA8&uact=5&oq=900+nepalese+rupee+to+dollar&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCAAQogQyBQgAEKIEMgUIABCiBDIFCAAQogQ6CggAEEcQ1gQQsANKBAhBGABKBAhGGABQlQZY4Adg4AtoAnABeACAAbYCiAGdB5IBAzMtM5gBAKABAcgBBMABAQ&sclient=gws-wiz-serp), and a cashmere sweater from 8500 to [5000 rupees](https://www.google.com/search?q=5000+nepalese+rupee+to+dollar&ei=UmPsY5-lG8eFxc8PrKO26AI&ved=0ahUKEwiflqP025b9AhXHQvEDHayRDS0Q4dUDCA8&uact=5&oq=5000+nepalese+rupee+to+dollar&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwA0oECEEYAEoECEYYAFDyBlj5CWDbC2gCcAF4AIABvgKIAZ8HkgEDMy0zmAEAoAEByAEEwAEB&sclient=gws-wiz-serp).
+
+Then we had lunch at the restaurant [Fresh Elements](https://www.google.com/maps/place/Fresh+Elements+Restaurant+%26+Bar/@28.2113951,83.9560655,17z/data=!3m1!4b1!4m6!3m5!1s0x3995951e75301097:0x440c372df9db7af2!8m2!3d28.2113951!4d83.9582595!16s%2Fg%2F11d_w813t5). Very good restaruant with a lot of options and good prices; only downside is that their portions are relatively small. Our hotel [Middle Path & Spa](https://www.google.com/maps/place/Hotel+Middle+Path+%26+Spa/@28.2111682,83.9574709,17z/data=!4m17!1m7!3m6!1s0x3995951e75301097:0x440c372df9db7af2!2sFresh+Elements+Restaurant+%26+Bar!8m2!3d28.2113951!4d83.9582595!16s%2Fg%2F11d_w813t5!3m8!1s0x3995951dc6cff135:0xf1cd87f548ab101d!5m2!4m1!1i2!8m2!3d28.2110147!4d83.9596463!16s%2Fg%2F1vbnmtgq), is collaborating with that restaurant so everything we were ordering from our hotel was coming from there.
+
+Meanwhile, my friend rented a motorcycle for `$`35/day from Pokhara with a plan to go to a 5-day ride starting from Pokhara to [Jomsom](https://www.google.com/maps/place/Jomsom,+Nepal/@28.8561979,83.4445969,9.97z/data=!4m15!1m8!3m7!1s0x39be6c7eb19f2ab7:0x2c40a8c5a03d3c04!2sMustang,+Nepal!3b1!8m2!3d28.9985065!4d83.8473015!16zL20vMDhjbHNi!3m5!1s0x39be0e42b3323685:0xb78689d6f4ff1019!8m2!3d28.7746477!4d83.7730237!16s%2Fm%2F03cpg01), and ending to [Upper Mustang](https://www.google.com/maps/place/Upper+Mustang,+Nepal/@29.234739,83.2930096,9z/data=!4m10!1m2!2m1!1supper+mustang!3m6!1s0x39be61bdb2301d83:0xd2d8fef01389732d!8m2!3d29.234739!4d83.9257357!15sCg11cHBlciBtdXN0YW5nWg8iDXVwcGVyIG11c3RhbmeSARJ0b3VyaXN0X2F0dHJhY3Rpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTXllVXgyY1ZSQkVBReABAA!16s%2Fg%2F11j0233dk1). To ride at Upper Mustang, you need to pay for a permit `$`500, and have two more people with you for security. However, the pictures suggest that it is a worthwhile experience! In the evening I took the overnight bus at 7.30 pm for Kathmandu.
+
+
+## DAY 8: Departure from Nepal
+
+Last day in Nepal started early in Kathmandu. I arrived at 5 am. That time everything was closed. So I took a taxi for the reception of [Kathmandu Guest House hotel](https://www.google.com/maps/place/Kathmandu+Guest+House/@27.7151892,85.2994928,14z/data=!4m9!3m8!1s0x39eb18fc95267159:0xd33fc3adabcb9768!5m2!4m1!1i2!8m2!3d27.7151892!4d85.3094953!16s%2Fg%2F11gghdw_5l). There is security, resting chairs to sleep in, and good breakfast. I left my luggage there, and I walked towards Durbar square. They asked me for a ticket once more (apparently if you don't look local they ask you to pay 150 rupees). Don’t pay for this.
+
+[Himalayan Java](https://www.google.com/maps/place/Himalayan+Java+Coffee-+Basantapur/@27.703594,85.2912077,15z/data=!4m10!1m2!2m1!1shimalayan+java!3m6!1s0x39eb18561306a4f7:0x4ce88fe9a66bfcff!8m2!3d27.7035952!4d85.3076876!15sCg5oaW1hbGF5YW4gamF2YSIDiAEBWhAiDmhpbWFsYXlhbiBqYXZhkgELY29mZmVlX3Nob3DgAQA!16s%2Fg%2F12hsqsdg3) is the main coffee chain in Nepal. There is one in the middle of Durbar square so I went for pancakes. It seems fancier than the average coffee shop. It is the ‘Starbucks’ of Nepal.
+
+In the evening, I went back to the Guest House hotel to pick up my luggage and called the morning taxi driver to take me to the airport (we agreed in the morning [800 rupees](https://www.google.com/search?q=800+nepalese+rupees+to+dollar&source=hp&ei=MXvsY4KACo6Nxc8Pz7G42AE&iflsig=AK50M_UAAAAAY-yJQXIu9FaPVSsHhYNEiBNneXYBkOg4&ved=0ahUKEwjC3IvW8pb9AhWORvEDHc8YDhsQ4dUDCAg&uact=5&oq=800+nepalese+rupees+to+dollar&gs_lcp=Cgdnd3Mtd2l6EAMyCQgAEBYQHhDxBDIFCAAQhgMyBQgAEIYDMgUIABCGAzoFCC4QgAQ6BQgAEIAEOgoIABCABBBGEIICOgYIABAWEB46CwgAEBYQHhAPEPEEOggIABAWEB4QDzoLCAAQFhAeEPEEEAo6BQghEKABOgQIIRAVOgsIIRAWEB4Q8QQQHVAAWNxgYLVhaAZwAHgAgAGnAogB6keSAQQyLTM0mAEAoAEB&sclient=gws-wiz) for the airport ride).
+
+Overall, Nepal is among the best trips I have ever made and I’d love to revisit to see more nature and different cities. I hope you find this article useful for your trip planning to Nepal or satisfactory for your curiosity about the country and its culture.
+
+Follow [my friend’s Instagram page](https://www.instagram.com/the_red_eagle_23/?igshid=NzAzN2Q1NTE%3D) to see what the world looks like when you are traveling in faraway places:)
+
+Please clap 👏 [on
+medium](https://medium.com/@loizoskon/8-days-backpacking-nepal-kathmandu-pokhara-and-australian-base-camp-2ece1288a782)
+if you find this post helpful:)
