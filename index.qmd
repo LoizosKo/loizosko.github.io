@@ -10,7 +10,7 @@ about:
       - icon: medium
         href: https://medium.com/@loizoskon
       - icon: youtube
-        href: https://www.youtube.com/channel/UCAAuUtKAD8o5PviWxuQ3NSg
+        href: https://www.youtube.com/@okay.but_why
 ---
 
 Hi 👋 I am Loizos! This is my personal website.
