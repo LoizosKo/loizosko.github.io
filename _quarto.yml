@@ -20,7 +20,7 @@ website:
       - href: software/index.qmd
         text: Projects
       - href: cv.qmd
-        text: Resume
+        text: About Me
       - icon: linkedin
         href: https://www.linkedin.com/in/loizoskon/
       - icon: github

@@ -1,9 +1,8 @@
 ---
-title: "Resume"
+title: "About"
 editor: visual
 ---
 
-Here is my up-to-date [Resume](Resume_Kοnstantinou.pdf)
 
 I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
