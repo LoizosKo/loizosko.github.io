@@ -3,19 +3,19 @@ image: "Loizos.jpg"
 about:
   template: jolla
   links:
+      - icon: youtube
+        href: https://www.youtube.com/@okay.but_why
       - icon: linkedin
         href: https://www.linkedin.com/in/loizoskon/
       - icon: github
         href: https://github.com/LoizosKo
       - icon: medium
         href: https://medium.com/@loizoskon
-      - icon: youtube
-        href: https://www.youtube.com/@okay.but_why
 ---
 
 Hi 👋 I am Loizos! This is my personal website.
 
-**Behavioral Economist** \@ **UPenn 22'** ![](images/paste-10C56948.png){width="17" height="17"}
+**Behavioral Economist** \@ **UPenn** ![](images/paste-10C56948.png){width="17" height="17"}
 
 Here you will find travel tips, coding projects and, learn more about me.
 

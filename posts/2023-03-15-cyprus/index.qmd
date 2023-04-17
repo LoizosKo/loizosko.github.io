@@ -6,7 +6,6 @@ image: images/cy.jpeg
 date: 02/05/2023
 categories: 
   - travel
-  - tourism
 format: html
 execute: 
   cache: true

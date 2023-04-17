@@ -6,7 +6,6 @@ image: images/nepal.jpeg
 date: 03/07/2023
 categories: 
   - travel
-  - tourism
 format: html
 execute: 
   cache: true

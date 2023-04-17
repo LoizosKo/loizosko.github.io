@@ -5,7 +5,7 @@ description: |
 image: images/denmark.jpeg    
 date: 06/09/2022
 categories: 
-  - tourism
+  - travel
 format: html
 execute: 
   cache: true

@@ -21,6 +21,8 @@ website:
         text: Projects
       - href: cv.qmd
         text: About Me
+      - icon: youtube
+        href: https://www.youtube.com/@okay.but_why         
       - icon: linkedin
         href: https://www.linkedin.com/in/loizoskon/
       - icon: github
@@ -29,8 +31,7 @@ website:
         href: https://twitter.com/loizoskon
       - icon: medium
         href: https://medium.com/@loizoskon
-      - icon: youtube
-        href: https://www.youtube.com/@okay.but_why      
+     
 
   search:
     location: navbar
