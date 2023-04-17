@@ -1,0 +1,58 @@
+---
+title: "Maximize Your Savings with My Favorite Referral Deals!"
+description: |
+    This article presents a curated list of referral links for discounts.
+image: images/piggy.jpeg
+date: 04/16/2023
+categories: 
+  - discounts
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![discount referrals below, links are on the names](images/piggy.jpeg)
+
+
+Are you thinking about creating an account with one of these popular apps? Interested in saving money while doing so? If the answer is YES to both, be sure to sign up using the referral links provided below for win-win savings!
+
+
+**Credit card**
+
+💳 [Discover — get $100](https://refer.discover.com/s/LOIZOS0)
+
+* If you are in America, owning a credit card helps because your credibility gets evaluated via FICO score which makes you appear more legit to lenders i.e. when renting an apartment, a car, getting a loan, etc. **You need an SSN to get a credit card. 
+
+
+**Debit Card**
+
+💳 [Revolut — get $50](https://revolut.com/referral/loizosq28!APR1-23-AR)
+
+💳 [Venmo — get $10](https://get.venmo.com/E9TxPyHu3yb)
+
+
+**SIM Card**
+
+📶 [Mint Mobile — up to $90](http://fbuy.me/tlhPc) depending on the plan you choose
+
+
+**Transportation**
+
+🚗 [Lyft — $15 credit ride](https://www.lyft.com/i/LOIZOS79522?utm_medium=p2pi_iacc)
+
+🍽 [Uber Eats — $15 off](http://ubr.to/EatsGiveGet)
+
+🛴 [Lime — $3 credit ride](https://lime.bike/referral_signin/RDYPQNW)
+
+
+**Accommodation**
+
+🏠 [Airbnb — get $200](https://www.airbnb.com/r/loizosk15?s=6&t=061n1v) if you become a host and complete your first stay
+
+
+Please clap 👏 [on
+medium](https://medium.com/@loizoskon/8-days-backpacking-nepal-kathmandu-pokhara-and-australian-base-camp-2ece1288a782)
+if you find this post helpful:)
