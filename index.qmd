@@ -36,3 +36,8 @@ See my [projects](https://www.loizos.xyz/software/) for some things I've been wo
 <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/loizos', text: 'Schedule time with me here!', color: '#0069ff', textColor: '#f7f7fd', branding: true }); }</script>
 ```
 <!-- Calendly badge widget end -->
+
+```{=html}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"
+ crossorigin="anonymous"></script>
+```

@@ -3,7 +3,6 @@ title: "About"
 editor: visual
 ---
 
-
 I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
 See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
@@ -11,3 +10,8 @@ See my [projects](https://www.loizos.xyz/software/) for some things I've been wo
 Currently learning ![](images/paste-491BD3EC.png){width="15"} and ![](images/paste-3A990530.png){width="15"} on ![](images/paste-E2C57FB1.png){width="20"}: [**LoizosKons**](https://www.duolingo.com/profile/LoizosKons?via=leagues)
 
 Find me on chess.com [here](https://www.chess.com/member/loizossss) ♞
+
+```{=html}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"
+     crossorigin="anonymous"></script>
+```
