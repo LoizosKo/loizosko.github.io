@@ -15,8 +15,6 @@ about:
 
 Hi 👋 I am Loizos! This is my personal website.
 
-**Behavioral Economist** \@ **UPenn** ![](images/paste-10C56948.png){width="17" height="17"}
-
 Here you will find travel tips, coding projects and, learn more about me.
 
 I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
