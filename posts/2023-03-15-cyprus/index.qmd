@@ -11,7 +11,7 @@ execute:
   cache: true
 ---
 
-![Most viewed video about Cyprus](https://www.youtube.com/watch?v=kb2-6zemmj8) 👈
+[Most viewed video about Cyprus](https://www.youtube.com/watch?v=kb2-6zemmj8) 👈
 
 Are you planning a trip to the island of goddess Aphrodite? From beautiful beaches to majestic mountains, Cyprus is a place where you can do a wide variety of activities. In this article, you will find details such as currency, transportation, restaurant recommendations, cultural visits, and cool activities you can do. Cyprus is sunny more than 300 days a year, however, remember to check the [weather](https://www.google.com/search?q=weather+cyprus&source=lmns&bih=636&biw=1181&hl=en&sa=X&ved=2ahUKEwiLuajxy-_8AhV9u3IEHR7IBM0Q_AUoAHoECAEQAA) before arriving.
 
@@ -58,7 +58,7 @@ Beautiful Villages to visit:
 
 🚲 Biking Nicosia’s Cycling route park, Pedieos linear park. It goes from Anthoupoli (Nicosia suburb) to downtown. Arguably, one of the most underrated experiences, it is a 14km(8.6 miles) ride with a lot of greenery, city nature, runners, and cats. You can also walk here on its pedestrian side.
 
-![Pedieos Linear Park](https://www.youtube.com/watch?v=t9tkcPxZM_Q)👈
+[Pedieos Linear Park - click here](https://www.youtube.com/watch?v=t9tkcPxZM_Q) 👈
 
 🎳 Bowling at Kykko Bowling. It is the only bowling place in Nicosia. With $6/game you can have fun while showing off your talent.
 
