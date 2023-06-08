@@ -9,110 +9,219 @@ categories:
 format: html
 execute: 
   cache: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-[Most viewed video about Cyprus](https://www.youtube.com/watch?v=kb2-6zemmj8) 👈
+[Most viewed video about
+Cyprus](https://www.youtube.com/watch?v=kb2-6zemmj8) 👈
 
-Are you planning a trip to the island of goddess Aphrodite? From beautiful beaches to majestic mountains, Cyprus is a place where you can do a wide variety of activities. In this article, you will find details such as currency, transportation, restaurant recommendations, cultural visits, and cool activities you can do. Cyprus is sunny more than 300 days a year, however, remember to check the [weather](https://www.google.com/search?q=weather+cyprus&source=lmns&bih=636&biw=1181&hl=en&sa=X&ved=2ahUKEwiLuajxy-_8AhV9u3IEHR7IBM0Q_AUoAHoECAEQAA) before arriving.
+Are you planning a trip to the island of goddess Aphrodite? From
+beautiful beaches to majestic mountains, Cyprus is a place where you can
+do a wide variety of activities. In this article, you will find details
+such as currency, transportation, restaurant recommendations, cultural
+visits, and cool activities you can do. Cyprus is sunny more than 300
+days a year, however, remember to check the
+[weather](https://www.google.com/search?q=weather+cyprus&source=lmns&bih=636&biw=1181&hl=en&sa=X&ved=2ahUKEwiLuajxy-_8AhV9u3IEHR7IBM0Q_AUoAHoECAEQAA)
+before arriving.
 
 ## CURRENCY
 
-The main currency is Euro. [Live currency converter](https://www.google.com/search?q=dollar+to+euro&ei=iuDXY-rIKIyaptQPmM6IiAI&ved=0ahUKEwjqte-vzO_8AhUMjYkEHRgnAiEQ4dUDCBE&uact=5&oq=dollar+to+euro&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzILCAAQsQMQgwEQkQIyBQgAEIAEMgUIABCRAjIFCAAQkQIyBQgAEJECMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CggAEEcQ1gQQsAM6BQgAEKIEOgYIABAIEB46BQgAEIYDSgQIQRgASgQIRhgAUNcCWI8SYNAWaAFwAXgAgAH5AYgBkwqSAQUwLjEuNZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp). They accept card payments everywhere. If you have a foreign currency, with Revolut you should be fine. Keep in mind that the north of the island (37%) is occupied by Turkey since 1974, therefore, Turkish Lira is what was adopted and is still in use in that part of the island.
-
+The main currency is Euro. [Live currency
+converter](https://www.google.com/search?q=dollar+to+euro&ei=iuDXY-rIKIyaptQPmM6IiAI&ved=0ahUKEwjqte-vzO_8AhUMjYkEHRgnAiEQ4dUDCBE&uact=5&oq=dollar+to+euro&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzILCAAQsQMQgwEQkQIyBQgAEIAEMgUIABCRAjIFCAAQkQIyBQgAEJECMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CggAEEcQ1gQQsAM6BQgAEKIEOgYIABAIEB46BQgAEIYDSgQIQRgASgQIRhgAUNcCWI8SYNAWaAFwAXgAgAH5AYgBkwqSAQUwLjEuNZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp).
+They accept card payments everywhere. If you have a foreign currency,
+with Revolut you should be fine. Keep in mind that the north of the
+island (37%) is occupied by Turkey since 1974, therefore, Turkish Lira
+is what was adopted and is still in use in that part of the island.
 
 ## TRANSPORTATION
 
-The most efficient way to transport in Cyprus as a tourist would be to rent a car. This offers the flexibility to explore the island at your own pace, and reach remote destinations that may not be accessible by public transportation. *Remember, people left-hand side of the road, like in the UK. It is recommended to book your rental car in advance, especially during peak tourist season, to ensure availability and secure a better rate.*
+The most efficient way to transport in Cyprus as a tourist would be to
+rent a car. This offers the flexibility to explore the island at your
+own pace, and reach remote destinations that may not be accessible by
+public transportation. *Remember, people left-hand side of the road,
+like in the UK. It is recommended to book your rental car in advance,
+especially during peak tourist season, to ensure availability and secure
+a better rate.*
 
-**Taxis** and **buses** are also options; While you might not be as flexible as with a car, buses at least can be cheaper — [routes and schedules](https://www.cyprusbybus.com/default.aspx).
+**Taxis** and **buses** are also options; While you might not be as
+flexible as with a car, buses at least can be cheaper --- [routes and
+schedules](https://www.cyprusbybus.com/default.aspx).
 
 ## BEACH
 
-There are different kinds of beaches in Cyprus. The most popular among Cypriots are in Protaras and Ayia Napa area. Here are some options for you:
+There are different kinds of beaches in Cyprus. The most popular among
+Cypriots are in Protaras and Ayia Napa area. Here are some options for
+you:
 
-[Marcelo](https://www.google.com/maps/place/Marcello's+Beach+Bar,+Cafe/@34.9842853,34.0079002,16.69z/data=!4m6!3m5!1s0x14dfc51a4984a54d:0xea4b5cdd2d27ab3b!8m2!3d34.9842606!4d34.0105667!16s%2Fg%2F1tfljgr4) (wavy with some rocks. More popular for students).
+[Marcelo](https://www.google.com/maps/place/Marcello's+Beach+Bar,+Cafe/@34.9842853,34.0079002,16.69z/data=!4m6!3m5!1s0x14dfc51a4984a54d:0xea4b5cdd2d27ab3b!8m2!3d34.9842606!4d34.0105667!16s%2Fg%2F1tfljgr4)
+(wavy with some rocks. More popular for students).
 
-[Fig tree bay](https://www.google.com/maps/place/Fig+Tree/@35.0141003,34.0559473,16z/data=!4m6!3m5!1s0x14dfc4060782bea1:0x6496d64029ff5c18!8m2!3d35.0123605!4d34.0587472!16s%2Fm%2F0t52l66) (sand only, with a more shallow surface. More popular for families).
+[Fig tree
+bay](https://www.google.com/maps/place/Fig+Tree/@35.0141003,34.0559473,16z/data=!4m6!3m5!1s0x14dfc4060782bea1:0x6496d64029ff5c18!8m2!3d35.0123605!4d34.0587472!16s%2Fm%2F0t52l66)
+(sand only, with a more shallow surface. More popular for families).
 
-[Yianna Marie Beach](https://www.google.com/maps/place/Yianna+Marie+Beach+Bar/@35.0200585,34.0492571,17z/data=!4m6!3m5!1s0x14dfc41c8dd8a291:0xc4052d6f28ffb29f!8m2!3d35.0200586!4d34.0509219!16s%2Fg%2F1jkw999qk) (This is something hybrid between the two prementioned beaches and one of the top preferences of locals. Here there is sand, not wavy with occasional rocks.)
+[Yianna Marie
+Beach](https://www.google.com/maps/place/Yianna+Marie+Beach+Bar/@35.0200585,34.0492571,17z/data=!4m6!3m5!1s0x14dfc41c8dd8a291:0xc4052d6f28ffb29f!8m2!3d35.0200586!4d34.0509219!16s%2Fg%2F1jkw999qk)
+(This is something hybrid between the two prementioned beaches and one
+of the top preferences of locals. Here there is sand, not wavy with
+occasional rocks.)
 
-For nice scenery, you can visit Cape Greco, where you can see sea caves. There are also people that are swimming in the crystal clear waters there, and some risk-loving people that dive from the Cape Greco cliff in the sea (not recommended).
+For nice scenery, you can visit Cape Greco, where you can see sea caves.
+There are also people that are swimming in the crystal clear waters
+there, and some risk-loving people that dive from the Cape Greco cliff
+in the sea (not recommended).
 
 ![Cape Greco](images/capegreco.jpeg)
 
 ## NATURE
 
-For greenery and nature, you can go to [Troodos National Forest Park](https://www.youtube.com/watch?v=wN8OOwNJtrM) around Mount Olympus. It is an area of outstanding natural beauty, suitable for activities such as hiking, winter skiing, biking, nature study, camping, and picnics. The highest point is Chionistra (1,952 m) and the lowest is Moni forest (700m).
+For greenery and nature, you can go to [Troodos National Forest
+Park](https://www.youtube.com/watch?v=wN8OOwNJtrM) around Mount Olympus.
+It is an area of outstanding natural beauty, suitable for activities
+such as hiking, winter skiing, biking, nature study, camping, and
+picnics. The highest point is Chionistra (1,952 m) and the lowest is
+Moni forest (700m).
 
 ![Xyliatos Dam](images/xyliatos.jpeg)
 
 Beautiful Villages to visit:
 
-[Kalopanagiotis](https://www.google.com/maps/place/Kalopanayiotis,+Cyprus/@34.998942,32.8187369,15z/data=!3m1!4b1!4m6!3m5!1s0x14e744b4b522921f:0x27e3dbc3f310f1c7!8m2!3d34.9916085!4d32.8282406!16s%2Fm%2F06608fj) (It is known as the ornament of Marathasa Valley, a village that kept its old character while it evolved. With an old Unesco heritage church from the Venetian era, walking trails in the forest, and restaurants around, it attracts thousands of visitors every year. A lot of locals go there to relax, especially during summer.)
-[Omodos](https://www.google.com/maps/place/Omodos,+Cyprus/@34.8485316,32.8044764,16z/data=!3m1!4b1!4m6!3m5!1s0x14e738b685884307:0xfec187edc0776f13!8m2!3d34.8489219!4d32.8077875!16zL20vMGNkZndq) (Beautiful village with traditional scenery and a war museum)
-[Agros](https://www.google.com/maps/place/Agros,+Cyprus/@34.8777428,33.0349801,11.55z/data=!4m15!1m8!3m7!1s0x14e74db368ba5897:0x73d101ad9f1d235d!2sAgros,+Cyprus!3b1!8m2!3d34.9173092!4d33.0177292!16s%2Fm%2F03d3plx!3m5!1s0x14e74db368ba5897:0x73d101ad9f1d235d!8m2!3d34.9173092!4d33.0177292!16s%2Fm%2F03d3plx) (A cultural village. It is reknown for its [Rose Factory](https://www.google.com/maps/place/THE+ROSE+FACTORY+-+%CE%95%CE%A1%CE%93%CE%9F%CE%A3%CE%A4%CE%91%CE%A3%CE%99%CE%9F+%CE%A4%CE%A1%CE%99%CE%91%CE%9D%CE%A4%CE%91%CE%A6%CE%A5%CE%9B%CE%9B%CE%A9%CE%9D+CHRIS+N.+TSOLAKIS+LTD/@34.9144754,33.0157241,17z/data=!3m1!4b1!4m6!3m5!1s0x14e74c4cbbd58f47:0x8c1feda918734d6e!8m2!3d34.9144754!4d33.0179181!16s%2Fg%2F11_q2y2wq), its infamous traditional sweets store ["ta Glyka tis Nikis"](https://www.google.com/maps/place/%CE%A4%CE%B1+%CE%93%CE%BB%CF%85%CE%BA%CE%AC+%CF%84%CE%B7%CF%82+%CE%9D%CE%AF%CE%BA%CE%B7%CF%82/@34.9151822,32.4895116,10z/data=!4m12!1m2!2m1!1sglyko+toy+koytaliou!3m8!1s0x14e74c4b566888eb:0xc970d32e287db0fe!8m2!3d34.9151822!4d33.0168553!9m1!1b1!15sCiTOs867z4XOus6_IM-Ezr_PhSDOus6_z4XPhM6xzrvOuc6_z4WSAQxtYW51ZmFjdHVyZXLgAQA!16s%2Fg%2F11_ps6d22), and the traditional Cyprus sausage that is produced there.)
+[Kalopanagiotis](https://www.google.com/maps/place/Kalopanayiotis,+Cyprus/@34.998942,32.8187369,15z/data=!3m1!4b1!4m6!3m5!1s0x14e744b4b522921f:0x27e3dbc3f310f1c7!8m2!3d34.9916085!4d32.8282406!16s%2Fm%2F06608fj)
+-- It is known as the ornament of Marathasa Valley, a village that kept
+its old character while it evolved. With an old Unesco heritage church
+from the Venetian era, walking trails in the forest, and restaurants
+around, it attracts thousands of visitors every year. A lot of locals go
+there to relax, especially during summer.
+
+[Omodos](https://www.google.com/maps/place/Omodos,+Cyprus/@34.8485316,32.8044764,16z/data=!3m1!4b1!4m6!3m5!1s0x14e738b685884307:0xfec187edc0776f13!8m2!3d34.8489219!4d32.8077875!16zL20vMGNkZndq)
+-- Beautiful village with traditional scenery and a [war museum](https://www.cyprushighlights.com/%CE%BC%CE%BF%CF%85%CF%83%CE%B5%CE%AF%CE%BF-%CE%B1%CE%B3%CF%8E%CE%BD%CE%BF%CF%82-%CE%B5%CE%BF%CE%BA%CE%B1-1955-1959-%CF%8C%CE%BC%CE%BF%CE%B4%CE%BF%CF%82/).
+
+[Agros](https://www.google.com/maps/place/Agros,+Cyprus/@34.8777428,33.0349801,11.55z/data=!4m15!1m8!3m7!1s0x14e74db368ba5897:0x73d101ad9f1d235d!2sAgros,+Cyprus!3b1!8m2!3d34.9173092!4d33.0177292!16s%2Fm%2F03d3plx!3m5!1s0x14e74db368ba5897:0x73d101ad9f1d235d!8m2!3d34.9173092!4d33.0177292!16s%2Fm%2F03d3plx)
+-- A cultural village. It is reknown for its [Rose
+Factory](https://www.google.com/maps/place/THE+ROSE+FACTORY+-+%CE%95%CE%A1%CE%93%CE%9F%CE%A3%CE%A4%CE%91%CE%A3%CE%99%CE%9F+%CE%A4%CE%A1%CE%99%CE%91%CE%9D%CE%A4%CE%91%CE%A6%CE%A5%CE%9B%CE%9B%CE%A9%CE%9D+CHRIS+N.+TSOLAKIS+LTD/@34.9144754,33.0157241,17z/data=!3m1!4b1!4m6!3m5!1s0x14e74c4cbbd58f47:0x8c1feda918734d6e!8m2!3d34.9144754!4d33.0179181!16s%2Fg%2F11_q2y2wq),
+its infamous traditional sweets store ["ta Glyka tis
+Nikis"](https://www.google.com/maps/place/%CE%A4%CE%B1+%CE%93%CE%BB%CF%85%CE%BA%CE%AC+%CF%84%CE%B7%CF%82+%CE%9D%CE%AF%CE%BA%CE%B7%CF%82/@34.9151822,32.4895116,10z/data=!4m12!1m2!2m1!1sglyko+toy+koytaliou!3m8!1s0x14e74c4b566888eb:0xc970d32e287db0fe!8m2!3d34.9151822!4d33.0168553!9m1!1b1!15sCiTOs867z4XOus6_IM-Ezr_PhSDOus6_z4XPhM6xzrvOuc6_z4WSAQxtYW51ZmFjdHVyZXLgAQA!16s%2Fg%2F11_ps6d22),
+and the traditional Cyprus sausage that is produced there.
 
 ![Kalopanagiotis](images/kalopanagiotis.jpeg)
 
 ## ACTIVITIES
 
-🚲 Biking Nicosia’s Cycling route park, Pedieos linear park. It goes from Anthoupoli (Nicosia suburb) to downtown. Arguably, one of the most underrated experiences, it is a 14km(8.6 miles) ride with a lot of greenery, city nature, runners, and cats. You can also walk here on its pedestrian side.
+🚲 Biking Nicosia's Cycling route park, Pedieos linear park. It goes
+from Anthoupoli (Nicosia suburb) to downtown. Arguably, one of the most
+underrated experiences, it is a 14km(8.6 miles) ride with a lot of
+greenery, city nature, runners, and cats. You can also walk here on its
+pedestrian side.
 
-[Pedieos Linear Park - click here](https://www.youtube.com/watch?v=t9tkcPxZM_Q) 👈
+[Pedieos Linear Park - click
+here](https://www.youtube.com/watch?v=t9tkcPxZM_Q) 👈
 
-🎳 Bowling at Kykko Bowling. It is the only bowling place in Nicosia. With $6/game you can have fun while showing off your talent.
+🎳 Bowling at Kykko Bowling. It is the only bowling place in Nicosia.
+With \$6/game you can have fun while showing off your talent.
 
-⚽ Football. If you are five people, you can call in advance one of the following football futsal fields and they will find you opponents to play against; Paeeek, THOI (those are two good places I know; located in Nicosia).
+⚽ Football. If you are five people, you can call in advance one of the
+following football futsal fields and they will find you opponents to
+play against; Paeeek, THOI (those are two good places I know; located in
+Nicosia).
 
-🔫 Paintball. While it is more expensive than the rest of the activities ($25/person) is a fun group activity — min 8 people.
+🔫 Paintball. While it is more expensive than the rest of the activities
+(\$25/person) is a fun group activity --- min 8 people.
 
-💻 Remote working / Reading. Yfantourgeio is a great place to work remotely from. It is a quiet co-working space and in the heart of Nicosia. Another quiet place you can go is the library of the University of Cyprus. Moreover, you can go to one of the multiple coffee shops in Cyprus Nero, Costa Coffee, and Gloria Jeans (less quiet but more social).
+💻 Remote working / Reading. Yfantourgeio is a great place to work
+remotely from. It is a quiet co-working space and in the heart of
+Nicosia. Another quiet place you can go is the library of the University
+of Cyprus. Moreover, you can go to one of the multiple coffee shops in
+Cyprus Nero, Costa Coffee, and Gloria Jeans (less quiet but more
+social).
 
 ## FOOD `min $ /max $$$$`
 
-🥖 [Zorbas](https://www.google.com/maps/search/zorbas+cyprus/@34.9296734,32.6739001,9z/data=!3m1!4b1) `$` The most famous bakery in Cyprus where any local goes to. They are even operating in New York. For a quick breakfast, a sweet, or a traditional cooked meal for lunch or dinner, this is your go-to place. They have many locations in different cities in Cyprus.
+🥖
+[Zorbas](https://www.google.com/maps/search/zorbas+cyprus/@34.9296734,32.6739001,9z/data=!3m1!4b1)
+`$` The most famous bakery in Cyprus where any local goes to. They are
+even operating in New York. For a quick breakfast, a sweet, or a
+traditional cooked meal for lunch or dinner, this is your go-to place.
+They have many locations in different cities in Cyprus.
 
 ![Zorbas bakeries](images/zorbas.jpeg)
 
-🍖 [ETHA Egkomis](https://www.google.com/maps/place/%CE%A4%CE%B1%CE%B2%CE%B5%CF%81%CE%BD%CE%AC%CE%BA%CE%B9+%CE%95%CE%98%CE%91+%CE%95%CE%B3%CE%BA%CF%89%CE%BC%CE%B7%CF%82/@35.1632889,33.3337018,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1a0f0ac43c4b:0x3a31a4da41e6c22!8m2!3d35.1632845!4d33.3358905!16s%2Fg%2F11g9vn8qj0) `$$`
- Traditional Cypriot food. Highly recommended.
+🍖 [ETHA
+Egkomis](https://www.google.com/maps/place/%CE%A4%CE%B1%CE%B2%CE%B5%CF%81%CE%BD%CE%AC%CE%BA%CE%B9+%CE%95%CE%98%CE%91+%CE%95%CE%B3%CE%BA%CF%89%CE%BC%CE%B7%CF%82/@35.1632889,33.3337018,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1a0f0ac43c4b:0x3a31a4da41e6c22!8m2!3d35.1632845!4d33.3358905!16s%2Fg%2F11g9vn8qj0)
+`$$` Traditional Cypriot food. Highly recommended.
 
-🍖 [Ayia Anna Tavern](https://www.google.com/maps/place/Ayia+Anna+Tavern/@34.9455265,33.3844241,9.49z/data=!4m6!3m5!1s0x14e09fb301c917d7:0xa13c53ce40626dfc!8m2!3d34.9424092!4d33.4808122!16s%2Fg%2F12hk95z8r?entry=ttu) `$`
-One of the most traditional you can find. It is in a small village in the suburbs, it serves any kind of Cypriot food, and the waiters are dressed in the traditional Cypriot uniforms back in the 1900s (at least the time I went in 2019 they were like this).
+🍖 [Ayia Anna
+Tavern](https://www.google.com/maps/place/Ayia+Anna+Tavern/@34.9455265,33.3844241,9.49z/data=!4m6!3m5!1s0x14e09fb301c917d7:0xa13c53ce40626dfc!8m2!3d34.9424092!4d33.4808122!16s%2Fg%2F12hk95z8r?entry=ttu)
+`$` One of the most traditional you can find. It is in a small village
+in the suburbs, it serves any kind of Cypriot food, and the waiters are
+dressed in the traditional Cypriot uniforms back in the 1900s (at least
+the time I went in 2019 they were like this).
 
-🍖 [Zannetos](https://www.google.com/maps/place/%CE%96%CE%B1%CE%BD%CE%AD%CF%84%CF%84%CE%BF%CF%82+%CE%9A%CF%85%CF%80%CF%81%CE%B9%CE%B1%CE%BA%CE%AE+%CE%A4%CE%B1%CE%B2%CE%AD%CF%81%CE%BD%CE%B1/@35.1727943,33.3625479,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1767ca4826c5:0x8fb3781d26c29baa!8m2!3d35.1727899!4d33.3647366!16s%2Fg%2F1tdj1kkf) `$$`
- Traditional Cypriot food. Ideal for meze.
+🍖
+[Zannetos](https://www.google.com/maps/place/%CE%96%CE%B1%CE%BD%CE%AD%CF%84%CF%84%CE%BF%CF%82+%CE%9A%CF%85%CF%80%CF%81%CE%B9%CE%B1%CE%BA%CE%AE+%CE%A4%CE%B1%CE%B2%CE%AD%CF%81%CE%BD%CE%B1/@35.1727943,33.3625479,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1767ca4826c5:0x8fb3781d26c29baa!8m2!3d35.1727899!4d33.3647366!16s%2Fg%2F1tdj1kkf)
+`$$` Traditional Cypriot food. Ideal for meze.
 
-🍖 [Piatsa Gourounaki](https://www.google.com/maps/place/%CE%A0%CE%B9%CE%B1%CF%84%CF%83%CE%B1+%CE%93%CE%BF%CF%85%CF%81%CE%BF%CF%85%CE%BD%CE%AC%CE%BA%CE%B9/@35.1727792,33.360274,17z/data=!3m1!4b1!4m6!3m5!1s0x14de174526aebac7:0x7849b6beed45ed70!8m2!3d35.1727748!4d33.3624627!16s%2Fg%2F1pzr8lf_l) `$` Traditional Cypriot food; fast food that it is conveniently located downtown.
+🍖 [Piatsa
+Gourounaki](https://www.google.com/maps/place/%CE%A0%CE%B9%CE%B1%CF%84%CF%83%CE%B1+%CE%93%CE%BF%CF%85%CF%81%CE%BF%CF%85%CE%BD%CE%AC%CE%BA%CE%B9/@35.1727792,33.360274,17z/data=!3m1!4b1!4m6!3m5!1s0x14de174526aebac7:0x7849b6beed45ed70!8m2!3d35.1727748!4d33.3624627!16s%2Fg%2F1pzr8lf_l)
+`$` Traditional Cypriot food; fast food that it is conveniently located
+downtown.
 
-🍖 [To anamma](https://www.google.com/maps/place/To+Anamma+Traditional+Restaurant-+%CE%A4%CE%BF+%CE%86%CE%BD%CE%B1%CE%BC%CE%BC%CE%B1+%CE%A0%CE%B1%CF%81%CE%B1%CE%B4%CE%BF%CF%83%CE%B9%CE%B1%CE%BA%CE%AE+%CE%A4%CE%B1%CE%B2%CE%AD%CF%81%CE%BD%CE%B1/@35.1733518,33.3593797,17z/data=!3m1!4b1!4m6!3m5!1s0x14de17453904639b:0xe268aea4e7714b37!8m2!3d35.1733474!4d33.3615684!16s%2Fg%2F11b6d7g5rb) `$`
- Traditional Cypriot food. Fast food traditional food also downtown. Has a beautiful inside sitting area.
+🍖 [To
+anamma](https://www.google.com/maps/place/To+Anamma+Traditional+Restaurant-+%CE%A4%CE%BF+%CE%86%CE%BD%CE%B1%CE%BC%CE%BC%CE%B1+%CE%A0%CE%B1%CF%81%CE%B1%CE%B4%CE%BF%CF%83%CE%B9%CE%B1%CE%BA%CE%AE+%CE%A4%CE%B1%CE%B2%CE%AD%CF%81%CE%BD%CE%B1/@35.1733518,33.3593797,17z/data=!3m1!4b1!4m6!3m5!1s0x14de17453904639b:0xe268aea4e7714b37!8m2!3d35.1733474!4d33.3615684!16s%2Fg%2F11b6d7g5rb)
+`$` Traditional Cypriot food. Fast food traditional food also downtown.
+Has a beautiful inside sitting area.
 
-🍔 [The Garrison Bar](https://www.google.com/maps/place/THE+GARRISON+BAR+%26+GRILL/@35.1659378,33.3154808,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1bb82ab0fbbd:0x64d3f2f86d5e8b71!8m2!3d35.1659334!4d33.3176695!16s%2Fg%2F11qntt_p4l) `$$`
- Burger bar with a Peaky Blinders theme and menu.
+🍔 [The Garrison
+Bar](https://www.google.com/maps/place/THE+GARRISON+BAR+%26+GRILL/@35.1659378,33.3154808,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1bb82ab0fbbd:0x64d3f2f86d5e8b71!8m2!3d35.1659334!4d33.3176695!16s%2Fg%2F11qntt_p4l)
+`$$` Burger bar with a Peaky Blinders theme and menu.
 
-🍔 [Babylon Bar](https://www.google.com/maps/place/Babylon+Bar/@35.1630074,33.3530023,17z/data=!3m1!4b1!4m6!3m5!1s0x14de19fdc4457815:0x4ae5230e861d2c76!8m2!3d35.163003!4d33.355191!16s%2Fg%2F1vxv3fqc) `$$`
- A local bar with a billiard and nice atmosphere.
+🍔 [Babylon
+Bar](https://www.google.com/maps/place/Babylon+Bar/@35.1630074,33.3530023,17z/data=!3m1!4b1!4m6!3m5!1s0x14de19fdc4457815:0x4ae5230e861d2c76!8m2!3d35.163003!4d33.355191!16s%2Fg%2F1vxv3fqc)
+`$$` A local bar with a billiard and nice atmosphere.
 
-🍔 [Moondogs Bar](https://www.google.com/maps/place/Moondog's+Bar+%26+Grill/@35.164582,33.3584739,17z/data=!3m1!4b1!4m6!3m5!1s0x14de17583b69e91d:0x3bcc0ae74115b42a!8m2!3d35.1645776!4d33.3606626!16s%2Fg%2F1yg4fcdzy) `$$`
- A local sports bar with billiard and a nice atmosphere.
+🍔 [Moondogs
+Bar](https://www.google.com/maps/place/Moondog's+Bar+%26+Grill/@35.164582,33.3584739,17z/data=!3m1!4b1!4m6!3m5!1s0x14de17583b69e91d:0x3bcc0ae74115b42a!8m2!3d35.1645776!4d33.3606626!16s%2Fg%2F1yg4fcdzy)
+`$$` A local sports bar with billiard and a nice atmosphere.
 
-🍱 [China Spice](https://www.google.com/maps/place/China+Spice+Chinese+Restaurant/@35.1668632,33.3648801,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175c1a002b91:0xc5f5df1b1bcab5d9!8m2!3d35.1668588!4d33.3670688!16s%2Fg%2F1yhbl8jpb) `$$$`
- Chinese restaurant. Great place for dinner, good value for money for its fanciness, with a variety of dishes. My favorite Chinese in Cyprus, especially on Tuesdays, there is an all-you-can-eat buffet for $25/person.
+🍱 [China
+Spice](https://www.google.com/maps/place/China+Spice+Chinese+Restaurant/@35.1668632,33.3648801,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175c1a002b91:0xc5f5df1b1bcab5d9!8m2!3d35.1668588!4d33.3670688!16s%2Fg%2F1yhbl8jpb)
+`$$$` Chinese restaurant. Great place for dinner, good value for money
+for its fanciness, with a variety of dishes. My favorite Chinese in
+Cyprus, especially on Tuesdays, there is an all-you-can-eat buffet for
+\$25/person.
 
-🍕 [Alfa Pizza](https://www.google.com/maps/search/alfa+pizza/@35.1669014,33.3495592,14z/data=!3m1!4b1) `$` Cypriot fast food pizza chain.
+🍕 [Alfa
+Pizza](https://www.google.com/maps/search/alfa+pizza/@35.1669014,33.3495592,14z/data=!3m1!4b1)
+`$` Cypriot fast food pizza chain.
 
-🥙 [Avo](https://www.google.com/maps/place/Avo+Armenian+Food/@35.1712507,33.3594444,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175ac207499f:0xd18ed706146fe13a!8m2!3d35.1712463!4d33.3616331!16s%2Fg%2F1hc1qpqm_) `$` If you are a backpacker this is your place. It is the cheapest place you can get food in Nicosia. While you can get all sorts of food from souvlaki to pizza, Armenian food and lahmacun is their specialty.
+🥙
+[Avo](https://www.google.com/maps/place/Avo+Armenian+Food/@35.1712507,33.3594444,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175ac207499f:0xd18ed706146fe13a!8m2!3d35.1712463!4d33.3616331!16s%2Fg%2F1hc1qpqm_)
+`$` If you are a backpacker this is your place. It is the cheapest place
+you can get food in Nicosia. While you can get all sorts of food from
+souvlaki to pizza, Armenian food and lahmacun is their specialty.
 
-🥞 [Edem’s Yard](https://www.google.com/maps/place/Edem's+yard/@34.9140525,33.6345619,17z/data=!3m1!4b1!4m6!3m5!1s0x14e082a377370f53:0x3a737df7b1bc154a!8m2!3d34.9140481!4d33.6367506!16s%2Fg%2F11fxzlwzfq) `$$`
- Breakfast/brunch in Larnaca’s palm trees area.
- 
-🥞 [Hari's Creperie](https://www.google.com/maps/place/Haris'+Creperie/@35.1623103,33.3368609,16z/data=!4m10!1m2!2m1!1screperies+cyprus!3m6!1s0x14de1a0384b5a43d:0x709b3f8bcb3c1ca0!8m2!3d35.1623103!4d33.3456156!15sChBjcmVwZXJpZXMgY3lwcnVzWhIiEGNyZXBlcmllcyBjeXBydXOSAQhjcmVwZXJpZeABAA!16s%2Fg%2F11fy5j2nd5) Special crepe and waffle combinations in good prices. Check it out.
+🥞 [Edem's
+Yard](https://www.google.com/maps/place/Edem's+yard/@34.9140525,33.6345619,17z/data=!3m1!4b1!4m6!3m5!1s0x14e082a377370f53:0x3a737df7b1bc154a!8m2!3d34.9140481!4d33.6367506!16s%2Fg%2F11fxzlwzfq)
+`$$` Breakfast/brunch in Larnaca's palm trees area.
 
-🍦 [Papafilippou Ice-Cream](https://www.google.com/maps/place/PAPAFiLiPOU+Luna+Park+Makedonitissa/@35.1643518,33.3152223,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1a6faafeeeff:0xb5c852bcc839048c!8m2!3d35.1643474!4d33.317411!16s%2Fg%2F1tgtth5s) `$` The most famous local ice-cream. Enjoy your ice cream while playing arcade games. You can find other Papafilipou branches in Cyprus, and you can also find Papafilipou ice-cream in grocery stores and any kiosk.
+🥞 [Hari's
+Creperie](https://www.google.com/maps/place/Haris'+Creperie/@35.1623103,33.3368609,16z/data=!4m10!1m2!2m1!1screperies+cyprus!3m6!1s0x14de1a0384b5a43d:0x709b3f8bcb3c1ca0!8m2!3d35.1623103!4d33.3456156!15sChBjcmVwZXJpZXMgY3lwcnVzWhIiEGNyZXBlcmllcyBjeXBydXOSAQhjcmVwZXJpZeABAA!16s%2Fg%2F11fy5j2nd5)
+Special crepe and waffle combinations in good prices. Check it out.
 
-🍦 [Heraclis Ice-Cream](https://www.google.com/maps/place/Heraclis+Ice+Cream+%CE%A0%CE%91%CE%93%CE%A9%CE%A4%CE%91+%CE%97%CE%A1%CE%91%CE%9A%CE%9B%CE%97/@35.1732383,33.3591572,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175ac7913929:0xfdb64fc807c4465c!8m2!3d35.1732339!4d33.3613459!16s%2Fg%2F11b69vsyh4) `$` The oldest ice-cream shop in Cyprus. It opened in 1939, from a local man named Heraclis during the British occupation before Cyprus become independent.
+🍦 [Papafilippou
+Ice-Cream](https://www.google.com/maps/place/PAPAFiLiPOU+Luna+Park+Makedonitissa/@35.1643518,33.3152223,17z/data=!3m1!4b1!4m6!3m5!1s0x14de1a6faafeeeff:0xb5c852bcc839048c!8m2!3d35.1643474!4d33.317411!16s%2Fg%2F1tgtth5s)
+`$` The most famous local ice-cream. Enjoy your ice cream while playing
+arcade games. You can find other Papafilipou branches in Cyprus, and you
+can also find Papafilipou ice-cream in grocery stores and any kiosk.
 
+🍦 [Heraclis
+Ice-Cream](https://www.google.com/maps/place/Heraclis+Ice+Cream+%CE%A0%CE%91%CE%93%CE%A9%CE%A4%CE%91+%CE%97%CE%A1%CE%91%CE%9A%CE%9B%CE%97/@35.1732383,33.3591572,17z/data=!3m1!4b1!4m6!3m5!1s0x14de175ac7913929:0xfdb64fc807c4465c!8m2!3d35.1732339!4d33.3613459!16s%2Fg%2F11b69vsyh4)
+`$` The oldest ice-cream shop in Cyprus. It opened in 1939, from a local
+man named Heraclis during the British occupation before Cyprus become
+independent.
 
-Hopefully, this article helps you make a memorable and satisfactory Cyprus experience. Please clap 👏 [on medium](https://medium.com/@loizoskon/experience-cyprus-like-a-local-bbbd552574e0) if you find this post helpful:)
-
+Hopefully, this article helps you make a memorable and satisfactory
+Cyprus experience. Please clap 👏 [on
+medium](https://medium.com/@loizoskon/experience-cyprus-like-a-local-bbbd552574e0)
+if you find this post helpful:)
