@@ -13,6 +13,7 @@ editor: visual
 
 -   [**Listen here**](https://open.spotify.com/episode/7N3TwRFFadmEbOk5DcOTQH?si=BiSSSjceQq61QrXLWvE8Gg) a conversation with my friend [Shannon Lin](https://www.linkedin.com/in/shannon-lin/) & checkout [her 🎙](https://open.spotify.com/show/4FRRKdS0lXmq0b3I2yLxV4?si=y8ZAg0YdT6aQszo-xQMQsA)
 
+
 ```{=html}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"
      crossorigin="anonymous"></script>
