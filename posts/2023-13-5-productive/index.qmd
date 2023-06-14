@@ -1,7 +1,7 @@
 ---
 title: "Embrace Your Inner Eccentric: 20 Ways for Improving Productivity"
 description: |
-    This article provides 20 actionable tips to increase personal productivity.
+    This article provides 20 actionable tips to increase productivity.
 image: images/revolution.jpeg
 date: 06/14/2023
 categories: 
