@@ -14,7 +14,7 @@ editor:
     wrap: 72
 ---
 
-![Do less god bless](images/impossible.jpg)
+![You CAN do less! Believe in yourself](images/impossible.jpg)
 
 In our modern society, the pursuit of productivity has become a revered
 goal. We are constantly bombarded with messages and tips on maximizing
