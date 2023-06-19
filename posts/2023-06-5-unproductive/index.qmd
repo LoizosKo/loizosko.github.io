@@ -1,5 +1,5 @@
 ---
-title: "How to Be Unproductive: 8 Tips for Doing Less"
+title: "How to Be Unproductive: 9 Tips for Doing Less"
 description: |
     This article presents an unconventional exploration of the art of being unproductive, highlighting eight distinct strategies to disrupt the relentless societal pursuit of productivity and embrace the allure of complacency.
 image: images/nothing.jpeg
@@ -208,7 +208,7 @@ If your motivation resistance is strong, and you are pushed to work out at home,
 
 The Spruce Goose example demonstrates that the drive for perfection can lead to significant delays, increased costs, and inevitably to great success of being unproductive. So if you start working out by pure motivation for instance, try to perfect a technique of exercise, i.e. chest press, by using 0 weights and trying that (preferably without equipment) 1000+ times. Your unproductiveness will skyrocket.
 
-## 8. Find something that makes you miserable
+## 9. Find something that makes you miserable
 
 Misery tends to foster a specific mindset and self-talk, where you focus
 on your problems, limitations, and failures. This thinking pattern
