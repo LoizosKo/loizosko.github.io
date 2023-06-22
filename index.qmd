@@ -1,5 +1,5 @@
 ---
-image: "Loizos.jpg"
+image: "twitmg.jpeg"
 about:
   template: jolla
   links:
