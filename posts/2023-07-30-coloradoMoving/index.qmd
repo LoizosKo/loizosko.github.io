@@ -1,0 +1,158 @@
+---
+title: "Tips for Smooth Sailing: Moving to Denver, Colorado"
+description: |
+    This article provides insights for moving in Denver, Colorado.
+image: images/colorado.jpeg
+date: 07/05/2023
+categories: 
+  - advice
+  - travel
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![Welcome to Colorado Sign](images/colorado.jpeg)
+
+### Denver, Colorado-specific tips
+
+Moving to a new city can be challenging. It would help if you did a
+couple of things before going to a new place:
+
+#### Find a place to stay
+
+-   Go to Facebook groups and look for groups that are relevant to
+    housing. Draft a post of who you are, what you are looking for, and
+    your budget, and post it out there. That helps in getting noticed.
+    You can see an example here:
+
+-   Go to [Airbnb](https://www.airbnb.com/); message owners and try to
+    get a long-term deal on their property.
+
+-   Look via [Furnished Finder](https://www.furnishedfinder.com/); a
+    platform designed to connect traveling healthcare professionals,
+    such as travel nurses and therapists, with property owners offering
+    furnished, short-term housing options. The website aims to provide
+    healthcare professionals with convenient and affordable housing
+    solutions for their temporary assignments, typically lasting 13
+    weeks or more. You can still look there and let the owners know if
+    you are not a healthcare professional.
+
+#### Find your group of people
+
+Besides work, you might find it tough to meet new people who you share
+interests with. A great way to do it is through the [Meetup
+app](https://www.meetup.com/apps/); a platform designed to help people
+connect with others who share similar interests and hobbies in their
+local area. Users can join existing meetup groups or create their own
+groups centered around specific interests. Members can browse and join
+local groups, attend events, and engage with other community members.
+
+#### Transportation
+
+**Car**: Consider getting a car. It is THE main mean of transport here
+in Denver, and in Colorado in general. It makes it super easy to go to
+the mountains, to get around, and to other cities. If you are getting
+around with other means it will take you A LOT of time. If you do not go
+out frequently, Uber/Lyft ([get discount from my referral
+here](https://www.lyft.com/i/LOIZOS79522?utm_medium=p2pi_iacc)) is the
+way to go, which are not cheap but on my occasion still cheaper overall
+than having one.
+
+**Bike**: Denver is a bikable city. Short distances (less than 30min)
+and not many street ups and downs. There are also nice bike trails (i.e.
+[Cherry Creek trail](https://www.youtube.com/watch?v=rm1inEbk8m4)), and
+the streets are pretty safe to bike; there is space and good roads and
+pavements. If you don't have a bike you can use [the Lime
+app](https://lime.bike/referral_signin/RDYPQNW) to rent one or rent a
+scooter on the spot.
+
+**Bus/Metro/Train**: For these, there is a centralized app that you can
+download to make it easy to transport around; the RTD app. See this
+video for more details on how to use it '[How to Navigate the Denver RTD
+System](https://www.youtube.com/watch?v=Uh3TPgrabNM)'.
+
+![RTD Denver Rail
+System Map](https://cdn-images-1.medium.com/max/533/1*hUHChPVEF8t64vNBBEFHYw.jpeg)
+
+#### Sketchy Neighborhoods
+
+While Denver is a safe city overall, as in any big city there are some
+areas in which you need to be more cautious. Here are the areas below,
+in case you want to stay out of trouble or get into a breathtaking
+adventure:
+
+-   Colfax Street: especially east Colfax near the Aurora area and West
+    Colfax near Sloan's Lake.
+
+-   Market and 16th Street Mall at night
+
+-   Capitol Hill area at night; and during the day near the bus stops.
+
+#### Backpacker tips
+
+**Gym**: [Planet
+Fitness](https://www.google.com/maps/search/planet+fitness/@39.73753,-105.1026961,11z/data=!3m1!4b1)
+is the cheapest one (\$10 membership --- April 2023), and with branches
+all over America can be a good deal for you. I was going to [Carla
+Madison Recreation
+Center](https://www.google.com/maps/place/Carla+Madison+Recreation+Center/@39.7376684,-104.9790875,13.06z/data=!4m6!3m5!1s0x876c7eb4ef5cde93:0xcab529897043406!8m2!3d39.7403159!4d-104.9585392!16s%2Fg%2F11g9q3w_z5)
+as it was closer to me and the membership was reasonable;
+\$30/month --- 50% off if you go with someone who lives at the same
+address! So go ahead and find yourself a roommate as well:)
+
+> If you are there for a short time or you are indecisive, you can go
+> for one-day trial to each of those PLUS [Anytime
+> fitness](https://www.google.com/maps/search/Anytime+Fitness/@39.7376538,-104.9790875,13z/data=!3m1!4b1),
+> and get some free exercise while deciding.
+
+**Supermarket**: Cheapest one from the chains is [Trader
+Joe's](https://www.google.com/maps/search/Trader+Joe%27s/@39.737297,-105.1026968,11z/data=!3m1!4b1).
+Whole Foods, Sprouts, and Safeway are expensive, Kings Soopers is
+slightly less than them; Walmart is also there, and a bit more
+affordable than Target (which is also expensive). Not sure if there is a
+cheaper non-chain option; haven't looked much for it because they are is
+none within a 25-minute bike radius from my house.
+
+**Shopping**: [Ross Dress for
+Less](https://www.google.com/maps/search/Ross+Dress+for+Less/@39.7390059,-104.9858976,12z/data=!3m1!4b1)
+has value-for-money deals when it comes to clothing. Also, check out
+[DWS](https://www.google.com/maps/search/dws+denver/@39.7299843,-105.0661523,11.55z)
+if you are looking for shoes.
+
+**Haircut**: [Aveda Institute
+Denver](https://www.google.com/maps/place/Aveda+Institute+Denver/@39.7291358,-105.0031187,17z/data=!3m1!4b1!4m6!3m5!1s0x876c78d0deb31797:0xfaf039a3d253248b!8m2!3d39.7291358!4d-105.0005438!16s%2Fm%2F0h7glkh),
+a school cosmetology/beauty saloon, is the cheapest place. You can get a
+haircut for \$20 (as of April 2023). Demand is high so reservation in
+advance is encouraged. You can get it for even cheaper if you call them
+to pre-book and ask for the 10% discount 😉
+
+![Aveda Institute,
+Denver Colorado](https://cdn-images-1.medium.com/max/533/1*0IcRd-NN6B5QQY_I209eiw.jpeg)
+
+**Shoe soles**: This is more specific but it might be helpful. Having
+comfortable soles is important for your feet. After the advice of
+Margaret, a serial hiker (especially her husband), I went to [Fleet
+Feet](http://This%20is%20more%20specific%20but%20it%20might%20be%20helpful.)
+to get soles for my shoes. Without knowing much about foot science, this
+place seems solid. They make you stand in a digital machine that takes
+measurements of your feet, and they propose some solutions for you. You
+can also get the results via email if you'd like. Also, prices are
+decent (\$50-\$60 as of May 2023 for a normal pair of soles).
+
+#### Conclusion
+
+This article provides a guide to help you with your move and settling
+in. Hopefully, you would be able to adapt these guidelines to your
+personal circumstances and needs. For an activities and visits guide
+read this article here, and for restaurant recommendations check this
+one out.
+
+Please clap 👏 on
+[medium](https://medium.com/@loizoskon/tips-for-smooth-sailing-moving-to-denver-colorado-e1b7ca65df68)
+if you find this post helpful or inspiring. You can read this or see
+more articles and tips on my website by clicking this
+[link](https://www.loizos.xyz/blog.html).

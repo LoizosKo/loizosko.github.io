@@ -1,0 +1,208 @@
+---
+title: "Comprehensive Activity Guide for Colorado"
+description: |
+    This article provides a comprehensive guide for activities, attractions, and cool visits in Colorado.
+image: images/rockyman.jpeg
+date: 07/05/2023
+categories: 
+  - travel
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![Rocky Mountain National Park](images/rockym-02.jpeg)
+
+#### Introduction
+
+This guide outlines a broad spectrum of activities and locales to visit
+in Colorado. The beauty of Colorado lies in its beautiful landscapes,
+vibrant social scene, wild-west and natural history, and recreational
+activities that can cater to every lifestyle. Hopefully, the recommended
+activities/visits below to give you some ideas on how to spend your time
+while in Colorado.
+
+#### Activities
+
+-   **Rent a car**. It is perfect for exploring Colorado's stunning
+    scenery and diverse attractions. It offers flexibility, and freedom,
+    allowing you to discover the Rockies, mountain towns, and outdoor
+    activities at your leisure. A rental car provides convenience and
+    comfort, making it the ideal choice for an unforgettable Colorado
+    adventure. There are many places worth visiting, such as the [Rocky
+    Mountain National
+    Park](https://www.google.com/maps/place/Rocky+Mountain+National+Park/@40.3488597,-106.3358651,9z/data=!3m1!4b1!4m6!3m5!1s0x876979e4455903e9:0xfa27ee43a78e8217!8m2!3d40.3427932!4d-105.6836389!16zL20vMDFwX3p2),
+    [Boulder](https://www.google.com/maps/place/Boulder,+CO/@40.0292807,-105.3223782,12z/data=!3m1!4b1!4m6!3m5!1s0x876b8d4e278dafd3:0xc8393b7ca01b8058!8m2!3d40.0149856!4d-105.2705456!16zL20vMG5jajg),
+    [Georgetown](https://www.google.com/maps/place/Georgetown,+CO+80444/@39.6553643,-106.2056298,7.37z/data=!4m6!3m5!1s0x876a5316be154fc7:0x4bbd507c543c22ec!8m2!3d39.7060984!4d-105.6975041!16zL20vMHI5NnE),
+    [Vail](https://www.google.com/maps/place/Vail,+CO+81657/@39.6335304,-106.4396114,12z/data=!3m1!4b1!4m6!3m5!1s0x876a7005515dcf07:0xc9ccc01f7e9aa3c4!8m2!3d39.6433243!4d-106.3780801!16s%2Fm%2F01zw1_f),
+    [Garden of the
+    Gods](https://www.google.com/maps/place/Garden+of+the+Gods+Visitor+%26+Nature+Center/@39.6290546,-106.6956924,7.89z/data=!4m19!1m9!3m8!1s0x876a7005515dcf07:0xc9ccc01f7e9aa3c4!2sVail,+CO+81657!3b1!8m2!3d39.6433243!4d-106.3780801!10e5!16s%2Fm%2F01zw1_f!3m8!1s0x87135012b5cc9c93:0x4e9df5263bf6dab!5m2!4m1!1i2!8m2!3d38.8783536!4d-104.8697556!16zL20vMDF5Z2Ni),
+    and many more.
+
+-   **Bike at Cherry Creek trail**. [Cherry Creek
+    trail](https://www.alltrails.com/trail/us/colorado/cherry-creek-trail)
+    is the most popular trail in Denver because it starts from the
+    Confluence Park in the heart of Denver and ends 25 miles southeast
+    at the Cherry Creek Dam & Reservoir. Check out what it looks like:
+    <https://www.youtube.com/watch?v=rm1inEbk8m4>
+
+-   **Go to a Sports game**. Basketball, Baseball, Football, or Ice
+    Hockey you pick! The cheapest one is usually baseball and the most
+    expensive is Football. 
+
+![Denver Nuggets -
+NBA game](https://cdn-images-1.medium.com/max/533/1*eMmbvTfKKJKygeMx9K8sMQ.jpeg)
+
+-   **Watch a [Red
+    Rocks](https://www.google.com/maps/place/Red+Rocks+Park+and+Amphitheatre/@39.6655422,-105.2077919,17z/data=!3m1!4b1!4m6!3m5!1s0x876b82da0e6cc8d7:0x7c83e707392cd6ad!8m2!3d39.6655381!4d-105.2052116!16zL20vMDJiamo1?entry=ttu)
+    Concert**. One of the [most beautiful
+    theaters](https://www.youtube.com/shorts/iaoKSqfZ1NQ) in America;
+    whatever you watch there it's worth it they say. It is an outdoor
+    amphitheater in nature surrounded by red rocks, and the acoustics
+    are amazing. In the summer they do concerts every day there. You can
+    see what they have and book [here](https://www.redrocksonline.com/).
+
+-   [**Bristlecone Shooting
+    range**](https://www.google.com/maps/place/Bristlecone+Shooting,+Training,+%26+Retail+Center+-+Shooting+Range+in+Denver/@39.712568,-105.2270313,12z/data=!4m9!1m2!2m1!1ssam+s+no+3!3m5!1s0x876b83fa3bf856e1:0xc25a9d7fc7ee9f6f!8m2!3d39.712573!4d-105.135754!16s%2Fg%2F11bbx4yt86?entry=ttu).
+    That is a fun activity to do with friends if you want to live
+    something [truly
+    American](https://www.youtube.com/shorts/00ZaS-9SSzk). [Bristlecone
+    Shooting Range (video
+    here)](https://www.youtube.com/watch?v=CSlEgN0WW18) is the most
+    popular shooting range in the area.
+
+-   [**Buffalo Bill
+    Museum**](https://www.google.com/maps/place/The+Buffalo+Bill+Museum+and+Grave/@39.7333936,-105.2410547,17z/data=!3m2!4b1!5s0x876b9b3c94abaaad:0x86b30fccf671ffa6!4m6!3m5!1s0x876b9b3c9336ed01:0xaf0515277a020968!8m2!3d39.7333895!4d-105.2384798!16s%2Fg%2F1td7j6s6?entry=ttu)**at
+    Lookout Mountain** --- While Bill's grave is a touristy spot, you
+    can combine it with a nice hike. The price to enter the museum is
+    \$5 (as of May 2023) and it takes about 45 minutes to see, they also
+    show a movie about Buffalo Bill's life. 
+
+-   [**Axe
+    Throwing**](https://www.google.com/maps/search/axe+throwing/@39.7418309,-105.0037601,13z/data=!3m1!4b1?entry=ttu) --- There
+    are a couple of those in Denver. All are about \$30 for an hour.
+    Calling in advance to check the traffic inside is recommended. I
+    went to [this one in
+    Colfax](https://www.google.com/maps/place/Bad+Axe+Throwing+Denver+%28Downtown%29/@39.7417519,-104.9756656,14.65z/data=!4m10!1m2!2m1!1saxe+throwing!3m6!1s0x876c79f3018468d7:0xbf93a527ab02c73!8m2!3d39.7401367!4d-104.9750782!15sCgxheGUgdGhyb3dpbmeSAQtldmVudF92ZW51ZeABAA!16s%2Fg%2F11h80c64h_?entry=ttu).
+    There you also have the option of throwing knives as well, which is
+    a bit more difficult.
+
+-   Find events that are happening in town [via
+    SeatGeek](https://seatgeek.com/cities/denver).
+
+#### Cool Visits
+
+-   **Rocky Mountain National Park**
+    \[[*video*](http://the%20Rocky%20Mountain%20National%20Park,%20an%20expansive%20area%20encompassing%20over%20265,000%20acres%20of%20diverse%20ecosystems,%20from%20montane%20forests%20to%20alpine%20tundra.%20The%20park%20is%20home%20to%20a%20variety%20of%20wildlife,%20including%20elk,%20bighorn%20sheep,%20and%20moose.%20Visitors%20can%20enjoy%20scenic%20drives,%20such%20as%20the%20famous%20Trail%20Ridge%20Road,%20and%20hike%20on%20over%20350%20miles%20of%20trails%20that%20offer%20breathtaking%20views%20of%20the%20Rockies.The%20park%20is%20also%20home%20to%20the%20famous%20Trail%20Ridge%20Road,%20which%20offers%20stunning%20panoramic%20views.)\] --- The
+    Rocky Mountain National Park, is an expansive area encompassing over
+    265,000 acres of diverse ecosystems, from montane forests to alpine
+    tundra. The park is home to a variety of wildlife, including elk,
+    bighorn sheep, and moose. Visitors can enjoy scenic drives, such as
+    the famous Trail Ridge Road, and hike on over 350 miles of trails
+    that offer breathtaking views of the Rockies. The park is also home
+    to the famous Trail Ridge Road, which offers stunning panoramic
+    views.
+
+-   **Union Station and Larimer Square** --- It is the main train
+    station in Denver. It is a beautiful train station with restaurants
+    and occasionally music. Great place to walk, the vibe outside
+    reminds Central Europe.
+
+![Union
+Station](https://cdn-images-1.medium.com/max/533/1*0sHcZ_ZYfzSpOdRJjPyTdA.jpeg)
+
+-   **Estes Park**
+    \[[*video*](http://Stanley%20Hotel,%20a%20historic%20and%20iconic%20establishment%20in%20Estes%20Park.%20Known%20for%20its%20luxurious%20accommodations%20and%20elegant%20architecture,%20the%20Stanley%20Hotel%20has%20a%20rich%20history%20dating%20back%20to%20its%20founding%20in%201909.%20It%20also%20gained%20fame%20as%20the%20inspiration%20for%20Stephen%20King%27s%20novel,%20%22The%20Shining.%22%20This%20grand%20hotel%20has%20hosted%20numerous%20celebrities%20and%20is%20considered%20a%20must-visit%20destination%20for%20those%20intrigued%20by%20its%20paranormal%20reputation.)\]---
+    Estes Park, is known as the base for the Rocky Mountain National
+    Park. The park itself offers more than 350 miles of hiking trails,
+    varying in difficulty from easy walks to challenging climbs, along
+    with opportunities for camping, wildlife viewing, and bird watching.
+    The town of Estes Park has an elevation of 7,522 feet and maintains
+    a relatively mild climate throughout the year. In the downtown area,
+    you'll find over 300 shops and restaurants along the Estes Park
+    Riverwalk, making it a lively center for dining and shopping.
+    Visitors can also enjoy local events such as the annual Elk Fest and
+    the Rooftop Rodeo. Estes Park provides a well-rounded experience,
+    combining the tranquility of nature with the convenience of modern
+    amenities. Around that area, is the legendary Stanley Hotel. The
+    Stanley Hotel is known for its luxurious accommodations and elegant
+    architecture, the Stanley Hotel has a history dating back to its
+    founding in 1909. It also gained fame as the inspiration for Stephen
+    King's novel, "The Shining." The movie "[Dumb And
+    Dumber](https://www.imdb.com/title/tt0109686/)" was also filmed
+    there. This grand hotel has hosted numerous celebrities and is
+    considered a must-visit destination for those intrigued by its
+    paranormal reputation.
+
+-   **Boulder**
+    \[[*video*](https://www.youtube.com/watch?v=kX-ytGDZKus)\] --- The
+    lively streets, charming shops, and lively atmosphere make Pearl
+    Street a must-visit destination in Boulder. As we make our way along
+    the brick-paved pedestrian mall, you'll get an up-close look at the
+    eclectic shops, delightful restaurants, and cozy cafes that line the
+    street. According to a famous UPenn statistics professor in the
+    Behavioral and Decision Sciences program, "At Boulder is like you
+    are in Switzerland".
+
+![Pearl Street,
+Boulder Colorado](https://cdn-images-1.medium.com/max/533/1*mPReH-4_UVvIHIDvuVLscg.jpeg)
+
+-   **St Mary's Glacier**
+    \[[*video*](https://www.youtube.com/watch?v=F950VZo6Y1I)\] --- Saint
+    Mary's Glacier, located near Idaho Springs in Clear Creek County,
+    Colorado, is a permanent snowfield, often mistaken as a glacier due
+    to its year-round snow presence. Its beauty and accessibility make
+    it a popular hiking destination. The trailhead begins at 10,400 feet
+    and hikers ascend around 400 feet in under a mile to reach the
+    snowfield. During summer, it's common to see visitors hiking,
+    fishing in the nearby lake, or even snowboarding and skiing on the
+    snowfield.
+
+-   [**The Buffalo Bill Museum and
+    Grave**](https://www.google.com/maps/place/The+Buffalo+Bill+Museum+and+Grave/@39.7333936,-105.2410547,17z/data=!3m2!4b1!5s0x876b9b3c94abaaad:0x86b30fccf671ffa6!4m6!3m5!1s0x876b9b3c9336ed01:0xaf0515277a020968!8m2!3d39.7333895!4d-105.2384798!16s%2Fg%2F1td7j6s6?entry=ttu)
+    \[[*video*](https://www.youtube.com/watch?v=TIL7k93rOXM)\] --- The
+    Buffalo Bill Museum and Grave in Golden, Colorado, is a captivating
+    destination atop Lookout Mountain. The museum showcases artifacts,
+    exhibits, and memorabilia that illuminate the life of Buffalo Bill
+    Cody, featuring items from his buffalo hunting days, Pony Express
+    involvement, and Wild West Show career. The gravesite, marked by a
+    striking monument, offers panoramic views. This historical site
+    provides a concise and immersive experience, honoring Buffalo Bill's
+    significant role in shaping the American West's legacy.
+
+-   **Garden of the Gods**
+    \[[*video*](https://www.youtube.com/watch?v=2UxXSyKj3tc)\] --- The
+    Garden of the Gods, a public park known for its remarkable red rock
+    formations. These unique sandstone formations were created millions
+    of years ago through geological uplift and erosion, and the park has
+    a rich Native American history, with evidence of human habitation
+    dating back thousands of years. The area was designated a public
+    park in 1909.
+
+![Garden Of The Gods,
+Colorado Springs](https://cdn-images-1.medium.com/max/533/1*bnB3NcyuqccFrsC07u6Dxw.jpeg)
+
+-   **Georgetown**
+    \[[*video*](https://www.youtube.com/watch?v=F950VZo6Y1I)\] --- Georgetown,
+    was founded during the Pike's Peak Gold Rush in 1859. It was named
+    after George Griffith, a prospector who discovered rich silver
+    deposits in the area. Georgetown's growth soared with the silver
+    boom, and by the 1880s, it had become the center of the mining
+    district. By the late 1890s, silver prices plummeted, leading to
+    economic decline. Despite this, Georgetown managed to survive,
+    thanks in part to its preserved Victorian architecture that drew
+    tourists. Today, it's known for its historic charm and outdoor
+    recreational opportunities.
+
+#### Conclusion
+
+This article provides a guide to help you adapt some ideas and
+activities to your personal circumstances and needs. That would
+hopefully help you make the best use of your time in Colorado. 
+
+Please clap 👏 if you find this post helpful or inspiring. You can read
+this or see more articles and tips on my website by clicking this
+[link](https://www.loizos.xyz/blog.html).
