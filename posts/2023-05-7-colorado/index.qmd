@@ -3,7 +3,7 @@ title: "Comprehensive Activity Guide for Colorado"
 description: |
     This article provides a comprehensive guide for activities, attractions, and cool visits in Colorado.
 image: images/rockyman.jpeg
-date: 07/05/2023
+date: 07/12/2023
 categories: 
   - travel
 format: html
@@ -90,6 +90,15 @@ NBA game](https://cdn-images-1.medium.com/max/533/1*eMmbvTfKKJKygeMx9K8sMQ.jpeg
     There you also have the option of throwing knives as well, which is
     a bit more difficult.
 
+-   [**Immersive Gamebox experience**
+    ](https://www.google.com/maps/place/Immersive+Gamebox+-+9%2BCO+Denver/@39.7297676,-104.9422224,17z/data=!3m2!4b1!5s0x876c7c1d8999e1b3:0x16553c18f3884c14!4m6!3m5!1s0x876c7fd861a6244f:0x6bf6dd79c1a43bf0!8m2!3d39.7297635!4d-104.9396421!16s%2Fg%2F11pf2ltqbl?entry=ttu)--- Great
+    place to go with friends. You select your game and enjoy it with
+    your group. There is a range of options with motion tracking,
+    projection mapping, touch screens, and surround sound. The most
+    popular game they have is [Squid
+    Game](https://immersivegamebox.com/). The price is around \$30-\$35.
+    When you are booking, try code PURPLE20, for a 20% discount.
+
 -   Find events that are happening in town [via
     SeatGeek](https://seatgeek.com/cities/denver).
 
@@ -138,14 +147,13 @@ Station](https://cdn-images-1.medium.com/max/533/1*0sHcZ_ZYfzSpOdRJjPyTdA.jpeg)
     paranormal reputation.
 
 -   **Boulder**
-    \[[*video*](https://www.youtube.com/watch?v=kX-ytGDZKus)\] --- The
-    lively streets, charming shops, and lively atmosphere make Pearl
-    Street a must-visit destination in Boulder. As we make our way along
-    the brick-paved pedestrian mall, you'll get an up-close look at the
-    eclectic shops, delightful restaurants, and cozy cafes that line the
-    street. According to a famous UPenn statistics professor in the
-    Behavioral and Decision Sciences program, "At Boulder is like you
-    are in Switzerland".
+    \[[*video*](https://www.youtube.com/watch?v=kX-ytGDZKus)\] ---  Boulder
+    is a beautiful city close to the mountains with Pearl street being
+    the main piazza that people go to. The lively streets, charming
+    shops, and lively atmosphere make Pearl Street an attractive
+    destination in Boulder. According to a famous UPenn statistics
+    professor in the Behavioral and Decision Sciences program, "At
+    Boulder is like you are in Switzerland".
 
 ![Pearl Street,
 Boulder Colorado](https://cdn-images-1.medium.com/max/533/1*mPReH-4_UVvIHIDvuVLscg.jpeg)
