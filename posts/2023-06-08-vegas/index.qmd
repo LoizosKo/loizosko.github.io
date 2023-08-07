@@ -1,7 +1,7 @@
 ---
 title: "Four-Day Road Trip: Denver-Grand Canyon-Las Vegas"
 description: |
-    This article provides tips for visiting Grand Canyon and Las Vegas.
+    This article describes my 4-day trip to Grand Canyon and Las Vegas. It also gives tips to you as a future traveller to these places.
 image: images/route66.jpeg
 date: 08/06/2023
 categories: 
@@ -13,8 +13,6 @@ editor:
   markdown: 
     wrap: 72
 ---
-
-### 
 
 ![](https://cdn-images-1.medium.com/max/533/1*Bxqjijx15lXDyv9oLH6CoQ.jpeg)
 
