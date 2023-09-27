@@ -59,28 +59,7 @@ creative.
 
 ![expert phrase presenter skills](images/nonsense-talk-01.gif)
 
-## 3. Avoid Eye Contact
-
-Looking at your audience might make them feel seen, heard, and engaged.
-We can't have that, can we? Keep your eyes firmly glued to your notes,
-some distant point at the back of the room, or, better yet, your
-shoelaces. Don't look at your audience.
-
-Bonus tip: If someone asks a question or comments, definitely do not
-make eye contact with them. This can give the impression that their
-input matters or that you value their engagement, which is not what we
-want in this case.
-
-## 4. Visuals: Ignite Confusion
-
-Avoid the use of visuals, images, graphs, or anything that could make
-the information more digestible or engaging. If can't hold the
-temptation of using them, make sure you put a ton of them and make it
-complex. The more complex, the better. And if you can, don't bother
-explaining what they mean. Let the audience play 'Spot the X-axis' while
-you enjoy their blank stares.
-
-## 5. Time limit, What's That?
+## 3. Time limit, What's That?
 
 Run over your allotted time. Keep going. Don't stop. Time limits are for
 weaklings. If your audience starts glancing at the clock or their
@@ -94,7 +73,7 @@ quantity of information, rather than the quality, is a surefire way to
 win the crown of "Most Boring Presentation."
 
 ![Gaddafi speaks over an hour at UN General Assembly: A Test
-of Patience](https://cdn-images-1.medium.com/max/533/1*Z1tyj21CSRs-yDr2EuNAJg.jpeg)
+of Patience](https://cdn-images-1.medium.com/max/533/1*Z1tyj21CSRs-yDr2EuNAJg.jpeg){alt="Gaddafi speaks over an hour at UN General Assembly: A Test of Patience"}
 
 > Muammar Gaddafi's infamous speech at the United Nations General
 > Assembly on September 23, 2009, is remembered for its remarkable
@@ -105,7 +84,41 @@ of Patience](https://cdn-images-1.medium.com/max/533/1*Z1tyj21CSRs-yDr2EuNAJg.j
 > disregard for time constraints contributed to the speech's notoriety
 > and left a lasting impression on those in attendance.
 
-## 6. Avoid Interaction
+## 4. Avoid Eye Contact
+
+Looking at your audience might make them feel seen, heard, and engaged.
+We can't have that, can we? Keep your eyes firmly glued to your notes,
+some distant point at the back of the room, or, better yet, your
+shoelaces. Don't look at your audience.
+
+Bonus tip: If someone asks a question or comments, definitely do not
+make eye contact with them. This can give the impression that their
+input matters or that you value their engagement, which is not what we
+want in this case.
+
+## 5. The Off-topic Odyssey
+
+Why come to the point when you can take a delightful detour around it?
+Feel free to venture off into a tangent that has nothing to do with your
+main topic. Remember, your goal is to baffle, not inform. To "beat
+around the bush" is your goal and you must stay determined. Keep your
+audience guessing about the purpose of your talk. Bonus points if, by
+the end, they've forgotten what the initial topic was. **Michael Scott**
+is a master of this, you can see him doing it
+[here](https://youtube.com/shorts/Zd9Wxq6DIa0?si=KxibwPcGeXmvHjsm).
+
+![](images/scott-01.gif)
+
+## 6. Visuals: Ignite Confusion
+
+Avoid the use of visuals, images, graphs, or anything that could make
+the information more digestible or engaging. If can't hold the
+temptation of using them, make sure you put a ton of them and make it
+complex. The more complex, the better. And if you can, don't bother
+explaining what they mean. Let the audience play 'Spot the X-axis' while
+you enjoy their blank stares.
+
+## 7. Avoid Interaction
 
 Do not ask questions or encourage participation from the audience. Make
 the presentation one-sided. Why ask for input when you can just lecture?
@@ -128,17 +141,6 @@ gestures and facial expressions.
 
 ![The man
 himself](https://cdn-images-1.medium.com/max/533/1*aQz0EBLxazV2Xh_2r6k7Rw.jpeg)
-
-#### 
-
-## 7. The Off-topic Odyssey
-
-Why come to the point when you can take a delightful detour around it?
-Feel free to venture off into a tangent that has nothing to do with your
-main topic. Remember, your goal is to baffle, not inform. To "beat
-around the bush" is your goal and you must stay determined. Keep your
-audience guessing about the purpose of your talk. Bonus points if, by
-the end, they've forgotten what the initial topic was.
 
 ## 8. Terminology tornado
 
@@ -198,8 +200,7 @@ depths of tedium you have unleashed upon them. So go all in, and may
 your presentations be dull. Stay monotonous, stay uninteresting, and
 embrace the realm of mind-numbing monotony.
 
-Please clap 👏 on
-[medium](https://medium.com/@loizoskon/mastering-monotony-10-techniques-for-uninteresting-presentations-ac9084899b98)
-if you find this post helpful or inspiring. You can read this or see
-more articles and tips on my website by clicking this
-[link](https://www.loizos.xyz/blog.html).
+Please clap 👏 post helpful or inspiring. You can read this or see more
+articles and tips on
+[medium](https://medium.com/@loizoskon/the-comprehensive-activity-guide-in-colorado-f52ed712703d)
+or on my website [here](https://www.loizos.xyz/blog.html).
