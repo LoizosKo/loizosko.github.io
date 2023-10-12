@@ -1,0 +1,37 @@
+---
+title: "If you are younger than 40"
+description: |
+    This article analyzes a famous person's quote out of context.
+image: images/jung.jpg
+date: 10/12/2023
+categories: 
+  - advice
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![Carl Jung, founder of analytical
+psychology](https://cdn-images-1.medium.com/max/1067/0*H5MsSCf_aTCVAfzu.jpg)
+
+**If you are younger than forty**, hope Jung\'s quote below makes you
+feel better.
+
+**If you are older** and still doing research... what does Jung know?
+
+He was doing research after 40; I mean, [he had 8
+publications](https://www.britannica.com/biography/Carl-Jung/Character-of-his-psychotherapy)
+after his 40th birthday. Do you think that was the case cause his name
+alludes to a not old person? I highly doubt it.
+
+**However, not everything revolves around you**. He might have just said
+it for himself. If that\'s the case, it is different. Forty correlates
+with about the time that he becomes a celebrity, so that might have to
+do with this.
+
+Well, feel free to clap 👏 if you find this post helpful or inspiring.
+You can read this or see more of my articles on my website
+[here](https://www.loizos.xyz/blog.html).
