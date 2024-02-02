@@ -2,7 +2,7 @@
 title: "Comprehensive Activity Guide for Colorado"
 description: |
     This article provides a comprehensive guide for activities, attractions, and cool visits in Colorado.
-image: images/rockyman.jpeg
+image: images/rockym.jpeg
 date: 07/12/2023
 categories: 
   - travel
