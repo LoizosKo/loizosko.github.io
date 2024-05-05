@@ -20,7 +20,7 @@ website:
       - href: software/index.qmd
         text: Projects
       - href: cv.qmd
-        text: About Me
+        text: About
       - icon: youtube
         href: https://www.youtube.com/@okay.but_why         
       - icon: linkedin

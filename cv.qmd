@@ -3,15 +3,27 @@ title: "About"
 editor: visual
 ---
 
+**Cool resources and interesting articles**:
+
+-   [Backpacker's guide to arriving at UPenn](https://medium.com/@orestis_/a-backpackers-guide-to-arriving-at-university-of-pennsylvania-for-internationals-75757e673561) *By Orestis Skoutellas*
+
+-   [Biking to work in Austin: Redefining commute in Texas](https://energyethics.st-andrews.ac.uk/blog/what-i-learned-biking-to-work-in-texas/) *By Andy Eskenazi*
+
+-   [Landing a Job after graduating](https://medium.com/startup-stash/the-recruiting-approach-how-to-land-a-job-out-of-university-333b7805a8d4) *By Jessica Ramses*
+
+-   [Oldest restaurants in the world](https://youtu.be/bDOxffz3NBM?si=llBdVl0eV1W3LWK2) *By Nutty History*
+
+-   [Interractive Website - Fun stuff and interesting dilemmas](https://neal.fun/) *By Neal Agarwal*
+
+About me
+
 -   I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
 -   See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
 
 -   Currently learning ![](images/paste-491BD3EC.png){width="15"} and ![](images/paste-3A990530.png){width="15"} on ![](images/paste-E2C57FB1.png){width="20"}: [**LoizosKons**](https://www.duolingo.com/profile/LoizosKons?via=leagues)
 
--   Find me on chess.com [here](https://www.chess.com/member/loizossss) ♞
-
-
+-   Let's play [chess](https://www.chess.com/member/loizossss) ♞
 
 ```{=html}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"

@@ -15,7 +15,7 @@ about:
 
 Hi 👋 I am Loizos! This is my personal website.
 
-Here you will find articles, coding projects and, learn more about me.
+Here you will find articles, coding projects and, learn [fun stuff](https://www.loizos.xyz/cv.html)
 
 I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
