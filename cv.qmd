@@ -15,9 +15,15 @@ editor: visual
 
 -   [Interractive Website - Fun stuff and interesting dilemmas](https://neal.fun/) *By Neal Agarwal*
 
--   [Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator)
+-   [The Language Nerds](https://thelanguagenerds.com/) *Quirky linguistics and language fun facts*
 
-About me
+-   [Wait But Why](https://waitbutwhy.com/) *Quirky insights on interesting topics*
+
+-   [Election Betting Odds](https://electionbettingodds.com/) *By Maxim Lott - Real time election odds from bets*
+
+-   [Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator) *How much can your savings sweat for you*
+
+**About me**
 
 -   I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
