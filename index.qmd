@@ -21,6 +21,8 @@ I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated �
 
 See my [projects](https://www.loizos.xyz/software/) for some things I've been working on 🛠
 
+Come to my FIRST ever [Stand Up Comedy show](https://www.facebook.com/share/6hNiKVXzvt1ZnwsN/). You may or may not regret it 🎤
+
 `Feel free to get in contact below`
 
 ```{r setup, include=FALSE}
