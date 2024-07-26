@@ -23,6 +23,8 @@ editor: visual
 
 -   [Referral win-win deals](https://medium.com/@loizoskon/maximize-your-savings-with-my-favorite-referral-deals-27aa0ee319d3) *(credit/debit cards, phone coverage, etc)*
 
+-   [Cost of living comparison](https://www.numbeo.com/cost-of-living/) in different cities in the world.
+
 -   [Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator) *How much can your savings sweat for you*
 
 **About me**
