@@ -28,7 +28,7 @@ moments of what it’s like to purposefully try to make people laugh.
 
 ![](https://miro.medium.com/v2/resize:fit:828/format:webp/1*RCNZo-y63RTS6Ux-JWk2hw.png){alt="🤓"}
 
-### Learnings
+## Learnings
 
 The first obstacle you have to face in doing stand-up comedy is the
 writing part. While it seems difficult to come up with jokes, there are
@@ -44,7 +44,7 @@ amazement. In comedy, the best material comes from topics you’re truly
 passionate about, so pick things that really move you. There are no bad
 topics if you care about them.
 
-#### Writing Formula: “I feel \_\_\_\_\_\_ about \_\_\_\_\_\_\_\_ because…”
+### Writing Formula: “I feel \_\_\_\_\_\_ about \_\_\_\_\_\_\_\_ because…”
 
 Once you have your topics, you can start exploring by using this
 formula. Being passionate about a subject, helps you develop material.
@@ -68,7 +68,7 @@ feedback there, you can dive deeper into these topics.
 > met someone like that? Be specific, compare, and contrast that with
 > maybe other age groups. Etc.
 
-#### Rule of 3s
+### Rule of 3s
 
 Normal, normal, weird — if you make a list of things, the 3rd item can
 be absurd or something unexpected. The first thing sets a premise, the
@@ -88,7 +88,7 @@ catching polio, instead of a cold from the office air conditioning…
 [Author Brian Luff talks about the rule of
 three](https://youtu.be/YwhrUhJV5Jo)
 
-#### Contrast
+### Contrast
 
 Comparing two or more things that have differences you can talk about.
 Common ways to create contrast are: “When I was a kid we did X,
@@ -116,7 +116,7 @@ the formula above.
 [“Entering Mexico is easier than entering a
 Costco”](https://youtu.be/RLs_lzhAgG4)
 
-#### If … is true then what else can be true
+### If … is true then what else can be true
 
 If you hear a comedian saying, “What’s next?” after complaining about
 something, they are using this technique. This allows you to view your
@@ -150,7 +150,7 @@ perspectives, and entertain your own creativity.
 [If Murder was legal, then what else would be
 true?](https://youtu.be/mQUr2RkjykU)
 
-#### Use callbacks
+### Use callbacks
 
 Using callbacks in comedy is effective because it rewards the audience
 for paying attention, creating a sense of connection and inside humor.
@@ -161,9 +161,9 @@ territory in an unexpected way.
 
 [Explaining callbacks](https://youtu.be/XzN8HLQIQ6E)
 
-### Delivery
+## Delivery
 
-#### *Personalizing a story*
+### *Personalizing a story*
 
 Stories that you are the protagonist, always have the potential to be
 funnier than just describing stories or events as an observer. I found
@@ -177,7 +177,7 @@ like they’re sharing the experience with you.
 [Larry David personalizing the story starting at
 0:49](https://youtu.be/G0eeNijdv3I)
 
-#### Showing your good intentions
+### Showing your good intentions
 
 If you talk down on something make sure you come across as an observer,
 and not as a judge. You want to come across as a comedian who delivers a
@@ -192,7 +192,7 @@ easier. The goal is to critique, question, or mock the situation, not
 ridicule people; unless you have a strong reason to make that your
 style.
 
-#### Take sharp turns!
+### Take sharp turns!
 
 The element of surprise can bring laughter. If you are driving a bus,
 the passengers won’t appreciate a sharp turn. However, if you are a
@@ -201,7 +201,7 @@ comedian, people love it!
 [In the first 20 seconds of this video, Louis CK goes from a “thank you”
 to talking about abortion.](https://youtu.be/o3LKXMsw6N8)
 
-#### P r a c t i c e
+### P r a c t i c e
 
 This is how you mitigate stress, feel comfortable with your material,
 and sharpen your delivery. The smoother the delivery, the bigger the
@@ -216,7 +216,7 @@ you think you remember everything, think that you might forget when you
 are in front of a big audience, so do not underestimate the value of
 practicing.
 
-### Conclusion
+## Conclusion
 
 To end it with a comparison, being a comedian is like the opposite of
 being an entrepreneur. Enterpreneurs think forward, and comedians think
