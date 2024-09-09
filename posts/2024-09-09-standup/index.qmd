@@ -1,5 +1,5 @@
 ---
-title: "What did I learn from doing Standup Comedy?"
+title: "What did I learn from doing Standup Comedy"
 description: |
     Learnings from my first exposure to standup comedy.
 image: images/sstandup.jpg
