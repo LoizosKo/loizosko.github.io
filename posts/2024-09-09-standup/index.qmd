@@ -1,0 +1,243 @@
+---
+title: "What did I learn from doing Standup Comedy?"
+description: |
+    Learnings from my first exposure to standup comedy.
+image: images/sstandup.jpg
+date: 09/09/2024
+categories: 
+  - advice
+format: html
+execute: 
+  cache: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# What did I learn from doing Stand-up Comedy?
+
+So, what did I learn from doing standup comedy? Well, first off, it's
+like jumping out of a plane, except instead of a parachute, you're armed
+with punchlines that may or may not land. At least you're guaranteed one
+thing: a room full of people staring at you, waiting to either laugh or,
+in some cases, reconsider their life choices for being there. Bottom
+line, it would be funny one way or another:)
+
+In this article, I’m going to share the unexpected, fun, and challenging
+moments of what it’s like to purposefully try to make people laugh.
+
+![🤓](https://miro.medium.com/v2/resize:fit:828/format:webp/1*RCNZo-y63RTS6Ux-JWk2hw.png){alt="🤓"}
+
+### Learnings
+
+The first obstacle you have to face in doing stand-up comedy is the
+writing part. While it seems difficult to come up with jokes, there are
+some techniques that could help you come up with plenty of authentic
+material.
+
+Write down topics that you are passionate about — things you love, hate,
+fear, or feel strongly about. These can range from broad subjects like
+family, politics, or the universe, to specific ones like shopping for
+bananas, mean coworkers, or your grandpa’s new girlfriend. Choose topics
+that evoke strong emotions, whether it’s curiosity, anxiety, envy, or
+amazement. In comedy, the best material comes from topics you’re truly
+passionate about, so pick things that really move you. There are no bad
+topics if you care about them.
+
+#### Writing Formula: “I feel \_\_\_\_\_\_ about \_\_\_\_\_\_\_\_ because…”
+
+Once you have your topics, you can start exploring by using this
+formula. Being passionate about a subject, helps you develop material.
+Write your feelings about different things, people, places, and
+experiences in life. For example, you can say, “I love the American
+healthcare system because it reminds me to make responsible choices if I
+don't want to become broke.” or “I hate prison because I look bad in
+orange”.
+
+That formula will help you establish a basis to then build upon subjects
+that you truly care about and could go and explore further.
+
+Once you have enough material you can start reading it in front of your
+friends, classmates, or your support group, and get their feedback on
+where you can elaborate more. For example, you may have 5 topics and 10
+lines per topic of how you feel about it and why. Once you collect
+feedback there, you can dive deeper into these topics.
+
+> For example, if the focus sentence is “I love old people because they
+> have no filters”. Go deeper into that. Say more. Any stories where you
+> met someone like that? Be specific, compare, and contrast that with
+> maybe other age groups. Etc.
+
+#### Rule of 3s
+
+Normal, normal, weird — if you make a list of things, the 3rd item can
+be absurd or something unexpected. The first thing sets a premise, the
+second reinforces that premise, and the third is the punchline.
+
+*Quick list form example*: My favorite comedies are Dumb and Dumber, Mr
+Bean Holidays, and Titanic. Yes, after that I know what ice-breaker to
+use to start conversations!
+
+*In paragraph form*: I find visiting a hospice interesting because it
+allows me to have conversations about how life used to be in the past;
+just the other day while I was talking to a grandma there, I was
+learning how people used to communicate without the internet, how
+complicated was to travel to places, and how their biggest fear was
+catching polio, instead of a cold from the office air conditioning…
+
+[Author Brian Luff talks about the rule of
+three](https://youtu.be/YwhrUhJV5Jo)
+
+#### Contrast
+
+Comparing two or more things that have differences you can talk about.
+Common ways to create contrast are: “When I was a kid we did X,
+nowadays, kids do Y… When I was single I was doing X, now that I’m
+married I am doing Y… etc. Atheists do this, Religious people do that…
+etc.
+
+Comedy stems from observation. Everything can be a joke when you try to
+understand how we got where we are at. Contradictory feelings about
+subjects undermine expectations, create surprise, and highlight
+absurdity. Introducing opposing ideas amplifies the ridiculousness,
+enhances irony, and delivers a punchline that releases built-up tension,
+making the humor more impactful and relatable. You can connect it with
+the formula above.
+
+> For example:
+
+> “I love old people because they have no filters to what they say, they
+> don't beat around the bush; they show their feelings immediately,
+> whether they like you or not, you will know.”
+
+> “I hate old people because they frequently repeat the same stuff and
+> they do things slowly, sometimes even on purpose!”
+
+[“Entering Mexico is easier than entering a
+Costco”](https://youtu.be/RLs_lzhAgG4)
+
+#### If … is true then what else can be true
+
+If you hear a comedian saying, “What’s next?” after complaining about
+something, they are using this technique. This allows you to view your
+stories and ideas from a perspective where you can be creative to reach
+at your own entertaining or even exaggerated conclusions that would
+ideally make people laugh.
+
+*Examples*
+
+-   **Basic Premise**: In a world where social media influencers exist,
+    there must be people who follow them religiously.
+
+-   **Step Up**: In a world where social media influencers exist, should
+    we also assume that their followers take life advice from someone
+    whose biggest achievement is perfecting a duck face?
+
+-   **Double Step Up**: In a world where social media influencers exist,
+    should we expect the next Nobel Prize to be awarded for the best
+    hashtag campaign? Because, you know, #WorldPeace starts with
+    #GoodVibesOnly.
+
+-   **Other premises**: Music celebrities, went from Mozart to Elvis, to
+    Taylor Swift; what’s next?! Republican party went from Lincoln to
+    Reagan, to Trump; what’s next?!
+
+This way of thinking is a useful exploratory tool and can take you and
+the audience on an unexpected journey. While it might not always bring
+the funniest joke, it would allow you to explore topics from different
+perspectives, and entertain your own creativity.
+
+[If Murder was legal, then what else would be
+true?](https://youtu.be/mQUr2RkjykU)
+
+#### Use callbacks
+
+Using callbacks in comedy is effective because it rewards the audience
+for paying attention, creating a sense of connection and inside humor.
+It builds momentum, enhances the impact of earlier jokes, and brings
+cohesion to the set, making it feel more polished and satisfying.
+Callbacks can also make a punchline feel sharper by revisiting familiar
+territory in an unexpected way.
+
+[Explaining callbacks](https://youtu.be/XzN8HLQIQ6E)
+
+### Delivery
+
+#### *Personalizing a story*
+
+Stories that you are the protagonist, always have the potential to be
+funnier than just describing stories or events as an observer. I found
+that to be true because it creates a direct connection with the
+audience. When you are the protagonist, your reactions, emotions, and
+unique perspective add authenticity and relatability, making the humor
+more engaging and impactful. The potential for laughter is much higher
+when the audience can see themselves in your shoes or when they feel
+like they’re sharing the experience with you.
+
+[Larry David personalizing the story starting at
+0:49](https://youtu.be/G0eeNijdv3I)
+
+#### Showing your good intentions
+
+If you talk down on something make sure you come across as an observer,
+and not as a judge. You want to come across as a comedian who delivers a
+point, not like a comedic version of Gordon Ramsay.
+
+If you come across as too harsh or superior, the audience might feel
+uncomfortable or defensive. By positioning yourself as an observer, you
+invite the audience to laugh with you, not at someone else, creating a
+shared experience. This approach also allows the joke to be more
+relatable. That makes maintaining a positive rapport with the audience
+easier. The goal is to critique, question, or mock the situation, not
+ridicule people; unless you have a strong reason to make that your
+style.
+
+#### Take sharp turns!
+
+The element of surprise can bring laughter. If you are driving a bus,
+the passengers won’t appreciate a sharp turn. However, if you are a
+comedian, people love it!
+
+[In the first 20 seconds of this video, Louis CK goes from a “thank you”
+to talking about abortion.](https://youtu.be/o3LKXMsw6N8)
+
+#### P r a c t i c e
+
+This is how you mitigate stress, feel comfortable with your material,
+and sharpen your delivery. The smoother the delivery, the bigger the
+laughs you will get. Practice in front of a mirror to see your
+reactions, and hold something that looks like a microphone (hairbrush,
+toothbrush, shaving machine, a carrot… ). You can reach out to friends
+that you think their feedback would help and practice in front of them
+too. Take a video of yourself, record, and repeat. This will help you
+get what you want to say on time, and also view yourself from a
+different perspective — better for self-evaluation and feedback. Even if
+you think you remember everything, think that you might forget when you
+are in front of a big audience, so do not underestimate the value of
+practicing.
+
+### Conclusion
+
+To end it with a comparison, being a comedian is like the opposite of
+being an entrepreneur. Enterpreneurs think forward, and comedians think
+backward. Entrepreneurs ask themselves “What’s next?”. Comedians ask
+“How did we end up in this situation”.
+
+Doing a standup was a great experience. I find that standup comedy helps
+you practice public speaking, resilience, and creativity. Also, it can
+push you out of your comfort zone. I found it to be a beautiful journey
+with lots of laughing, learning, and new friendships formed along the
+way.
+
+I am thankful to my classmates Philip, Angie, Melissa, Abraham, HellDog,
+and Alex, who made this learning experience enjoyable, shared their
+feedback, and jokes along the way. Special thanks/credit to my teacher
+Jeff Jurgens for teaching us all these cool theories, supporting us in
+setting up our first stand-up comedy gig, and offering to pay for
+therapy after hearing my material — Rule of Three:)
+
+![Our cool flyer
+cover.](https://miro.medium.com/v2/resize:fit:828/format:webp/1*NKOPHSucr5yA0OJpBlXFLw.png)
+
+If you are in Gainesville and want to give it a try here is more
+information: <https://www.communityimprov.com/classes>
