@@ -15,7 +15,7 @@ about:
 
 Hi 👋 I am Loizos! This is my personal website.
 
-Here you will (ideally) find interesting articles, and [helpful resources](https://www.loizos.xyz/cv.html)
+Here you will find articles, and [fun resources](https://www.loizos.xyz/cv.html)
 
 I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
 
