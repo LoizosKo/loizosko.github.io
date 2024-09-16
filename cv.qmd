@@ -5,19 +5,19 @@ editor: visual
 
 **Resources and information you might find fun, interesting, helpful**:
 
+-   [Interactive Website - Fun stuff and interesting dilemmas](https://neal.fun/) *By Neal Agarwal*
+
 -   [Why a change in mindset is necessary to protect environment: Biking to work in Texas](https://energyethics.st-andrews.ac.uk/blog/what-i-learned-biking-to-work-in-texas/) *By Andy Eskenazi*
 
--   [Advice for married men](https://www.youtube.com/watch?v=XpFD-kgQxnI) *By Tim Hawkins*
-
--   [Landing a Job after graduating](https://medium.com/startup-stash/the-recruiting-approach-how-to-land-a-job-out-of-university-333b7805a8d4) *By Jessica Ramses*
+-   [Cost of living comparison](https://www.numbeo.com/cost-of-living/) in different cities in the world.
 
 -   [Oldest restaurants in the world](https://youtu.be/bDOxffz3NBM?si=llBdVl0eV1W3LWK2) *By Nutty History*
-
--   [Interractive Website - Fun stuff and interesting dilemmas](https://neal.fun/) *By Neal Agarwal*
 
 -   [The Language Nerds](https://thelanguagenerds.com/) *Quirky linguistics and language fun facts*
 
 -   [Wait But Why](https://waitbutwhy.com/) *Quirky insights on interesting topics*
+
+-   [Advice for married men](https://www.youtube.com/watch?v=XpFD-kgQxnI) *By Tim Hawkins*
 
 -   [Election Betting Odds](https://electionbettingodds.com/) *By Maxim Lott - Real time election odds from bets*
 
@@ -26,8 +26,6 @@ editor: visual
 -   [Helping founders settle in San Francisco](https://medium.com/@orestis_/finding-community-founding-in-sf-for-outsiders-f2a5f7cb9a5a) *O. Skoutellas*
 
 -   [Referral win-win deals](https://medium.com/@loizoskon/maximize-your-savings-with-my-favorite-referral-deals-27aa0ee319d3) *(credit/debit cards, phone coverage, etc)*
-
--   [Cost of living comparison](https://www.numbeo.com/cost-of-living/) in different cities in the world.
 
 -   [Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator) *How much can your savings sweat for you*
 
