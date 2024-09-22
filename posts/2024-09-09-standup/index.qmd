@@ -1,7 +1,7 @@
 ---
 title: "What did I learn from doing Standup Comedy"
 description: |
-    Learnings from my first exposure to standup comedy.
+    Learnings from my first attempt to perform standup comedy.
 image: images/sstandup.jpg
 date: 09/09/2024
 categories: 
