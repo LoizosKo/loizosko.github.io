@@ -31,6 +31,8 @@ editor: visual
 
 -   [Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator) *How much can your savings sweat for you*
 
+-   [Messi VS Ronaldo](https://www.messivsronaldo.app/) *In Numbers*
+
 **About me**
 
 -   I have a [blog](https://www.loizos.xyz/blog.html) that is occasionally updated 📝
@@ -41,7 +43,5 @@ editor: visual
 
 -   Let's play [chess](https://www.chess.com/member/loizossss) ♞
 
-```{=html}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"
      crossorigin="anonymous"></script>
-```
