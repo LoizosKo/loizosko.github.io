@@ -43,5 +43,7 @@ editor: visual
 
 -   Let's play [chess](https://www.chess.com/member/loizossss) ♞
 
+```{=html}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8108736686590832"
      crossorigin="anonymous"></script>
+```
